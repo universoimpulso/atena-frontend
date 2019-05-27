@@ -1,29 +1,24 @@
 import React from "react";
-import PropTypes from "prop-types";
+
 import { Flex } from "@rebass/grid";
-import Layout from "Layout";
-import Title from "components/Title";
+import Title from "../components/Title";
 import StyledScreenError from "./Error.style";
 
-const ScreenError = ({
-  message = "Caro(a) cavaleiro(a), aconteceu um erro. Por favor tente novamente."
-}) => (
+const ScreenError = () => (
   <StyledScreenError>
-    <Layout>
+    <main className="layout">
       <div className="_inner">
         <Flex justifyContent="center">
           <Title align={"center"} extraLarge>
             Error
           </Title>
         </Flex>
-        <p className="super">{message}</p>
+        <p className="super">
+          Caro(a) cavaleiro(a), aconteceu um erro. Por favor tente novamente.
+        </p>
       </div>
-    </Layout>
+    </main>
   </StyledScreenError>
 );
-
-ScreenError.propTypes = {
-  message: PropTypes.string
-};
 
 export default ScreenError;

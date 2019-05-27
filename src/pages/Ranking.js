@@ -10,7 +10,6 @@ import {
   StyledRectangleGroup,
   StyledRectangle
 } from "./Ranking.style";
-import Layout from "../Layout";
 import RankingHeader from "../components/RankingHeader";
 import RankingRow from "../components/RankingRow";
 import Title from "../components/Title";
@@ -23,8 +22,7 @@ class ScreenRanking extends Component {
     selected: "general",
     monthName: "",
     first_users: [],
-    last_users: [],
-    error: null
+    last_users: []
   };
 
   componentDidMount() {
@@ -35,7 +33,6 @@ class ScreenRanking extends Component {
     const mouth = type ? `/mes/${type}` : "";
     try {
       const { data } = await api.get(`ranking${mouth}`);
-      console.log(data);
       this.setState({
         first_users: data.first_users,
         last_users: data.last_users,
@@ -44,6 +41,7 @@ class ScreenRanking extends Component {
       });
     } catch (error) {
       console.log(error);
+      this.props.history.push(`/error`);
     } finally {
       this.setState({ loading: false });
     }
@@ -56,15 +54,13 @@ class ScreenRanking extends Component {
 
   toogleRanking = type => {
     const currentMouth = this.currentMouth();
+    this.setState({ selected: type, loading: true });
     this.getRanking(type === "monthly" ? currentMouth : null);
-
-    this.setState({ selected: type });
   };
   render() {
     const {
       loading,
       selected,
-      error,
       monthName,
       first_users,
       last_users
@@ -72,7 +68,7 @@ class ScreenRanking extends Component {
     return (
       <>
         <StyledScreenRanking>
-          <Layout>
+          <main className="layout">
             <FullPage background={`url(${BgRanking})`} height="40" overlay>
               <Flex alignItems="baseline" justifyContent="center" flex="1">
                 <Box>
@@ -115,18 +111,22 @@ class ScreenRanking extends Component {
               </Flex>
               <Flex justifyContent="center">
                 <Title align={"center"} extraLarge>
-                  RANKING <br />
-                  <span className="month">
-                    {selected === "general" ? "GERAL" : `DE ${monthName}`}
-                  </span>
+                  RANKING
+                  {selected === "general" ? (
+                    <>
+                      <br />
+                      <span className="month"> GERAL</span>
+                    </>
+                  ) : (
+                    <>
+                      <br />
+                      DO MÊS DE
+                      <span className="month"> {monthName}</span>
+                    </>
+                  )}
                 </Title>
               </Flex>
-              {error && (
-                <Flex justifyContent="center">
-                  <h1>{error}</h1>
-                </Flex>
-              )}
-              {!loading && !error && (
+              {!loading && (
                 <Fragment>
                   <Flex
                     justifyContent="center"
@@ -159,7 +159,7 @@ class ScreenRanking extends Component {
                 </Fragment>
               )}
             </div>
-          </Layout>
+          </main>
         </StyledScreenRanking>
       </>
     );

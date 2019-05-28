@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import api from "../services/api";
 import UserModal from "../components/UserModal/index";
 import { StyledTrasferXp, UserList } from "./TransferXp.style";
-import StyledApp from "../styles/global";
 
 class ScreenTransferXp extends Component {
   state = {
@@ -82,7 +81,6 @@ class ScreenTransferXp extends Component {
     } = this.state;
     return (
       <>
-        <StyledApp />
         <StyledTrasferXp>
           <section>
             <UserList>

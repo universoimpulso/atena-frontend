@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import theme from "../styles/theme";
 
 const StyledScreenError = styled.section`
   main {
@@ -8,8 +9,8 @@ const StyledScreenError = styled.section`
 
   ._inner {
     flex: 1;
-    background-color: ${props => props.theme.color.bg};
-    color: ${props => props.theme.color.gray};
+    background-color: ${props => theme.color.bg};
+    color: ${props => theme.color.gray};
     min-height: 400px;
   }
 
@@ -30,7 +31,7 @@ const StyledScreenError = styled.section`
   }
 
   .month {
-    color: ${props => props.theme.color.secondary};
+    color: ${props => theme.color.secondary};
   }
 
   @media (max-width: 760px) {

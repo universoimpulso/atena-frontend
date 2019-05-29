@@ -34,8 +34,9 @@ class UserModal extends Component {
     const { rocketUser, slackUser } = this.state;
     let updatedSlackUser, updatedRocketUser;
     try {
-      const response = await api.put(`user/edit-score/${rocketUser._id}`, {
-        score: rocketUser.score + slackUser.score
+      const response = await api.put(`/edit-score/${rocketUser._id}`, {
+        type: "rocket",
+        score: slackUser.score
       });
       if (response.data) {
         updatedRocketUser = response.data;
@@ -53,7 +54,8 @@ class UserModal extends Component {
 
   resetSlackScore = async id => {
     try {
-      const response = await api.put(`user/edit-score/${id}`, {
+      const response = await api.put(`/edit-score/${id}`, {
+        type: "slack",
         score: -1
       });
       return response.data;

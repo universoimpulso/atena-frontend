@@ -22,7 +22,6 @@ class ScreenTransferXp extends Component {
   getSlackUsers = async () => {
     try {
       const response = await api.get(`/slack-users`);
-      console.log(response);
       this.setState({
         loading: false,
         slackUsers: response.data,

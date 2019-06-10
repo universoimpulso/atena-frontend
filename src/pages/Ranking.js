@@ -2,8 +2,6 @@ import React, { Fragment, Component } from "react";
 // import PropTypes from "prop-types";
 import api from "../services/api";
 import { Flex, Box } from "@rebass/grid";
-import moment from "moment";
-import "moment/locale/pt-br";
 import BgRanking from "../assets/bg_ranking.png";
 import {
   StyledScreenRanking,
@@ -30,33 +28,29 @@ class ScreenRanking extends Component {
   }
 
   getRanking = async type => {
-    const mouth = type ? `/mes/${type}` : "";
+    console.log("data");
+    const query = type === "monthly" ? `/ranking-monthly` : "/ranking-general";
     try {
-      const { data } = await api.get(`ranking${mouth}`);
+      const { data } = await api.get(`${query}?format=json`);
+      console.log(data);
       this.setState({
         first_users: data.first_users,
         last_users: data.last_users,
         monthName: data.monthName,
-        error: data.error
+        error: data.error,
+        loading: false
       });
     } catch (error) {
       console.log(error);
       this.props.history.push(`/error`);
-    } finally {
-      this.setState({ loading: false });
     }
   };
 
-  currentMouth = () => {
-    moment().locale("pt-br");
-    return moment().format("MMMM");
+  toogleRanking = type => {
+    this.setState({ selected: type, loading: true });
+    this.getRanking(type);
   };
 
-  toogleRanking = type => {
-    const currentMouth = this.currentMouth();
-    this.setState({ selected: type, loading: true });
-    this.getRanking(type === "monthly" ? currentMouth : null);
-  };
   render() {
     const {
       loading,

@@ -1,24 +1,25 @@
 import React, { Fragment } from "react";
 import PropTypes from "prop-types";
+import LinkedInPage from "../LinkedIn";
 import StyledMenu from "./Menu.style";
 
 const links = user => {
-  // const whithoutAuth = [
-  //   {
-  //     class: "login",
-  //     title: "login",
-  //     link: "/auth/linkedin"
-  //   }
-  // ];
-  // const withAuth = [
-  //   {
-  //     class: "logout",
-  //     title: "Sair",
-  //     link: "/auth/logout"
-  //   }
-  // ];
+  const whithoutAuth = [
+    {
+      class: "login",
+      title: "login",
+      link: "/auth/linkedin"
+    }
+  ];
+  const withAuth = [
+    {
+      class: "logout",
+      title: "Sair",
+      link: "/auth/logout"
+    }
+  ];
 
-  // const options = user ? withAuth : whithoutAuth;
+  const options = user ? withAuth : whithoutAuth;
 
   return [
     {
@@ -30,8 +31,8 @@ const links = user => {
       class: "ranking",
       title: "ranking",
       link: "/ranking"
-    }
-    // ...options
+    },
+    ...options
   ];
 };
 
@@ -47,13 +48,20 @@ ProfileUser.propTypes = {
 
 const renderLinks = ({ user }) => (
   <Fragment>
-    {links(user).map((item, index) => (
-      <li key={index}>
-        <a className={item.class} href={item.link}>
-          {item.title}
-        </a>
-      </li>
-    ))}
+    <li key={0}>
+      <a className="index" href={"/"}>
+        como funciona
+      </a>
+    </li>
+    <li key={1}>
+      <a className="ranking" href={"/ranking"}>
+        ranking
+      </a>
+    </li>
+
+    <li>
+      <LinkedInPage />
+    </li>
     {user && (
       <li className="user">
         <ProfileUser avatar={user.avatar} />

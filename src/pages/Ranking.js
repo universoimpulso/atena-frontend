@@ -28,11 +28,9 @@ class ScreenRanking extends Component {
   }
 
   getRanking = async type => {
-    console.log("data");
     const query = type === "monthly" ? `/ranking-monthly` : "/ranking-general";
     try {
-      const { data } = await api.get(`${query}?format=json`);
-      console.log(data);
+      const { data } = await api.get(`api/v1${query}?format=json`);
       this.setState({
         first_users: data.first_users,
         last_users: data.last_users,

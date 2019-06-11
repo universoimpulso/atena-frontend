@@ -45,6 +45,7 @@ const StyledMenu = styled.ul`
     text-transform: uppercase;
     text-decoration: none;
     font-weight: 600;
+    cursor: pointer;
 
     &::after {
       content: "";

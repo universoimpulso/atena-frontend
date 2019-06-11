@@ -15,14 +15,12 @@ function App() {
     <>
       <StyledApp />
       <Header />
-
       <Router>
         <Route exact path="/" component={HowItWorks} />
         <Route exact path="/ranking" component={Ranking} />
         <Route exact path="/transfer-xp" component={TransferXp} />
         <Route exact path="/error" component={ScreenError} />
       </Router>
-
       <Footer />
     </>
   );

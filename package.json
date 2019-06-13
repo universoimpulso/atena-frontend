@@ -8,8 +8,6 @@
     "moment": "^2.24.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-linkedin-login-oauth2": "^1.0.6",
-    "react-notifications-component": "^1.1.1",
     "react-router-dom": "^5.0.0",
     "react-scripts": "3.0.1",
     "styled-components": "^4.2.0",

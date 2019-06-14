@@ -1,5 +1,6 @@
 import React from "react";
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
+import { Flex } from "@rebass/grid";
 import {
   StyledUserCard,
   StyledContainer,
@@ -7,7 +8,6 @@ import {
   StyledInfo,
   StyledPoint
 } from "./style";
-import { Flex } from "@rebass/grid";
 
 const Position = ({ children }) => <StyledPosition>{children}</StyledPosition>;
 
@@ -44,32 +44,12 @@ const UserCard = ({ ...props }) => (
   </StyledUserCard>
 );
 
-// UserCard.propTypes = {
-//   width: PropTypes.string
-// };
-
-// UserCard.defaultProps = {
-//   width: "325px"
-// };
-
-// Container.propTypes = {
-//   position: PropTypes.number.isRequired,
-//   avatar: PropTypes.string
-// };
-
-// Point.propTypes = {
-//   label: PropTypes.string.isRequired,
-//   value: PropTypes.number.isRequired
-// };
-
-// Info.propTypes = {
-//   name: PropTypes.string.isRequired,
-//   level: PropTypes.number.isRequired,
-//   xp: PropTypes.number.isRequired
-// };
-
-// Position.propTypes = {
-//   children: PropTypes.element.isRequired
-// };
+UserCard.propTypes = {
+  position: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  avatar: PropTypes.string.isRequired,
+  level: PropTypes.number.isRequired,
+  xp: PropTypes.number.isRequired
+};
 
 export default UserCard;

@@ -1,5 +1,5 @@
 import React from "react";
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 import StyledRankingRow from "./style";
 
 const RankingRow = ({ position, name, avatar, level, xp }) => (
@@ -14,12 +14,12 @@ const RankingRow = ({ position, name, avatar, level, xp }) => (
   </StyledRankingRow>
 );
 
-// RankingRow.propTypes = {
-//   position: PropTypes.string.isRequired,
-//   name: PropTypes.string.isRequired,
-//   avatar: PropTypes.string.isRequired,
-//   level: PropTypes.string.isRequired,
-//   xp: PropTypes.string.isRequired
-// };
+RankingRow.propTypes = {
+  position: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  avatar: PropTypes.string.isRequired,
+  level: PropTypes.number.isRequired,
+  xp: PropTypes.number.isRequired
+};
 
 export default RankingRow;

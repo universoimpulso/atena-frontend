@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import theme from "../styles/theme";
+import theme from "../../styles/theme";
 /*
  *
  background: ${props => props.background || theme.color.primary};
@@ -83,6 +83,13 @@ export const StyledRectangle = styled.div`
   }
 `;
 
+export const Loading = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 120px 0 400px 0;
+`;
+
 export const StyledRectangleGroup = styled.div`
   margin: 0 172px;
   display: flex;
@@ -95,13 +102,29 @@ export const StyledRectangleGroup = styled.div`
   div:last-child {
     border-radius: 0 100px 100px 0;
   }
-  /* &:first-child {
-    border-top-left-radius: 100px;
-    border-bottom-left-radius: 100px;
-  }
+`;
 
-  &:last-child {
-    border-top-right-radius: 100px;
-    border-bottom-right-radius: 100px;
-  } */
+export const RankingHeader = styled.div`
+  width: 100%;
+  display: flex;
+  color: #595b98;
+  font-size: 20px;
+  font-weight: bold;
+  .ranking {
+    flex: 1;
+    max-width: 88px;
+  }
+  .level {
+    flex: 2;
+    max-width: 83px;
+    text-align: center;
+  }
+  .xp {
+    flex: 1;
+    max-width: 120px;
+    text-align: center;
+  }
+  .userInfo {
+    flex: 2;
+  }
 `;

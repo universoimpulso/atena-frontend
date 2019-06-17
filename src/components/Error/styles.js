@@ -2,15 +2,15 @@ import styled from "styled-components";
 import theme from "../../styles/theme";
 
 const StyledScreenError = styled.section`
+  padding-top: 100px;
   main {
-    padding-top: 250px;
     padding-bottom: 100px;
   }
 
   ._inner {
     flex: 1;
-    background-color: ${props => theme.color.bg};
-    color: ${props => theme.color.gray};
+    background-color: ${theme.color.bg};
+    color: ${theme.color.gray};
     min-height: 400px;
   }
 

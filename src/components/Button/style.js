@@ -2,7 +2,7 @@ import styled from "styled-components";
 import theme from "../../styles/theme";
 
 const StyledButton = styled.div`
-  color: ${props => theme.color.primary};
+  color: ${theme.color.primary};
   display: inline-block;
   text-transform: uppercase;
   font-weight: bold;
@@ -15,12 +15,12 @@ const StyledButton = styled.div`
 
   & a {
     text-decoration: none;
-    color: ${props => theme.color.primary};
+    color: ${theme.color.primary};
   }
 
   &:hover {
-    color: ${props => theme.color.primary};
-    background-color: ${props => theme.color.primary};
+    color: ${theme.color.primary};
+    background-color: ${theme.color.primary};
     & a {
       color: white;
     }
@@ -28,8 +28,8 @@ const StyledButton = styled.div`
 
   &:focus {
     outline: none;
-    color: ${props => theme.color.primaryFocus};
-    background-color: ${props => theme.color.primaryFocus};
+    color: ${theme.color.primaryFocus};
+    background-color: ${theme.color.primaryFocus};
     & a {
       color: white;
     }

@@ -1,11 +1,6 @@
 import styled from "styled-components";
 import theme from "../../styles/theme";
-/*
- *
- background: ${props => props.background || theme.color.primary};
-    background-size: cover;
-    background-position: center;
-    */
+
 export const StyledScreenRanking = styled.section`
   .layout {
     padding-top: 0;
@@ -60,7 +55,7 @@ export const StyledScreenRanking = styled.section`
 export const StyledRectangle = styled.div`
   background: ${props =>
     props.active ? theme.color.primary : theme.color.white};
-  font-size: ${props => theme.spacing.unit * 2.5}px;
+  font-size: ${theme.spacing.unit * 2.5}px;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
   text-align: center;
   max-height: 100px;
@@ -74,12 +69,24 @@ export const StyledRectangle = styled.div`
     font-weight: 600;
   }
   p:after {
-    background: none repeat scroll 0 0 #fff;
     content: "";
     display: block;
-    height: ${props => theme.spacing.unit * 0.25}px;
-    position: relative;
-    width: ${props => theme.spacing.unit * 3.75}px;
+    width: ${props => (props.active ? "30px" : 0)};
+    height: 3px;
+    background: #c9ced2;
+    border-radius: 3px;
+    position: absolute;
+    transform: translateY(6px);
+    transition: 0.2s all ease-in;
+  }
+  p:hover {
+    color: ${props =>
+      props.active ? theme.color.white : theme.color.primaryHover};
+    :after {
+      width: 30px;
+      background: ${props =>
+        props.active ? theme.color.white : theme.color.primaryHover};
+    }
   }
 `;
 

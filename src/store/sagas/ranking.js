@@ -19,6 +19,8 @@ export function* getRanking(action) {
     };
     yield put(RankingActions.getRankingSucess(rankingData));
   } catch (error) {
+    console.tron.log(error);
+    console.tron.log(process.env);
     yield put(RankingActions.getRankingFailure("Erro ao buscar ranking"));
   }
 }

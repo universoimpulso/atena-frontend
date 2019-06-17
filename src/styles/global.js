@@ -29,7 +29,6 @@ const StyledApp = createGlobalStyle`
   }
 
   .container {
-    max-width: 980px;
     margin: auto;
     padding: 0 15px;
   }
@@ -49,6 +48,7 @@ const StyledApp = createGlobalStyle`
 
   button {
     border: none;
+    outline: 0;
   }
   hr {
     border-color: ${theme.color.primaryLight};

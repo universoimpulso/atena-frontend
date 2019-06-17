@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { RankingHeader } from "../styles";
 import theme from "../../../styles/theme";
 
-const StyledRankingRow = styled(RankingHeader)`
+export const StyledRankingRow = styled(RankingHeader)`
   background-color: ${theme.color.white};
   height: 107px;
   box-shadow: 8px 8px 60px 0px rgba(0, 0, 0, 0.08);
@@ -20,6 +20,7 @@ const StyledRankingRow = styled(RankingHeader)`
     padding-left: 10px;
     color: #666c71;
     align-self: center;
+    align-items: center;
     border-right: solid 1px #e2e2e2;
     border-left: solid 1px #e2e2e2;
     img {
@@ -28,7 +29,7 @@ const StyledRankingRow = styled(RankingHeader)`
       border-radius: 50%;
     }
     p {
-      padding-left: 10px;
+      padding-left: 18px;
     }
   }
   .level {
@@ -47,5 +48,3 @@ const StyledRankingRow = styled(RankingHeader)`
     align-self: center;
   }
 `;
-
-export default StyledRankingRow;

@@ -1,7 +1,7 @@
 import React from "react";
 import { Provider } from "react-redux";
 import "./config/ReactotronConfig";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 
 import store from "./store";
 import StyledApp from "./styles/global";
@@ -9,23 +9,33 @@ import StyledApp from "./styles/global";
 import TransferXp from "./pages/TransferXp";
 import HowItWorks from "./pages/HowItWorks";
 import Ranking from "./pages/Ranking";
+import Admin from "./pages/admin";
+
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 
 function App() {
   return (
-    <BrowserRouter>
-      <StyledApp />
-      <Provider store={store}>
+    <Provider store={store}>
+      <BrowserRouter>
+        <StyledApp />
         <Header />
         <Switch>
           <Route exact path="/" component={HowItWorks} />
-          <Route exact path="/ranking" component={Ranking} />
-          <Route exact path="/transfer-xp" component={TransferXp} />
+          <Route path="/ranking" component={Ranking} />
+
+          {store.getState().auth.user ? (
+            <>
+              <Route path="/transfer" component={TransferXp} />
+              <Route path="/admin" component={Admin} />
+            </>
+          ) : (
+            <Redirect to="/" />
+          )}
         </Switch>
         <Footer />
-      </Provider>
-    </BrowserRouter>
+      </BrowserRouter>
+    </Provider>
   );
 }
 

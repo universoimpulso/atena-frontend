@@ -17,10 +17,8 @@ export function* getRanking(action) {
       monthName: data.monthName,
       error: data.error
     };
-    yield put(RankingActions.getRankingSucess(rankingData));
+    yield put(RankingActions.getRankingSuccess(rankingData));
   } catch (error) {
-    console.tron.log(error);
-    console.tron.log(process.env);
     yield put(RankingActions.getRankingFailure("Erro ao buscar ranking"));
   }
 }

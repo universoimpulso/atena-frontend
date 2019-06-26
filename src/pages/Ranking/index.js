@@ -25,8 +25,8 @@ import {
 class ScreenRanking extends Component {
   static propTypes = {
     getRanking: PropTypes.func.isRequired,
-    getRankingSucess: PropTypes.func.isRequired,
-    getRankingFailure: PropTypes.func.isRequired,
+    getRankingSucess: PropTypes.func,
+    getRankingFailure: PropTypes.func,
     ranking: PropTypes.shape({
       loading: PropTypes.bool,
       monthName: PropTypes.string,

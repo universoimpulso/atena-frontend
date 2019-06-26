@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import { AccordionWrapper, Awnser, Icon } from "./style";
 
 class Accordion extends Component {
@@ -74,9 +73,5 @@ class Accordion extends Component {
     );
   }
 }
-
-Accordion.propTypes = {
-  data: PropTypes.array.isRequired
-};
 
 export default Accordion;

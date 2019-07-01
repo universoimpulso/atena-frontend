@@ -1,11 +1,6 @@
 import styled from "styled-components";
-import theme from "../styles/theme";
-/*
- *
- background: ${props => props.background || theme.color.primary};
-    background-size: cover;
-    background-position: center;
-    */
+import theme from "../../styles/theme";
+
 export const StyledScreenRanking = styled.section`
   .layout {
     padding-top: 0;
@@ -60,7 +55,7 @@ export const StyledScreenRanking = styled.section`
 export const StyledRectangle = styled.div`
   background: ${props =>
     props.active ? theme.color.primary : theme.color.white};
-  font-size: ${props => theme.spacing.unit * 2.5}px;
+  font-size: ${theme.spacing.unit * 2.5}px;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
   text-align: center;
   max-height: 100px;
@@ -74,13 +69,32 @@ export const StyledRectangle = styled.div`
     font-weight: 600;
   }
   p:after {
-    background: none repeat scroll 0 0 #fff;
     content: "";
     display: block;
-    height: ${props => theme.spacing.unit * 0.25}px;
-    position: relative;
-    width: ${props => theme.spacing.unit * 3.75}px;
+    width: ${props => (props.active ? "30px" : 0)};
+    height: 3px;
+    background: #c9ced2;
+    border-radius: 3px;
+    position: absolute;
+    transform: translateY(6px);
+    transition: 0.2s all ease-in;
   }
+  p:hover {
+    color: ${props =>
+      props.active ? theme.color.white : theme.color.primaryHover};
+    :after {
+      width: 30px;
+      background: ${props =>
+        props.active ? theme.color.white : theme.color.primaryHover};
+    }
+  }
+`;
+
+export const Loading = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 120px 0 400px 0;
 `;
 
 export const StyledRectangleGroup = styled.div`
@@ -95,13 +109,29 @@ export const StyledRectangleGroup = styled.div`
   div:last-child {
     border-radius: 0 100px 100px 0;
   }
-  /* &:first-child {
-    border-top-left-radius: 100px;
-    border-bottom-left-radius: 100px;
-  }
+`;
 
-  &:last-child {
-    border-top-right-radius: 100px;
-    border-bottom-right-radius: 100px;
-  } */
+export const RankingHeader = styled.div`
+  width: 100%;
+  display: flex;
+  color: #595b98;
+  font-size: 20px;
+  font-weight: bold;
+  .ranking {
+    flex: 1;
+    max-width: 88px;
+  }
+  .level {
+    flex: 2;
+    max-width: 83px;
+    text-align: center;
+  }
+  .xp {
+    flex: 1;
+    max-width: 120px;
+    text-align: center;
+  }
+  .userInfo {
+    flex: 2;
+  }
 `;

@@ -40,18 +40,20 @@ const StyledMenu = styled.ul`
     }
   }
 
-  a {
-    color: ${props => theme.color.white};
+  button {
+    color: ${theme.color.white};
     text-transform: uppercase;
-    text-decoration: none;
+    background: transparent;
     font-weight: 600;
+    outline: none;
+    cursor: pointer;
 
     &::after {
       content: "";
       display: block;
       width: 0px;
       height: 3px;
-      background: ${props => theme.color.primaryLight};
+      background: ${theme.color.primaryLight};
       border-radius: 3px;
       position: absolute;
       transform: translateY(5px);

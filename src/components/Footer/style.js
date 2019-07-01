@@ -2,13 +2,17 @@ import styled from "styled-components";
 import theme from "../../styles/theme";
 
 export const StyledFooter = styled.footer`
-  background-color: ${props => theme.color.primary};
-  color: ${props => theme.color.white};
+  background-color: ${theme.color.primary};
+  color: ${theme.color.white};
   padding: 50px 0 40px;
 
   > section {
     max-width: 380px;
     margin: 0 auto;
+    hr {
+      width: 85%;
+      margin: 40px auto;
+    }
   }
 
   .impulsoIcon {
@@ -19,6 +23,6 @@ export const StyledFooter = styled.footer`
 
 export const StyledCopyright = styled.p`
   text-align: center;
-  color: ${props => theme.color.primaryLight};
+  color: ${theme.color.primaryLight};
   margin: 0;
 `;

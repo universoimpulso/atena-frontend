@@ -1,30 +1,41 @@
 import React from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { Provider } from "react-redux";
+import "./config/ReactotronConfig";
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 
+import store from "./store";
 import StyledApp from "./styles/global";
 
 import TransferXp from "./pages/TransferXp";
 import HowItWorks from "./pages/HowItWorks";
 import Ranking from "./pages/Ranking";
-import ScreenError from "./pages/Error";
+import Admin from "./pages/admin";
+
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 
 function App() {
   return (
-    <>
-      <StyledApp />
-      <Header />
+    <Provider store={store}>
+      <BrowserRouter>
+        <StyledApp />
+        <Header />
+        <Switch>
+          <Route exact path="/" component={HowItWorks} />
+          <Route path="/ranking" component={Ranking} />
 
-      <Router>
-        <Route exact path="/" component={HowItWorks} />
-        <Route exact path="/ranking" component={Ranking} />
-        <Route exact path="/transfer-xp" component={TransferXp} />
-        <Route exact path="/error" component={ScreenError} />
-      </Router>
-
-      <Footer />
-    </>
+          {store.getState().auth.user ? (
+            <>
+              <Route path="/transfer" component={TransferXp} />
+              <Route path="/admin" component={Admin} />
+            </>
+          ) : (
+            <Redirect to="/" />
+          )}
+        </Switch>
+        <Footer />
+      </BrowserRouter>
+    </Provider>
   );
 }
 

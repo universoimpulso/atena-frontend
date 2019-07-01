@@ -1,37 +1,77 @@
-import React, { Fragment } from "react";
-import PropTypes from "prop-types";
-import StyledAccordion from "./style";
+import React, { Component } from "react";
+import { AccordionWrapper, Awnser, Icon } from "./style";
 
-const renderItem = ({ content, awnser }, index) => (
-  // eslint-disable-next-line jsx-a11y/anchor-is-valid
-  <a href="javascript:;" className="accordion__item" key={index}>
-    <span className="accordion__link">
-      {content}
-      <i className="fas fa-sort-down" />
-    </span>
-    <div className="accordion_content">
-      <p>{awnser}</p>
-    </div>
-  </a>
-);
+class Accordion extends Component {
+  state = {
+    active: null,
+    questions: [
+      {
+        content: "Como me comunico com a Atena?",
+        awnser:
+          "Para centralizar as informações a respeito da sua Experiência, Níveis e Conquistas criamos a bot ATENA. Através de comandos é possível pedir à Atena para exibir seu XP (!meuspontos), Ranking Mensal (!ranking), Ranking Geral de XP (!rankinggeral) e Conquistas (!minhasconquistas)."
+      },
+      {
+        content: "Existirão atualizações?",
+        awnser:
+          "Sim! A Impulso Network é muito dinâmica e não para de crescer. O surgimento de novos canais, atividades e práticas corriqueiras e positivas na comunidade serão mapeadas para que novas features sejam criadas."
+      },
+      {
+        content: "Existe alguma premiação?",
+        awnser:
+          "Claro! Além da Reputação obtida através da sua participação na comunidade (representada por XP e Níveis), Atena poderá te premiar com acesso a atividades especiais da comunidade, cupons de desconto para serviços, além de produtos e brindes exclusivos."
+      },
+      {
+        content: "Qual a diferença entre ranking mensal e geral?",
+        awnser:
+          "Enquanto o Ranking Geral valoriza o esforço durante todo o seu percurso com a Atena e mostra o acumulado de XP e seu Nível, o Ranking Mensal foca no que foi realizado e recompensa o primeiro colocado naquele mês."
+      },
+      {
+        content: "Como faço para participar do projeto?",
+        awnser: [
+          `Qualquer pessoa pode ajudar Atena a crescer, basta entrar no canal <strong>#projeto-atena</strong> no nosso Rocket.chat ou acessar diretamente o nosso repositório no 
+          <a 
+            target="_blank" 
+            rel="noopener noreferrer"
+            href="http://github.com/impulsonetwork/atena"
+          >
+            Github
+          </a> . 
+          Ainda não faz parte da Impulso Network? Basta acessar o 
+                    <a 
+            target="_blank" 
+            rel="noopener noreferrer"
+            href="https://app.impulso.network/"
+          >
+            Rocket.chat
+          </a>
+           e fazer o seu cadastro, é rapidinho.`
+        ]
+      }
+    ]
+  };
 
-const renderItems = data =>
-  data && data.map((item, index) => renderItem(item, index));
+  handleClick = index => {
+    this.setState({ active: index === this.state.active ? null : index });
+  };
 
-const Accordion = ({ data }) => (
-  <StyledAccordion>
-    <Fragment>{renderItems(data)}</Fragment>
-  </StyledAccordion>
-);
-
-renderItem.propTypes = {
-  content: PropTypes.string.isRequired,
-  awnser: PropTypes.string.isRequired,
-  index: PropTypes.string
-};
-
-Accordion.propTypes = {
-  data: PropTypes.array.isRequired
-};
+  render() {
+    const { active, questions } = this.state;
+    return (
+      <AccordionWrapper>
+        {questions.map((question, index) => (
+          <section key={index} onClick={() => this.handleClick(index)}>
+            <span className="accordion__link">
+              {question.content}
+              <Icon selected={active === index} className="fas fa-sort-down" />
+            </span>
+            <Awnser selected={active === index} className="accordion_content">
+              <p dangerouslySetInnerHTML={{ __html: question.awnser }} />
+            </Awnser>
+          </section>
+        ))}
+      </AccordionWrapper>
+    );
+  }
+}
 
 export default Accordion;

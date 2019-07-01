@@ -2,18 +2,19 @@ import styled from "styled-components";
 import theme from "../../styles/theme";
 
 const StyledCard = styled.div`
-  background-color: ${props => theme.color.white};
-  color: ${props => theme.color.gray};
+  background-color: ${theme.color.white};
+  color: ${theme.color.gray};
   padding: 40px;
-  border-radius: ${props => theme.fontSize.medium};
+  border-radius: ${theme.fontSize.medium};
   margin: auto;
   box-shadow: 8px 8px 60px rgba(0, 0, 0, 0.2);
   max-width: 640px;
   text-align: left;
   position: relative;
+  height: 100%;
 
   h1 {
-    color: ${props => theme.color.primary};
+    color: ${theme.color.primary};
   }
 
   ${props =>
@@ -28,7 +29,7 @@ const StyledCard = styled.div`
   `}
 
   .cardIcon {
-    background-color: ${props => theme.color.white};
+    background-color: ${theme.color.white};
     margin: -100px auto 50px;
     display: block;
     padding: 14px;
@@ -37,9 +38,9 @@ const StyledCard = styled.div`
   }
 
   .cardIcon i {
-    font-size: ${props => theme.fontSize.super};
-    color: ${props => theme.color.white};
-    background: ${props => theme.color.primary};
+    font-size: ${theme.fontSize.super};
+    color: ${theme.color.white};
+    background: ${theme.color.primary};
     border-radius: 100%;
     padding-top: 5px;
     display: block;
@@ -65,7 +66,7 @@ const StyledCard = styled.div`
 `;
 
 export const StyledUserCard = styled.div`
-  background-color: ${props => theme.color.white};
+  background-color: ${theme.color.white};
   min-height: 413px;
 `;
 

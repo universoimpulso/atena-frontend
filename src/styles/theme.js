@@ -17,14 +17,17 @@ const Theme = {
   },
   color: {
     white: "#FFFFFF",
+    background: "#F0F0F7",
     black: "#000000",
     gray: "#666C71",
+    lightGray: "#C9C9D8",
     primary: "#595B98",
     primaryLight: "#8688D9",
     primaryHover: "#9598ED",
     primaryFocus: "#414287",
     secondary: "#DC3C2C",
-    bg: "#FDFDFD"
+    bg: "#FDFDFD",
+    green: "#279949"
   }
 };
 

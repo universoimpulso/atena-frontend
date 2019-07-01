@@ -31,6 +31,7 @@ export const Aside = styled.aside`
 `;
 export const Option = styled.p`
   margin: 30px 0;
+  margin-left: ${props => props.marginLeft || 0};
   color: ${theme.color.gray};
   line-height: 100%;
   cursor: pointer;

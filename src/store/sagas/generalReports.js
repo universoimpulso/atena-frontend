@@ -2,7 +2,7 @@ import { call, put } from "redux-saga/effects";
 import api from "../../services/api";
 import { Creators as GeneralReportsActions } from "../ducks/generalReports";
 
-export function* getUsers() {
+export function* getUsers(action) {
   try {
     // const { data } = yield call(api.get, `api/v1/userTESTE`);
 
@@ -29,11 +29,9 @@ export function* getUsers() {
   }
 }
 
-export function* getAchivements(action) {
-  console.tron.log(action.payload.month);
+export function* getUsersAchievements(action) {
   try {
     // const { data } = yield call(api.get, `api/v1/userTESTE`);
-
     // MOCK
     const achievements = {
       byMonth: 865,
@@ -43,13 +41,15 @@ export function* getAchivements(action) {
       total: 12987
     };
     // FIM MOCK
-    yield put(GeneralReportsActions.getAchievementsSuccess(achievements));
+    yield put(GeneralReportsActions.getUsersAchievementsSuccess(achievements));
   } catch (error) {
-    yield put(GeneralReportsActions.requestFailure("Erro ao buscar dados"));
+    yield put(
+      GeneralReportsActions.requestFailure(error, "Erro ao buscar dados")
+    );
   }
 }
+
 export function* getMissions(action) {
-  console.tron.log(action.payload.month);
   try {
     // const { data } = yield call(api.get, `api/v1/userTESTE`);
 
@@ -68,7 +68,6 @@ export function* getMissions(action) {
   }
 }
 export function* getXp(action) {
-  console.tron.log(action.payload.month);
   try {
     // const { data } = yield call(api.get, `api/v1/userTESTE`);
 

@@ -28,7 +28,6 @@ class Menu extends Component {
   };
 
   render() {
-    console.tron.log("AUTH", this.props);
     const { auth, signOut } = this.props;
 
     return (

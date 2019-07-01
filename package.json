@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@rebass/grid": "^6.0.0",
-    "axios": "^0.18.0",
+    "axios": "^0.19.0",
     "connected-react-router": "^6.4.0",
     "echarts": "^4.2.1",
     "echarts-for-react": "^2.0.15-beta.0",

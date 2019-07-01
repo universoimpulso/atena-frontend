@@ -12,8 +12,8 @@ const INITIAL_STATE = {
 export const Types = {
   GET_USERS: "generalReports/GET_USERS",
   GET_USERS_SUCCESS: "generalReports/GET_USERS_SUCCESS",
-  GET_ACHIEVEMENTS: "generalReports/GET_ACHIEVEMENTS",
-  GET_ACHIEVEMENTS_SUCCESS: "generalReports/GET_ACHIEVEMENTS_SUCCESS",
+  GET_USERS_ACHIEVEMENTS: "generalReports/GET_USERS_ACHIEVEMENTS",
+  GET_USERS_ACHIEVEMENTS_SUCCESS: "generalReports/GET_ACHIEVEMENTS_SUCCESS",
   GET_MISSIONS: "generalReports/GET_MISSIONS",
   GET_MISSIONS_SUCCESS: "generalReports/GET_MISSIONS_SUCCESS",
   GET_XP: "generalReports/GET_XP",
@@ -30,9 +30,9 @@ export default function generalReports(state = INITIAL_STATE, action) {
     case Types.GET_USERS_SUCCESS:
       const { users, totalUsers } = action.payload.data;
       return { ...state, usersLoading: false, users, totalUsers };
-    case Types.GET_ACHIEVEMENTS:
+    case Types.GET_USERS_ACHIEVEMENTS:
       return { ...state };
-    case Types.GET_ACHIEVEMENTS_SUCCESS:
+    case Types.GET_USERS_ACHIEVEMENTS_SUCCESS:
       return {
         ...state,
         achievements: action.payload.data,
@@ -66,12 +66,12 @@ export const Creators = {
     type: Types.GET_USERS_SUCCESS,
     payload: { data }
   }),
-  getAchievements: month => ({
-    type: Types.GET_ACHIEVEMENTS,
+  getUsersAchievements: month => ({
+    type: Types.GET_USERS_ACHIEVEMENTS,
     payload: { month }
   }),
-  getAchievementsSuccess: data => ({
-    type: Types.GET_ACHIEVEMENTS_SUCCESS,
+  getUsersAchievementsSuccess: data => ({
+    type: Types.GET_USERS_ACHIEVEMENTS_SUCCESS,
     payload: { data }
   }),
   getMissions: month => ({

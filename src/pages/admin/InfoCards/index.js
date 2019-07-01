@@ -10,7 +10,7 @@ import { Wrapper, Collunm, Card, Percentage } from "./styles";
 
 class InfoCards extends Component {
   static propTypes = {
-    getAchievements: PropTypes.func.isRequired,
+    getUsersAchievements: PropTypes.func.isRequired,
     getMissions: PropTypes.func.isRequired,
     getXp: PropTypes.func.isRequired,
     generalReports: PropTypes.shape({
@@ -60,7 +60,7 @@ class InfoCards extends Component {
     const month = event[0].target.value;
     const type = event[1];
     if (type === "achievements") {
-      this.props.getAchievements(month);
+      this.props.getUsersAchievements(month);
     } else if (type === "missions") {
       this.props.getMissions(month);
     } else if (type === "xp") {
@@ -69,7 +69,7 @@ class InfoCards extends Component {
   };
 
   componentDidMount() {
-    this.props.getAchievements();
+    this.props.getUsersAchievements();
     this.props.getMissions();
     this.props.getXp();
   }

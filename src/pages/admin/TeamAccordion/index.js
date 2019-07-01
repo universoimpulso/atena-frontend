@@ -113,7 +113,7 @@ class TeamAccordion extends Component {
                       postagens criadas <span>{blog.posts}</span>
                     </div>
                     <div>
-                      comentarios enviados<span>{blog.comments}</span>
+                      comentários enviados<span>{blog.comments}</span>
                     </div>
                   </Card>
                 </Box>

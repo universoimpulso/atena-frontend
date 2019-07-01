@@ -10,6 +10,7 @@ import TransferXp from "./pages/TransferXp";
 import HowItWorks from "./pages/HowItWorks";
 import Ranking from "./pages/Ranking";
 import Admin from "./pages/admin";
+import Github from "./pages/Github";
 
 import Footer from "./components/Footer";
 import Header from "./components/Header";
@@ -23,6 +24,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={HowItWorks} />
           <Route path="/ranking" component={Ranking} />
+          <Route path="/github/:status" component={Github} />
 
           {store.getState().auth.user ? (
             <>

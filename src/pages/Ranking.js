@@ -2,15 +2,12 @@ import React, { Fragment, Component } from "react";
 // import PropTypes from "prop-types";
 import api from "../services/api";
 import { Flex, Box } from "@rebass/grid";
-import moment from "moment";
-import "moment/locale/pt-br";
 import BgRanking from "../assets/bg_ranking.png";
 import {
   StyledScreenRanking,
   StyledRectangleGroup,
   StyledRectangle
 } from "./Ranking.style";
-import Layout from "../Layout";
 import RankingHeader from "../components/RankingHeader";
 import RankingRow from "../components/RankingRow";
 import Title from "../components/Title";
@@ -23,8 +20,7 @@ class ScreenRanking extends Component {
     selected: "general",
     monthName: "",
     first_users: [],
-    last_users: [],
-    error: null
+    last_users: []
   };
 
   componentDidMount() {
@@ -32,39 +28,33 @@ class ScreenRanking extends Component {
   }
 
   getRanking = async type => {
-    const mouth = type ? `/mes/${type}` : "";
+    console.log("data");
+    const query = type === "monthly" ? `/ranking-monthly` : "/ranking-general";
     try {
-      const { data } = await api.get(`ranking${mouth}`);
+      const { data } = await api.get(`${query}?format=json`);
       console.log(data);
       this.setState({
         first_users: data.first_users,
         last_users: data.last_users,
         monthName: data.monthName,
-        error: data.error
+        error: data.error,
+        loading: false
       });
     } catch (error) {
       console.log(error);
-    } finally {
-      this.setState({ loading: false });
+      this.props.history.push(`/error`);
     }
   };
 
-  currentMouth = () => {
-    moment().locale("pt-br");
-    return moment().format("MMMM");
-  };
-
   toogleRanking = type => {
-    const currentMouth = this.currentMouth();
-    this.getRanking(type === "monthly" ? currentMouth : null);
-
-    this.setState({ selected: type });
+    this.setState({ selected: type, loading: true });
+    this.getRanking(type);
   };
+
   render() {
     const {
       loading,
       selected,
-      error,
       monthName,
       first_users,
       last_users
@@ -72,7 +62,7 @@ class ScreenRanking extends Component {
     return (
       <>
         <StyledScreenRanking>
-          <Layout>
+          <main className="layout">
             <FullPage background={`url(${BgRanking})`} height="40" overlay>
               <Flex alignItems="baseline" justifyContent="center" flex="1">
                 <Box>
@@ -115,18 +105,22 @@ class ScreenRanking extends Component {
               </Flex>
               <Flex justifyContent="center">
                 <Title align={"center"} extraLarge>
-                  RANKING <br />
-                  <span className="month">
-                    {selected === "general" ? "GERAL" : `DE ${monthName}`}
-                  </span>
+                  RANKING
+                  {selected === "general" ? (
+                    <>
+                      <br />
+                      <span className="month"> GERAL</span>
+                    </>
+                  ) : (
+                    <>
+                      <br />
+                      DO MÊS DE
+                      <span className="month"> {monthName}</span>
+                    </>
+                  )}
                 </Title>
               </Flex>
-              {error && (
-                <Flex justifyContent="center">
-                  <h1>{error}</h1>
-                </Flex>
-              )}
-              {!loading && !error && (
+              {!loading && (
                 <Fragment>
                   <Flex
                     justifyContent="center"
@@ -159,7 +153,7 @@ class ScreenRanking extends Component {
                 </Fragment>
               )}
             </div>
-          </Layout>
+          </main>
         </StyledScreenRanking>
       </>
     );

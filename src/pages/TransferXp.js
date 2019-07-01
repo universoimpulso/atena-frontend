@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import api from "../services/api";
 import UserModal from "../components/UserModal/index";
 import { StyledTrasferXp, UserList } from "./TransferXp.style";
-import StyledApp from "../styles/global";
 
 class ScreenTransferXp extends Component {
   state = {
@@ -22,12 +21,11 @@ class ScreenTransferXp extends Component {
 
   getSlackUsers = async () => {
     try {
-      const response = await api.get(`user/slack-users`);
-
+      const response = await api.get(`/slack-users`);
       this.setState({
         loading: false,
-        slackUsers: response.data.users,
-        totalSlackUsers: response.data.total
+        slackUsers: response.data,
+        totalSlackUsers: response.data.length
       });
     } catch (error) {
       console.log(error);
@@ -38,10 +36,10 @@ class ScreenTransferXp extends Component {
     const firstName = user.name.split(" ")[0];
 
     try {
-      const response = await api.get(`user/find?name=${firstName}`);
+      const response = await api.get(`/find?name=${firstName}`);
       this.setState({
-        rocketUsers: response.data.users,
-        totalRocketUsers: response.data.total,
+        rocketUsers: response.data,
+        totalRocketUsers: response.data.length,
         selectSlackUser: user
       });
     } catch (error) {
@@ -82,14 +80,11 @@ class ScreenTransferXp extends Component {
     } = this.state;
     return (
       <>
-        <StyledApp />
         <StyledTrasferXp>
           <section>
             <UserList>
               <h5>
-                {totalSlackUsers
-                  ? `Usuarios slack com mais de 5 pontos : ${totalSlackUsers}`
-                  : ""}
+                {totalSlackUsers ? `Usuarios slack com mais de 5 pontos :` : ""}
               </h5>
               <ul>
                 {slackUsers.map(user => (

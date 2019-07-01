@@ -11,7 +11,7 @@ class XpRules extends Component {
   };
 
   changeInfos = selected => {
-    this.setState({ selected }, console.log(this.state.selected));
+    this.setState({ selected });
   };
 
   render() {

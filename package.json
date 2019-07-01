@@ -4,14 +4,14 @@
   "private": true,
   "dependencies": {
     "@rebass/grid": "^6.0.0",
-    "axios": "^0.18.0",
+    "axios": "^0.19.0",
     "moment": "^2.24.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-notifications-component": "^1.1.1",
-    "react-router-dom": "^5.0.0",
+    "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1",
-    "styled-components": "^4.2.0",
+    "styled-components": "^4.3.2",
     "styled-normalize": "^8.0.6"
   },
   "scripts": {

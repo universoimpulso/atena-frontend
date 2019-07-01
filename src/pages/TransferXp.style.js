@@ -7,6 +7,7 @@ export const StyledTrasferXp = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-top: 100px;
   section {
     height: 90%;
     width: 80%;

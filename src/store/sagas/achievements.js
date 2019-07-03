@@ -1,6 +1,6 @@
 import { call, put } from "redux-saga/effects";
 import api from "../../services/api";
-import { Creators as EditAchievementsActions } from "../ducks/editAchievements";
+import { Creators as achievementsActions } from "../ducks/achievements";
 
 export function* getAchievements(action) {
   try {
@@ -515,20 +515,30 @@ export function* getAchievements(action) {
         ]
       }
     ];
-    yield put(EditAchievementsActions.getAchievementsSuccess(data));
+    yield put(achievementsActions.getAchievementsSuccess(data));
   } catch (error) {
     yield put(
-      EditAchievementsActions.getAchievementsFailure("Erro ao buscar cards")
+      achievementsActions.getAchievementsFailure("Erro ao buscar cards")
     );
   }
 }
-export function* putAchievements(action) {
+export function* editAchievement(action) {
   console.tron.log("saga", action.payload.data);
   try {
-    yield put(EditAchievementsActions.putAchievementsSuccess());
+    yield put(achievementsActions.editAchievementSuccess());
   } catch (error) {
     yield put(
-      EditAchievementsActions.putAchievementsFailure("Erro ao buscar cards")
+      achievementsActions.editAchievementFailure("Erro ao buscar cards")
+    );
+  }
+}
+export function* createAchievement(action) {
+  console.tron.log("saga", action.payload.data);
+  try {
+    yield put(achievementsActions.createAchievementSuccess());
+  } catch (error) {
+    yield put(
+      achievementsActions.createAchievementFailure("Erro ao buscar cards")
     );
   }
 }

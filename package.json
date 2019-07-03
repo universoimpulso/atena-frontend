@@ -11,6 +11,7 @@
     "moment": "^2.24.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
+    "react-datepicker": "^2.7.0",
     "react-dom": "^16.8.6",
     "react-redux": "^7.1.0",
     "react-redux-toastr": "^7.5.1",
@@ -24,7 +25,9 @@
     "reduxsauce": "^1.1.0",
     "seamless-immutable": "^7.1.4",
     "styled-components": "^4.2.0",
-    "styled-normalize": "^8.0.6"
+    "styled-normalize": "^8.0.6",
+    "unform": "^1.2.3",
+    "yup": "^0.27.0"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -5,13 +5,14 @@ import TeamAccordion from "./TeamAccordion";
 import Charts from "./Charts";
 import ExperienceCards from "./ExperienceCards";
 import EditAchievements from "./EditAchievements";
+import CreateAchievements from "./CreateAchievements";
 
 import { Container, Aside, Section, Option } from "./styles";
 
 class Admin extends Component {
   state = {
     active: "achievements",
-    achievementsType: "editAchievements",
+    achievementsType: "createAchievements",
     options: [
       { key: "generalReports", name: "Relatórios Gerais" },
       { key: "ranking", name: "Rankings" },
@@ -106,7 +107,10 @@ class Admin extends Component {
               <EditAchievements />
             </>
           ) : achievementsType === "createAchievements" ? (
-            <h2>Criar Conquistas</h2>
+            <>
+              <h2>Criar Conquistas</h2>
+              <CreateAchievements />
+            </>
           ) : null}
         </Section>
       </Container>

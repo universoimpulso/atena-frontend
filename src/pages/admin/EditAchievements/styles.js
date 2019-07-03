@@ -61,7 +61,7 @@ export const Wrapper = styled.div`
 
 export const Card = styled.div`
   min-width: 48%;
-
+  height: 268px;
   background: ${theme.color.white};
   border-radius: 10px;
   text-transform: uppercase;
@@ -82,9 +82,6 @@ export const Card = styled.div`
   form {
     display: flex;
     flex-direction: column;
-    div {
-      border-bottom: 1px solid ${theme.color.lightGray};
-    }
     ul {
       display: flex;
       justify-content: space-between;

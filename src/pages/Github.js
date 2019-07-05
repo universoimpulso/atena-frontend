@@ -1,7 +1,11 @@
 import React from "react";
+import { ThemeProvider } from "styled-components";
+import theme from "../styles/theme";
 import StyledScreenGithub from "./Github.style";
+import hiwlpc from "../assets/hiwlpc.png";
 import Card from "../components/Card";
 import Title from "../components/Title";
+import FullPage from "../components/FullPage";
 
 const ScreenGithub = ({ match, location }) => {
   let type = "retry";
@@ -38,26 +42,30 @@ const ScreenGithub = ({ match, location }) => {
   };
 
   return (
-    <StyledScreenGithub>
-      <div className="_inner">
-        <Card large>
-          <span className="cardIcon">
-            <i className="fab fa-github" />
-          </span>
-          <p className="title">{messages[type].title}</p>
-          <Title align="center">{messages[type].subtitle}</Title>
-          <p
-            className="super"
-            dangerouslySetInnerHTML={{ __html: messages[type].text }}
-          />
-        </Card>
-        <p className="help">
+    <ThemeProvider theme={theme}>
+      <StyledScreenGithub background={`url(${hiwlpc})`}>
+        <div className="_inner">
+          <Card large>
+            <span className="cardIcon">
+              <i className="fab fa-github" />
+            </span>
+            <p className="title">
+              <strong>{messages[type].title}</strong>
+            </p>
+            <Title align="center">{messages[type].subtitle}</Title>
+            <p
+              className="super"
+              dangerouslySetInnerHTML={{ __html: messages[type].text }}
+            />
+          </Card>
+        </div>
+        <div className="help">
           Ainda está em dúvida de como funciona? <br />
           Não tem problema, dá uma olhadinha aqui: <br />
           <a href="https://impulso.network/">https://impulso.network</a>
-        </p>
-      </div>
-    </StyledScreenGithub>
+        </div>
+      </StyledScreenGithub>
+    </ThemeProvider>
   );
 };
 

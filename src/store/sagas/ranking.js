@@ -22,3 +22,18 @@ export function* getRanking(action) {
     yield put(RankingActions.getRankingFailure("Erro ao buscar ranking"));
   }
 }
+
+export function* getUserInfo(action) {
+  try {
+    const data = {
+      name: "Julio Goncalves",
+      score: 1234,
+      level: 5,
+      generalPosition: 2,
+      monthlyPosition: 4
+    };
+    yield put(RankingActions.getUserInfoSuccess(data));
+  } catch (error) {
+    yield put(RankingActions.getUserInfoFailure("Erro ao buscar ranking"));
+  }
+}

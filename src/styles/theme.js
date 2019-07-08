@@ -25,6 +25,7 @@ const Theme = {
     primaryLight: "#8688D9",
     primaryHover: "#9598ED",
     primaryFocus: "#414287",
+    scampi: "#6567A9",
     secondary: "#DC3C2C",
     bg: "#FDFDFD",
     green: "#279949"

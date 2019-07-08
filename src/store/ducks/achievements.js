@@ -1,5 +1,6 @@
 const INITIAL_STATE = {
   loading: true,
+  userAchievements: null,
   achievementsValues: [],
   editError: "",
   createError: ""
@@ -9,6 +10,9 @@ export const Types = {
   GET_ACHIEVEMENTS: "achievements/GET_ACHIEVEMENTS",
   GET_ACHIEVEMENTS_SUCCESS: "achievements/GET_ACHIEVEMENTS_SUCCESS",
   GET_ACHIEVEMENTS_FAILURE: "achievements/GET_ACHIEVEMENTS_FAILURE",
+  GET_USER_ACHIEVEMENTS: "achievements/GET_USER_ACHIEVEMENTS",
+  GET_USER_ACHIEVEMENTS_SUCCESS: "achievements/GET_USER_ACHIEVEMENTS_SUCCESS",
+  GET_USER_ACHIEVEMENTS_FAILURE: "achievements/GET_USER_ACHIEVEMENTS_FAILURE",
   EDIT_ACHIEVEMENT: "achievements/EDIT_ACHIEVEMENT",
   EDIT_ACHIEVEMENT_SUCCESS: "achievements/EDIT_ACHIEVEMENT_SUCCESS",
   EDIT_ACHIEVEMENT_FAILURE: "achievements/EDIT_ACHIEVEMENT_FAILURE",
@@ -28,6 +32,20 @@ export default function ranking(state = INITIAL_STATE, action) {
         achievementsValues: action.payload.data
       };
     case Types.GET_ACHIEVEMENTS_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        getError: action.payload.error
+      };
+    case Types.GET_USER_ACHIEVEMENTS:
+      return { ...state, loading: true };
+    case Types.GET_USER_ACHIEVEMENTS_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        userAchievements: action.payload.data
+      };
+    case Types.GET_USER_ACHIEVEMENTS_FAILURE:
       return {
         ...state,
         loading: false,
@@ -77,6 +95,18 @@ export const Creators = {
   }),
   getAchievementsFailure: error => ({
     type: Types.GET_ACHIEVEMENTS_FAILURE,
+    payload: { error }
+  }),
+  getUserAchievements: () => ({
+    type: Types.GET_USER_ACHIEVEMENTS,
+    payload: {}
+  }),
+  getUserAchievementsSuccess: data => ({
+    type: Types.GET_USER_ACHIEVEMENTS_SUCCESS,
+    payload: { data }
+  }),
+  getUserAchievementsFailure: error => ({
+    type: Types.GET_USER_ACHIEVEMENTS_FAILURE,
     payload: { error }
   }),
   editAchievement: data => ({

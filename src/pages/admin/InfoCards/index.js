@@ -53,6 +53,7 @@ class InfoCards extends Component {
     for (let i = 0; i < 7; i++) {
       options.push(<option key={i}>{this.getMonth(i)}</option>);
     }
+    console.log(options);
     return options;
   };
 

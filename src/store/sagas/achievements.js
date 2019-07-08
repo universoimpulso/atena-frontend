@@ -522,6 +522,104 @@ export function* getAchievements(action) {
     );
   }
 }
+export function* getUserAchievements(action) {
+  try {
+    const data = [
+      {
+        name: "Rocket Chat",
+        achievements: [
+          {
+            type: "messageSend",
+            name: "Mensagens Postadas",
+            medal: 0,
+            tier: 0,
+            maxScore: 100,
+            score: 0
+          },
+          {
+            type: "reactionSend",
+            name: "Reações enviadas",
+            medal: 3,
+            tier: 2,
+            maxScore: 100,
+            score: 24
+          },
+          {
+            type: "reactionGiven",
+            name: "Reações Recebidas",
+            medal: 2,
+            tier: 3,
+            maxScore: 100,
+            score: 98
+          }
+        ]
+      },
+      {
+        name: "Projetos Github",
+        achievements: [
+          {
+            type: "issueCreated",
+            name: "Issue Criada",
+            medal: 3,
+            tier: 2,
+            maxScore: 100,
+            score: 60
+          },
+          {
+            type: "pullRequestApproved",
+            name: "Pull Request Aprovadas",
+            medal: 4,
+            tier: 0,
+            maxScore: 100,
+            score: 58
+          },
+          {
+            type: "pullRequestCreated",
+            name: "Pull Request Criadas",
+            medal: 1,
+            tier: 2,
+            maxScore: 100,
+            score: 75
+          },
+          {
+            type: "review",
+            name: "Reviews Feitos",
+            medal: 2,
+            tier: 3,
+            maxScore: 100,
+            score: 12
+          }
+        ]
+      },
+      {
+        name: "Blog Impulso",
+        achievements: [
+          {
+            type: "comments",
+            name: "Comentários",
+            medal: 3,
+            tier: 2,
+            maxScore: 100,
+            score: 40
+          },
+          {
+            type: "posts",
+            name: "Postagens",
+            medal: 2,
+            tier: 3,
+            maxScore: 100,
+            score: 30
+          }
+        ]
+      }
+    ];
+    yield put(achievementsActions.getUserAchievementsSuccess(data));
+  } catch (error) {
+    yield put(
+      achievementsActions.editAchievementFailure("Erro ao buscar cards")
+    );
+  }
+}
 export function* editAchievement(action) {
   console.tron.log("saga", action.payload.data);
   try {

@@ -23,7 +23,7 @@ class Menu extends Component {
     activeModal: false
   };
 
-  toogleModal = () => {
+  toggleModal = () => {
     this.setState({ activeModal: !this.state.activeModal });
   };
 
@@ -59,18 +59,20 @@ class Menu extends Component {
                 <button onClick={signOut}>logout</button>
               </li>
               <li className="user">
-                <button className="profile">
-                  <img src={mock} alt="" className="avatar" />
-                </button>
+                <Link to="/userInfo">
+                  <button className="profile">
+                    <img src={mock} alt="" className="avatar" />
+                  </button>
+                </Link>
               </li>
             </>
           ) : (
             <li key="login">
-              <button onClick={this.toogleModal}>login</button>
+              <button onClick={this.toggleModal}>login</button>
             </li>
           )}
         </StyledMenu>
-        {this.state.activeModal && <Auth action={this.toogleModal} />}
+        {this.state.activeModal && <Auth action={this.toggleModal} />}
       </>
     );
   }

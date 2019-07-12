@@ -1,16 +1,16 @@
 import styled from "styled-components";
-
 import theme from "../../../styles/theme";
 
 export const Container = styled.section`
   width: 100%;
   h4 {
-    font-size: 16px;
     color: ${theme.color.primary};
-    text-transform: uppercase;
+    font-size: 16px;
     margin-bottom: 30px;
+    text-transform: uppercase;
   }
 `;
+
 export const Wrapper = styled.div`
   display: flex;
   flex: 1;
@@ -18,77 +18,78 @@ export const Wrapper = styled.div`
 `;
 
 export const Info = styled.div`
-  flex-grow: 1;
-  font-size: 14px;
-  display: flex;
-  flex-direction: column;
   color: ${theme.color.gray};
-  text-transform: uppercase;
-  font-weight: bold;
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
   flex-wrap: wrap;
+  font-size: 14px;
+  font-weight: bold;
   height: 100%;
   margin-left: 50px;
+  text-transform: uppercase;
 `;
+
 export const Card = styled.div`
   background: ${theme.color.white};
   border-radius: 10px;
   height: ${props => props.height};
-  width: ${props => props.width};
-  padding: 20px;
   margin-bottom: 10px;
+  padding: 20px;
+  width: ${props => props.width};
   h5 {
-    font-size: 14px;
     color: ${theme.color.gray};
+    font-size: 14px;
     margin-bottom: 20px;
   }
 `;
 
 export const Level = styled.ul`
-  max-height: calc(100% - 40px);
-  width: 100%;
-  padding-left: 25px;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+  max-height: calc(100% - 40px);
+  padding-left: 25px;
+  width: 100%;
   li {
-    padding-bottom: 24px;
     display: flex;
+    padding-bottom: 24px;
     width: 45%;
     span {
-      flex: 1;
       border-bottom: 2px dotted ${theme.color.gray};
-      width: 25%;
+      flex: 1;
       margin: 0 6px;
+      width: 25%;
     }
     div {
-      display: inline-block;
-      width: 1em;
       border-radius: 100%;
+      display: inline-block;
       height: 1em;
       margin: auto 4px;
+      width: 1em;
     }
   }
 `;
 
 export const Total = styled.div`
-  width: 100%;
-  height: 40px;
-  line-height: 40px;
+  align-items: baseline;
+  background: ${theme.color.background};
+  border-radius: 5px;
+  color: ${theme.color.primaryHover};
+  display: flex;
   font-size: 12px;
   font-weight: bold;
+  height: 40px;
+  line-height: 40px;
   overflow: hidden;
   padding: 0 20px;
-  border-radius: 5px;
-  display: flex;
-  align-items: baseline;
   text-transform: uppercase;
   white-space: nowrap;
-  color: ${theme.color.primaryHover};
-  background: ${theme.color.background};
+  width: 100%;
 
   span {
-    flex: 1;
     border-bottom: 2px dotted ${theme.color.primaryHover};
+    flex: 1;
     margin: 0 6px;
   }
 `;

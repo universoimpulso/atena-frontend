@@ -3,42 +3,45 @@ import styled from "styled-components";
 import theme from "../../../styles/theme";
 
 export const Container = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
   align-items: flex-start;
+  display: flex;
   flex-wrap: wrap;
+  justify-content: space-evenly;
+  width: 100%;
 `;
 export const Title = styled.h3`
+  color: ${theme.color.primary};
   font-size: 16px;
   font-weight: bold;
-  text-transform: uppercase;
-  color: ${theme.color.primary};
   margin-top: 30px;
+  text-transform: uppercase;
+  width: 100%;
 `;
+
 export const Card = styled.div`
-  width: 30%;
-  min-height: 258px;
-  padding: 20px;
+  background: ${theme.color.white};
+  border-radius: 10px;
+  color: ${theme.color.gray};
   display: flex;
   flex-direction: column;
   font-size: 12px;
   font-weight: bold;
-  text-transform: uppercase;
-  color: ${theme.color.gray};
-  border-radius: 10px;
-  background: ${theme.color.white};
   margin: 2% 3% 2% 0;
+  min-height: 258px;
+  padding: 20px;
+  position: relative;
+  text-transform: uppercase;
+  width: 30%;
 
   p {
-    text-align: center;
     margin-bottom: 20px;
+    text-align: center;
   }
   small {
     border-bottom: solid 1px ${theme.color.lightGray};
     display: block;
-    width: 100%;
     margin: 0 auto;
+    width: 100%;
   }
   form {
     display: flex;
@@ -49,31 +52,44 @@ export const Card = styled.div`
       color: ${theme.color.primaryHover};
       margin: 10px 0;
     }
-    input {
-      width: 100px;
-      height: 50px;
-      margin-bottom: 20px;
-    }
   }
 
   button {
+    background: ${theme.color.white};
+    border: 2px solid ${theme.color.primary};
+    border-radius: 100px;
     color: ${theme.color.primary};
-    text-transform: uppercase;
+    cursor: pointer;
     font-weight: bold;
     height: 46px;
     margin-top: 20px;
-    border-radius: 100px;
-    border: 2px solid ${theme.color.primary};
-    cursor: pointer;
     outline: none;
+    text-transform: uppercase;
     transition: all 0.3s linear;
-    background: ${theme.color.white};
-    &:hover {
-      color: ${theme.color.white};
+    :hover {
       background: ${theme.color.primary};
+      color: ${theme.color.white};
     }
-    &:active {
+    :active {
       transform: scale(0.95);
     }
+    :focus {
+      outline: none;
+    }
+    ::-moz-focus-inner {
+      border: 0;
+    }
   }
+`;
+
+export const StyledInput = styled.input`
+  border: ${({ error }) => (error ? "1px solid red" : "1px solid gray")};
+  border-radius: 6px;
+  color: ${theme.color.gray};
+  font-size: 16px;
+  font-weight: bold;
+  height: 50px;
+  margin-bottom: 20px;
+  padding: 0 6px 0 18px;
+  width: 100px;
 `;

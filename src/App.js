@@ -1,5 +1,6 @@
 import React from "react";
 import { Provider } from "react-redux";
+import { ToastContainer } from "react-toastify";
 import "./config/ReactotronConfig";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 
@@ -36,6 +37,7 @@ function App() {
           )}
         </Switch>
         <Footer />
+        <ToastContainer autoClose={2000} />
       </BrowserRouter>
     </Provider>
   );

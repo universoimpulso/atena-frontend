@@ -5,6 +5,7 @@ export const Container = styled.div`
   background: ${theme.color.background};
   padding-bottom: 50px;
 `;
+
 export const Header = styled.header`
   align-items: center;
   background: ${theme.color.primary};
@@ -58,7 +59,7 @@ export const ImageWrapper = styled.div`
   }
 `;
 
-export const Name = styled.p`
+export const UserName = styled.p`
   color: ${theme.color.white};
   font-size: 20px;
   font-weight: bold;

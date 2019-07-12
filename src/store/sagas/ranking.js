@@ -1,9 +1,10 @@
-import { call, put } from "redux-saga/effects";
+import { delay, call, put } from "redux-saga/effects";
 import api from "../../services/api";
 import { Creators as RankingActions } from "../ducks/ranking";
 
 export function* getRanking(action) {
   try {
+    yield delay(1000);
     const query =
       action.payload.selected === "monthly"
         ? `/ranking-monthly`
@@ -23,7 +24,7 @@ export function* getRanking(action) {
   }
 }
 
-export function* getUserInfo(action) {
+export function* getUserInfo() {
   try {
     const data = {
       name: "Julio Goncalves",

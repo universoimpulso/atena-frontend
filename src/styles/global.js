@@ -1,5 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 import styledNormalize from "styled-normalize";
+import "react-toastify/dist/ReactToastify.css";
 import theme from "./theme";
 
 const StyledApp = createGlobalStyle`

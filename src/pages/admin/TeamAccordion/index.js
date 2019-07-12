@@ -4,13 +4,24 @@ import PropTypes from "prop-types";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { Creators as GeneralReportsActions } from "../../../store/ducks/generalReports";
-import { Container, Header, Wrapper, Box, Card, Icon } from "./styles";
+import { SmallError, PageLoading } from "../../../components/utils";
+import {
+  Container,
+  AccordionWrapper,
+  Header,
+  Wrapper,
+  Box,
+  Card,
+  Icon
+} from "./styles";
 
 class TeamAccordion extends Component {
   static propTypes = {
     getTeams: PropTypes.func.isRequired,
 
     generalReports: PropTypes.shape({
+      getTeamsLoading: PropTypes.bool.isRequired,
+      errors: PropTypes.object,
       teams: PropTypes.arrayOf(
         PropTypes.shape({
           name: PropTypes.string,
@@ -35,13 +46,29 @@ class TeamAccordion extends Component {
   };
 
   componentDidMount() {
-    this.props.getTeams();
+    const { teams } = this.props.generalReports;
+    teams.length === 0 && this.props.getTeams();
   }
+
   render() {
     const { active } = this.state;
-    const { teams } = this.props.generalReports;
+    const { teams, getTeamsLoading, errors } = this.props.generalReports;
+
+    if (errors.teams)
+      return (
+        <Container>
+          <SmallError refresh={this.props.getTeams} message={errors.teams} />
+        </Container>
+      );
+
+    if (getTeamsLoading)
+      return (
+        <Container>
+          <PageLoading message={errors.team} />
+        </Container>
+      );
     return (
-      <>
+      <Container>
         {teams.map((team, index) => {
           const {
             name,
@@ -55,14 +82,19 @@ class TeamAccordion extends Component {
             referral
           } = team;
           return (
-            <Container key={index} onClick={() => this.handleClick(index)}>
+            <AccordionWrapper
+              onClick={() => this.handleClick(index)}
+              key={index}
+            >
               <Header>
                 <p>{name}</p>
-                <h1>{total}</h1>
-                <Icon
-                  selected={active === index}
-                  className="fas fa-sort-down"
-                />
+                <h1>
+                  {total}
+                  <Icon
+                    selected={active === index}
+                    className="fas fa-sort-down"
+                  />
+                </h1>
               </Header>
               <Wrapper selected={active === index}>
                 <Box width="66%">
@@ -164,10 +196,10 @@ class TeamAccordion extends Component {
                   </Card>
                 </Box>
               </Wrapper>
-            </Container>
+            </AccordionWrapper>
           );
         })}
-      </>
+      </Container>
     );
   }
 }

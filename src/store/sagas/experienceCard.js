@@ -1,72 +1,390 @@
-import { call, put } from "redux-saga/effects";
+import { delay, call, put } from "redux-saga/effects";
 import api from "../../services/api";
 import { Creators as ExperienceCardActions } from "../ducks/experienceCard";
+import { toast } from "react-toastify";
 
-export function* getExperience(action) {
-  try {
-    // const { data } = yield call(api.get, `api/v1/MOCK);
-
-    const data = {
-      general: {
-        limitPerDay: 20,
-        inactivityPeriod: 8,
-        inactivityLost: 1
-      },
-
-      activity: {
-        rocketChat: {
-          message: 1,
-          reactions: 1,
-          receiveReaction: 2
-        },
-        blog: {
-          post: 5,
-          comment: 1
-        },
-        github: {
-          issue: 5,
-          review: 1,
-          pullRequest: 1,
-          approvedPullRequest: 1
-        },
-        meetup: {
-          participant: 5,
-          mediator: 1,
-          facilitator: 1
-        },
-        referral: {
-          indication: 5,
-          allocation: 1
-        },
-        research: {
-          validation: 5,
-          skill: 1
-        },
-        allocation: {
-          interview: 5,
-          approved: 1,
-          allocated: 1
-        },
-        linkedin: {
-          impulser: 3
+const data = {
+  general: [
+    {
+      key: "limitPerDay",
+      name: "limite de experiência diária",
+      text: "até:",
+      values: [
+        {
+          key: "limitPerDay",
+          initialValue: 20
         }
-      }
-    };
+      ]
+    },
+    {
+      key: "inactivityPeriod",
+      name: "período de inatividade",
+      text: "até:",
+      values: [
+        {
+          key: "inactivityPeriod",
+          initialValue: 8
+        }
+      ]
+    },
+    {
+      key: "inactivityLost",
+      name: "XP perdido por inatividade",
+      text: "até:",
+      values: [
+        {
+          key: "inactivityLost",
+          initialValue: 2
+        }
+      ]
+    }
+  ],
+
+  activity: [
+    {
+      key: "rocketChat",
+      name: "rocket chat",
+      values: [
+        {
+          key: "message",
+          text: "mensagens",
+          initialValue: 2
+        },
+        {
+          key: "reactions",
+          text: "dar reactions",
+          initialValue: 1
+        },
+        {
+          key: "receiveReaction",
+          text: "receber reactions",
+          initialValue: 2
+        }
+      ]
+    },
+    {
+      key: "meetup",
+      name: "meetup",
+      values: [
+        {
+          key: "participant",
+          text: "participante",
+          initialValue: 5
+        },
+        {
+          key: "mediator",
+          text: "mediador",
+          initialValue: 3
+        },
+        {
+          key: "facilitator",
+          text: "facilitador",
+          initialValue: 3
+        }
+      ]
+    },
+    {
+      key: "blog",
+      name: "blog",
+      values: [
+        { key: "post", text: "postagem realizada", initialValue: 3 },
+        {
+          key: "comment",
+          text: "comentário realizado",
+          initialValue: 2
+        }
+      ]
+    },
+    {
+      key: "github",
+      name: "open source",
+      values: [
+        { key: "issue", text: "issues", initialValue: 3 },
+        {
+          key: "review",
+          text: "dar reactions",
+          initialValue: 2
+        },
+        {
+          key: "pullRequest",
+          text: "pull request",
+          initialValue: 2
+        },
+        {
+          key: "approvedPullRequest",
+          text: "PR aprovada",
+          initialValue: 5
+        }
+      ]
+    },
+    {
+      key: "referral",
+      name: "referral",
+      values: [
+        {
+          key: "indication",
+          text: "impulser indicado",
+          initialValue: 3
+        },
+        {
+          key: "allocation",
+          text: "alocado via indicação",
+          initialValue: 2
+        }
+      ]
+    },
+    {
+      key: "research",
+      name: "research",
+      values: [
+        {
+          key: "validation",
+          text: "passar pela validação",
+          initialValue: 2
+        },
+        {
+          key: "skill",
+          text: "skill assessments",
+          initialValue: 2
+        }
+      ]
+    },
+    {
+      key: "allocation",
+      name: "alocação",
+      values: [
+        {
+          key: "interview",
+          text: "entrevistado",
+          initialValue: 2
+        },
+        {
+          key: "approved",
+          text: "aprovado",
+          initialValue: 3
+        },
+        {
+          key: "allocated",
+          text: "alocado",
+          initialValue: 2
+        }
+      ]
+    },
+    {
+      key: "linkedin",
+      name: "linkedin",
+      values: [
+        {
+          key: "impulser",
+          text: "trabalhando na impulso",
+          initialValue: 2
+        }
+      ]
+    }
+  ]
+};
+const data2 = {
+  general: [
+    {
+      key: "limitPerDay",
+      name: "limite de experiência diária",
+      text: "até:",
+      values: [
+        {
+          key: "limitPerDay",
+          initialValue: 23
+        }
+      ]
+    },
+    {
+      key: "inactivityPeriod",
+      name: "período de inatividade",
+      text: "até:",
+      values: [
+        {
+          key: "inactivityPeriod",
+          initialValue: 8
+        }
+      ]
+    },
+    {
+      key: "inactivityLost",
+      name: "XP perdido por inatividade",
+      text: "até:",
+      values: [
+        {
+          key: "inactivityLost",
+          initialValue: 2
+        }
+      ]
+    }
+  ],
+
+  activity: [
+    {
+      key: "rocketChat",
+      name: "rocket chat",
+      values: [
+        {
+          key: "message",
+          text: "mensagens",
+          initialValue: 2
+        },
+        {
+          key: "reactions",
+          text: "dar reactions",
+          initialValue: 1
+        },
+        {
+          key: "receiveReaction",
+          text: "receber reactions",
+          initialValue: 2
+        }
+      ]
+    },
+    {
+      key: "meetup",
+      name: "meetup",
+      values: [
+        {
+          key: "participant",
+          text: "participante",
+          initialValue: 5
+        },
+        {
+          key: "mediator",
+          text: "mediador",
+          initialValue: 3
+        },
+        {
+          key: "facilitator",
+          text: "facilitador",
+          initialValue: 3
+        }
+      ]
+    },
+    {
+      key: "blog",
+      name: "blog",
+      values: [
+        { key: "post", text: "postagem realizada", initialValue: 3 },
+        {
+          key: "comment",
+          text: "comentário realizado",
+          initialValue: 2
+        }
+      ]
+    },
+    {
+      key: "github",
+      name: "open source",
+      values: [
+        { key: "issue", text: "issues", initialValue: 3 },
+        {
+          key: "review",
+          text: "dar reactions",
+          initialValue: 2
+        },
+        {
+          key: "pullRequest",
+          text: "pull request",
+          initialValue: 2
+        },
+        {
+          key: "approvedPullRequest",
+          text: "PR aprovada",
+          initialValue: 5
+        }
+      ]
+    },
+    {
+      key: "referral",
+      name: "referral",
+      values: [
+        {
+          key: "indication",
+          text: "impulser indicado",
+          initialValue: 3
+        },
+        {
+          key: "allocation",
+          text: "alocado via indicação",
+          initialValue: 2
+        }
+      ]
+    },
+    {
+      key: "research",
+      name: "research",
+      values: [
+        {
+          key: "validation",
+          text: "passar pela validação",
+          initialValue: 2
+        },
+        {
+          key: "skill",
+          text: "skill assessments",
+          initialValue: 2
+        }
+      ]
+    },
+    {
+      key: "allocation",
+      name: "alocação",
+      values: [
+        {
+          key: "interview",
+          text: "entrevistado",
+          initialValue: 2
+        },
+        {
+          key: "approved",
+          text: "aprovado",
+          initialValue: 3
+        },
+        {
+          key: "allocated",
+          text: "alocado",
+          initialValue: 2
+        }
+      ]
+    },
+    {
+      key: "linkedin",
+      name: "linkedin",
+      values: [
+        {
+          key: "impulser",
+          text: "trabalhando na impulso",
+          initialValue: 2
+        }
+      ]
+    }
+  ]
+};
+export function* getExperience() {
+  try {
+    yield delay(1000);
+
+    // throw new Error("Não foi possível buscar os dados");
 
     yield put(ExperienceCardActions.getExperienceSuccess(data));
   } catch (error) {
-    yield put(
-      ExperienceCardActions.getExperienceFailure("Erro ao buscar cards")
-    );
+    yield put(ExperienceCardActions.getExperienceFailure(error.message));
   }
 }
 export function* putExperience(action) {
   console.tron.log("saga", action.payload.data);
   try {
-    yield put(ExperienceCardActions.putExperienceSuccess());
+    yield delay(1000);
+
+    // throw new Error("Não foi possível atualizar a pontuação");
+
+    yield put(ExperienceCardActions.putExperienceSuccess(data2));
+    toast.success("Pontuação atualizada com sucesso!");
   } catch (error) {
-    yield put(
-      ExperienceCardActions.putExperienceFailure("Erro ao buscar cards")
-    );
+    toast.error(error.message);
+    yield put(ExperienceCardActions.putExperienceFailure());
   }
 }

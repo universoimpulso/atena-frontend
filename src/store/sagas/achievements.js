@@ -1,520 +1,1030 @@
-import { call, put } from "redux-saga/effects";
+import { call, put, delay } from "redux-saga/effects";
+import { toast } from "react-toastify";
 import api from "../../services/api";
 import { Creators as achievementsActions } from "../ducks/achievements";
 
-export function* getAchievements(action) {
-  try {
-    // const { data } = yield call(api.get, `api/v1/MOCK);
-
-    const data = [
+const data = [
+  {
+    name: "RocketChat",
+    data: [
       {
-        name: "RocketChat",
-        data: [
+        type: "Mensagens enviadas",
+        values: [
           {
-            type: "Mensagens enviadas",
-            values: [
-              {
-                name: "bronze",
-                tiers: [
-                  { name: "I", value: 1500 },
-                  { name: "II", value: 1600 },
-                  { name: "III", value: 1700 },
-                  { name: "IV", value: 1800 },
-                  { name: "V", value: 2000 }
-                ]
-              },
-              {
-                name: "silver",
-                tiers: [
-                  { name: "I", value: 1500 },
-                  { name: "II", value: 1600 },
-                  { name: "III", value: 1700 },
-                  { name: "IV", value: 1800 },
-                  { name: "V", value: 2000 }
-                ]
-              },
-              {
-                name: "gold",
-                tiers: [
-                  { name: "I", value: 1500 },
-                  { name: "II", value: 1600 },
-                  { name: "III", value: 1700 },
-                  { name: "IV", value: 1800 },
-                  { name: "V", value: 2000 }
-                ]
-              },
-              {
-                name: "platinum",
-                tiers: [
-                  { name: "I", value: 1500 },
-                  { name: "II", value: 1600 },
-                  { name: "III", value: 1700 },
-                  { name: "IV", value: 1800 },
-                  { name: "V", value: 2000 }
-                ]
-              },
-              {
-                name: "diamond",
-                tiers: [
-                  { name: "I", value: 1500 },
-                  { name: "II", value: 1600 },
-                  { name: "III", value: 1700 },
-                  { name: "IV", value: 1800 },
-                  { name: "V", value: 2000 }
-                ]
-              }
+            name: "bronze",
+            tiers: [
+              { name: "I", value: 1500 },
+              { name: "II", value: 1600 },
+              { name: "III", value: 1700 },
+              { name: "IV", value: 1800 },
+              { name: "V", value: 2000 }
             ]
           },
           {
-            type: "Reações Dadas",
-            values: [
-              {
-                name: "bronze",
-                tiers: [
-                  { name: "I", value: 1500 },
-                  { name: "II", value: 1600 },
-                  { name: "III", value: 1700 },
-                  { name: "IV", value: 1800 },
-                  { name: "V", value: 2000 }
-                ]
-              },
-              {
-                name: "silver",
-                tiers: [
-                  { name: "I", value: 1500 },
-                  { name: "II", value: 1600 },
-                  { name: "III", value: 1700 },
-                  { name: "IV", value: 1800 },
-                  { name: "V", value: 2000 }
-                ]
-              },
-              {
-                name: "gold",
-                tiers: [
-                  { name: "I", value: 1500 },
-                  { name: "II", value: 1600 },
-                  { name: "III", value: 1700 },
-                  { name: "IV", value: 1800 },
-                  { name: "V", value: 2000 }
-                ]
-              },
-              {
-                name: "platinum",
-                tiers: [
-                  { name: "I", value: 1500 },
-                  { name: "II", value: 1600 },
-                  { name: "III", value: 1700 },
-                  { name: "IV", value: 1800 },
-                  { name: "V", value: 2000 }
-                ]
-              },
-              {
-                name: "diamond",
-                tiers: [
-                  { name: "I", value: 1500 },
-                  { name: "II", value: 1600 },
-                  { name: "III", value: 1700 },
-                  { name: "IV", value: 1800 },
-                  { name: "V", value: 2000 }
-                ]
-              }
+            name: "silver",
+            tiers: [
+              { name: "I", value: 1500 },
+              { name: "II", value: 1600 },
+              { name: "III", value: 1700 },
+              { name: "IV", value: 1800 },
+              { name: "V", value: 2000 }
             ]
           },
           {
-            type: "Reações Recebidas",
-            values: [
-              {
-                name: "bronze",
-                tiers: [
-                  { name: "I", value: 1500 },
-                  { name: "II", value: 1600 },
-                  { name: "III", value: 1700 },
-                  { name: "IV", value: 1800 },
-                  { name: "V", value: 2000 }
-                ]
-              },
-              {
-                name: "silver",
-                tiers: [
-                  { name: "I", value: 1500 },
-                  { name: "II", value: 1600 },
-                  { name: "III", value: 1700 },
-                  { name: "IV", value: 1800 },
-                  { name: "V", value: 2000 }
-                ]
-              },
-              {
-                name: "gold",
-                tiers: [
-                  { name: "I", value: 1500 },
-                  { name: "II", value: 1600 },
-                  { name: "III", value: 1700 },
-                  { name: "IV", value: 1800 },
-                  { name: "V", value: 2000 }
-                ]
-              },
-              {
-                name: "platinum",
-                tiers: [
-                  { name: "I", value: 1500 },
-                  { name: "II", value: 1600 },
-                  { name: "III", value: 1700 },
-                  { name: "IV", value: 1800 },
-                  { name: "V", value: 2000 }
-                ]
-              },
-              {
-                name: "diamond",
-                tiers: [
-                  { name: "I", value: 1500 },
-                  { name: "II", value: 1600 },
-                  { name: "III", value: 1700 },
-                  { name: "IV", value: 1800 },
-                  { name: "V", value: 2000 }
-                ]
-              }
-            ]
-          },
-
-          {
-            type: "Reactions enviados",
-            values: [
-              {
-                name: "bronze",
-                tiers: [
-                  { name: "I", value: 1500 },
-                  { name: "II", value: 1600 },
-                  { name: "III", value: 1700 },
-                  { name: "IV", value: 1800 },
-                  { name: "V", value: 2000 }
-                ]
-              },
-              {
-                name: "silver",
-                tiers: [
-                  { name: "I", value: 1500 },
-                  { name: "II", value: 1600 },
-                  { name: "III", value: 1700 },
-                  { name: "IV", value: 1800 },
-                  { name: "V", value: 2000 }
-                ]
-              },
-              {
-                name: "gold",
-                tiers: [
-                  { name: "I", value: 1500 },
-                  { name: "II", value: 1600 },
-                  { name: "III", value: 1700 },
-                  { name: "IV", value: 1800 },
-                  { name: "V", value: 2000 }
-                ]
-              },
-              {
-                name: "platinum",
-                tiers: [
-                  { name: "I", value: 1500 },
-                  { name: "II", value: 1600 },
-                  { name: "III", value: 1700 },
-                  { name: "IV", value: 1800 },
-                  { name: "V", value: 2000 }
-                ]
-              },
-              {
-                name: "diamond",
-                tiers: [
-                  { name: "I", value: 1500 },
-                  { name: "II", value: 1600 },
-                  { name: "III", value: 1700 },
-                  { name: "IV", value: 1800 },
-                  { name: "V", value: 2000 }
-                ]
-              }
+            name: "gold",
+            tiers: [
+              { name: "I", value: 1500 },
+              { name: "II", value: 1600 },
+              { name: "III", value: 1700 },
+              { name: "IV", value: 1800 },
+              { name: "V", value: 2000 }
             ]
           },
           {
-            type: "Reactions recebidos",
-            values: [
-              {
-                name: "bronze",
-                tiers: [
-                  { name: "I", value: 1500 },
-                  { name: "II", value: 1600 },
-                  { name: "III", value: 1700 },
-                  { name: "IV", value: 1800 },
-                  { name: "V", value: 2000 }
-                ]
-              },
-              {
-                name: "silver",
-                tiers: [
-                  { name: "I", value: 1500 },
-                  { name: "II", value: 1600 },
-                  { name: "III", value: 1700 },
-                  { name: "IV", value: 1800 },
-                  { name: "V", value: 2000 }
-                ]
-              },
-              {
-                name: "gold",
-                tiers: [
-                  { name: "I", value: 1500 },
-                  { name: "II", value: 1600 },
-                  { name: "III", value: 1700 },
-                  { name: "IV", value: 1800 },
-                  { name: "V", value: 2000 }
-                ]
-              },
-              {
-                name: "platinum",
-                tiers: [
-                  { name: "I", value: 1500 },
-                  { name: "II", value: 1600 },
-                  { name: "III", value: 1700 },
-                  { name: "IV", value: 1800 },
-                  { name: "V", value: 2000 }
-                ]
-              },
-              {
-                name: "diamond",
-                tiers: [
-                  { name: "I", value: 1500 },
-                  { name: "II", value: 1600 },
-                  { name: "III", value: 1700 },
-                  { name: "IV", value: 1800 },
-                  { name: "V", value: 2000 }
-                ]
-              }
+            name: "platinum",
+            tiers: [
+              { name: "I", value: 1500 },
+              { name: "II", value: 1600 },
+              { name: "III", value: 1700 },
+              { name: "IV", value: 1800 },
+              { name: "V", value: 2000 }
+            ]
+          },
+          {
+            name: "diamond",
+            tiers: [
+              { name: "I", value: 1500 },
+              { name: "II", value: 1600 },
+              { name: "III", value: 1700 },
+              { name: "IV", value: 1800 },
+              { name: "V", value: 2000 }
             ]
           }
         ]
       },
       {
-        name: "Github",
-        data: [
+        type: "Reações Dadas",
+        values: [
           {
-            type: "Pull Request",
-            values: [
-              {
-                name: "bronze",
-                tiers: [
-                  { name: "I", value: 1500 },
-                  { name: "II", value: 1600 },
-                  { name: "III", value: 1700 },
-                  { name: "IV", value: 1800 },
-                  { name: "V", value: 2000 }
-                ]
-              },
-              {
-                name: "silver",
-                tiers: [
-                  { name: "I", value: 1500 },
-                  { name: "II", value: 1600 },
-                  { name: "III", value: 1700 },
-                  { name: "IV", value: 1800 },
-                  { name: "V", value: 2000 }
-                ]
-              },
-              {
-                name: "gold",
-                tiers: [
-                  { name: "I", value: 1500 },
-                  { name: "II", value: 1600 },
-                  { name: "III", value: 1700 },
-                  { name: "IV", value: 1800 },
-                  { name: "V", value: 2000 }
-                ]
-              },
-              {
-                name: "platinum",
-                tiers: [
-                  { name: "I", value: 1500 },
-                  { name: "II", value: 1600 },
-                  { name: "III", value: 1700 },
-                  { name: "IV", value: 1800 },
-                  { name: "V", value: 2000 }
-                ]
-              },
-              {
-                name: "diamond",
-                tiers: [
-                  { name: "I", value: 1500 },
-                  { name: "II", value: 1600 },
-                  { name: "III", value: 1700 },
-                  { name: "IV", value: 1800 },
-                  { name: "V", value: 2000 }
-                ]
-              }
+            name: "bronze",
+            tiers: [
+              { name: "I", value: 1500 },
+              { name: "II", value: 1600 },
+              { name: "III", value: 1700 },
+              { name: "IV", value: 1800 },
+              { name: "V", value: 2000 }
             ]
           },
           {
-            type: "Review",
-            values: [
-              {
-                name: "bronze",
-                tiers: [
-                  { name: "I", value: 1500 },
-                  { name: "II", value: 1600 },
-                  { name: "III", value: 1700 },
-                  { name: "IV", value: 1800 },
-                  { name: "V", value: 2000 }
-                ]
-              },
-              {
-                name: "silver",
-                tiers: [
-                  { name: "I", value: 1500 },
-                  { name: "II", value: 1600 },
-                  { name: "III", value: 1700 },
-                  { name: "IV", value: 1800 },
-                  { name: "V", value: 2000 }
-                ]
-              },
-              {
-                name: "gold",
-                tiers: [
-                  { name: "I", value: 1500 },
-                  { name: "II", value: 1600 },
-                  { name: "III", value: 1700 },
-                  { name: "IV", value: 1800 },
-                  { name: "V", value: 2000 }
-                ]
-              },
-              {
-                name: "platinum",
-                tiers: [
-                  { name: "I", value: 1500 },
-                  { name: "II", value: 1600 },
-                  { name: "III", value: 1700 },
-                  { name: "IV", value: 1800 },
-                  { name: "V", value: 2000 }
-                ]
-              },
-              {
-                name: "diamond",
-                tiers: [
-                  { name: "I", value: 1500 },
-                  { name: "II", value: 1600 },
-                  { name: "III", value: 1700 },
-                  { name: "IV", value: 1800 },
-                  { name: "V", value: 2000 }
-                ]
-              }
+            name: "silver",
+            tiers: [
+              { name: "I", value: 1500 },
+              { name: "II", value: 1600 },
+              { name: "III", value: 1700 },
+              { name: "IV", value: 1800 },
+              { name: "V", value: 2000 }
             ]
           },
           {
-            type: "Pull Request aprovada",
-            values: [
-              {
-                name: "bronze",
-                tiers: [
-                  { name: "I", value: 1500 },
-                  { name: "II", value: 1600 },
-                  { name: "III", value: 1700 },
-                  { name: "IV", value: 1800 },
-                  { name: "V", value: 2000 }
-                ]
-              },
-              {
-                name: "silver",
-                tiers: [
-                  { name: "I", value: 1500 },
-                  { name: "II", value: 1600 },
-                  { name: "III", value: 1700 },
-                  { name: "IV", value: 1800 },
-                  { name: "V", value: 2000 }
-                ]
-              },
-              {
-                name: "gold",
-                tiers: [
-                  { name: "I", value: 1500 },
-                  { name: "II", value: 1600 },
-                  { name: "III", value: 1700 },
-                  { name: "IV", value: 1800 },
-                  { name: "V", value: 2000 }
-                ]
-              },
-              {
-                name: "platinum",
-                tiers: [
-                  { name: "I", value: 1500 },
-                  { name: "II", value: 1600 },
-                  { name: "III", value: 1700 },
-                  { name: "IV", value: 1800 },
-                  { name: "V", value: 2000 }
-                ]
-              },
-              {
-                name: "diamond",
-                tiers: [
-                  { name: "I", value: 1500 },
-                  { name: "II", value: 1600 },
-                  { name: "III", value: 1700 },
-                  { name: "IV", value: 1800 },
-                  { name: "V", value: 2000 }
-                ]
-              }
+            name: "gold",
+            tiers: [
+              { name: "I", value: 1500 },
+              { name: "II", value: 1600 },
+              { name: "III", value: 1700 },
+              { name: "IV", value: 1800 },
+              { name: "V", value: 2000 }
             ]
           },
+          {
+            name: "platinum",
+            tiers: [
+              { name: "I", value: 1500 },
+              { name: "II", value: 1600 },
+              { name: "III", value: 1700 },
+              { name: "IV", value: 1800 },
+              { name: "V", value: 2000 }
+            ]
+          },
+          {
+            name: "diamond",
+            tiers: [
+              { name: "I", value: 1500 },
+              { name: "II", value: 1600 },
+              { name: "III", value: 1700 },
+              { name: "IV", value: 1800 },
+              { name: "V", value: 2000 }
+            ]
+          }
+        ]
+      },
+      {
+        type: "Reações Recebidas",
+        values: [
+          {
+            name: "bronze",
+            tiers: [
+              { name: "I", value: 1500 },
+              { name: "II", value: 1600 },
+              { name: "III", value: 1700 },
+              { name: "IV", value: 1800 },
+              { name: "V", value: 2000 }
+            ]
+          },
+          {
+            name: "silver",
+            tiers: [
+              { name: "I", value: 1500 },
+              { name: "II", value: 1600 },
+              { name: "III", value: 1700 },
+              { name: "IV", value: 1800 },
+              { name: "V", value: 2000 }
+            ]
+          },
+          {
+            name: "gold",
+            tiers: [
+              { name: "I", value: 1500 },
+              { name: "II", value: 1600 },
+              { name: "III", value: 1700 },
+              { name: "IV", value: 1800 },
+              { name: "V", value: 2000 }
+            ]
+          },
+          {
+            name: "platinum",
+            tiers: [
+              { name: "I", value: 1500 },
+              { name: "II", value: 1600 },
+              { name: "III", value: 1700 },
+              { name: "IV", value: 1800 },
+              { name: "V", value: 2000 }
+            ]
+          },
+          {
+            name: "diamond",
+            tiers: [
+              { name: "I", value: 1500 },
+              { name: "II", value: 1600 },
+              { name: "III", value: 1700 },
+              { name: "IV", value: 1800 },
+              { name: "V", value: 2000 }
+            ]
+          }
+        ]
+      },
 
+      {
+        type: "Reactions enviados",
+        values: [
           {
-            type: "Issue",
-            values: [
-              {
-                name: "bronze",
-                tiers: [
-                  { name: "I", value: 1500 },
-                  { name: "II", value: 1600 },
-                  { name: "III", value: 1700 },
-                  { name: "IV", value: 1800 },
-                  { name: "V", value: 2000 }
-                ]
-              },
-              {
-                name: "silver",
-                tiers: [
-                  { name: "I", value: 1500 },
-                  { name: "II", value: 1600 },
-                  { name: "III", value: 1700 },
-                  { name: "IV", value: 1800 },
-                  { name: "V", value: 2000 }
-                ]
-              },
-              {
-                name: "gold",
-                tiers: [
-                  { name: "I", value: 1500 },
-                  { name: "II", value: 1600 },
-                  { name: "III", value: 1700 },
-                  { name: "IV", value: 1800 },
-                  { name: "V", value: 2000 }
-                ]
-              },
-              {
-                name: "platinum",
-                tiers: [
-                  { name: "I", value: 1500 },
-                  { name: "II", value: 1600 },
-                  { name: "III", value: 1700 },
-                  { name: "IV", value: 1800 },
-                  { name: "V", value: 2000 }
-                ]
-              },
-              {
-                name: "diamond",
-                tiers: [
-                  { name: "I", value: 1500 },
-                  { name: "II", value: 1600 },
-                  { name: "III", value: 1700 },
-                  { name: "IV", value: 1800 },
-                  { name: "V", value: 2000 }
-                ]
-              }
+            name: "bronze",
+            tiers: [
+              { name: "I", value: 1500 },
+              { name: "II", value: 1600 },
+              { name: "III", value: 1700 },
+              { name: "IV", value: 1800 },
+              { name: "V", value: 2000 }
+            ]
+          },
+          {
+            name: "silver",
+            tiers: [
+              { name: "I", value: 1500 },
+              { name: "II", value: 1600 },
+              { name: "III", value: 1700 },
+              { name: "IV", value: 1800 },
+              { name: "V", value: 2000 }
+            ]
+          },
+          {
+            name: "gold",
+            tiers: [
+              { name: "I", value: 1500 },
+              { name: "II", value: 1600 },
+              { name: "III", value: 1700 },
+              { name: "IV", value: 1800 },
+              { name: "V", value: 2000 }
+            ]
+          },
+          {
+            name: "platinum",
+            tiers: [
+              { name: "I", value: 1500 },
+              { name: "II", value: 1600 },
+              { name: "III", value: 1700 },
+              { name: "IV", value: 1800 },
+              { name: "V", value: 2000 }
+            ]
+          },
+          {
+            name: "diamond",
+            tiers: [
+              { name: "I", value: 1500 },
+              { name: "II", value: 1600 },
+              { name: "III", value: 1700 },
+              { name: "IV", value: 1800 },
+              { name: "V", value: 2000 }
+            ]
+          }
+        ]
+      },
+      {
+        type: "Reactions recebidos",
+        values: [
+          {
+            name: "bronze",
+            tiers: [
+              { name: "I", value: 1500 },
+              { name: "II", value: 1600 },
+              { name: "III", value: 1700 },
+              { name: "IV", value: 1800 },
+              { name: "V", value: 2000 }
+            ]
+          },
+          {
+            name: "silver",
+            tiers: [
+              { name: "I", value: 1500 },
+              { name: "II", value: 1600 },
+              { name: "III", value: 1700 },
+              { name: "IV", value: 1800 },
+              { name: "V", value: 2000 }
+            ]
+          },
+          {
+            name: "gold",
+            tiers: [
+              { name: "I", value: 1500 },
+              { name: "II", value: 1600 },
+              { name: "III", value: 1700 },
+              { name: "IV", value: 1800 },
+              { name: "V", value: 2000 }
+            ]
+          },
+          {
+            name: "platinum",
+            tiers: [
+              { name: "I", value: 1500 },
+              { name: "II", value: 1600 },
+              { name: "III", value: 1700 },
+              { name: "IV", value: 1800 },
+              { name: "V", value: 2000 }
+            ]
+          },
+          {
+            name: "diamond",
+            tiers: [
+              { name: "I", value: 1500 },
+              { name: "II", value: 1600 },
+              { name: "III", value: 1700 },
+              { name: "IV", value: 1800 },
+              { name: "V", value: 2000 }
             ]
           }
         ]
       }
-    ];
+    ]
+  },
+  {
+    name: "Github",
+    data: [
+      {
+        type: "Pull Request",
+        values: [
+          {
+            name: "bronze",
+            tiers: [
+              { name: "I", value: 1500 },
+              { name: "II", value: 1600 },
+              { name: "III", value: 1700 },
+              { name: "IV", value: 1800 },
+              { name: "V", value: 2000 }
+            ]
+          },
+          {
+            name: "silver",
+            tiers: [
+              { name: "I", value: 1500 },
+              { name: "II", value: 1600 },
+              { name: "III", value: 1700 },
+              { name: "IV", value: 1800 },
+              { name: "V", value: 2000 }
+            ]
+          },
+          {
+            name: "gold",
+            tiers: [
+              { name: "I", value: 1500 },
+              { name: "II", value: 1600 },
+              { name: "III", value: 1700 },
+              { name: "IV", value: 1800 },
+              { name: "V", value: 2000 }
+            ]
+          },
+          {
+            name: "platinum",
+            tiers: [
+              { name: "I", value: 1500 },
+              { name: "II", value: 1600 },
+              { name: "III", value: 1700 },
+              { name: "IV", value: 1800 },
+              { name: "V", value: 2000 }
+            ]
+          },
+          {
+            name: "diamond",
+            tiers: [
+              { name: "I", value: 1500 },
+              { name: "II", value: 1600 },
+              { name: "III", value: 1700 },
+              { name: "IV", value: 1800 },
+              { name: "V", value: 2000 }
+            ]
+          }
+        ]
+      },
+      {
+        type: "Review",
+        values: [
+          {
+            name: "bronze",
+            tiers: [
+              { name: "I", value: 1500 },
+              { name: "II", value: 1600 },
+              { name: "III", value: 1700 },
+              { name: "IV", value: 1800 },
+              { name: "V", value: 2000 }
+            ]
+          },
+          {
+            name: "silver",
+            tiers: [
+              { name: "I", value: 1500 },
+              { name: "II", value: 1600 },
+              { name: "III", value: 1700 },
+              { name: "IV", value: 1800 },
+              { name: "V", value: 2000 }
+            ]
+          },
+          {
+            name: "gold",
+            tiers: [
+              { name: "I", value: 1500 },
+              { name: "II", value: 1600 },
+              { name: "III", value: 1700 },
+              { name: "IV", value: 1800 },
+              { name: "V", value: 2000 }
+            ]
+          },
+          {
+            name: "platinum",
+            tiers: [
+              { name: "I", value: 1500 },
+              { name: "II", value: 1600 },
+              { name: "III", value: 1700 },
+              { name: "IV", value: 1800 },
+              { name: "V", value: 2000 }
+            ]
+          },
+          {
+            name: "diamond",
+            tiers: [
+              { name: "I", value: 1500 },
+              { name: "II", value: 1600 },
+              { name: "III", value: 1700 },
+              { name: "IV", value: 1800 },
+              { name: "V", value: 2000 }
+            ]
+          }
+        ]
+      },
+      {
+        type: "Pull Request aprovada",
+        values: [
+          {
+            name: "bronze",
+            tiers: [
+              { name: "I", value: 1500 },
+              { name: "II", value: 1600 },
+              { name: "III", value: 1700 },
+              { name: "IV", value: 1800 },
+              { name: "V", value: 2000 }
+            ]
+          },
+          {
+            name: "silver",
+            tiers: [
+              { name: "I", value: 1500 },
+              { name: "II", value: 1600 },
+              { name: "III", value: 1700 },
+              { name: "IV", value: 1800 },
+              { name: "V", value: 2000 }
+            ]
+          },
+          {
+            name: "gold",
+            tiers: [
+              { name: "I", value: 1500 },
+              { name: "II", value: 1600 },
+              { name: "III", value: 1700 },
+              { name: "IV", value: 1800 },
+              { name: "V", value: 2000 }
+            ]
+          },
+          {
+            name: "platinum",
+            tiers: [
+              { name: "I", value: 1500 },
+              { name: "II", value: 1600 },
+              { name: "III", value: 1700 },
+              { name: "IV", value: 1800 },
+              { name: "V", value: 2000 }
+            ]
+          },
+          {
+            name: "diamond",
+            tiers: [
+              { name: "I", value: 1500 },
+              { name: "II", value: 1600 },
+              { name: "III", value: 1700 },
+              { name: "IV", value: 1800 },
+              { name: "V", value: 2000 }
+            ]
+          }
+        ]
+      },
+
+      {
+        type: "Issue",
+        values: [
+          {
+            name: "bronze",
+            tiers: [
+              { name: "I", value: 1500 },
+              { name: "II", value: 1600 },
+              { name: "III", value: 1700 },
+              { name: "IV", value: 1800 },
+              { name: "V", value: 2000 }
+            ]
+          },
+          {
+            name: "silver",
+            tiers: [
+              { name: "I", value: 1500 },
+              { name: "II", value: 1600 },
+              { name: "III", value: 1700 },
+              { name: "IV", value: 1800 },
+              { name: "V", value: 2000 }
+            ]
+          },
+          {
+            name: "gold",
+            tiers: [
+              { name: "I", value: 1500 },
+              { name: "II", value: 1600 },
+              { name: "III", value: 1700 },
+              { name: "IV", value: 1800 },
+              { name: "V", value: 2000 }
+            ]
+          },
+          {
+            name: "platinum",
+            tiers: [
+              { name: "I", value: 1500 },
+              { name: "II", value: 1600 },
+              { name: "III", value: 1700 },
+              { name: "IV", value: 1800 },
+              { name: "V", value: 2000 }
+            ]
+          },
+          {
+            name: "diamond",
+            tiers: [
+              { name: "I", value: 1500 },
+              { name: "II", value: 1600 },
+              { name: "III", value: 1700 },
+              { name: "IV", value: 1800 },
+              { name: "V", value: 2000 }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+];
+const data2 = [
+  {
+    name: "RocketChat",
+    data: [
+      {
+        type: "Mensagens enviadas",
+        values: [
+          {
+            name: "bronze",
+            tiers: [
+              { name: "I", value: 1511 },
+              { name: "II", value: 1600 },
+              { name: "III", value: 1700 },
+              { name: "IV", value: 1800 },
+              { name: "V", value: 2000 }
+            ]
+          },
+          {
+            name: "silver",
+            tiers: [
+              { name: "I", value: 1500 },
+              { name: "II", value: 1600 },
+              { name: "III", value: 1700 },
+              { name: "IV", value: 1800 },
+              { name: "V", value: 2000 }
+            ]
+          },
+          {
+            name: "gold",
+            tiers: [
+              { name: "I", value: 1500 },
+              { name: "II", value: 1600 },
+              { name: "III", value: 1700 },
+              { name: "IV", value: 1800 },
+              { name: "V", value: 2000 }
+            ]
+          },
+          {
+            name: "platinum",
+            tiers: [
+              { name: "I", value: 1500 },
+              { name: "II", value: 1600 },
+              { name: "III", value: 1700 },
+              { name: "IV", value: 1800 },
+              { name: "V", value: 2000 }
+            ]
+          },
+          {
+            name: "diamond",
+            tiers: [
+              { name: "I", value: 1500 },
+              { name: "II", value: 1600 },
+              { name: "III", value: 1700 },
+              { name: "IV", value: 1800 },
+              { name: "V", value: 2000 }
+            ]
+          }
+        ]
+      },
+      {
+        type: "Reações Dadas",
+        values: [
+          {
+            name: "bronze",
+            tiers: [
+              { name: "I", value: 1500 },
+              { name: "II", value: 1600 },
+              { name: "III", value: 1700 },
+              { name: "IV", value: 1800 },
+              { name: "V", value: 2000 }
+            ]
+          },
+          {
+            name: "silver",
+            tiers: [
+              { name: "I", value: 1500 },
+              { name: "II", value: 1600 },
+              { name: "III", value: 1700 },
+              { name: "IV", value: 1800 },
+              { name: "V", value: 2000 }
+            ]
+          },
+          {
+            name: "gold",
+            tiers: [
+              { name: "I", value: 1500 },
+              { name: "II", value: 1600 },
+              { name: "III", value: 1700 },
+              { name: "IV", value: 1800 },
+              { name: "V", value: 2000 }
+            ]
+          },
+          {
+            name: "platinum",
+            tiers: [
+              { name: "I", value: 1500 },
+              { name: "II", value: 1600 },
+              { name: "III", value: 1700 },
+              { name: "IV", value: 1800 },
+              { name: "V", value: 2000 }
+            ]
+          },
+          {
+            name: "diamond",
+            tiers: [
+              { name: "I", value: 1500 },
+              { name: "II", value: 1600 },
+              { name: "III", value: 1700 },
+              { name: "IV", value: 1800 },
+              { name: "V", value: 2000 }
+            ]
+          }
+        ]
+      },
+      {
+        type: "Reações Recebidas",
+        values: [
+          {
+            name: "bronze",
+            tiers: [
+              { name: "I", value: 1500 },
+              { name: "II", value: 1600 },
+              { name: "III", value: 1700 },
+              { name: "IV", value: 1800 },
+              { name: "V", value: 2000 }
+            ]
+          },
+          {
+            name: "silver",
+            tiers: [
+              { name: "I", value: 1500 },
+              { name: "II", value: 1600 },
+              { name: "III", value: 1700 },
+              { name: "IV", value: 1800 },
+              { name: "V", value: 2000 }
+            ]
+          },
+          {
+            name: "gold",
+            tiers: [
+              { name: "I", value: 1500 },
+              { name: "II", value: 1600 },
+              { name: "III", value: 1700 },
+              { name: "IV", value: 1800 },
+              { name: "V", value: 2000 }
+            ]
+          },
+          {
+            name: "platinum",
+            tiers: [
+              { name: "I", value: 1500 },
+              { name: "II", value: 1600 },
+              { name: "III", value: 1700 },
+              { name: "IV", value: 1800 },
+              { name: "V", value: 2000 }
+            ]
+          },
+          {
+            name: "diamond",
+            tiers: [
+              { name: "I", value: 1500 },
+              { name: "II", value: 1600 },
+              { name: "III", value: 1700 },
+              { name: "IV", value: 1800 },
+              { name: "V", value: 2000 }
+            ]
+          }
+        ]
+      },
+
+      {
+        type: "Reactions enviados",
+        values: [
+          {
+            name: "bronze",
+            tiers: [
+              { name: "I", value: 1500 },
+              { name: "II", value: 1600 },
+              { name: "III", value: 1700 },
+              { name: "IV", value: 1800 },
+              { name: "V", value: 2000 }
+            ]
+          },
+          {
+            name: "silver",
+            tiers: [
+              { name: "I", value: 1500 },
+              { name: "II", value: 1600 },
+              { name: "III", value: 1700 },
+              { name: "IV", value: 1800 },
+              { name: "V", value: 2000 }
+            ]
+          },
+          {
+            name: "gold",
+            tiers: [
+              { name: "I", value: 1500 },
+              { name: "II", value: 1600 },
+              { name: "III", value: 1700 },
+              { name: "IV", value: 1800 },
+              { name: "V", value: 2000 }
+            ]
+          },
+          {
+            name: "platinum",
+            tiers: [
+              { name: "I", value: 1500 },
+              { name: "II", value: 1600 },
+              { name: "III", value: 1700 },
+              { name: "IV", value: 1800 },
+              { name: "V", value: 2000 }
+            ]
+          },
+          {
+            name: "diamond",
+            tiers: [
+              { name: "I", value: 1500 },
+              { name: "II", value: 1600 },
+              { name: "III", value: 1700 },
+              { name: "IV", value: 1800 },
+              { name: "V", value: 2000 }
+            ]
+          }
+        ]
+      },
+      {
+        type: "Reactions recebidos",
+        values: [
+          {
+            name: "bronze",
+            tiers: [
+              { name: "I", value: 1500 },
+              { name: "II", value: 1600 },
+              { name: "III", value: 1700 },
+              { name: "IV", value: 1800 },
+              { name: "V", value: 2000 }
+            ]
+          },
+          {
+            name: "silver",
+            tiers: [
+              { name: "I", value: 1500 },
+              { name: "II", value: 1600 },
+              { name: "III", value: 1700 },
+              { name: "IV", value: 1800 },
+              { name: "V", value: 2000 }
+            ]
+          },
+          {
+            name: "gold",
+            tiers: [
+              { name: "I", value: 1500 },
+              { name: "II", value: 1600 },
+              { name: "III", value: 1700 },
+              { name: "IV", value: 1800 },
+              { name: "V", value: 2000 }
+            ]
+          },
+          {
+            name: "platinum",
+            tiers: [
+              { name: "I", value: 1500 },
+              { name: "II", value: 1600 },
+              { name: "III", value: 1700 },
+              { name: "IV", value: 1800 },
+              { name: "V", value: 2000 }
+            ]
+          },
+          {
+            name: "diamond",
+            tiers: [
+              { name: "I", value: 1500 },
+              { name: "II", value: 1600 },
+              { name: "III", value: 1700 },
+              { name: "IV", value: 1800 },
+              { name: "V", value: 2000 }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    name: "Github",
+    data: [
+      {
+        type: "Pull Request",
+        values: [
+          {
+            name: "bronze",
+            tiers: [
+              { name: "I", value: 1500 },
+              { name: "II", value: 1600 },
+              { name: "III", value: 1700 },
+              { name: "IV", value: 1800 },
+              { name: "V", value: 2000 }
+            ]
+          },
+          {
+            name: "silver",
+            tiers: [
+              { name: "I", value: 1500 },
+              { name: "II", value: 1600 },
+              { name: "III", value: 1700 },
+              { name: "IV", value: 1800 },
+              { name: "V", value: 2000 }
+            ]
+          },
+          {
+            name: "gold",
+            tiers: [
+              { name: "I", value: 1500 },
+              { name: "II", value: 1600 },
+              { name: "III", value: 1700 },
+              { name: "IV", value: 1800 },
+              { name: "V", value: 2000 }
+            ]
+          },
+          {
+            name: "platinum",
+            tiers: [
+              { name: "I", value: 1500 },
+              { name: "II", value: 1600 },
+              { name: "III", value: 1700 },
+              { name: "IV", value: 1800 },
+              { name: "V", value: 2000 }
+            ]
+          },
+          {
+            name: "diamond",
+            tiers: [
+              { name: "I", value: 1500 },
+              { name: "II", value: 1600 },
+              { name: "III", value: 1700 },
+              { name: "IV", value: 1800 },
+              { name: "V", value: 2000 }
+            ]
+          }
+        ]
+      },
+      {
+        type: "Review",
+        values: [
+          {
+            name: "bronze",
+            tiers: [
+              { name: "I", value: 1500 },
+              { name: "II", value: 1600 },
+              { name: "III", value: 1700 },
+              { name: "IV", value: 1800 },
+              { name: "V", value: 2000 }
+            ]
+          },
+          {
+            name: "silver",
+            tiers: [
+              { name: "I", value: 1500 },
+              { name: "II", value: 1600 },
+              { name: "III", value: 1700 },
+              { name: "IV", value: 1800 },
+              { name: "V", value: 2000 }
+            ]
+          },
+          {
+            name: "gold",
+            tiers: [
+              { name: "I", value: 1500 },
+              { name: "II", value: 1600 },
+              { name: "III", value: 1700 },
+              { name: "IV", value: 1800 },
+              { name: "V", value: 2000 }
+            ]
+          },
+          {
+            name: "platinum",
+            tiers: [
+              { name: "I", value: 1500 },
+              { name: "II", value: 1600 },
+              { name: "III", value: 1700 },
+              { name: "IV", value: 1800 },
+              { name: "V", value: 2000 }
+            ]
+          },
+          {
+            name: "diamond",
+            tiers: [
+              { name: "I", value: 1500 },
+              { name: "II", value: 1600 },
+              { name: "III", value: 1700 },
+              { name: "IV", value: 1800 },
+              { name: "V", value: 2000 }
+            ]
+          }
+        ]
+      },
+      {
+        type: "Pull Request aprovada",
+        values: [
+          {
+            name: "bronze",
+            tiers: [
+              { name: "I", value: 1500 },
+              { name: "II", value: 1600 },
+              { name: "III", value: 1700 },
+              { name: "IV", value: 1800 },
+              { name: "V", value: 2000 }
+            ]
+          },
+          {
+            name: "silver",
+            tiers: [
+              { name: "I", value: 1500 },
+              { name: "II", value: 1600 },
+              { name: "III", value: 1700 },
+              { name: "IV", value: 1800 },
+              { name: "V", value: 2000 }
+            ]
+          },
+          {
+            name: "gold",
+            tiers: [
+              { name: "I", value: 1500 },
+              { name: "II", value: 1600 },
+              { name: "III", value: 1700 },
+              { name: "IV", value: 1800 },
+              { name: "V", value: 2000 }
+            ]
+          },
+          {
+            name: "platinum",
+            tiers: [
+              { name: "I", value: 1500 },
+              { name: "II", value: 1600 },
+              { name: "III", value: 1700 },
+              { name: "IV", value: 1800 },
+              { name: "V", value: 2000 }
+            ]
+          },
+          {
+            name: "diamond",
+            tiers: [
+              { name: "I", value: 1500 },
+              { name: "II", value: 1600 },
+              { name: "III", value: 1700 },
+              { name: "IV", value: 1800 },
+              { name: "V", value: 2000 }
+            ]
+          }
+        ]
+      },
+
+      {
+        type: "Issue",
+        values: [
+          {
+            name: "bronze",
+            tiers: [
+              { name: "I", value: 1500 },
+              { name: "II", value: 1600 },
+              { name: "III", value: 1700 },
+              { name: "IV", value: 1800 },
+              { name: "V", value: 2000 }
+            ]
+          },
+          {
+            name: "silver",
+            tiers: [
+              { name: "I", value: 1500 },
+              { name: "II", value: 1600 },
+              { name: "III", value: 1700 },
+              { name: "IV", value: 1800 },
+              { name: "V", value: 2000 }
+            ]
+          },
+          {
+            name: "gold",
+            tiers: [
+              { name: "I", value: 1500 },
+              { name: "II", value: 1600 },
+              { name: "III", value: 1700 },
+              { name: "IV", value: 1800 },
+              { name: "V", value: 2000 }
+            ]
+          },
+          {
+            name: "platinum",
+            tiers: [
+              { name: "I", value: 1500 },
+              { name: "II", value: 1600 },
+              { name: "III", value: 1700 },
+              { name: "IV", value: 1800 },
+              { name: "V", value: 2000 }
+            ]
+          },
+          {
+            name: "diamond",
+            tiers: [
+              { name: "I", value: 1500 },
+              { name: "II", value: 1600 },
+              { name: "III", value: 1700 },
+              { name: "IV", value: 1800 },
+              { name: "V", value: 2000 }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+];
+
+export function* getAchievements() {
+  try {
+    // const { data } = yield call(api.get, `api/v1/MOCK);
     yield put(achievementsActions.getAchievementsSuccess(data));
   } catch (error) {
     yield put(
@@ -522,7 +1032,7 @@ export function* getAchievements(action) {
     );
   }
 }
-export function* getUserAchievements(action) {
+export function* getUserAchievements() {
   try {
     const data = [
       {
@@ -620,14 +1130,15 @@ export function* getUserAchievements(action) {
     );
   }
 }
-export function* editAchievement(action) {
-  console.tron.log("saga", action.payload.data);
+export function* editAchievement() {
   try {
-    yield put(achievementsActions.editAchievementSuccess());
+    yield delay(2000);
+    // throw new Error("Servidor indisponivel");
+    yield put(achievementsActions.editAchievementSuccess(data2));
+    toast.success("Conquista alterada com sucesso!");
   } catch (error) {
-    yield put(
-      achievementsActions.editAchievementFailure("Erro ao buscar cards")
-    );
+    toast.error(`Não foi possível alterar conquista. ${error.message}`);
+    yield put(achievementsActions.editAchievementFailure());
   }
 }
 export function* createAchievement(action) {

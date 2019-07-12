@@ -11,7 +11,7 @@ import {
   Container,
   Header,
   ImageWrapper,
-  Name,
+  UserName,
   Info,
   Title,
   Icon,
@@ -136,7 +136,7 @@ class UserInfo extends Component {
             </div>
             <small>{userInfo && `${userInfo.monthlyPosition}º`}</small>
           </ImageWrapper>
-          <Name>{user.user}</Name>
+          <UserName>{user.user}</UserName>
           {userInfo && (
             <Info>
               <div>
@@ -154,7 +154,9 @@ class UserInfo extends Component {
             </Info>
           )}
         </Header>
+
         <Title>suas conquistas</Title>
+
         {userAchievements &&
           userAchievements.map((data, index) => (
             <Accordion>

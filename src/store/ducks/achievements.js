@@ -1,5 +1,6 @@
 const INITIAL_STATE = {
   loading: true,
+  editLoading: "",
   userAchievements: null,
   achievementsValues: [],
   editError: "",
@@ -52,18 +53,19 @@ export default function ranking(state = INITIAL_STATE, action) {
         getError: action.payload.error
       };
     case Types.EDIT_ACHIEVEMENT:
-      return { ...state, loading: true };
+      const { type, values } = action.payload.data;
+      const editLoading = type.concat(values.name);
+      return { ...state, editLoading };
     case Types.EDIT_ACHIEVEMENT_SUCCESS:
       return {
         ...state,
-        loading: false
-        // achievementsValues: { ...action.payload.data }
+        editLoading: "",
+        achievementsValues: action.payload.data
       };
     case Types.EDIT_ACHIEVEMENT_FAILURE:
       return {
         ...state,
-        loading: false,
-        editError: action.payload.error
+        editLoading: ""
       };
     case Types.CREATE_ACHIEVEMENT:
       return { ...state, loading: true };
@@ -117,9 +119,9 @@ export const Creators = {
     type: Types.EDIT_ACHIEVEMENT_SUCCESS,
     payload: { data }
   }),
-  editAchievementFailure: error => ({
+  editAchievementFailure: () => ({
     type: Types.EDIT_ACHIEVEMENT_FAILURE,
-    payload: { error }
+    payload: {}
   }),
   createAchievement: data => ({
     type: Types.CREATE_ACHIEVEMENT,

@@ -1,21 +1,22 @@
 import styled from "styled-components";
-import { Form, Input } from "unform";
+import Select from "react-select";
 import theme from "../../../styles/theme";
+import { Field } from "formik";
 
-export const StyledForm = styled(Form)`
+export const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   font-weight: bold;
+  justify-content: space-between;
   h3 {
-    font-size: 16px;
-    text-transform: uppercase;
     color: ${theme.color.primary};
+    font-size: 16px;
     margin: 30px 0;
+    text-transform: uppercase;
   }
   p {
-    font-size: 14px;
     color: ${theme.color.gray};
+    font-size: 14px;
     margin: 25px 0 5px 0;
   }
   span {
@@ -24,48 +25,61 @@ export const StyledForm = styled(Form)`
     font-weight: normal;
     padding-top: 4px;
   }
-  select {
-    max-width: 25%;
-    height: 50px;
-    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
-  }
 `;
+export const StyledSelect = styled(Select)`
+  border: none;
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+  color: ${theme.color.gray};
+  max-width: 25%;
+`;
+export const StyledSmallInput = styled(Field)`
+  border: ${({ error }) => (error ? "1px solid red" : "1px solid gray")};
+  border-radius: 6px;
+  color: ${theme.color.gray};
+  font-size: 14px;
+  font-weight: bold;
+  height: 50px;
+  margin-bottom: 20px;
+  padding: 0 4px;
+  width: 100px;
+`;
+
 export const DateWrapper = styled.section`
   display: flex;
-  width: 50%;
   flex-wrap: wrap;
   justify-content: space-between;
+  width: 50%;
   span {
-    font-size: 14px;
     color: ${theme.color.gray};
+    font-size: 14px;
     margin: 25px 0 5px 0;
   }
   input {
-    width: 95%;
-    border: none;
-    height: 50px;
-    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
-    border-radius: 6px;
-    padding: 0 16px;
     color: ${theme.color.gray};
+    border: none;
+    border-radius: 6px;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
     font-weight: bold;
+    height: 50px;
+    padding: 0 16px;
+    width: 95%;
   }
 `;
 export const Box = styled.div`
   display: flex;
-  width: 50%;
   flex-direction: column;
+  width: 50%;
 `;
 
-export const StyledInput = styled(Input)`
-  width: ${({ width }) => width || "50%"};
+export const StyledInput = styled.input`
   border: none;
-  height: 50px;
-  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
   border-radius: 6px;
-  padding: 0 16px;
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
   color: ${theme.color.gray};
   font-weight: bold;
+  height: 50px;
+  padding: 0 16px;
+  width: ${({ width }) => width || "50%"};
 `;
 export const Wrapper = styled.div`
   display: flex;
@@ -74,20 +88,20 @@ export const Wrapper = styled.div`
 `;
 
 export const Card = styled.div`
-  min-width: 48%;
-  height: 182px;
-  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
   background: ${theme.color.white};
-  border-radius: 10px;
-  text-transform: uppercase;
-  color: ${theme.color.gray};
   border: ${({ cardError }) => (cardError ? "1px solid red" : "none")};
-  font-size: 12px;
-  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+  color: ${theme.color.gray};
   display: flex;
   flex-direction: column;
+  font-size: 12px;
+  height: 182px;
   justify-content: space-between;
   margin-top: 30px;
+  min-width: 48%;
+  text-transform: uppercase;
+  padding: 20px;
   div {
     display: flex;
     flex-direction: column;
@@ -100,41 +114,41 @@ export const Card = styled.div`
         display: flex;
         flex-direction: column;
         p {
+          color: ${theme.color.primaryHover};
           font-weight: bold;
           margin: 0 auto;
           padding-bottom: 15px;
-          color: ${theme.color.primaryHover};
         }
       }
       input {
-        width: 70px;
         height: 50px;
+        width: 70px;
       }
     }
   }
 `;
 
 export const Title = styled.p`
+  border-bottom: 1px solid ${theme.color.lightGray};
   font-size: 12px;
   height: 20px;
-  border-bottom: 1px solid ${theme.color.lightGray};
   padding-bottom: 20px;
 `;
 
 export const Button = styled.button`
-  color: ${theme.color.primary};
-  text-transform: uppercase;
-  font-weight: bold;
   align-self: flex-end;
-  height: 46px;
-  width: 30%;
-  margin: 50px 0;
-  border-radius: 100px;
-  border: 2px solid ${theme.color.primary};
-  cursor: pointer;
-  outline: none;
-  transition: all 0.3s linear;
   background: ${theme.color.white};
+  border: 2px solid ${theme.color.primary};
+  border-radius: 100px;
+  color: ${theme.color.primary};
+  cursor: pointer;
+  font-weight: bold;
+  height: 46px;
+  margin: 50px 0;
+  outline: none;
+  text-transform: uppercase;
+  transition: all 0.3s linear;
+  width: 30%;
   &:hover {
     color: ${theme.color.white};
     background: ${theme.color.primary};

@@ -1,5 +1,5 @@
 import React from "react";
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 import StyledCard from "./style";
 import { Flex, Box } from "@rebass/grid";
 
@@ -15,9 +15,13 @@ const Card = props => {
   );
 };
 
-// Card.propTypes = {
-//   children: PropTypes.element.isRequired,
-//   large: PropTypes.boolean
-// };
+Card.propTypes = {
+  children: PropTypes.element.isRequired,
+  large: PropTypes.bool
+};
+
+Card.defaultProps = {
+  large: false
+};
 
 export default Card;

@@ -1,15 +1,16 @@
 import styled from "styled-components";
-import theme from "../styles/theme";
 
 const StyledScreenGithub = styled.section`
-  main {
-    padding-top: 250px;
-    padding-bottom: 100px;
-  }
+  background: ${props => props.background};
+  background-size: cover;
+  background-position: center;
+  padding: 100px 0;
 
   .title {
     font-size: 20px;
     line-height: 1.5;
+    font-family: ${props => props.theme.fontFamily.primary};
+
   }
 
   .super {
@@ -18,18 +19,24 @@ const StyledScreenGithub = styled.section`
     margin-top: 60px;
 
     a {
-      color: ${props => theme.color.primary};
+      color: ${props => props.theme.color.primary};
     }
   }
 
   .help {
     font-size: 16px;
     line-height: 1.5;
-    color: ${props => theme.color.white};
+    color: ${props => props.theme.color.white};
     text-align: center;
+    margin: 60px auto 0;
+     flex: 1;
 
     a {
-      color: ${props => theme.color.white};
+      color: ${props => props.theme.color.primaryHover};
+
+      &:hover {
+        color: ${props => props.theme.color.white};
+      }
     }
   }
 
@@ -38,15 +45,16 @@ const StyledScreenGithub = styled.section`
     text-decoration: none;
     margin-top: 10px;
     display: block;
+    word-break: break-all;
 
     &:hover {
-      color: ${props => theme.color.primaryHover};
+      color: ${props => props.theme.color.primaryHover};
     }
   }
 
   ._inner {
     flex: 1;
-    margin-top: 100px;
+    max-height: 590px
   }
 
   ._inner > p {

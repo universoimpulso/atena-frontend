@@ -23,6 +23,6 @@ steps:
     npm install
     npm i yarn -g
     yarn -i
-    yarn audit
+    yarn audit --summary
     yarn build
   displayName: 'yarn tasks'

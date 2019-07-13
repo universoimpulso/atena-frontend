@@ -2,16 +2,17 @@ import React, { Component } from "react";
 
 import InfoCards from "./InfoCards";
 import TeamAccordion from "./TeamAccordion";
-import Charts from "./Charts";
-import ExperienceCards from "./ExperienceCards";
+import Chart from "./Chart";
+import EditExperience from "./EditExperience";
 import EditAchievements from "./EditAchievements";
+import CreateAchievements from "./CreateAchievements";
 
 import { Container, Aside, Section, Option } from "./styles";
 
 class Admin extends Component {
   state = {
     active: "achievements",
-    achievementsType: "editAchievements",
+    achievementsType: "createAchievements",
     options: [
       { key: "generalReports", name: "Relatórios Gerais" },
       { key: "ranking", name: "Rankings" },
@@ -28,17 +29,22 @@ class Admin extends Component {
       : this.setState({ active, achievementsType: null });
   };
 
-  renderOptions = () => {
+  renderOptions = title => {
     const { active, options } = this.state;
-    return options.map(option => (
-      <Option
-        key={option.key}
-        active={active === option.key}
-        onClick={() => this.handleClick(option.key)}
-      >
-        {option.name}
-      </Option>
-    ));
+    return (
+      <>
+        <h3>{title}</h3>
+        {options.map(option => (
+          <Option
+            key={option.key}
+            active={active === option.key}
+            onClick={() => this.handleClick(option.key)}
+          >
+            {option.name}
+          </Option>
+        ))}
+      </>
+    );
   };
 
   render() {
@@ -46,8 +52,7 @@ class Admin extends Component {
     return (
       <Container>
         <Aside>
-          <h3>Jogo</h3>
-          {this.renderOptions()}
+          {this.renderOptions("Jogo")}
           {active === "achievements" && (
             <>
               <Option
@@ -82,14 +87,14 @@ class Admin extends Component {
           {active === "generalReports" ? (
             <>
               <h2>Relatórios Gerais</h2>
-              <Charts />
+              <Chart />
               <InfoCards />
               <TeamAccordion />
             </>
           ) : active === "editExperience" ? (
             <>
               <h2>Experiência(XP)</h2>
-              <ExperienceCards />
+              <EditExperience />
             </>
           ) : active === "ranking" ? (
             <>
@@ -97,16 +102,18 @@ class Admin extends Component {
             </>
           ) : active === "players" ? (
             <h2>Informações do Jogador</h2>
-          ) : active === "achievements" ? null : (
-            <h2>Construindo</h2>
-          )}
+          ) : active === "achievements" ? null : null}
+
           {achievementsType === "editAchievements" ? (
             <>
               <h2>Editar Conquistas</h2>
               <EditAchievements />
             </>
           ) : achievementsType === "createAchievements" ? (
-            <h2>Criar Conquistas</h2>
+            <>
+              <h2>Criar Conquistas</h2>
+              <CreateAchievements />
+            </>
           ) : null}
         </Section>
       </Container>

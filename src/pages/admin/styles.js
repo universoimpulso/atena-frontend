@@ -3,38 +3,37 @@ import styled from "styled-components";
 import theme from "../../styles/theme";
 
 export const Container = styled.div`
+  background: ${theme.color.background};
+  display: flex;
+  font-size: 16px;
+  height: 100%;
   margin-top: 100px;
   padding-top: 40px;
-  font-size: 16px;
   width: 100%;
-  height: 100%;
-  display: flex;
-  background: ${theme.color.background};
 `;
 export const Aside = styled.aside`
-  width: 320px;
-  height: 600px;
   margin: 0 30px;
+  height: 600px;
+  width: 320px;
   h3 {
-    text-transform: uppercase;
-    font-weight: bold;
     color: ${theme.color.gray};
+    font-weight: bold;
     margin-bottom: 30px;
+    text-transform: uppercase;
   }
 
   small {
     border-bottom: solid 1px ${theme.color.lightGray};
     display: block;
-    width: 236px;
     margin: 30px 0;
+    width: 236px;
   }
 `;
 export const Option = styled.p`
+  cursor: pointer;
+  line-height: 100%;
   margin: 30px 0;
   margin-left: ${props => props.marginLeft || 0};
-  color: ${theme.color.gray};
-  line-height: 100%;
-  cursor: pointer;
   ${({ active }) =>
     active
       ? `color: ${theme.color.primary}

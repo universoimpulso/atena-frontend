@@ -5,8 +5,10 @@ import "moment/locale/pt-br";
 
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
+
+import { SmallLoading, SmallError } from "../../../components/utils";
 import { Creators as GeneralReportsActions } from "../../../store/ducks/generalReports";
-import { Wrapper, Collunm, Card, Percentage } from "./styles";
+import { Container, CardsWrapper, Card, Percentage } from "./styles";
 
 class InfoCards extends Component {
   static propTypes = {
@@ -56,9 +58,8 @@ class InfoCards extends Component {
     return options;
   };
 
-  handleChange = event => {
-    const month = event[0].target.value;
-    const type = event[1];
+  handleChange = (event, type) => {
+    const month = event && event.target.value;
     if (type === "achievements") {
       this.props.getUsersAchievements(month);
     } else if (type === "missions") {
@@ -69,120 +70,97 @@ class InfoCards extends Component {
   };
 
   componentDidMount() {
-    this.props.getUsersAchievements();
-    this.props.getMissions();
-    this.props.getXp();
+    const { achievements, missions, xp } = this.props.generalReports;
+    !achievements.data && this.props.getUsersAchievements();
+    !missions.data && this.props.getMissions();
+    !xp.data && this.props.getXp();
   }
+
+  renderCards = ({ type, loading, error, data }) => {
+    if (!data && loading)
+      return (
+        <CardsWrapper>
+          <SmallLoading width="100%" height="100%" />
+        </CardsWrapper>
+      );
+    if (!data && error)
+      return (
+        <CardsWrapper>
+          <SmallError
+            width="100%"
+            height="100%"
+            message={error}
+            refresh={() => this.handleChange(null, type)}
+          />
+        </CardsWrapper>
+      );
+    const {
+      name,
+      byMonth,
+      byMonthPercentage,
+      byYear,
+      byYearPercentage,
+      total
+    } = data;
+
+    return (
+      <CardsWrapper>
+        <h4>{name}</h4>
+        <Card>
+          {loading && <SmallLoading width="100%" height="100%" />}
+          {error && (
+            <SmallError
+              width="100%"
+              height="100%"
+              message={error}
+              refresh={() => this.handleChange(null, type)}
+            />
+          )}
+          <p>total {name} mês</p>
+          <select onChange={event => this.handleChange(event, type)}>
+            {this.renderOptions()}
+          </select>
+          <h1>{byMonth}</h1>
+
+          <Percentage positive={byMonthPercentage > 0}>
+            <i
+              className={`fa fa-long-arrow-alt-${
+                byMonthPercentage < 0 ? "down" : "up"
+              }`}
+            />
+            {byMonthPercentage} %
+          </Percentage>
+        </Card>
+
+        <Card>
+          <p>total {name} do ano</p>
+          <h1>{byYear}</h1>
+          <Percentage positive={byYearPercentage > 0}>
+            <i
+              className={`fa fa-long-arrow-alt-${
+                byYearPercentage < 1 ? "down" : "up"
+              }`}
+            />
+            {byYearPercentage} %
+          </Percentage>
+        </Card>
+
+        <Card>
+          <p>total de {name}</p>
+          <h1>{total}</h1>
+        </Card>
+      </CardsWrapper>
+    );
+  };
+
   render() {
     const { achievements, missions, xp } = this.props.generalReports;
     return (
-      <Wrapper>
-        <Collunm>
-          <h4>conquistas</h4>
-          <Card>
-            <p>total conquistas mês</p>
-            <select
-              onChange={event => this.handleChange([event, "achievements"])}
-            >
-              {this.renderOptions()}
-            </select>
-            <h1>{achievements.byMonth}</h1>
-
-            <Percentage positive={achievements.byMonthPercentage > 0}>
-              <i
-                className={`fa fa-long-arrow-alt-${
-                  achievements.byMonthPercentage < 0 ? "down" : "up"
-                }`}
-              />
-              {achievements.byMonthPercentage} %
-            </Percentage>
-          </Card>
-          <Card>
-            <p>total conquistas do ano</p>
-            <h1>{achievements.byYear}</h1>
-            <Percentage positive={achievements.byYearPercentage > 0}>
-              <i
-                className={`fa fa-long-arrow-alt-${
-                  achievements.byYearPercentage < 1 ? "down" : "up"
-                }`}
-              />
-              {achievements.byYearPercentage} %
-            </Percentage>
-          </Card>
-          <Card>
-            <p>total de conquistas</p>
-            <h1>{achievements.total}</h1>
-          </Card>
-        </Collunm>
-        <Collunm>
-          <h4>missões</h4>
-          <Card>
-            <p>total missões mês</p>
-            <select onChange={event => this.handleChange([event, "missions"])}>
-              {this.renderOptions()}
-            </select>
-            <h1>{missions.byMonth}</h1>
-            <Percentage positive={missions.byMonthPercentage > 0}>
-              <i
-                className={`fa fa-long-arrow-alt-${
-                  missions.byMonthPercentage < 0 ? "down" : "up"
-                }`}
-              />
-              {missions.byMonthPercentage} %
-            </Percentage>
-          </Card>
-          <Card>
-            <p>total missões do ano</p>
-            <h1>{missions.byYear}</h1>
-            <Percentage positive={missions.byYearPercentage > 0}>
-              <i
-                className={`fa fa-long-arrow-alt-${
-                  missions.byYearPercentage < 0 ? "down" : "up"
-                }`}
-              />
-              {missions.byYearPercentage} %
-            </Percentage>
-          </Card>
-          <Card>
-            <p>total de missões</p>
-            <h1>{missions.total}</h1>
-          </Card>
-        </Collunm>
-        <Collunm>
-          <h4>Experiência (XP)</h4>
-          <Card>
-            <p>total experiência mês</p>
-            <select onChange={event => this.handleChange([event, "xp"])}>
-              {this.renderOptions()}
-            </select>
-            <h1>{xp.byMonth}</h1>
-            <Percentage positive={xp.byMonthPercentage > 0}>
-              <i
-                className={`fa fa-long-arrow-alt-${
-                  xp.byMonthPercentage < 0 ? "down" : "up"
-                }`}
-              />
-              {xp.byMonthPercentage} %
-            </Percentage>
-          </Card>
-          <Card>
-            <p>total experiência do ano</p>
-            <h1>{xp.byYear}</h1>
-            <Percentage positive={xp.byYearPercentage > 0}>
-              <i
-                className={`fa fa-long-arrow-alt-${
-                  xp.byYearPercentage < 0 ? "down" : "up"
-                }`}
-              />
-              {xp.byYearPercentage} %
-            </Percentage>
-          </Card>
-          <Card>
-            <p>total experiência</p>
-            <h1>{xp.total}</h1>
-          </Card>
-        </Collunm>
-      </Wrapper>
+      <Container>
+        {this.renderCards(achievements)}
+        {this.renderCards(missions)}
+        {this.renderCards(xp)}
+      </Container>
     );
   }
 }

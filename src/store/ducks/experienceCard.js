@@ -1,8 +1,8 @@
 const INITIAL_STATE = {
-  loading: true,
+  loading: null,
+  cardLoading: "",
   experienceValues: {},
-  getError: "",
-  putError: ""
+  getError: ""
 };
 
 export const Types = {
@@ -17,7 +17,7 @@ export const Types = {
 export default function ranking(state = INITIAL_STATE, action) {
   switch (action.type) {
     case Types.GET_EXPERIENCE:
-      return { ...state, loading: true };
+      return { ...state, loading: true, getError: "" };
     case Types.GET_EXPERIENCE_SUCCESS:
       return {
         ...state,
@@ -31,18 +31,20 @@ export default function ranking(state = INITIAL_STATE, action) {
         getError: action.payload.error
       };
     case Types.PUT_EXPERIENCE:
-      return { ...state, loading: true };
+      return {
+        ...state,
+        cardLoading: action.payload.data.key
+      };
     case Types.PUT_EXPERIENCE_SUCCESS:
       return {
         ...state,
-        loading: false
-        // experienceValues: { ...action.payload.data }
+        cardLoading: "",
+        experienceValues: action.payload.data
       };
     case Types.PUT_EXPERIENCE_FAILURE:
       return {
         ...state,
-        loading: false,
-        putError: action.payload.error
+        cardLoading: false
       };
     default:
       return state;

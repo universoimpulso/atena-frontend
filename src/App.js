@@ -1,5 +1,6 @@
 import React from "react";
 import { Provider } from "react-redux";
+import { ToastContainer } from "react-toastify";
 import "./config/ReactotronConfig";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 
@@ -10,6 +11,7 @@ import TransferXp from "./pages/TransferXp";
 import HowItWorks from "./pages/HowItWorks";
 import Ranking from "./pages/Ranking";
 import Admin from "./pages/admin";
+import UserInfo from "./pages/UserInfo";
 import Github from "./pages/Github";
 
 import Footer from "./components/Footer";
@@ -30,12 +32,14 @@ function App() {
             <>
               <Route path="/transfer" component={TransferXp} />
               <Route path="/admin" component={Admin} />
+              <Route path="/userInfo" component={UserInfo} />
             </>
           ) : (
             <Redirect to="/" />
           )}
         </Switch>
         <Footer />
+        <ToastContainer autoClose={2000} />
       </BrowserRouter>
     </Provider>
   );

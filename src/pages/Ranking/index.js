@@ -10,23 +10,19 @@ import RankingRow from "./RankingRow";
 import Title from "../../components/Title";
 import UserCard from "../../components/UserCard";
 import FullPage from "../../components/FullPage";
-import Error from "../../components/Error";
+import { PageError, PageLoading } from "../../components/utils";
 
 import BgRanking from "../../assets/bg_ranking.png";
-import loading from "../../assets/loading.svg";
 import {
   StyledScreenRanking,
   StyledRectangleGroup,
   StyledRectangle,
-  RankingHeader,
-  Loading
+  RankingHeader
 } from "./styles";
 
 class ScreenRanking extends Component {
   static propTypes = {
     getRanking: PropTypes.func.isRequired,
-    getRankingSucess: PropTypes.func,
-    getRankingFailure: PropTypes.func,
     ranking: PropTypes.shape({
       loading: PropTypes.bool,
       monthName: PropTypes.string,
@@ -44,7 +40,7 @@ class ScreenRanking extends Component {
     this.props.getRanking();
   }
 
-  toogleRanking = selected => {
+  toggleRanking = selected => {
     this.setState({ selected });
     this.props.getRanking(selected);
   };
@@ -65,7 +61,7 @@ class ScreenRanking extends Component {
             </Flex>
           </FullPage>
           {!!ranking.error ? (
-            <Error message={ranking.error} />
+            <PageError message={ranking.error} />
           ) : (
             <div className="_inner">
               <p className="super">
@@ -83,14 +79,14 @@ class ScreenRanking extends Component {
               >
                 <StyledRectangleGroup>
                   <StyledRectangle
-                    onClick={() => this.toogleRanking("monthly")}
+                    onClick={() => this.toggleRanking("monthly")}
                     active={selected === "monthly"}
                     left
                   >
                     <p>Ranking Mensal</p>
                   </StyledRectangle>
                   <StyledRectangle
-                    onClick={() => this.toogleRanking("general")}
+                    onClick={() => this.toggleRanking("general")}
                     active={selected === "general"}
                     right
                   >
@@ -100,9 +96,7 @@ class ScreenRanking extends Component {
               </Flex>
 
               {ranking.loading ? (
-                <Loading>
-                  <img src={loading} alt="" />
-                </Loading>
+                <PageLoading />
               ) : (
                 <>
                   <Flex justifyContent="center">

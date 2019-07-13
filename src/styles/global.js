@@ -1,5 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 import styledNormalize from "styled-normalize";
+import "react-toastify/dist/ReactToastify.css";
 import theme from "./theme";
 
 const StyledApp = createGlobalStyle`
@@ -19,6 +20,9 @@ const StyledApp = createGlobalStyle`
   *, *::before, *::after {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+  }
+  * {
     box-sizing: border-box;
   }
 

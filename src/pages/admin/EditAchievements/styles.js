@@ -1,5 +1,4 @@
 import styled from "styled-components";
-
 import theme from "../../../styles/theme";
 
 export const Container = styled.section`
@@ -10,24 +9,20 @@ export const Container = styled.section`
   }
 `;
 export const Header = styled.header`
-  height: 80px;
   cursor: pointer;
-  position: relative;
-
+  height: 80px;
   p {
     color: ${theme.color.primary};
-    text-transform: uppercase;
     font-size: 16px;
     font-weight: bold;
     margin: 20px 0 6px 0;
+    text-transform: uppercase;
   }
 `;
 export const Icon = styled.i`
-  position: absolute;
-  top: 10%;
-  left: 15%;
   color: ${theme.color.primaryHover};
   font-size: 28px;
+  margin-left: 25px;
   ${({ selected }) =>
     selected
       ? `transition: 0.2s all ease-in;
@@ -50,41 +45,38 @@ export const Wrapper = styled.div`
         opacity: 0;
         visibility: hidden;`}
   h3 {
-    display: block;
-    width: 100%;
-    margin-top: 60px;
     color: ${theme.color.primary};
+    display: block;
     font-size: 12px;
     text-transform: uppercase;
+    width: 100%;
   }
 `;
 
 export const Card = styled.div`
-  min-width: 48%;
-
   background: ${theme.color.white};
   border-radius: 10px;
-  text-transform: uppercase;
   color: ${theme.color.gray};
-  font-weight: bold;
-  font-size: 12px;
-  padding: 20px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  font-size: 12px;
+  font-weight: bold;
+  height: 268px;
   margin-top: 30px;
+  min-width: 48%;
+  justify-content: space-between;
+  padding: 20px;
+  position: relative;
+  text-transform: uppercase;
   p {
+    border-bottom: 1px solid ${theme.color.lightGray};
     font-size: 12px;
     height: 40px;
     line-height: 25px;
-    border-bottom: 1px solid ${theme.color.lightGray};
   }
   form {
     display: flex;
     flex-direction: column;
-    div {
-      border-bottom: 1px solid ${theme.color.lightGray};
-    }
     ul {
       display: flex;
       justify-content: space-between;
@@ -99,23 +91,23 @@ export const Card = styled.div`
         }
       }
       input {
-        width: 70px;
         height: 50px;
+        width: 70px;
       }
     }
     button {
+      background: ${theme.color.white};
+      border: 2px solid ${theme.color.primary};
+      border-radius: 100px;
       color: ${theme.color.primary};
-      text-transform: uppercase;
+      cursor: pointer;
       font-weight: bold;
       height: 46px;
-      width: 70%;
       margin: auto;
-      border-radius: 100px;
-      border: 2px solid ${theme.color.primary};
-      cursor: pointer;
       outline: none;
+      text-transform: uppercase;
       transition: all 0.3s linear;
-      background: ${theme.color.white};
+      width: 70%;
       &:hover {
         color: ${theme.color.white};
         background: ${theme.color.primary};
@@ -125,4 +117,16 @@ export const Card = styled.div`
       }
     }
   }
+`;
+
+export const StyledInput = styled.input`
+  border: ${({ error }) => (error ? "1px solid red" : "1px solid gray")};
+  border-radius: 6px;
+  color: ${theme.color.gray};
+  font-weight: bold;
+  font-size: 14px;
+  height: 50px;
+  margin-bottom: 20px;
+  padding: 0 4px;
+  width: 100px;
 `;

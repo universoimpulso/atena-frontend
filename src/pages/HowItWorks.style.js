@@ -13,7 +13,7 @@ const StyledScreenHowItWorks = styled.section`
   }
 
   .container {
-    padding: 100px 15px;
+    padding: 100px calc(15% + 1vw);
   }
 
   .about {
@@ -79,7 +79,9 @@ const StyledScreenHowItWorks = styled.section`
         padding: 0 30px;
         text-decoration: none;
         color: #595b98;
+        background: #fff;
         width: 100%;
+        cursor: pointer;
 
         span::after {
           content: "";

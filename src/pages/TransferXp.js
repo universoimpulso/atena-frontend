@@ -22,6 +22,7 @@ class ScreenTransferXp extends Component {
   getSlackUsers = async () => {
     try {
       const response = await api.get(`/slack-users`);
+
       this.setState({
         loading: false,
         slackUsers: response.data,
@@ -36,7 +37,7 @@ class ScreenTransferXp extends Component {
     const firstName = user.name.split(" ")[0];
 
     try {
-      const response = await api.get(`/find?name=${firstName}`);
+      const response = await api.get(`api/v1/find?name=${firstName}`);
       this.setState({
         rocketUsers: response.data,
         totalRocketUsers: response.data.length,
@@ -112,7 +113,7 @@ class ScreenTransferXp extends Component {
                 {rocketUsers.map(user => (
                   <li onClick={() => this.editPoints(user)} key={user._id}>
                     <img src={user.avatar} alt="" />
-                    {user.name}{" "}
+                    {user.name}
                     <span>
                       {Math.round(user.score)}
                       <i

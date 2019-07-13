@@ -10,17 +10,17 @@ const StyledSocialLinks = styled.ul`
   margin: 0 auto;
 
   li + li {
-    margin-left: ${props => theme.fontSize.large};
+    margin-left: ${theme.fontSize.large};
   }
 
   a {
-    color: ${props => theme.color.white};
-    font-size: ${props => theme.fontSize.medium};
+    color: ${theme.color.white};
+    font-size: ${theme.fontSize.medium};
     text-decoration: none;
   }
 
   a:hover {
-    color: ${props => theme.color.primaryHover};
+    color: ${theme.color.primaryHover};
   }
 `;
 

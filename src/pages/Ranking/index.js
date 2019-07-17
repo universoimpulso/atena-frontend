@@ -8,8 +8,8 @@ import { Creators as RankingActions } from "../../store/ducks/ranking";
 
 import RankingRow from "./RankingRow";
 import Title from "../../components/Title";
-import UserCard from "../../components/UserCard";
 import FullPage from "../../components/FullPage";
+import Podium from "../../components/Podium";
 import { PageError, PageLoading } from "../../components/utils";
 
 import BgRanking from "../../assets/bg_ranking.png";
@@ -23,13 +23,14 @@ import {
 class ScreenRanking extends Component {
   static propTypes = {
     getRanking: PropTypes.func.isRequired,
-    ranking: PropTypes.shape({
-      loading: PropTypes.bool,
-      monthName: PropTypes.string,
-      error: PropTypes.string,
-      firstUsers: PropTypes.array,
-      lastUsers: PropTypes.array
-    }).isRequired
+    ranking: PropTypes.object
+    // ranking: PropTypes.shape({
+    //   loading: PropTypes.bool,
+    //   monthName: PropTypes.string,
+    //   error: PropTypes.string,
+    //   firstUsers: PropTypes.array,
+    //   lastUsers: PropTypes.array
+    // }).isRequired
   };
 
   state = {
@@ -47,7 +48,41 @@ class ScreenRanking extends Component {
 
   render() {
     const { selected } = this.state;
-    const { ranking } = this.props;
+    const {
+      error,
+      loading,
+      monthName,
+      firstUsers,
+      lastUsers
+    } = this.props.ranking.ranking;
+
+    if (error)
+      return (
+        <StyledScreenRanking>
+          <main className="layout">
+            <FullPage background={`url(${BgRanking})`} height="40" overlay>
+              <Flex alignItems="baseline" justifyContent="center" flex="1">
+                <Box>
+                  <Title large color="white" align="center">
+                    Ranking
+                  </Title>
+                </Box>
+              </Flex>
+            </FullPage>
+            <div className="_inner">
+              <Flex
+                justifyContent="center"
+                alignItems="center"
+                mt={100}
+                mb={100}
+              >
+                <PageError message={error} />
+              </Flex>
+            </div>
+          </main>
+        </StyledScreenRanking>
+      );
+
     return (
       <StyledScreenRanking>
         <main className="layout">
@@ -60,9 +95,7 @@ class ScreenRanking extends Component {
               </Box>
             </Flex>
           </FullPage>
-          {!!ranking.error ? (
-            <PageError message={ranking.error} />
-          ) : (
+          {
             <div className="_inner">
               <p className="super">
                 Confira aqui a sua colocação no ranking da Atena. Vale lembrar
@@ -95,7 +128,7 @@ class ScreenRanking extends Component {
                 </StyledRectangleGroup>
               </Flex>
 
-              {ranking.loading ? (
+              {loading || !firstUsers ? (
                 <PageLoading />
               ) : (
                 <>
@@ -111,27 +144,12 @@ class ScreenRanking extends Component {
                         <>
                           <br />
                           DO MÊS DE
-                          <span className="month"> {ranking.monthName}</span>
+                          <span className="month"> {monthName}</span>
                         </>
                       )}
                     </Title>
                   </Flex>
-
-                  <Flex
-                    justifyContent="center"
-                    mt={50}
-                    mb={80}
-                    ml={172}
-                    mr={172}
-                  >
-                    {ranking.firstUsers.map((card, index) => (
-                      <UserCard
-                        key={index}
-                        first={index === 1 && true}
-                        {...card}
-                      />
-                    ))}
-                  </Flex>
+                  {<Podium firstUsers={firstUsers} />}
                   <Flex
                     justifyContent="space-around"
                     mt={50}
@@ -146,14 +164,14 @@ class ScreenRanking extends Component {
                       <div className="level">LEVEL</div>
                       <div className="xp">XP</div>
                     </RankingHeader>
-                    {ranking.lastUsers.map((card, index) => (
+                    {lastUsers.map((card, index) => (
                       <RankingRow key={index} {...card} />
                     ))}
                   </Flex>
                 </>
               )}
             </div>
-          )}
+          }
         </main>
       </StyledScreenRanking>
     );

@@ -98,7 +98,7 @@ export const Loading = styled.div`
 `;
 
 export const StyledRectangleGroup = styled.div`
-  margin: 0 172px;
+  margin: ${({ margin }) => margin || "0 172px"};
   display: flex;
   flex: 1;
 

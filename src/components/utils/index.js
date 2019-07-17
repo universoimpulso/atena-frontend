@@ -11,8 +11,8 @@ import {
 } from "./styles";
 import loading from "../../assets/loading.svg";
 
-export const PageError = ({ message }) => (
-  <StyledScreenError>
+export const PageError = ({ message, background }) => (
+  <StyledScreenError background={background}>
     <main className="layout">
       <div className="_inner">
         <Flex justifyContent="center">

@@ -6,7 +6,7 @@ import { Types as GeneralReportsTypes } from "../ducks/generalReports";
 import { Types as ExperienceCardTypes } from "../ducks/experienceCard";
 import { Types as achievementsTypes } from "../ducks/achievements";
 
-import { getRanking, getUserInfo } from "./ranking";
+import { getRanking, getUserInfo, getRankingUsers } from "./ranking";
 import { signIn, logout } from "./auth";
 import {
   getUsers,
@@ -28,6 +28,7 @@ export default function* rootSaga() {
     takeLatest(AuthTypes.SIGN_IN_REQUEST, signIn),
     takeLatest(AuthTypes.SIGN_OUT, logout),
     takeLatest(RankingTypes.GET_RANKING, getRanking),
+    takeLatest(RankingTypes.GET_RANKING_USERS, getRankingUsers),
     takeLatest(RankingTypes.GET_USER_INFO, getUserInfo),
     takeLatest(GeneralReportsTypes.GET_USERS, getUsers),
     takeLatest(

@@ -1,12 +1,12 @@
 import React from "react";
 
-import badge from "../../assets/badge.svg";
-import stars from "../../assets/stars.svg";
+import badge from "../../../assets/badge.svg";
+import stars from "../../../assets/stars.svg";
 
-import Card from "../Card";
+import Card from "../../../components/Card";
 import { Flex, Box } from "@rebass/grid";
-import Title from "../Title";
-import Button from "../Button";
+import Title from "../../../components/Title";
+import Button from "../../../components/Button";
 
 const QuestionCards = () => {
   return (

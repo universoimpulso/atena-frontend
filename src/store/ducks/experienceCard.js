@@ -1,79 +1,57 @@
+import { createActions, createReducer } from "reduxsauce";
+
 const INITIAL_STATE = {
   loading: null,
-  cardLoading: "",
+  cardLoading: null,
   experienceValues: {},
-  getError: ""
+  getError: null
 };
+export const { Types, Creators } = createActions({
+  getExperience: ["data"],
+  getExperienceSuccess: ["data"],
+  getExperienceFailure: ["data"],
+  putExperience: ["data"],
+  putExperienceSuccess: ["data"],
+  putExperienceFailure: ["data"]
+});
 
-export const Types = {
-  GET_EXPERIENCE: "experienceCard/GET_EXPERIENCE",
-  GET_EXPERIENCE_SUCCESS: "experienceCard/GET_EXPERIENCE_SUCCESS",
-  GET_EXPERIENCE_FAILURE: "experienceCard/GET_EXPERIENCE_FAILURE",
-  PUT_EXPERIENCE: "experienceCard/PUT_EXPERIENCE",
-  PUT_EXPERIENCE_SUCCESS: "experienceCard/PUT_EXPERIENCE_SUCCESS",
-  PUT_EXPERIENCE_FAILURE: "experienceCard/PUT_EXPERIENCE_FAILURE"
+const getExperience = (state = INITIAL_STATE, action) => ({
+  ...state,
+  getError: "",
+  loading: true
+});
+const getExperienceSuccess = (state = INITIAL_STATE, action) => ({
+  ...state,
+  loading: false,
+  experienceValues: action.data
+});
+const getExperienceFailure = (state = INITIAL_STATE, action) => ({
+  ...state,
+  loading: false,
+  getError: action.error
+});
+const putExperience = (state = INITIAL_STATE, action) => {
+  const { key } = action.data;
+  return {
+    ...state,
+    cardLoading: key
+  };
 };
+const putExperienceSuccess = (state = INITIAL_STATE, action) => ({
+  ...state,
+  cardLoading: null,
+  experienceValues: action.data
+});
+const putExperienceFailure = (state = INITIAL_STATE, action) => ({
+  ...state,
+  cardLoading: null
+});
 
-export default function ranking(state = INITIAL_STATE, action) {
-  switch (action.type) {
-    case Types.GET_EXPERIENCE:
-      return { ...state, loading: true, getError: "" };
-    case Types.GET_EXPERIENCE_SUCCESS:
-      return {
-        ...state,
-        loading: false,
-        experienceValues: action.payload.data
-      };
-    case Types.GET_EXPERIENCE_FAILURE:
-      return {
-        ...state,
-        loading: false,
-        getError: action.payload.error
-      };
-    case Types.PUT_EXPERIENCE:
-      return {
-        ...state,
-        cardLoading: action.payload.data.key
-      };
-    case Types.PUT_EXPERIENCE_SUCCESS:
-      return {
-        ...state,
-        cardLoading: "",
-        experienceValues: action.payload.data
-      };
-    case Types.PUT_EXPERIENCE_FAILURE:
-      return {
-        ...state,
-        cardLoading: false
-      };
-    default:
-      return state;
-  }
-}
-
-export const Creators = {
-  getExperience: () => ({
-    type: Types.GET_EXPERIENCE,
-    payload: {}
-  }),
-  getExperienceSuccess: data => ({
-    type: Types.GET_EXPERIENCE_SUCCESS,
-    payload: { data }
-  }),
-  getExperienceFailure: error => ({
-    type: Types.GET_EXPERIENCE_FAILURE,
-    payload: { error }
-  }),
-  putExperience: data => ({
-    type: Types.PUT_EXPERIENCE,
-    payload: { data }
-  }),
-  putExperienceSuccess: data => ({
-    type: Types.PUT_EXPERIENCE_SUCCESS,
-    payload: { data }
-  }),
-  putExperienceFailure: error => ({
-    type: Types.PUT_EXPERIENCE_FAILURE,
-    payload: { error }
-  })
-};
+export default createReducer(INITIAL_STATE, {
+  [Types.GET_EXPERIENCE]: getExperience,
+  [Types.GET_EXPERIENCE_SUCCESS]: getExperienceSuccess,
+  [Types.GET_EXPERIENCE_FAILURE]: getExperienceFailure,
+  [Types.PUT_EXPERIENCE]: putExperience,
+  [Types.PUT_EXPERIENCE_SUCCESS]: putExperienceSuccess,
+  [Types.PUT_EXPERIENCE_FAILURE]: putExperienceFailure
+});

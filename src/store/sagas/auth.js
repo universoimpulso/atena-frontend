@@ -5,7 +5,7 @@ import api from "../../services/api";
 import { Creators as AuthActions } from "../ducks/auth";
 
 export function* signIn(data) {
-  const { rocketId, password } = data.payload;
+  // const { rocketId, password } = data;
   try {
     // const response = yield call(api.post, "sessions", { rocketId, password });
     const user = {

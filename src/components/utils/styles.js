@@ -4,10 +4,10 @@ import theme from "../../styles/theme";
 export const StyledScreenError = styled.section`
   main {
     padding-bottom: 100px;
+    background: ${({ background }) => (background ? "white" : "transparent")};
   }
 
   ._inner {
-    background: transparent;
     color: ${theme.color.gray};
     flex: 1;
     min-height: 400px;

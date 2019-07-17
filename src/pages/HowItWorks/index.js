@@ -1,17 +1,17 @@
 import React, { Component } from "react";
 
-import hiwlpc from "../assets/hiwlpc.png";
+import hiwlpc from "../../assets/hiwlpc.png";
 
-import StyledScreenHowItWorks from "./HowItWorks.style";
+import StyledScreenHowItWorks from "./styles";
 
 import { Flex, Box } from "@rebass/grid";
-import XpRules from "../components/XpRules";
-import FullPage from "../components/FullPage";
-import Title from "../components/Title";
-import SubTitle from "../components/Title/SubTitle";
-import Faq from "../components/Faq";
-import About from "../components/About";
-import QuestionCards from "../components/QuestionCards";
+import XpRules from "./XpRules";
+import FullPage from "../../components/FullPage";
+import Title from "../../components/Title";
+import SubTitle from "../../components/Title/SubTitle";
+import Faq from "./Faq";
+import About from "./About";
+import QuestionCards from "./QuestionCards";
 
 class ScreenHowItWorks extends Component {
   render() {

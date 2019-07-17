@@ -2,7 +2,9 @@ import React, { Component } from "react";
 
 import InfoCards from "./InfoCards";
 import TeamAccordion from "./TeamAccordion";
+import AdminRanking from "./AdminRanking";
 import Chart from "./Chart";
+import Users from "./Users";
 import EditExperience from "./EditExperience";
 import EditAchievements from "./EditAchievements";
 import CreateAchievements from "./CreateAchievements";
@@ -11,8 +13,8 @@ import { Container, Aside, Section, Option } from "./styles";
 
 class Admin extends Component {
   state = {
-    active: "achievements",
-    achievementsType: "createAchievements",
+    active: "players",
+    achievementsType: null,
     options: [
       { key: "generalReports", name: "Relatórios Gerais" },
       { key: "ranking", name: "Rankings" },
@@ -99,9 +101,13 @@ class Admin extends Component {
           ) : active === "ranking" ? (
             <>
               <h2>Ranking</h2>
+              <AdminRanking />
             </>
           ) : active === "players" ? (
-            <h2>Informações do Jogador</h2>
+            <>
+              <h2>Informações do Jogador</h2>
+              <Users />
+            </>
           ) : active === "achievements" ? null : null}
 
           {achievementsType === "editAchievements" ? (

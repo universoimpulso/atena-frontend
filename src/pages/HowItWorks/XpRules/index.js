@@ -2,8 +2,8 @@
 import React, { Component } from "react";
 
 import { Flex, Box } from "@rebass/grid";
-import Title from "../Title";
-import Button from "../Button";
+import Title from "../../../components/Title";
+import Button from "../../../components/Button";
 
 class XpRules extends Component {
   state = {

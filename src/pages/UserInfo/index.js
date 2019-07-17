@@ -64,17 +64,9 @@ class UserInfo extends Component {
         : type === "issueCreated"
         ? require.context("../../assets/badges/issueCreated", true, /\.svg$/)
         : type === "pullRequestApproved"
-        ? require.context(
-            "../../assets/badges/pullRequestApproved",
-            true,
-            /\.svg$/
-          )
+        ? require.context("../../assets/badges/PRApproved", true, /\.svg$/)
         : type === "pullRequestCreated"
-        ? require.context(
-            "../../assets/badges/pullRequestCreated",
-            true,
-            /\.svg$/
-          )
+        ? require.context("../../assets/badges/PRCreated", true, /\.svg$/)
         : type === "review"
         ? require.context("../../assets/badges/review", true, /\.svg$/)
         : type === "comments"

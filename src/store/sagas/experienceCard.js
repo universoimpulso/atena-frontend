@@ -375,7 +375,7 @@ export function* getExperience() {
   }
 }
 export function* putExperience(action) {
-  console.tron.log("saga", action.payload.data);
+  console.tron.log("saga", action.data);
   try {
     yield delay(1000);
 

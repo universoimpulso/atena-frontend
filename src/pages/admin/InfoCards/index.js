@@ -8,7 +8,13 @@ import { connect } from "react-redux";
 
 import { SmallLoading, SmallError } from "../../../components/utils";
 import { Creators as GeneralReportsActions } from "../../../store/ducks/generalReports";
-import { Container, CardsWrapper, Card, Percentage } from "./styles";
+import {
+  Container,
+  CardsWrapper,
+  Card,
+  Percentage,
+  StyledSelect
+} from "./styles";
 
 class InfoCards extends Component {
   static propTypes = {
@@ -43,29 +49,37 @@ class InfoCards extends Component {
   };
   state = {};
 
-  getMonth = month => {
+  getFormatedMonth = month => {
     return moment()
       .locale("pt-BR")
       .subtract(month, "month")
       .format("MMM/YY");
   };
-
-  renderOptions = () => {
+  getMonth = month => {
+    return moment()
+      .subtract(month, "month")
+      .format("MM/YY");
+  };
+  renderOptions = type => {
     let options = [];
     for (let i = 0; i < 7; i++) {
-      options.push(<option key={i}>{this.getMonth(i)}</option>);
+      options.push({
+        value: { type, data: this.getMonth(i) },
+        label: this.getFormatedMonth(i)
+      });
     }
     return options;
   };
 
-  handleChange = (event, type) => {
-    const month = event && event.target.value;
+  handleChange = value => {
+    const { type, data } = value.value;
+
     if (type === "achievements") {
-      this.props.getUsersAchievements(month);
+      this.props.getUsersAchievements(data);
     } else if (type === "missions") {
-      this.props.getMissions(month);
+      this.props.getMissions(data);
     } else if (type === "xp") {
-      this.props.getXp(month);
+      this.props.getXp(data);
     }
   };
 
@@ -116,10 +130,17 @@ class InfoCards extends Component {
               refresh={() => this.handleChange(null, type)}
             />
           )}
-          <p>total {name} mês</p>
-          <select onChange={event => this.handleChange(event, type)}>
-            {this.renderOptions()}
-          </select>
+          <header>
+            <p>total {name} mês</p>
+            <StyledSelect
+              defaultValue={{
+                value: { type, data: this.getMonth(0) },
+                label: this.getFormatedMonth(0)
+              }}
+              options={this.renderOptions(type)}
+              onChange={this.handleChange}
+            />
+          </header>
           <h1>{byMonth}</h1>
 
           <Percentage positive={byMonthPercentage > 0}>

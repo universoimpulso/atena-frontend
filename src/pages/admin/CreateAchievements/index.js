@@ -134,6 +134,7 @@ class CreateAchievements extends Component {
         Object.assign(tiers, { [`${value.name}-${tier.name}`]: tier.value });
       })
     );
+    console.tron.log(tiers);
     return tiers;
   };
 

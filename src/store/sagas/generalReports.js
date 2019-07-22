@@ -19,13 +19,22 @@ export function* getUsers(action) {
         { name: "Nível 9", value: 154 },
         { name: "Nível 10", value: 554 }
       ],
-      totalUsers: 12043
+      totalUsers: 12043,
+      loading: false,
+      error: null
     };
 
     // throw new Error("Não foi possível buscar os dados");
-    yield put(GeneralReportsActions.getUsersSuccess(generalReportsData));
+    yield put(GeneralReportsActions.getUsersResponse(generalReportsData));
   } catch (error) {
-    yield put(GeneralReportsActions.requestFailure({ users: error.message }));
+    yield put(
+      GeneralReportsActions.getUsersResponse({
+        users: null,
+        totalUsers: null,
+        loading: false,
+        error: error.message
+      })
+    );
   }
 }
 
@@ -40,7 +49,7 @@ export function* getUsersAchievements(action) {
       byYearPercentage: -13.8,
       total: 12987
     };
-    throw new Error("Não foi possível buscar os dados");
+    // throw new Error("Não foi possível buscar os dados");
     yield put(
       GeneralReportsActions.getUsersAchievementsResponse({
         type: "achievements",
@@ -54,7 +63,8 @@ export function* getUsersAchievements(action) {
       GeneralReportsActions.getUsersAchievementsResponse({
         type: "achievements",
         loading: false,
-        error: error.message
+        error: error.message,
+        data: null
       })
     );
   }
@@ -72,7 +82,7 @@ export function* getMissions(action) {
       byYearPercentage: 11.8,
       total: 22987
     };
-    if (action.payload.data) throw new Error("Você nao tem acesso");
+    if (action.data) throw new Error("Você nao tem acesso");
     // throw new Error("Não foi possível buscar os dados");
     yield put(
       GeneralReportsActions.getMissionsResponse({
@@ -127,7 +137,8 @@ export function* getXp(action) {
       GeneralReportsActions.getXpResponse({
         type: "xp",
         loading: false,
-        error: error.message
+        error: error.message,
+        data: null
       })
     );
   }
@@ -136,7 +147,7 @@ export function* getXp(action) {
 export function* getTeams() {
   try {
     yield delay(2000);
-    const teams = [
+    const data = [
       {
         name: "network",
         total: 1837,
@@ -250,11 +261,19 @@ export function* getTeams() {
       }
     ];
     // throw new Error("Não foi possível buscar times");
-    yield put(GeneralReportsActions.getTeamsSuccess(teams));
+    yield put(
+      GeneralReportsActions.getTeamsResponse({
+        data,
+        loading: false,
+        error: null
+      })
+    );
   } catch (error) {
     yield put(
-      GeneralReportsActions.requestFailure({
-        teams: error.message
+      GeneralReportsActions.getTeamsResponse({
+        data: null,
+        loading: false,
+        error: error.message
       })
     );
   }

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Form, Field } from "react-final-form";
+import { Formik } from "formik";
 import { toast } from "react-toastify";
 import PropTypes from "prop-types";
 
@@ -49,6 +49,14 @@ class EditAchievements extends Component {
     }
   };
 
+  getValues = data => {
+    console.tron.log(data);
+    const values = {};
+    data.forEach(data => Object.assign(values, { [data.name]: data.value }));
+    console.tron.log(values);
+    return values;
+  };
+
   validate = value => {
     const validate = value && value > 0 ? undefined : true;
     if (validate) this.notify("negativeNumber");
@@ -62,27 +70,23 @@ class EditAchievements extends Component {
     return (
       <Card>
         <p>{name}</p>
-        <Form
+        <Formik
           onSubmit={tiers => this.putValues({ tiers, name })}
-          render={({ handleSubmit }) => (
+          initialValues={this.getValues(tiers)}
+        >
+          {({ handleSubmit, handleChange, errors, touched }) => (
             <form onSubmit={handleSubmit}>
               <ul>
                 {tiers.map(tier => (
                   <li key={tier.name}>
                     <span>{tier.name}</span>
-                    <Field
+                    <StyledInput
                       name={tier.name}
-                      validate={this.validate}
-                      initialValue={tier.value}
-                    >
-                      {({ input, meta }) => (
-                        <StyledInput
-                          error={meta.touched && meta.error}
-                          {...input}
-                          type="number"
-                        />
-                      )}
-                    </Field>
+                      validate={value => this.validate(value)}
+                      type="number"
+                      onChange={handleChange}
+                      error={errors[tier.name] && touched[tier.name]}
+                    />
                   </li>
                 ))}
               </ul>
@@ -90,7 +94,7 @@ class EditAchievements extends Component {
               <button type="submit">atualizar</button>
             </form>
           )}
-        />
+        </Formik>
         {editLoading === type.concat(name) && <SmallLoading />}
       </Card>
     );

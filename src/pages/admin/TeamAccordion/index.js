@@ -46,30 +46,30 @@ class TeamAccordion extends Component {
   };
 
   componentDidMount() {
-    const { teams } = this.props.generalReports;
-    teams.length === 0 && this.props.getTeams();
+    const { data } = this.props.teams;
+    !data && this.props.getTeams();
   }
 
   render() {
     const { active } = this.state;
-    const { teams, getTeamsLoading, errors } = this.props.generalReports;
+    const { error, loading, data } = this.props.teams;
 
-    if (errors.teams)
+    if (error)
       return (
         <Container>
-          <SmallError refresh={this.props.getTeams} message={errors.teams} />
+          <SmallError refresh={this.props.getTeams} message={error} />
         </Container>
       );
 
-    if (getTeamsLoading)
+    if (loading)
       return (
         <Container>
-          <PageLoading message={errors.team} />
+          <PageLoading />
         </Container>
       );
     return (
       <Container>
-        {teams.map((team, index) => {
+        {data.map((team, index) => {
           const {
             name,
             total,
@@ -204,7 +204,7 @@ class TeamAccordion extends Component {
   }
 }
 
-const mapStateToProps = state => ({ generalReports: state.generalReports });
+const mapStateToProps = state => ({ teams: state.generalReports.teams });
 
 const mapDispatchToProps = dispatch =>
   bindActionCreators(GeneralReportsActions, dispatch);

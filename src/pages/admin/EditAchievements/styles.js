@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Field } from "formik";
 import theme from "../../../styles/theme";
 
 export const Container = styled.section`
@@ -119,7 +120,7 @@ export const Card = styled.div`
   }
 `;
 
-export const StyledInput = styled.input`
+export const StyledInput = styled(Field)`
   border: ${({ error }) => (error ? "1px solid red" : "1px solid gray")};
   border-radius: 6px;
   color: ${theme.color.gray};

@@ -74,36 +74,36 @@ class Charts extends Component {
               show: false
             }
           },
-          data: this.props.generalReports.users
+          data: this.props.generalReports.users.users
         }
       ]
     };
   };
 
   componentDidMount() {
-    const { totalUsers } = this.props.generalReports;
+    const { totalUsers } = this.props.generalReports.users;
     !totalUsers && this.props.getUsers();
   }
 
   render() {
     const { colors } = this.state;
     const {
-      getUsersLoading,
-      errors,
+      loading,
+      error,
       users,
       totalUsers
-    } = this.props.generalReports;
+    } = this.props.generalReports.users;
 
-    if (errors.users)
+    if (error)
       return (
         <SmallError
-          message={errors.users}
+          message={error}
           height="228px"
           refresh={this.props.getUsers}
         />
       );
 
-    if (getUsersLoading)
+    if (loading)
       return <PageLoading paddingSize="0" height="288px" imgSize="115px" />;
 
     return (

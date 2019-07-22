@@ -8,28 +8,31 @@ import { Creators as AuthActions } from "../../store/ducks/auth";
 import StyledMenu from "./Menu.style";
 import { Link } from "react-router-dom";
 import Auth from "../auth";
-import mock from "../../assets/mock.jpeg";
 
 class Menu extends Component {
   static propTypes = {
     auth: PropTypes.shape({
+      activeModal: PropTypes.bool,
       loading: PropTypes.bool,
-      error: PropTypes.string
+      avatar: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
+      error: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
+      uuid: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
+      isCoreTeam: PropTypes.bool,
+      token: PropTypes.oneOfType([PropTypes.string, PropTypes.bool])
     }).isRequired,
-    signOut: PropTypes.func.isRequired
-  };
-
-  state = {
-    activeModal: false
+    signOut: PropTypes.func.isRequired,
+    toggleModal: PropTypes.func.isRequired
   };
 
   toggleModal = () => {
-    this.setState({ activeModal: !this.state.activeModal });
+    this.props.toggleModal();
+  };
+  logout = () => {
+    this.props.signOut();
   };
 
   render() {
-    const { auth, signOut } = this.props;
-
+    const { uuid, isCoreTeam, activeModal, avatar } = this.props.auth;
     return (
       <>
         <StyledMenu>
@@ -43,25 +46,30 @@ class Menu extends Component {
               <button>ranking</button>
             </Link>
           </li>
-          {auth.user ? (
+          {uuid ? (
             <>
-              <li key="transfer">
-                <Link to="/transfer">
-                  <button>Transferir</button>
-                </Link>
-              </li>
-              <li key="admin">
-                <Link to="/admin">
-                  <button>Admin</button>
-                </Link>
-              </li>
+              {isCoreTeam && (
+                <>
+                  <li key="transfer">
+                    <Link to="/transfer">
+                      <button>Transferir</button>
+                    </Link>
+                  </li>
+                  <li key="admin">
+                    <Link to="/admin">
+                      <button>Admin</button>
+                    </Link>
+                  </li>
+                </>
+              )}
+
               <li key="logout">
-                <button onClick={signOut}>logout</button>
+                <button onClick={this.logout}>logout</button>
               </li>
               <li className="user">
                 <Link to="/userInfo">
                   <button className="profile">
-                    <img src={mock} alt="" className="avatar" />
+                    <img src={avatar} alt="" className="avatar" />
                   </button>
                 </Link>
               </li>
@@ -72,7 +80,7 @@ class Menu extends Component {
             </li>
           )}
         </StyledMenu>
-        {this.state.activeModal && <Auth action={this.toggleModal} />}
+        {activeModal && <Auth action={this.toggleModal} />}
       </>
     );
   }

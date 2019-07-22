@@ -1,9 +1,13 @@
 import { createActions, createReducer } from "reduxsauce";
 
 const INITIAL_STATE = {
+  userAchievements: {
+    data: null,
+    loading: true,
+    error: null
+  },
   loading: true,
   editLoading: "",
-  userAchievements: null,
   achievementsValues: [],
   editError: "",
   createError: ""
@@ -13,9 +17,6 @@ export const { Types, Creators } = createActions({
   getAchievements: ["data"],
   getAchievementsSuccess: ["data"],
   getAchievementsFailure: ["data"],
-  getUserAchievements: ["data"],
-  getUserAchievementsSuccess: ["data"],
-  getUserAchievementsFailure: ["data"],
   editAchievement: ["data"],
   editAchievementSuccess: ["data"],
   editAchievementFailure: ["data"],
@@ -36,22 +37,9 @@ const getAchievementsSuccess = (state = INITIAL_STATE, action) => ({
 const getAchievementsFailure = (state = INITIAL_STATE, action) => ({
   ...state,
   loading: false,
-  getError: action.error
+  getError: action.data
 });
-const getUserAchievements = (state = INITIAL_STATE, action) => ({
-  ...state,
-  loading: true
-});
-const getUserAchievementsSuccess = (state = INITIAL_STATE, action) => ({
-  ...state,
-  loading: false,
-  userAchievements: action.data
-});
-const getUserAchievementsFailure = (state = INITIAL_STATE, action) => ({
-  ...state,
-  loading: false,
-  getError: action.error
-});
+
 const editAchievement = (state = INITIAL_STATE, action) => {
   const { type, values } = action.data;
   const editLoading = type.concat(values.name);
@@ -86,9 +74,6 @@ export default createReducer(INITIAL_STATE, {
   [Types.GET_ACHIEVEMENTS]: getAchievements,
   [Types.GET_ACHIEVEMENTS_SUCCESS]: getAchievementsSuccess,
   [Types.GET_ACHIEVEMENTS_FAILURE]: getAchievementsFailure,
-  [Types.GET_USER_ACHIEVEMENTS]: getUserAchievements,
-  [Types.GET_USER_ACHIEVEMENTS_SUCCESS]: getUserAchievementsSuccess,
-  [Types.GET_USER_ACHIEVEMENTS_FAILURE]: getUserAchievementsFailure,
   [Types.EDIT_ACHIEVEMENT]: editAchievement,
   [Types.EDIT_ACHIEVEMENT_SUCCESS]: editAchievementSuccess,
   [Types.EDIT_ACHIEVEMENT_FAILURE]: editAchievementFailure,

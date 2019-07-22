@@ -1,12 +1,11 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
-import { Creators as achievementsActions } from "../../store/ducks/achievements";
-import { Creators as rankingActions } from "../../store/ducks/ranking";
-
+import { Creators as UserActions } from "../../store/ducks/user";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 
+import { PageError, PageLoading } from "../../components/utils";
 import {
   Container,
   Header,
@@ -43,11 +42,29 @@ class UserInfo extends Component {
   };
 
   componentDidMount() {
-    this.props.actions.getUserAchievements();
-    this.props.actions.getUserInfo();
+    this.props.getProfile(this.props.auth.uuid);
   }
 
+  renderAccordion = data => {
+    const { selected } = this.state;
+
+    return data.map((data, index) => (
+      <Accordion>
+        <header key={index} onClick={() => this.handleClick(index)}>
+          {this.formatTitle(data.name)}
+          <Icon className="fas fa-sort-down" selected={selected === index} />
+        </header>
+        <AccordionBody selected={selected === index}>
+          {data.achievements.map(achievement =>
+            this.renderAchievement(achievement)
+          )}
+        </AccordionBody>
+      </Accordion>
+    ));
+  };
+
   renderAchievement = data => {
+    const { colors } = this.state;
     const { type, name, medal, tier, maxScore, score } = data;
 
     const reqStars = require.context("../../assets/stars", true, /\.svg$/);
@@ -89,13 +106,10 @@ class UserInfo extends Component {
         <Badge>
           <img src={badges[medal]} alt="" />
         </Badge>
-        <Score color={this.state.colors[medal]}>
+        <Score color={colors[medal]}>
           {score} / {maxScore}
         </Score>
-        <ScoreBar
-          status={(score / maxScore) * 100}
-          color={this.state.colors[medal]}
-        />
+        <ScoreBar status={(score / maxScore) * 100} color={colors[medal]} />
         <Achievement>{name}</Achievement>
       </BadgeWrapper>
     );
@@ -115,74 +129,57 @@ class UserInfo extends Component {
   };
 
   render() {
-    const { userAchievements } = this.props.achievements;
-    const { userInfo } = this.props.ranking;
-    const { user } = this.props.auth;
-    const { selected } = this.state;
+    const {
+      error,
+      loading,
+      userInfo,
+      userAchievements
+    } = this.props.user.profile;
+
+    if (error) return <PageError message={error} />;
+    if (loading) return <PageLoading width="100%" height="800px" />;
+
     return (
       <Container>
         <Header>
           <ImageWrapper>
             <div>
-              <img src={user.avatar} alt="" />
+              <img src={userInfo.avatar} alt="" />
             </div>
-            <small>{userInfo && `${userInfo.monthlyPosition}º`}</small>
+            <small>{`${userInfo.monthlyPosition}º`}</small>
           </ImageWrapper>
-          <UserName>{user.user}</UserName>
-          {userInfo && (
-            <Info>
-              <div>
-                <p>level</p>
-                <span>{userInfo.level}</span>
-              </div>
-              <div>
-                <p>xp</p>
-                <span>{userInfo.score}</span>
-              </div>
-              <div>
-                <p>ranking geral</p>
-                <span>{userInfo.generalPosition}º</span>
-              </div>
-            </Info>
-          )}
-        </Header>
+          <UserName>{userInfo.user}</UserName>
 
+          <Info>
+            <div>
+              <p>level</p>
+              <span>{userInfo.level}</span>
+            </div>
+            <div>
+              <p>xp</p>
+              <span>{userInfo.score}</span>
+            </div>
+            <div>
+              <p>ranking geral</p>
+              <span>{userInfo.generalPosition}º</span>
+            </div>
+          </Info>
+        </Header>
         <Title>suas conquistas</Title>
 
-        {userAchievements &&
-          userAchievements.map((data, index) => (
-            <Accordion>
-              <header key={index} onClick={() => this.handleClick(index)}>
-                {this.formatTitle(data.name)}
-                <Icon
-                  className="fas fa-sort-down"
-                  selected={selected === index}
-                />
-              </header>
-              <AccordionBody selected={selected === index}>
-                {data.achievements.map(a => this.renderAchievement(a))}
-              </AccordionBody>
-            </Accordion>
-          ))}
+        {this.renderAccordion(userAchievements)}
       </Container>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  achievements: state.achievements,
-  auth: state.auth,
-  ranking: state.ranking
+  user: state.user,
+  auth: state.auth
 });
 
-const mapDispatchToProps = dispatch => {
-  return {
-    actions: bindActionCreators(
-      Object.assign({}, rankingActions, achievementsActions),
-      dispatch
-    )
-  };
-};
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(UserActions, dispatch);
 
 export default connect(
   mapStateToProps,

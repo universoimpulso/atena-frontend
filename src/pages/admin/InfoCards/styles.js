@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
+import Select from "react-select";
 import theme from "../../../styles/theme";
 
 export const Container = styled.div`
@@ -26,35 +26,40 @@ export const CardsWrapper = styled.div`
 export const Card = styled.div`
   background: ${theme.color.white};
   border-radius: 10px;
+  display: flex;
+  flex-direction: column;
   font-size: 12px;
+  justify-content: space-between;
   height: 110px;
   margin-bottom: 10px;
-  padding: 20px;
+  padding: 15px;
   position: relative;
   text-transform: uppercase;
   width: 100%;
   p {
+    display: inline-block;
     color: ${theme.color.gray};
     font-weight: bold;
-    margin-bottom: 10px;
   }
   h1 {
     font-size: 25px;
     color: ${theme.color.primaryHover};
     font-weight: bold;
-    margin: 0 0 5px 0;
+    margin: 0;
   }
-  select {
-    color: ${theme.color.primaryHover};
-    font-weight: bold;
-    height: 32px;
-    outline: none;
-    position: absolute;
-    right: 20px;
-    text-transform: uppercase;
-    top: 13px;
-    width: 85px;
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
+`;
+
+export const StyledSelect = styled(Select)`
+  color: ${theme.color.primaryHover};
+  font-weight: bold;
+  margin-left: 5px;
+  text-transform: uppercase;
+  width: 40%;
 `;
 export const Percentage = styled.span`
   color: ${props =>

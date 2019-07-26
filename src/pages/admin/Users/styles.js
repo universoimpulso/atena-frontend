@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import theme from "../../../styles/theme";
+import styled from 'styled-components'
+import theme from '~/styles/theme'
 
 export const Container = styled.section`
   align-items: space-between;
@@ -8,10 +8,10 @@ export const Container = styled.section`
   flex-direction: column;
   font-weight: bold;
   width: 100%;
-`;
+`
 
 export const RankingHeader = styled.div`
-  color: #595b98;
+  color: ${theme.color.primary};
   display: flex;
   font-size: 20px;
   font-weight: bold;
@@ -33,20 +33,20 @@ export const RankingHeader = styled.div`
   .userInfo {
     flex: 2;
   }
-`;
+`
 
 export const UserSection = styled.section`
   margin-top: 30px;
   min-height: 100px;
   position: relative;
   width: 100%;
-`;
+`
 export const CardWrapper = styled.div`
   display: flex;
   height: 180px;
   margin: 80px 0 20px 0;
   width: 100%;
-`;
+`
 export const Portrait = styled.div`
   align-items: center;
   background: ${theme.color.white};
@@ -78,7 +78,7 @@ export const Portrait = styled.div`
     transform: translateY(50%);
     width: 32px;
   }
-`;
+`
 export const Card = styled.div`
   background: ${theme.color.white};
   border-radius: 10px;
@@ -86,7 +86,7 @@ export const Card = styled.div`
   flex-grow: 1;
   height: 100%;
   padding: 50px 15px;
-`;
+`
 
 export const Info = styled.div`
   display: flex;
@@ -97,7 +97,7 @@ export const Info = styled.div`
   padding: 5px 10px;
   text-align: center;
   text-transform: uppercase;
-  width: ${({ width }) => width || "20%"};
+  width: ${({ width }) => width || '20%'};
   :not(:last-child) {
     border-right: ${theme.color.lightGray} 1px solid;
   }
@@ -107,14 +107,14 @@ export const Info = styled.div`
   p {
     color: ${theme.color.gray};
   }
-`;
+`
 
 export const ButtonWrapper = styled.div`
   border-bottom: ${theme.color.lightGray} 1px solid;
   display: flex;
   flex-direction: column;
   width: 100%;
-`;
+`
 
 export const Button = styled.button`
   align-self: flex-end;
@@ -137,4 +137,4 @@ export const Button = styled.button`
   &:active {
     transform: scale(0.95);
   }
-`;
+`

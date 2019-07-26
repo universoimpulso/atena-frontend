@@ -1,7 +1,7 @@
-import React from "react";
-import StyledScreenGithub from "./Github.style";
-import Card from "../components/Card";
-import Title from "../components/Title";
+import React from 'react'
+import StyledScreenGithub from './Github.style'
+import Card from '~/components/Card'
+import Title from '~/components/Title'
 
 const ScreenGithub = () => {
   return (
@@ -18,7 +18,7 @@ const ScreenGithub = () => {
             Sua dedicação foi posta a prova e você passou com honrarias!
           </Title>
           <p className="super">
-            A partir de agora você pode desempenhar trabalhos junto aos nossos{" "}
+            A partir de agora você pode desempenhar trabalhos junto aos nossos{' '}
             <strong>projetos open-source!</strong>
           </p>
         </Card>
@@ -31,7 +31,7 @@ const ScreenGithub = () => {
         </p>
       </div>
     </StyledScreenGithub>
-  );
-};
+  )
+}
 
-export default ScreenGithub;
+export default ScreenGithub

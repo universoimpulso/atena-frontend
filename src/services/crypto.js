@@ -1,8 +1,8 @@
-import crypto from "crypto-js";
+import crypto from 'crypto-js'
 
-const salt = process.env.REACT_APP_ATENA_CRYPTO_SALT;
+const salt = process.env.REACT_APP_ATENA_CRYPTO_SALT
 
 export const decrypt = async data => {
-  var bytes = crypto.AES.decrypt(data, salt);
-  return JSON.parse(bytes.toString(crypto.enc.Utf8));
-};
+  var bytes = crypto.AES.decrypt(data, salt)
+  return JSON.parse(bytes.toString(crypto.enc.Utf8))
+}

@@ -1,24 +1,24 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 const StyledHeader = styled.header`
-  max-width: ${props => props.theme.gridSize};
+  left: 0;
   margin: 0 auto;
+  max-width: ${props => props.theme.gridSize};
   padding: 30px 50px;
   position: absolute;
-  top: 0;
-  left: 0;
   right: 0;
+  top: 0;
   z-index: 999;
 
   @media (max-width: 760px) {
     padding: 14px 20px;
 
     img {
-      height: 40px;
       display: block;
+      height: 40px;
       margin: auto;
     }
   }
-`;
+`
 
-export default StyledHeader;
+export default StyledHeader

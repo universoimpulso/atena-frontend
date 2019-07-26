@@ -1,38 +1,37 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
+import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 
-import { Creators as AuthActions } from "../../store/ducks/auth";
+import { Creators as AuthActions } from '~/store/ducks/auth'
 
-import StyledMenu from "./Menu.style";
-import { Link } from "react-router-dom";
-import Auth from "../auth";
+import Auth from '~/components/auth'
+import avatarSvg from '~/assets/avatarWhite.svg'
+import StyledMenu from './styles'
 
 class Menu extends Component {
   static propTypes = {
-    auth: PropTypes.shape({
-      activeModal: PropTypes.bool,
-      loading: PropTypes.bool,
-      avatar: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
-      error: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
-      uuid: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
-      isCoreTeam: PropTypes.bool,
-      token: PropTypes.oneOfType([PropTypes.string, PropTypes.bool])
-    }).isRequired,
     signOut: PropTypes.func.isRequired,
-    toggleModal: PropTypes.func.isRequired
-  };
+    toggleModal: PropTypes.func.isRequired,
+    auth: PropTypes.shape({
+      activeModal: PropTypes.bool.isRequired,
+      avatar: PropTypes.string,
+      uuid: PropTypes.string,
+      isCoreTeam: PropTypes.bool,
+    }).isRequired,
+  }
 
   toggleModal = () => {
-    this.props.toggleModal();
-  };
+    this.props.toggleModal()
+  }
+
   logout = () => {
-    this.props.signOut();
-  };
+    this.props.signOut()
+  }
 
   render() {
-    const { uuid, isCoreTeam, activeModal, avatar } = this.props.auth;
+    const { uuid, isCoreTeam, activeModal, avatar } = this.props.auth
     return (
       <>
         <StyledMenu>
@@ -69,7 +68,15 @@ class Menu extends Component {
               <li className="user">
                 <Link to="/userInfo">
                   <button className="profile">
-                    <img src={avatar} alt="" className="avatar" />
+                    <img
+                      src={avatar || avatarSvg}
+                      onError={e => {
+                        e.target.onerror = null
+                        e.target.src = avatarSvg
+                      }}
+                      alt={`Foto do usuário`}
+                      className="avatar"
+                    />
                   </button>
                 </Link>
               </li>
@@ -80,20 +87,19 @@ class Menu extends Component {
             </li>
           )}
         </StyledMenu>
-        {activeModal && <Auth action={this.toggleModal} />}
+        {activeModal && <Auth />}
       </>
-    );
+    )
   }
 }
 
 const mapStateToProps = state => ({
-  auth: state.auth
-});
+  auth: state.auth,
+})
 
-const mapDispatchToProps = dispatch =>
-  bindActionCreators(AuthActions, dispatch);
+const mapDispatchToProps = dispatch => bindActionCreators(AuthActions, dispatch)
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Menu);
+)(Menu)

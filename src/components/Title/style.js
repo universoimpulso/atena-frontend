@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import theme from "../../styles/theme";
+import styled from 'styled-components'
+import theme from '../../styles/theme'
 
 const StyledTitle = styled.h1`
   font-size: ${props =>
@@ -8,7 +8,7 @@ const StyledTitle = styled.h1`
       : props.extralarge
       ? theme.fontSize.super
       : theme.fontSize.large};
-  color: ${props => theme.color[props.color || "primary"]};
+  color: ${props => theme.color[props.color || 'primary']};
 
   ${props =>
     (props.large || props.extralarge) &&
@@ -33,6 +33,6 @@ const StyledTitle = styled.h1`
   @media (max-width: 760px) {
     font-size: 28px;
   }
-`;
+`
 
-export default StyledTitle;
+export default StyledTitle

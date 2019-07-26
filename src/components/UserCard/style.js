@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import theme from "../../styles/theme";
+import styled from 'styled-components'
+import theme from '~/styles/theme'
 
 export const StyledUserCard = styled.div`
   background-color: ${theme.color.white};
@@ -9,10 +9,11 @@ export const StyledUserCard = styled.div`
   margin-right: 8px;
   padding: 0 12px 18px;
   box-shadow: 8px 8px 60px 0px rgba(0, 0, 0, 0.08);
-  margin-top: ${props => !props.first && "70px"};
+  margin-top: ${({ first }) => (first ? null : ` 70px;`)};
+  order: ${({ order }) => order};
   border-radius: 10px;
   position: relative;
-`;
+`
 
 export const Container = styled.div`
   background-color: #fff;
@@ -40,7 +41,7 @@ export const Container = styled.div`
     border-radius: 50%;
     padding: 0 5px 8px 5px;
   }
-`;
+`
 
 export const Position = styled.div`
   background-color: #fff;
@@ -59,7 +60,7 @@ export const Position = styled.div`
   font-weight: bold;
   justify-content: center;
   align-items: center;
-`;
+`
 
 export const Info = styled.div`
   margin-top: 30px;
@@ -70,7 +71,7 @@ export const Info = styled.div`
     font-size: 20px;
     color: #595b98;
   }
-`;
+`
 
 export const Point = styled.div`
   flex: 1;
@@ -79,7 +80,7 @@ export const Point = styled.div`
   font-weight: bold;
   flex-direction: column;
   text-align: center;
-  border-right: ${props => (props.border ? "solid 1px #e2e2e2" : "none")};
+  border-right: ${props => (props.border ? 'solid 1px #e2e2e2' : 'none')};
   p {
     color: #666c71;
     font-size: 16px;
@@ -87,4 +88,4 @@ export const Point = styled.div`
     padding: 6px;
     margin: 0;
   }
-`;
+`

@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import { Field } from "formik";
-import theme from "../../../styles/theme";
+import styled from 'styled-components'
+import { Field } from 'formik'
+import theme from '~/styles/theme'
 
 export const Container = styled.section`
   margin-top: 60px;
@@ -8,7 +8,7 @@ export const Container = styled.section`
   &:not(:last-child) {
     border-bottom: solid 1px ${theme.color.lightGray};
   }
-`;
+`
 export const Header = styled.header`
   cursor: pointer;
   height: 80px;
@@ -19,7 +19,7 @@ export const Header = styled.header`
     margin: 20px 0 6px 0;
     text-transform: uppercase;
   }
-`;
+`
 export const Icon = styled.i`
   color: ${theme.color.primaryHover};
   font-size: 28px;
@@ -30,7 +30,7 @@ export const Icon = styled.i`
           transform: rotate(180deg);`
       : `transition: 0.2s all ease-in;
           transform: rotate(0);`}
-`;
+`
 
 export const Wrapper = styled.div`
   display: flex;
@@ -52,7 +52,7 @@ export const Wrapper = styled.div`
     text-transform: uppercase;
     width: 100%;
   }
-`;
+`
 
 export const Card = styled.div`
   background: ${theme.color.white};
@@ -118,10 +118,10 @@ export const Card = styled.div`
       }
     }
   }
-`;
+`
 
 export const StyledInput = styled(Field)`
-  border: ${({ error }) => (error ? "1px solid red" : "1px solid gray")};
+  border: ${({ error }) => (error ? '1px solid red' : '1px solid gray')};
   border-radius: 6px;
   color: ${theme.color.gray};
   font-weight: bold;
@@ -130,4 +130,4 @@ export const StyledInput = styled(Field)`
   margin-bottom: 20px;
   padding: 0 4px;
   width: 100px;
-`;
+`

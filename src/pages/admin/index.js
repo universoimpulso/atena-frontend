@@ -1,38 +1,38 @@
-import React, { Component } from "react";
+import React, { Component } from 'react'
 
-import InfoCards from "./InfoCards";
-import TeamAccordion from "./TeamAccordion";
-import AdminRanking from "./AdminRanking";
-import Chart from "./Chart";
-import Users from "./Users";
-import EditExperience from "./EditExperience";
-import EditAchievements from "./EditAchievements";
-import CreateAchievements from "./CreateAchievements";
+import InfoCards from './InfoCards'
+import TeamAccordion from './TeamAccordion'
+import AdminRanking from './AdminRanking'
+import Chart from './Chart'
+import Users from './Users'
+import EditExperience from './EditExperience'
+import EditAchievements from './EditAchievements'
+import CreateAchievements from './CreateAchievements'
 
-import { Container, Aside, Section, Option } from "./styles";
+import { Container, Aside, Section, Option } from './styles'
 
 class Admin extends Component {
   state = {
-    active: "players",
+    active: 'players',
     achievementsType: null,
     options: [
-      { key: "generalReports", name: "Relatórios Gerais" },
-      { key: "ranking", name: "Rankings" },
-      { key: "editExperience", name: "Experiência" },
-      { key: "achievements", name: "Conquistas" }
-    ]
-  };
+      { key: 'generalReports', name: 'Relatórios Gerais' },
+      { key: 'ranking', name: 'Rankings' },
+      { key: 'editExperience', name: 'Experiência' },
+      { key: 'achievements', name: 'Conquistas' },
+    ],
+  }
 
   handleClick = active => {
-    active === "editAchievements" || active === "createAchievements"
+    active === 'editAchievements' || active === 'createAchievements'
       ? this.setState({ achievementsType: active })
-      : active === "achievements"
-      ? this.setState({ active, achievementsType: "editAchievements" })
-      : this.setState({ active, achievementsType: null });
-  };
+      : active === 'achievements'
+      ? this.setState({ active, achievementsType: 'editAchievements' })
+      : this.setState({ active, achievementsType: null })
+  }
 
   renderOptions = title => {
-    const { active, options } = this.state;
+    const { active, options } = this.state
     return (
       <>
         <h3>{title}</h3>
@@ -46,30 +46,30 @@ class Admin extends Component {
           </Option>
         ))}
       </>
-    );
-  };
+    )
+  }
 
   render() {
-    const { active, achievementsType } = this.state;
+    const { active, achievementsType } = this.state
     return (
       <Container>
         <Aside>
-          {this.renderOptions("Jogo")}
-          {active === "achievements" && (
+          {this.renderOptions('Jogo')}
+          {active === 'achievements' && (
             <>
               <Option
                 marginLeft="15px"
                 key="editAchievements"
-                active={achievementsType === "editAchievements"}
-                onClick={() => this.handleClick("editAchievements")}
+                active={achievementsType === 'editAchievements'}
+                onClick={() => this.handleClick('editAchievements')}
               >
                 Editar
               </Option>
               <Option
                 marginLeft="15px"
                 key="createAchievements"
-                active={achievementsType === "createAchievements"}
-                onClick={() => this.handleClick("createAchievements")}
+                active={achievementsType === 'createAchievements'}
+                onClick={() => this.handleClick('createAchievements')}
               >
                 Criar
               </Option>
@@ -79,43 +79,43 @@ class Admin extends Component {
           <h3>Jogadores</h3>
           <Option
             key="players"
-            active={active === "players"}
-            onClick={() => this.handleClick("players")}
+            active={active === 'players'}
+            onClick={() => this.handleClick('players')}
           >
             Informações do jogador
           </Option>
         </Aside>
         <Section>
-          {active === "generalReports" ? (
+          {active === 'generalReports' ? (
             <>
               <h2>Relatórios Gerais</h2>
               <Chart />
               <InfoCards />
               <TeamAccordion />
             </>
-          ) : active === "editExperience" ? (
+          ) : active === 'editExperience' ? (
             <>
               <h2>Experiência(XP)</h2>
               <EditExperience />
             </>
-          ) : active === "ranking" ? (
+          ) : active === 'ranking' ? (
             <>
               <h2>Ranking</h2>
               <AdminRanking />
             </>
-          ) : active === "players" ? (
+          ) : active === 'players' ? (
             <>
               <h2>Informações do Jogador</h2>
               <Users />
             </>
-          ) : active === "achievements" ? null : null}
+          ) : active === 'achievements' ? null : null}
 
-          {achievementsType === "editAchievements" ? (
+          {achievementsType === 'editAchievements' ? (
             <>
               <h2>Editar Conquistas</h2>
               <EditAchievements />
             </>
-          ) : achievementsType === "createAchievements" ? (
+          ) : achievementsType === 'createAchievements' ? (
             <>
               <h2>Criar Conquistas</h2>
               <CreateAchievements />
@@ -123,8 +123,8 @@ class Admin extends Component {
           ) : null}
         </Section>
       </Container>
-    );
+    )
   }
 }
 
-export default Admin;
+export default Admin

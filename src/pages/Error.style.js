@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 const StyledScreenHowItWorks = styled.section`
   .layout {
@@ -6,6 +6,6 @@ const StyledScreenHowItWorks = styled.section`
     background-color: #fdfdfd;
     color: #666c71;
   }
-`;
+`
 
-export default StyledScreenHowItWorks;
+export default StyledScreenHowItWorks

@@ -1,16 +1,16 @@
-import React from "react";
-import StyledFaq from "./style";
-import { Flex, Box } from "@rebass/grid";
-import Title from "../../../components/Title";
-import Accordion from "../../../components/Accordion";
-import Button from "../../../components/Button";
+import React from 'react'
+import StyledFaq from './style'
+import { Flex, Box } from '@rebass/grid'
+import Title from '~/components/Title'
+import Accordion from '~/components/Accordion'
+import Button from '~/components/Button'
 
 const Faq = () => (
   <section className="container faqs">
     <StyledFaq>
       <Flex
         justifyContent="space-between"
-        css={{ margin: "0 -25px" }}
+        css={{ margin: '0 -25px' }}
         flexWrap="wrap"
       >
         <Box width={[1, 2 / 5]} px={25}>
@@ -42,6 +42,6 @@ const Faq = () => (
       </Flex>
     </StyledFaq>
   </section>
-);
+)
 
-export default Faq;
+export default Faq

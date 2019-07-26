@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import theme from "../../styles/theme";
+import styled from 'styled-components';
+import theme from '~/styles/theme';
 
 export const StyledScreenRanking = styled.section`
   .layout {
@@ -69,9 +69,9 @@ export const StyledRectangle = styled.div`
     font-weight: 600;
   }
   p:after {
-    content: "";
+    content: '';
     display: block;
-    width: ${props => (props.active ? "30px" : 0)};
+    width: ${props => (props.active ? '30px' : 0)};
     height: 3px;
     background: #c9ced2;
     border-radius: 3px;
@@ -98,7 +98,7 @@ export const Loading = styled.div`
 `;
 
 export const StyledRectangleGroup = styled.div`
-  margin: ${({ margin }) => margin || "0 172px"};
+  margin: ${({ margin }) => margin || '0 172px'};
   display: flex;
   flex: 1;
 

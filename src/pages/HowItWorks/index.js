@@ -1,17 +1,17 @@
-import React, { Component } from "react";
+import React, { Component } from 'react'
 
-import hiwlpc from "../../assets/hiwlpc.png";
+import hiwlpc from '~/assets/hiwlpc.png'
 
-import StyledScreenHowItWorks from "./styles";
+import StyledScreenHowItWorks from './styles'
 
-import { Flex, Box } from "@rebass/grid";
-import XpRules from "./XpRules";
-import FullPage from "../../components/FullPage";
-import Title from "../../components/Title";
-import SubTitle from "../../components/Title/SubTitle";
-import Faq from "./Faq";
-import About from "./About";
-import QuestionCards from "./QuestionCards";
+import { Flex, Box } from '@rebass/grid'
+import XpRules from './XpRules'
+import FullPage from '~/components/FullPage'
+import Title from '~/components/Title'
+import SubTitle from '~/components/Title/SubTitle'
+import Faq from './Faq'
+import About from './About'
+import QuestionCards from './QuestionCards'
 
 class ScreenHowItWorks extends Component {
   render() {
@@ -39,8 +39,8 @@ class ScreenHowItWorks extends Component {
           <Faq />
         </main>
       </StyledScreenHowItWorks>
-    );
+    )
   }
 }
 
-export default ScreenHowItWorks;
+export default ScreenHowItWorks

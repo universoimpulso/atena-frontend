@@ -1,72 +1,70 @@
-import React, { Component } from "react";
-import { Formik } from "formik";
-import { toast } from "react-toastify";
-import PropTypes from "prop-types";
+import React, { Component } from 'react'
+import { Formik } from 'formik'
+import { toast } from 'react-toastify'
+import PropTypes from 'prop-types'
 
-import { bindActionCreators } from "redux";
-import { connect } from "react-redux";
-import { Creators as AchievementsActions } from "../../../store/ducks/achievements";
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import { Creators as AchievementsActions } from '~/store/ducks/achievements'
 
-import { SmallLoading } from "../../../components/utils";
-import { Card, StyledInput } from "./styles";
+import { SmallLoading } from '~/components/utils'
+import { Card, StyledInput } from './styles'
 
 class EditAchievements extends Component {
   static propTypes = {
     editAchievement: PropTypes.func.isRequired,
     data: PropTypes.array,
-    achievements: PropTypes.object
-  };
+    achievements: PropTypes.object,
+  }
 
   putValues = values => {
-    const { AchievementName, type, value } = this.props.data;
+    const { AchievementName, type, value } = this.props.data
 
-    const formatedValues = [];
+    const formatedValues = []
     for (let [key, value] of Object.entries(values.tiers)) {
-      formatedValues.push({ name: key, value });
+      formatedValues.push({ name: key, value })
     }
 
-    values.tiers = formatedValues;
+    values.tiers = formatedValues
 
     const sameValues = value.tiers.filter(
       (v, index) => v.value === values.tiers[index].value
-    );
+    )
 
     if (sameValues.length === 5) {
-      toast.warn("Nenhum valor alterado, sua requisição nao foi enviada!");
-      return;
+      toast.warn('Nenhum valor alterado, sua requisição nao foi enviada!')
+      return
     }
 
-    const data = { AchievementName, type, values };
-    this.props.editAchievement(data);
-  };
+    const data = { AchievementName, type, values }
+    this.props.editAchievement(data)
+  }
 
   notify = type => {
-    if (type === "negativeNumber") {
-      if (toast.isActive("negativeNumber")) return;
-      toast.error("Não é possível submeter valores negativos", {
-        toastId: "negativeNumber"
-      });
+    if (type === 'negativeNumber') {
+      if (toast.isActive('negativeNumber')) return
+      toast.error('Não é possível submeter valores negativos', {
+        toastId: 'negativeNumber',
+      })
     }
-  };
+  }
 
   getValues = data => {
-    console.tron.log(data);
-    const values = {};
-    data.forEach(data => Object.assign(values, { [data.name]: data.value }));
-    console.tron.log(values);
-    return values;
-  };
+    const values = {}
+    data.forEach(data => Object.assign(values, { [data.name]: data.value }))
+    return values
+  }
 
   validate = value => {
-    const validate = value && value > 0 ? undefined : true;
-    if (validate) this.notify("negativeNumber");
-    return validate;
-  };
+    const validate = value && value > 0 ? undefined : true
+    if (validate) this.notify('negativeNumber')
+    return validate
+  }
 
   render() {
-    const { type } = this.props.data;
-    const { name, tiers } = this.props.data.value;
-    const { editLoading } = this.props.achievements;
+    const { type } = this.props.data
+    const { name, tiers } = this.props.data.value
+    const { editLoading } = this.props.achievements
     return (
       <Card>
         <p>{name}</p>
@@ -97,16 +95,16 @@ class EditAchievements extends Component {
         </Formik>
         {editLoading === type.concat(name) && <SmallLoading />}
       </Card>
-    );
+    )
   }
 }
 
-const mapStateToProps = state => ({ achievements: state.achievements });
+const mapStateToProps = state => ({ achievements: state.achievements })
 
 const mapDispatchToProps = dispatch =>
-  bindActionCreators(AchievementsActions, dispatch);
+  bindActionCreators(AchievementsActions, dispatch)
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(EditAchievements);
+)(EditAchievements)

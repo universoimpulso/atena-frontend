@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import Select from "react-select";
-import theme from "../../styles/theme";
+import styled from 'styled-components'
+import Select from 'react-select'
+import theme from '~/styles/theme'
 
 export const Container = styled.section`
   align-items: space-between;
@@ -14,7 +14,7 @@ export const Container = styled.section`
     line-height: 50px;
     margin: 0 12px;
   }
-`;
+`
 
 export const SearchBar = styled.input`
   border: none;
@@ -28,9 +28,9 @@ export const SearchBar = styled.input`
     color: ${theme.color.gray};
     font-weight: bold;
   }
-`;
+`
 
 export const StyledSelect = styled(Select)`
   color: ${theme.color.gray};
   flex-grow: 1;
-`;
+`

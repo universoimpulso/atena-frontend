@@ -1,16 +1,16 @@
-import axios from "axios";
-import { getToken } from "./auth";
+import axios from 'axios'
+import { getToken } from './auth'
 
 const api = axios.create({
-  baseURL: process.env.REACT_APP_API_URL
-});
+  baseURL: process.env.REACT_APP_API_URL,
+})
 
 api.interceptors.request.use(async config => {
-  const token = getToken();
+  const token = getToken()
   if (token) {
-    config.headers.Authorization = `Bearer ${token}`;
+    config.headers.Authorization = `Bearer ${token}`
   }
-  return config;
-});
+  return config
+})
 
-export default api;
+export default api

@@ -1,44 +1,43 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
-import { bindActionCreators } from "redux";
-import { Flex, Box } from "@rebass/grid";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { bindActionCreators } from 'redux';
+import { Flex, Box } from '@rebass/grid';
 
-import { Creators as RankingActions } from "../../store/ducks/ranking";
+import { Creators as RankingActions } from '~/store/ducks/ranking';
 
-import RankingRow from "./RankingRow";
-import Title from "../../components/Title";
-import FullPage from "../../components/FullPage";
-import Podium from "../../components/Podium";
-import { PageError, PageLoading } from "../../components/utils";
+import RankingRow from './RankingRow';
+import Title from '~/components/Title';
+import FullPage from '~/components/FullPage';
+import Podium from '~/components/Podium';
+import { PageError, PageLoading } from '~/components/utils';
 
-import BgRanking from "../../assets/bg_ranking.png";
+import BgRanking from '~/assets/bg_ranking.png';
 import {
   StyledScreenRanking,
   StyledRectangleGroup,
   StyledRectangle,
-  RankingHeader
-} from "./styles";
+  RankingHeader,
+} from './styles';
 
 class ScreenRanking extends Component {
   static propTypes = {
     getRanking: PropTypes.func.isRequired,
-    ranking: PropTypes.object
-    // ranking: PropTypes.shape({
-    //   loading: PropTypes.bool,
-    //   monthName: PropTypes.string,
-    //   error: PropTypes.string,
-    //   firstUsers: PropTypes.array,
-    //   lastUsers: PropTypes.array
-    // }).isRequired
+    ranking: PropTypes.shape({
+      loading: PropTypes.bool,
+      monthName: PropTypes.string,
+      error: PropTypes.string,
+      firstUsers: PropTypes.array,
+      lastUsers: PropTypes.array,
+    }).isRequired,
   };
 
   state = {
-    selected: "general"
+    selected: 'general',
   };
 
   componentDidMount() {
-    this.props.getRanking();
+    this.props.getRanking(this.state.selected);
   }
 
   toggleRanking = selected => {
@@ -53,10 +52,10 @@ class ScreenRanking extends Component {
       loading,
       monthName,
       firstUsers,
-      lastUsers
-    } = this.props.ranking.ranking;
+      lastUsers,
+    } = this.props.ranking;
 
-    if (error)
+    if (!!error)
       return (
         <StyledScreenRanking>
           <main className="layout">
@@ -112,15 +111,15 @@ class ScreenRanking extends Component {
               >
                 <StyledRectangleGroup>
                   <StyledRectangle
-                    onClick={() => this.toggleRanking("monthly")}
-                    active={selected === "monthly"}
+                    onClick={() => this.toggleRanking('monthly')}
+                    active={selected === 'monthly'}
                     left
                   >
                     <p>Ranking Mensal</p>
                   </StyledRectangle>
                   <StyledRectangle
-                    onClick={() => this.toggleRanking("general")}
-                    active={selected === "general"}
+                    onClick={() => this.toggleRanking('general')}
+                    active={selected === 'general'}
                     right
                   >
                     <p>Ranking Geral</p>
@@ -133,9 +132,9 @@ class ScreenRanking extends Component {
               ) : (
                 <>
                   <Flex justifyContent="center">
-                    <Title align={"center"} extraLarge>
+                    <Title align={'center'} extraLarge>
                       RANKING
-                      {selected === "general" ? (
+                      {selected === 'general' ? (
                         <>
                           <br />
                           <span className="month"> GERAL</span>
@@ -178,7 +177,7 @@ class ScreenRanking extends Component {
   }
 }
 const mapStateToProps = state => ({
-  ranking: state.ranking
+  ranking: state.ranking.ranking,
 });
 
 const mapDispatchToProps = dispatch =>

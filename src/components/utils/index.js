@@ -1,22 +1,24 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react'
+import PropTypes from 'prop-types'
 
-import { Flex } from "@rebass/grid";
-import Title from "../Title";
+import { Flex } from '@rebass/grid'
+import Title from '~/components/Title'
 import {
   StyledScreenError,
   Loading,
   SmallLoadingWrapper,
-  SmallErrorWrapper
-} from "./styles";
-import loading from "../../assets/loading.svg";
+  SmallErrorWrapper,
+  Header,
+} from './styles'
+import loading from '~/assets/loading.svg'
 
-export const PageError = ({ message, background }) => (
+export const PageError = ({ message, background, withHeader }) => (
   <StyledScreenError background={background}>
+    {withHeader && <Header />}
     <main className="layout">
       <div className="_inner">
         <Flex justifyContent="center">
-          <Title align={"center"} extraLarge>
+          <Title align={'center'} extraLarge>
             Opa! algo deu errado...
           </Title>
         </Flex>
@@ -27,14 +29,14 @@ export const PageError = ({ message, background }) => (
       </div>
     </main>
   </StyledScreenError>
-);
+)
 
 export const SmallError = ({ refresh, height, width, message }) => (
   <SmallErrorWrapper height={height} width={width} onClick={refresh}>
     <p>Algo deu errado! clique aqui para atualizar</p>
     {message}
   </SmallErrorWrapper>
-);
+)
 
 export const PageLoading = ({ paddingSize, imgSize, width, height }) => (
   <Loading
@@ -45,31 +47,33 @@ export const PageLoading = ({ paddingSize, imgSize, width, height }) => (
   >
     <img src={loading} alt="" />
   </Loading>
-);
+)
 
 export const SmallLoading = ({ width, height }) => (
   <SmallLoadingWrapper width={width} height={height}>
     <img src={loading} alt="" />
   </SmallLoadingWrapper>
-);
+)
 
 PageError.propTypes = {
-  message: PropTypes.string.isRequired
-};
+  message: PropTypes.string.isRequired,
+  background: PropTypes.string,
+  withHeader: PropTypes.bool,
+}
 SmallError.propTypes = {
   refresh: PropTypes.func,
   height: PropTypes.string,
   width: PropTypes.string,
-  message: PropTypes.string
-};
+  message: PropTypes.string,
+}
 PageLoading.propTypes = {
   paddingSize: PropTypes.string,
   imgSize: PropTypes.string,
   width: PropTypes.string,
-  height: PropTypes.string
-};
+  height: PropTypes.string,
+}
 
 SmallLoading.propTypes = {
   width: PropTypes.string,
-  height: PropTypes.string
-};
+  height: PropTypes.string,
+}

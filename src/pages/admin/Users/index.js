@@ -1,18 +1,18 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import Select from "react-select";
-import { Flex } from "@rebass/grid";
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import Select from 'react-select'
+import { Flex } from '@rebass/grid'
 
-import { bindActionCreators } from "redux";
-import { connect } from "react-redux";
-import { Creators as RankingActions } from "../../../store/ducks/ranking";
-import { Creators as UserActions } from "../../../store/ducks/user";
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import { Creators as RankingActions } from '~/store/ducks/ranking'
+import { Creators as UserActions } from '~/store/ducks/user'
 
-import { PageLoading, PageError, SmallError } from "../../../components/utils";
-import RankingRow from "../../../pages/Ranking/RankingRow";
-import SearchBar from "../../../components/SearchBar";
-import InfoCards from "../InfoCards";
-import TeamAccordion from "../TeamAccordion";
+import { PageLoading, PageError, SmallError } from '~/components/utils'
+import RankingRow from '~/pages/Ranking/RankingRow'
+import SearchBar from '~/components/SearchBar'
+import InfoCards from '../InfoCards'
+import TeamAccordion from '../TeamAccordion'
 
 import {
   Container,
@@ -23,8 +23,8 @@ import {
   Card,
   ButtonWrapper,
   Button,
-  Info
-} from "./styles";
+  Info,
+} from './styles'
 
 class Users extends Component {
   static propTypes = {
@@ -32,23 +32,23 @@ class Users extends Component {
     user: PropTypes.object,
     userInfo: PropTypes.object,
     getUserInfo: PropTypes.func.isRequired,
-    ranking: PropTypes.object
-  };
-  state = { user: null };
+    ranking: PropTypes.object,
+  }
+  state = { user: null }
 
   getUserInfo = name => {
     if (name) {
-      this.props.actions.getUserInfo(name);
-      this.setState({ user: name });
+      this.props.actions.getUserInfo(name)
+      this.setState({ user: name })
     }
-    this.props.actions.getUserInfo(this.state.user);
-  };
+    this.props.actions.getUserInfo(this.state.user)
+  }
 
   renderUsersList = users => {
-    const { loading, error, data } = users;
-    if (error) return <PageError message={error} />;
-    if (!data && !loading) return;
-    if (!data && loading) return <PageLoading />;
+    const { loading, error, data } = users
+    if (error) return <PageError message={error} />
+    if (!data && !loading) return
+    if (!data && loading) return <PageLoading />
     return (
       <Flex justifyContent="space-around" mt={50} mb={50} flexWrap="wrap">
         <RankingHeader>
@@ -62,11 +62,11 @@ class Users extends Component {
           <RankingRow getUserInfo={this.getUserInfo} key={index} {...card} />
         ))}
       </Flex>
-    );
-  };
+    )
+  }
 
   renderUserInfos = userInfo => {
-    const { loading, error, data } = userInfo;
+    const { loading, error, data } = userInfo
     if (error)
       return (
         <UserSection>
@@ -76,10 +76,9 @@ class Users extends Component {
             message={error}
           />
         </UserSection>
-      );
+      )
 
-    if (!data && !loading) return;
-    if (loading) return <PageLoading />;
+    if (!data) return !loading ? null : <PageLoading />
 
     return (
       <UserSection>
@@ -121,38 +120,37 @@ class Users extends Component {
         <InfoCards user={data.name} />
         <TeamAccordion user={data.name} />
       </UserSection>
-    );
-  };
+    )
+  }
 
   render() {
-    console.tron.log(this.props);
-    const { users } = this.props.ranking;
-    const { userInfo } = this.props.user;
+    const { users } = this.props.ranking
+    const { userInfo } = this.props.user
     return (
       <Container>
         <SearchBar />
         {this.renderUsersList(users)}
         {this.renderUserInfos(userInfo)}
       </Container>
-    );
+    )
   }
 }
 
 const mapStateToProps = state => ({
   ranking: state.ranking,
-  user: state.user
-});
+  user: state.user,
+})
 
 const mapDispatchToProps = dispatch => {
   return {
     actions: bindActionCreators(
       Object.assign({}, RankingActions, UserActions),
       dispatch
-    )
-  };
-};
+    ),
+  }
+}
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Users);
+)(Users)

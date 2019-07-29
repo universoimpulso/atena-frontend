@@ -4,10 +4,10 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
-import { Creators as AuthActions } from '~/store/ducks/auth'
+import { Creators as AuthActions } from '../../../store/ducks/auth'
 
-import Auth from '~/components/auth'
-import avatarSvg from '~/assets/avatarWhite.svg'
+import Auth from '../../auth'
+import avatarSvg from '../../../assets/avatarWhite.svg'
 import StyledMenu from './styles'
 
 class Menu extends Component {
@@ -18,8 +18,8 @@ class Menu extends Component {
       activeModal: PropTypes.bool.isRequired,
       avatar: PropTypes.string,
       uuid: PropTypes.string,
-      isCoreTeam: PropTypes.bool,
-    }).isRequired,
+      isCoreTeam: PropTypes.bool
+    }).isRequired
   }
 
   toggleModal = () => {
@@ -94,7 +94,7 @@ class Menu extends Component {
 }
 
 const mapStateToProps = state => ({
-  auth: state.auth,
+  auth: state.auth
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators(AuthActions, dispatch)

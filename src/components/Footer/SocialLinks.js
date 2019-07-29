@@ -4,24 +4,24 @@ import StyledSocialLinks from './SocialLinks.style'
 const links = [
   {
     icon: 'facebook-f',
-    link: 'https://www.facebook.com/universoimpulso',
+    link: 'https://www.facebook.com/universoimpulso'
   },
   {
     icon: 'twitter',
-    link: 'https://twitter.com/universoimpulso',
+    link: 'https://twitter.com/universoimpulso'
   },
   {
     icon: 'linkedin-in',
-    link: 'https://www.linkedin.com/company/universoimpulso',
+    link: 'https://www.linkedin.com/company/universoimpulso'
   },
   {
     icon: 'github',
-    link: 'https://github.com/universoimpulso',
+    link: 'https://github.com/universoimpulso'
   },
   {
     icon: 'rocketchat',
-    link: 'https://chat.impulso.network',
-  },
+    link: 'https://chat.impulso.network'
+  }
 ]
 
 const renderLinks = () =>

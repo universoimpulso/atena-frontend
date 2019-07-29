@@ -4,17 +4,17 @@ import PropTypes from 'prop-types'
 import { bindActionCreators } from 'redux'
 import { Flex } from '@rebass/grid'
 
-import { Creators as RankingActions } from '~/store/ducks/ranking'
+import { Creators as RankingActions } from '../../../store/ducks/ranking'
 
-import RankingRow from '~/pages/Ranking/RankingRow'
-import Title from '~/components/Title'
-import { PageError, PageLoading } from '~/components/utils'
+import RankingRow from '../../Ranking/RankingRow'
+import Title from '../../../components/Title'
+import { PageError, PageLoading } from '../../../components/utils'
 
 import {
   StyledRectangleGroup,
   StyledRectangle,
-  RankingHeader,
-} from '~/pages/Ranking/styles'
+  RankingHeader
+} from '../../Ranking/styles'
 
 class ScreenRanking extends Component {
   static propTypes = {
@@ -24,12 +24,12 @@ class ScreenRanking extends Component {
       monthName: PropTypes.string,
       error: PropTypes.string,
       firstUsers: PropTypes.array,
-      lastUsers: PropTypes.array,
-    }).isRequired,
+      lastUsers: PropTypes.array
+    }).isRequired
   }
 
   state = {
-    selected: 'general',
+    selected: 'general'
   }
 
   componentDidMount() {
@@ -48,7 +48,7 @@ class ScreenRanking extends Component {
       loading,
       monthName,
       firstUsers,
-      lastUsers,
+      lastUsers
     } = this.props.ranking
 
     if (!!error) return <PageError message={error} />
@@ -120,7 +120,7 @@ class ScreenRanking extends Component {
   }
 }
 const mapStateToProps = state => ({
-  ranking: state.ranking.ranking,
+  ranking: state.ranking.ranking
 })
 
 const mapDispatchToProps = dispatch =>

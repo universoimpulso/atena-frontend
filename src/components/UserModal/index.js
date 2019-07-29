@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 
-import api from '~/services/api'
+import api from '../../services/api'
 import {
   Wrapper,
   Container,
   UserWrapper,
   UserInfo,
   ButtonWrapper,
-  Button,
+  Button
 } from './style'
 
 class UserModal extends Component {
@@ -17,7 +17,7 @@ class UserModal extends Component {
     rocketUser: null,
     slackUser: null,
     updatedRocketUser: null,
-    updatedSlackUser: null,
+    updatedSlackUser: null
   }
 
   componentDidMount() {
@@ -26,7 +26,7 @@ class UserModal extends Component {
     this.setState({
       loading: false,
       rocketUser: selectRocketUser,
-      slackUser: selectSlackUser,
+      slackUser: selectSlackUser
     })
   }
 
@@ -36,7 +36,7 @@ class UserModal extends Component {
     try {
       const response = await api.put(`api/v1/edit-score/${rocketUser._id}`, {
         type: 'rocket',
-        score: slackUser.score,
+        score: slackUser.score
       })
       if (response.data) {
         updatedRocketUser = response.data
@@ -48,7 +48,7 @@ class UserModal extends Component {
 
     this.setState({
       rocketUser: updatedRocketUser,
-      slackUser: updatedSlackUser,
+      slackUser: updatedSlackUser
     })
   }
 
@@ -56,7 +56,7 @@ class UserModal extends Component {
     try {
       const response = await api.put(`api/v1/edit-score/${id}`, {
         type: 'slack',
-        score: -1,
+        score: -1
       })
       return response.data
     } catch (error) {

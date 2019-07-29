@@ -5,16 +5,16 @@ import PropTypes from 'prop-types'
 
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { Creators as AchievementsActions } from '~/store/ducks/achievements'
+import { Creators as AchievementsActions } from '../../../store/ducks/achievements'
 
-import { SmallLoading } from '~/components/utils'
+import { SmallLoading } from '../../../components/utils'
 import { Card, StyledInput } from './styles'
 
 class EditAchievements extends Component {
   static propTypes = {
     editAchievement: PropTypes.func.isRequired,
     data: PropTypes.array,
-    achievements: PropTypes.object,
+    achievements: PropTypes.object
   }
 
   putValues = values => {
@@ -44,7 +44,7 @@ class EditAchievements extends Component {
     if (type === 'negativeNumber') {
       if (toast.isActive('negativeNumber')) return
       toast.error('Não é possível submeter valores negativos', {
-        toastId: 'negativeNumber',
+        toastId: 'negativeNumber'
       })
     }
   }

@@ -1,5 +1,5 @@
 import { decrypt } from './crypto'
-import { store } from '~/store'
+import { store } from '../store'
 const TOKEN_KEY = '@at:atpin'
 
 export const isAuthenticated = async () => {

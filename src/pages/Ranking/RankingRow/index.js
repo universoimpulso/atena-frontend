@@ -34,7 +34,7 @@ RankingRow.propTypes = {
   name: PropTypes.string.isRequired,
   avatar: PropTypes.string.isRequired,
   level: PropTypes.number.isRequired,
-  xp: PropTypes.number.isRequired,
+  xp: PropTypes.number.isRequired
 }
 
 export default RankingRow

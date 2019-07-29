@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 
-import { Creators as achievementsActions } from '~/store/ducks/achievements'
+import { Creators as achievementsActions } from '../../../store/ducks/achievements'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
@@ -12,11 +12,11 @@ class EditAchievements extends Component {
   static propTypes = {
     getAchievements: PropTypes.func.isRequired,
     achievements: PropTypes.object.isRequired,
-    achievementsValues: PropTypes.array,
+    achievementsValues: PropTypes.array
   }
 
   state = {
-    active: null,
+    active: null
   }
 
   componentDidMount() {
@@ -54,7 +54,7 @@ class EditAchievements extends Component {
                         data={{
                           value,
                           AchievementName: achievement.name,
-                          type: data.type,
+                          type: data.type
                         }}
                       />
                     ))}

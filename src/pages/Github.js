@@ -1,7 +1,7 @@
 import React from 'react'
 import StyledScreenGithub from './Github.style'
-import Card from '~/components/Card'
-import Title from '~/components/Title'
+import Card from '../components/Card'
+import Title from '../components/Title'
 
 const ScreenGithub = () => {
   return (

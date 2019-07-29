@@ -19,11 +19,11 @@ const Tab = ({ data }) => (
 
 renderItem.propTypes = {
   title: PropTypes.string.isRequired,
-  content: PropTypes.element.isRequired,
+  content: PropTypes.element.isRequired
 }
 
 Tab.propTypes = {
-  data: PropTypes.array.isRequired,
+  data: PropTypes.array.isRequired
 }
 
 export default Tab

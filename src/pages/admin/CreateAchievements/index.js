@@ -6,7 +6,7 @@ import { Formik } from 'formik'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 
-import { Creators as achievementsActions } from '~/store/ducks/achievements'
+import { Creators as achievementsActions } from '../../../store/ducks/achievements'
 
 import {
   StyledForm,
@@ -18,14 +18,14 @@ import {
   Wrapper,
   Card,
   Title,
-  Button,
+  Button
 } from './styles'
 
 class CreateAchievements extends Component {
   static propTypes = {
     getAchievements: PropTypes.func.isRequired,
     achievements: PropTypes.object.isRequired,
-    achievementsValues: PropTypes.array,
+    achievementsValues: PropTypes.array
   }
 
   state = {
@@ -34,16 +34,16 @@ class CreateAchievements extends Component {
     limitDate: null,
     achievementTypeOptions: [
       { value: 'permanent', label: 'Permanente', isDisabled: true },
-      { value: 'temporary', label: 'Temporária' },
+      { value: 'temporary', label: 'Temporária' }
     ],
     category: [
       { value: 'rocketchat', label: 'RocketChat' },
-      { value: 'github', label: 'Github' },
+      { value: 'github', label: 'Github' }
     ],
     activity: [
       { value: 'Mensagens Enviadas', label: 'Mensagens Enviadas' },
       { value: 'Reactions Dados', label: 'Reactions Dados' },
-      { value: 'Reactions Recebidos', label: 'Reactions Recebidos' },
+      { value: 'Reactions Recebidos', label: 'Reactions Recebidos' }
     ],
     achievement: [
       {
@@ -53,8 +53,8 @@ class CreateAchievements extends Component {
           { name: 'II', value: 1600 },
           { name: 'III', value: 1700 },
           { name: 'IV', value: 1800 },
-          { name: 'V', value: 2000 },
-        ],
+          { name: 'V', value: 2000 }
+        ]
       },
       {
         name: 'silver',
@@ -63,8 +63,8 @@ class CreateAchievements extends Component {
           { name: 'II', value: 1600 },
           { name: 'III', value: 1700 },
           { name: 'IV', value: 1800 },
-          { name: 'V', value: 2000 },
-        ],
+          { name: 'V', value: 2000 }
+        ]
       },
       {
         name: 'gold',
@@ -73,8 +73,8 @@ class CreateAchievements extends Component {
           { name: 'II', value: 1600 },
           { name: 'III', value: 1700 },
           { name: 'IV', value: 1800 },
-          { name: 'V', value: 2000 },
-        ],
+          { name: 'V', value: 2000 }
+        ]
       },
       {
         name: 'platinum',
@@ -83,8 +83,8 @@ class CreateAchievements extends Component {
           { name: 'II', value: 1600 },
           { name: 'III', value: 1700 },
           { name: 'IV', value: 1800 },
-          { name: 'V', value: 2000 },
-        ],
+          { name: 'V', value: 2000 }
+        ]
       },
       {
         name: 'diamond',
@@ -93,10 +93,10 @@ class CreateAchievements extends Component {
           { name: 'II', value: 1600 },
           { name: 'III', value: 1700 },
           { name: 'IV', value: 1800 },
-          { name: 'V', value: 2000 },
-        ],
-      },
-    ],
+          { name: 'V', value: 2000 }
+        ]
+      }
+    ]
   }
 
   componentDidMount() {
@@ -107,19 +107,19 @@ class CreateAchievements extends Component {
 
   handleChangeStart = date => {
     this.setState({
-      startDate: date,
+      startDate: date
     })
   }
 
   handleChangeEnd = date => {
     this.setState({
-      endDate: date,
+      endDate: date
     })
   }
 
   handleChangeLimit = date => {
     this.setState({
-      limitDate: date,
+      limitDate: date
     })
   }
   getValues = () => {

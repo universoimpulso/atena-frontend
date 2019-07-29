@@ -1,12 +1,12 @@
 import React from 'react'
 
-import badge from '~/assets/badge.svg'
-import stars from '~/assets/stars.svg'
+import badge from '../../../assets/badge.svg'
+import stars from '../../../assets/stars.svg'
 
-import Card from '~/components/Card'
+import Card from '../../../components/Card'
 import { Flex, Box } from '@rebass/grid'
-import Title from '~/components/Title'
-import Button from '~/components/Button'
+import Title from '../../../components/Title'
+import Button from '../../../components/Button'
 
 const QuestionCards = () => {
   return (
@@ -41,7 +41,7 @@ const QuestionCards = () => {
           px={25}
           css={{
             display: 'flex',
-            flexDirection: 'column',
+            flexDirection: 'column'
           }}
         >
           <Card>

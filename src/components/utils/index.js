@@ -2,15 +2,15 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import { Flex } from '@rebass/grid'
-import Title from '~/components/Title'
+import Title from '../Title'
 import {
   StyledScreenError,
   Loading,
   SmallLoadingWrapper,
   SmallErrorWrapper,
-  Header,
+  Header
 } from './styles'
-import loading from '~/assets/loading.svg'
+import loading from '../../assets/loading.svg'
 
 export const PageError = ({ message, background, withHeader }) => (
   <StyledScreenError background={background}>
@@ -58,22 +58,22 @@ export const SmallLoading = ({ width, height }) => (
 PageError.propTypes = {
   message: PropTypes.string.isRequired,
   background: PropTypes.string,
-  withHeader: PropTypes.bool,
+  withHeader: PropTypes.bool
 }
 SmallError.propTypes = {
   refresh: PropTypes.func,
   height: PropTypes.string,
   width: PropTypes.string,
-  message: PropTypes.string,
+  message: PropTypes.string
 }
 PageLoading.propTypes = {
   paddingSize: PropTypes.string,
   imgSize: PropTypes.string,
   width: PropTypes.string,
-  height: PropTypes.string,
+  height: PropTypes.string
 }
 
 SmallLoading.propTypes = {
   width: PropTypes.string,
-  height: PropTypes.string,
+  height: PropTypes.string
 }

@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
 
-import hiwlpc from '~/assets/hiwlpc.png'
+import hiwlpc from '../../assets/hiwlpc.png'
 
 import StyledScreenHowItWorks from './styles'
 
 import { Flex, Box } from '@rebass/grid'
 import XpRules from './XpRules'
-import FullPage from '~/components/FullPage'
-import Title from '~/components/Title'
-import SubTitle from '~/components/Title/SubTitle'
+import FullPage from '../../components/FullPage'
+import Title from '../../components/Title'
+import SubTitle from '../../components/Title/SubTitle'
 import Faq from './Faq'
 import About from './About'
 import QuestionCards from './QuestionCards'

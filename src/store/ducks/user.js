@@ -4,19 +4,19 @@ const INITIAL_STATE = {
   userInfo: {
     loading: false,
     error: null,
-    data: null,
+    data: null
   },
   userAchievements: {
     loading: null,
     error: null,
-    data: null,
+    data: null
   },
   profile: {
     loading: true,
     error: '',
     userInfo: {},
-    userAchievements: [],
-  },
+    userAchievements: []
+  }
 }
 
 export const { Types, Creators } = createActions({
@@ -25,7 +25,7 @@ export const { Types, Creators } = createActions({
   getUserInfo: ['data'],
   getUserInfoResponse: ['data'],
   putUserInfo: ['data'],
-  putUserInfoResponse: ['data'],
+  putUserInfoResponse: ['data']
 })
 
 const getProfile = (state = INITIAL_STATE) => ({
@@ -33,13 +33,13 @@ const getProfile = (state = INITIAL_STATE) => ({
   profile: {
     ...state.profile,
     loading: true,
-    error: '',
-  },
+    error: ''
+  }
 })
 
 const getProfileResponse = (state = INITIAL_STATE, action) => ({
   ...state,
-  profile: action.data,
+  profile: action.data
 })
 
 const getUserInfo = (state = INITIAL_STATE) => ({
@@ -47,21 +47,21 @@ const getUserInfo = (state = INITIAL_STATE) => ({
   userInfo: {
     loading: true,
     error: null,
-    data: null,
-  },
+    data: null
+  }
 })
 
 const getUserInfoResponse = (state = INITIAL_STATE, action) => ({
   ...state,
-  userInfo: action.data,
+  userInfo: action.data
 })
 
 const putUserInfo = (state = INITIAL_STATE) => ({
-  ...state,
+  ...state
 })
 
 const putUserInfoResponse = (state = INITIAL_STATE) => ({
-  ...state,
+  ...state
 })
 
 export default createReducer(INITIAL_STATE, {
@@ -70,5 +70,5 @@ export default createReducer(INITIAL_STATE, {
   [Types.GET_USER_INFO]: getUserInfo,
   [Types.GET_USER_INFO_RESPONSE]: getUserInfoResponse,
   [Types.PUT_USER_INFO]: putUserInfo,
-  [Types.PUT_USER_INFO_RESPONSE]: putUserInfoResponse,
+  [Types.PUT_USER_INFO_RESPONSE]: putUserInfoResponse
 })

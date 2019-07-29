@@ -1,13 +1,13 @@
 import React from 'react'
 import { Switch } from 'react-router-dom'
-import Route from '~/routes/Route'
+import Route from '../routes/Route'
 
-import TransferXp from '~/pages/TransferXp'
-import HowItWorks from '~/pages/HowItWorks'
-import Ranking from '~/pages/Ranking'
-import Admin from '~/pages/admin'
-import UserInfo from '~/pages/UserInfo'
-import Github from '~/pages/Github'
+import TransferXp from '../pages/TransferXp'
+import HowItWorks from '../pages/HowItWorks'
+import Ranking from '../pages/Ranking'
+import Admin from '../pages/admin'
+import UserInfo from '../pages/UserInfo'
+import Github from '../pages/Github'
 
 import { LinkedInPopUp } from 'react-linkedin-login-oauth2'
 

@@ -2,12 +2,12 @@
 import React, { Component } from 'react'
 
 import { Flex, Box } from '@rebass/grid'
-import Title from '~/components/Title'
-import Button from '~/components/Button'
+import Title from '../../../components/Title'
+import Button from '../../../components/Button'
 
 class XpRules extends Component {
   state = {
-    selected: 'gain',
+    selected: 'gain'
   }
 
   changeInfos = selected => {

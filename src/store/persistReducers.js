@@ -7,7 +7,7 @@ export default reducers => {
     {
       key: '@atena',
       storage,
-      whitelist: ['auth'],
+      whitelist: ['auth']
     },
     reducers
   )

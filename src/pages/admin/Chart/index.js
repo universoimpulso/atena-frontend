@@ -2,11 +2,11 @@ import React, { Component } from 'react'
 import ReactEcharts from 'echarts-for-react'
 import PropTypes from 'prop-types'
 
-import { Creators as GeneralReportsActions } from '~/store/ducks/generalReports'
+import { Creators as GeneralReportsActions } from '../../../store/ducks/generalReports'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
-import { PageLoading, SmallError } from '~/components/utils'
+import { PageLoading, SmallError } from '../../../components/utils'
 import { Wrapper, Info, Container, Card, Total, Level } from './styles'
 
 class Charts extends Component {
@@ -16,8 +16,8 @@ class Charts extends Component {
       getUsersLoading: PropTypes.bool.isRequired,
       errors: PropTypes.object,
       totalUsers: PropTypes.number,
-      users: PropTypes.arrayOf(PropTypes.object),
-    }).isRequired,
+      users: PropTypes.arrayOf(PropTypes.object)
+    }).isRequired
   }
 
   state = {
@@ -31,8 +31,8 @@ class Charts extends Component {
       '#E35F5A',
       '#B9FF8D',
       '#7AE8E8',
-      '#A3A0FB',
-    ],
+      '#A3A0FB'
+    ]
   }
 
   getOption = () => {
@@ -44,7 +44,7 @@ class Charts extends Component {
           return obj
         },
         trigger: 'item',
-        formatter: '{b} <br/> {c}',
+        formatter: '{b} <br/> {c}'
       },
       color: this.state.colors,
 
@@ -59,24 +59,24 @@ class Charts extends Component {
             normal: {
               show: false,
               position: 'center',
-              formatter: '{d}%',
+              formatter: '{d}%'
             },
             emphasis: {
               show: true,
               textStyle: {
                 fontSize: '20',
-                fontWeight: 'bold',
-              },
-            },
+                fontWeight: 'bold'
+              }
+            }
           },
           labelLine: {
             normal: {
-              show: false,
-            },
+              show: false
+            }
           },
-          data: this.props.generalReports.users.users,
-        },
-      ],
+          data: this.props.generalReports.users.users
+        }
+      ]
     }
   }
 
@@ -91,7 +91,7 @@ class Charts extends Component {
       loading,
       error,
       users,
-      totalUsers,
+      totalUsers
     } = this.props.generalReports.users
 
     if (error)

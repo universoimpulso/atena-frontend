@@ -6,14 +6,14 @@ import 'moment/locale/pt-br'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
-import { SmallLoading, SmallError } from '~/components/utils'
-import { Creators as GeneralReportsActions } from '~/store/ducks/generalReports'
+import { SmallLoading, SmallError } from '../../../components/utils'
+import { Creators as GeneralReportsActions } from '../../../store/ducks/generalReports'
 import {
   Container,
   CardsWrapper,
   Card,
   Percentage,
-  StyledSelect,
+  StyledSelect
 } from './styles'
 
 class InfoCards extends Component {
@@ -27,7 +27,7 @@ class InfoCards extends Component {
         byMonthPercentage: PropTypes.number,
         byYear: PropTypes.number,
         byYearPercentage: PropTypes.number,
-        total: PropTypes.number,
+        total: PropTypes.number
       }).isRequired,
 
       missions: PropTypes.shape({
@@ -35,7 +35,7 @@ class InfoCards extends Component {
         byMonthPercentage: PropTypes.number,
         byYear: PropTypes.number,
         byYearPercentage: PropTypes.number,
-        total: PropTypes.number,
+        total: PropTypes.number
       }).isRequired,
 
       xp: PropTypes.shape({
@@ -43,9 +43,9 @@ class InfoCards extends Component {
         byMonthPercentage: PropTypes.number,
         byYear: PropTypes.number,
         byYearPercentage: PropTypes.number,
-        total: PropTypes.number,
-      }).isRequired,
-    }).isRequired,
+        total: PropTypes.number
+      }).isRequired
+    }).isRequired
   }
   state = {}
 
@@ -65,7 +65,7 @@ class InfoCards extends Component {
     for (let i = 0; i < 7; i++) {
       options.push({
         value: { type, data: this.getMonth(i) },
-        label: this.getFormatedMonth(i),
+        label: this.getFormatedMonth(i)
       })
     }
     return options
@@ -114,7 +114,7 @@ class InfoCards extends Component {
       byMonthPercentage,
       byYear,
       byYearPercentage,
-      total,
+      total
     } = data
 
     return (
@@ -135,7 +135,7 @@ class InfoCards extends Component {
             <StyledSelect
               defaultValue={{
                 value: { type, data: this.getMonth(0) },
-                label: this.getFormatedMonth(0),
+                label: this.getFormatedMonth(0)
               }}
               options={this.renderOptions(type)}
               onChange={this.handleChange}

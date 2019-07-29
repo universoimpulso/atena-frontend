@@ -5,8 +5,8 @@ import { connect } from 'react-redux'
 import { toast } from 'react-toastify'
 import { LinkedIn } from 'react-linkedin-login-oauth2'
 
-import { Creators as AuthActions } from '~/store/ducks/auth'
-import { SmallLoading } from '~/components/utils'
+import { Creators as AuthActions } from '../../store/ducks/auth'
+import { SmallLoading } from '../utils'
 
 import { Modal, Form, Button, LinkedinButton } from './styles'
 
@@ -23,13 +23,13 @@ class Auth extends Component {
       token: PropTypes.string.isRequired,
       avatar: PropTypes.string.isRequired,
       uuid: PropTypes.string.isRequired,
-      isCoreTeam: PropTypes.bool.isRequired,
-    }),
+      isCoreTeam: PropTypes.bool.isRequired
+    })
   }
 
   state = {
     rocketId: '',
-    password: '',
+    password: ''
   }
 
   handleLinkedinSuccess = data => {
@@ -103,7 +103,7 @@ class Auth extends Component {
 const mapDispatchToProps = dispatch => bindActionCreators(AuthActions, dispatch)
 
 const mapStateToProps = state => ({
-  auth: state.auth,
+  auth: state.auth
 })
 
 export default connect(

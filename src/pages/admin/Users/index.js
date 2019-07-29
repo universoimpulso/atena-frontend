@@ -5,12 +5,12 @@ import { Flex } from '@rebass/grid'
 
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { Creators as RankingActions } from '~/store/ducks/ranking'
-import { Creators as UserActions } from '~/store/ducks/user'
+import { Creators as RankingActions } from '../../../store/ducks/ranking'
+import { Creators as UserActions } from '../../../store/ducks/user'
 
-import { PageLoading, PageError, SmallError } from '~/components/utils'
-import RankingRow from '~/pages/Ranking/RankingRow'
-import SearchBar from '~/components/SearchBar'
+import { PageLoading, PageError, SmallError } from '../../../components/utils'
+import RankingRow from '../../Ranking/RankingRow'
+import SearchBar from '../../../components/SearchBar'
 import InfoCards from '../InfoCards'
 import TeamAccordion from '../TeamAccordion'
 
@@ -23,7 +23,7 @@ import {
   Card,
   ButtonWrapper,
   Button,
-  Info,
+  Info
 } from './styles'
 
 class Users extends Component {
@@ -32,7 +32,7 @@ class Users extends Component {
     user: PropTypes.object,
     userInfo: PropTypes.object,
     getUserInfo: PropTypes.func.isRequired,
-    ranking: PropTypes.object,
+    ranking: PropTypes.object
   }
   state = { user: null }
 
@@ -138,7 +138,7 @@ class Users extends Component {
 
 const mapStateToProps = state => ({
   ranking: state.ranking,
-  user: state.user,
+  user: state.user
 })
 
 const mapDispatchToProps = dispatch => {
@@ -146,7 +146,7 @@ const mapDispatchToProps = dispatch => {
     actions: bindActionCreators(
       Object.assign({}, RankingActions, UserActions),
       dispatch
-    ),
+    )
   }
 }
 

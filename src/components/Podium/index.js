@@ -2,7 +2,7 @@ import React from 'react'
 
 import { Flex } from '@rebass/grid'
 import PropTypes from 'prop-types'
-import UserCard from '~/components/UserCard'
+import UserCard from '../UserCard'
 
 const Podium = ({ firstUsers }) => {
   return (
@@ -15,6 +15,6 @@ const Podium = ({ firstUsers }) => {
 }
 
 Podium.propTypes = {
-  firstUsers: PropTypes.array,
+  firstUsers: PropTypes.array
 }
 export default Podium

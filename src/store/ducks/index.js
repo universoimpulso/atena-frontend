@@ -13,5 +13,5 @@ export default combineReducers({
   ranking,
   generalReports,
   experienceCard,
-  achievements,
+  achievements
 })

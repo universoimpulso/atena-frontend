@@ -1,11 +1,11 @@
 const Theme = {
   gridSize: '1280px',
   spacing: {
-    unit: 8,
+    unit: 8
   },
   fontFamily: {
     primary: 'proxima-nova',
-    secondary: 'essonnes-display',
+    secondary: 'essonnes-display'
   },
   fontSize: {
     default: '14px',
@@ -13,7 +13,7 @@ const Theme = {
     large: '36px',
     veryLarge: '48px',
     super: '100px',
-    extraLarge: '48px',
+    extraLarge: '48px'
   },
   color: {
     white: '#FFFFFF',
@@ -30,8 +30,8 @@ const Theme = {
     bg: '#FDFDFD',
     green: '#279949',
     linkedin: '#1061AC',
-    linkedinHover: '#007bb7',
-  },
+    linkedinHover: '#007bb7'
+  }
 }
 
 export default Theme

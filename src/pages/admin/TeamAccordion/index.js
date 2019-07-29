@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { Creators as GeneralReportsActions } from '~/store/ducks/generalReports'
-import { SmallError, PageLoading } from '~/components/utils'
+import { Creators as GeneralReportsActions } from '../../../store/ducks/generalReports'
+import { SmallError, PageLoading } from '../../../components/utils'
 import {
   Container,
   AccordionWrapper,
@@ -12,7 +12,7 @@ import {
   Wrapper,
   Box,
   Card,
-  Icon,
+  Icon
 } from './styles'
 
 class TeamAccordion extends Component {
@@ -31,14 +31,14 @@ class TeamAccordion extends Component {
           blog: PropTypes.object,
           github: PropTypes.object,
           meetups: PropTypes.object,
-          referral: PropTypes.object,
+          referral: PropTypes.object
         })
-      ),
-    }).isRequired,
+      )
+    }).isRequired
   }
 
   state = {
-    active: null,
+    active: null
   }
 
   handleClick = index => {
@@ -79,7 +79,7 @@ class TeamAccordion extends Component {
             blog,
             github,
             meetups,
-            referral,
+            referral
           } = team
           return (
             <AccordionWrapper

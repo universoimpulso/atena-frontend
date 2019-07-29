@@ -1,6 +1,6 @@
 import React from 'react'
 import { StyledFooter, StyledCopyright } from './style'
-import impulsoIcon from '~/assets/impulso.svg'
+import impulsoIcon from '../../assets/impulso.svg'
 import SocialLinks from './SocialLinks'
 
 const Footer = () => (

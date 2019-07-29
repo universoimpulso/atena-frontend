@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import theme from '~/styles/theme';
+import styled from 'styled-components'
+import theme from '../../styles/theme'
 
 export const StyledScreenRanking = styled.section`
   .layout {
@@ -50,7 +50,7 @@ export const StyledScreenRanking = styled.section`
       margin-top: 30px;
     }
   }
-`;
+`
 
 export const StyledRectangle = styled.div`
   background: ${props =>
@@ -88,14 +88,14 @@ export const StyledRectangle = styled.div`
         props.active ? theme.color.white : theme.color.primaryHover};
     }
   }
-`;
+`
 
 export const Loading = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
   padding: 120px 0 400px 0;
-`;
+`
 
 export const StyledRectangleGroup = styled.div`
   margin: ${({ margin }) => margin || '0 172px'};
@@ -109,7 +109,7 @@ export const StyledRectangleGroup = styled.div`
   div:last-child {
     border-radius: 0 100px 100px 0;
   }
-`;
+`
 
 export const RankingHeader = styled.div`
   width: 100%;
@@ -134,4 +134,4 @@ export const RankingHeader = styled.div`
   .userInfo {
     flex: 2;
   }
-`;
+`

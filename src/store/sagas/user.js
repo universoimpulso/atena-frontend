@@ -1,5 +1,5 @@
 import { delay, call, put } from 'redux-saga/effects'
-import api from '~/services/api'
+import api from '../../services/api'
 
 import { Creators as UserActions } from '../ducks/user'
 
@@ -17,7 +17,7 @@ export function* getProfile() {
             medal: 0,
             tier: 0,
             maxScore: 1,
-            score: 0,
+            score: 0
           },
           {
             type: 'network.reaction.sended',
@@ -25,7 +25,7 @@ export function* getProfile() {
             medal: 0,
             tier: 0,
             maxScore: 1,
-            score: 0,
+            score: 0
           },
           {
             type: 'network.reaction.received',
@@ -33,9 +33,9 @@ export function* getProfile() {
             medal: 0,
             tier: 0,
             maxScore: 1,
-            score: 0,
-          },
-        ],
+            score: 0
+          }
+        ]
       },
       {
         name: 'Projetos Github',
@@ -46,7 +46,7 @@ export function* getProfile() {
             medal: 0,
             tier: 0,
             maxScore: 1,
-            score: 0,
+            score: 0
           },
           {
             type: 'pullRequestApproved',
@@ -54,7 +54,7 @@ export function* getProfile() {
             medal: 0,
             tier: 0,
             maxScore: 1,
-            score: 0,
+            score: 0
           },
           {
             type: 'pullRequestCreated',
@@ -62,7 +62,7 @@ export function* getProfile() {
             medal: 0,
             tier: 0,
             maxScore: 1,
-            score: 0,
+            score: 0
           },
           {
             type: 'review',
@@ -70,9 +70,9 @@ export function* getProfile() {
             medal: 0,
             tier: 0,
             maxScore: 1,
-            score: 0,
-          },
-        ],
+            score: 0
+          }
+        ]
       },
       {
         name: 'Blog Impulso',
@@ -83,7 +83,7 @@ export function* getProfile() {
             medal: 0,
             tier: 0,
             maxScore: 1,
-            score: 0,
+            score: 0
           },
           {
             type: 'posts',
@@ -91,10 +91,10 @@ export function* getProfile() {
             medal: 0,
             tier: 0,
             maxScore: 1,
-            score: 0,
-          },
-        ],
-      },
+            score: 0
+          }
+        ]
+      }
     ]
 
     userAchievementsModel.forEach(modelValues => {
@@ -117,7 +117,7 @@ export function* getProfile() {
         loading: false,
         error: '',
         userInfo: data.userInfo,
-        userAchievements: userAchievementsModel,
+        userAchievements: userAchievementsModel
       })
     )
   } catch (error) {
@@ -128,7 +128,7 @@ export function* getProfile() {
         userAchievements: [],
         loading: false,
         error: data.message || error.message,
-        errorType: data.type,
+        errorType: data.type
       })
     )
   }
@@ -151,20 +151,20 @@ export function* getUserInfo() {
         { value: 'curintia', label: 'curintia' },
         { value: 'chiefs', label: 'chiefs' },
         { value: 'mengão', label: 'mengão' },
-        { value: 'coxa', label: 'coxa' },
+        { value: 'coxa', label: 'coxa' }
       ],
       teams: [
         { value: 'atari', label: 'atari' },
-        { value: 'flamengo', label: 'flamengo' },
+        { value: 'flamengo', label: 'flamengo' }
       ],
       avatar:
-        'https://avatars.slack-edge.com/2018-08-01/409144328290_81d8f97e55540e84881c_72.png',
+        'https://avatars.slack-edge.com/2018-08-01/409144328290_81d8f97e55540e84881c_72.png'
     }
     yield put(
       UserActions.getUserInfoResponse({
         data: mock,
         loading: false,
-        error: null,
+        error: null
       })
     )
   } catch (error) {
@@ -172,7 +172,7 @@ export function* getUserInfo() {
       UserActions.getUserInfoResponse({
         data: null,
         loading: false,
-        error: error.message,
+        error: error.message
       })
     )
   }
@@ -193,14 +193,14 @@ export function* putUserInfo() {
         { value: 'curintia', label: 'curintia' },
         { value: 'chiefs', label: 'chiefs' },
         { value: 'mengão', label: 'mengão' },
-        { value: 'coxa', label: 'coxa' },
+        { value: 'coxa', label: 'coxa' }
       ],
       teams: [
         { value: 'atari', label: 'atari' },
-        { value: 'flamengo', label: 'flamengo' },
+        { value: 'flamengo', label: 'flamengo' }
       ],
       avatar:
-        'https://avatars.slack-edge.com/2018-08-01/409144328290_81d8f97e55540e84881c_72.png',
+        'https://avatars.slack-edge.com/2018-08-01/409144328290_81d8f97e55540e84881c_72.png'
     }
     yield put(
       UserActions.getUserInfoResponse({ user, loading: false, error: null })
@@ -210,7 +210,7 @@ export function* putUserInfo() {
       UserActions.getUserInfoResponse({
         data: null,
         loading: false,
-        error: error.message,
+        error: error.message
       })
     )
   }

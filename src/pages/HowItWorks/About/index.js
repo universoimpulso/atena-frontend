@@ -1,9 +1,9 @@
 import React from 'react'
 
-import Title from '~/components/Title'
+import Title from '../../../components/Title'
 import { Flex, Box } from '@rebass/grid'
 
-import ilustraAtena from '~/assets/ilustra-atena.svg'
+import ilustraAtena from '../../../assets/ilustra-atena.svg'
 
 const About = () => {
   return (

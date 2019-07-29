@@ -17,8 +17,8 @@ const data = [
               { name: 'II', value: 1600 },
               { name: 'III', value: 1700 },
               { name: 'IV', value: 1800 },
-              { name: 'V', value: 2000 },
-            ],
+              { name: 'V', value: 2000 }
+            ]
           },
           {
             name: 'silver',
@@ -27,8 +27,8 @@ const data = [
               { name: 'II', value: 1600 },
               { name: 'III', value: 1700 },
               { name: 'IV', value: 1800 },
-              { name: 'V', value: 2000 },
-            ],
+              { name: 'V', value: 2000 }
+            ]
           },
           {
             name: 'gold',
@@ -37,8 +37,8 @@ const data = [
               { name: 'II', value: 1600 },
               { name: 'III', value: 1700 },
               { name: 'IV', value: 1800 },
-              { name: 'V', value: 2000 },
-            ],
+              { name: 'V', value: 2000 }
+            ]
           },
           {
             name: 'platinum',
@@ -47,8 +47,8 @@ const data = [
               { name: 'II', value: 1600 },
               { name: 'III', value: 1700 },
               { name: 'IV', value: 1800 },
-              { name: 'V', value: 2000 },
-            ],
+              { name: 'V', value: 2000 }
+            ]
           },
           {
             name: 'diamond',
@@ -57,10 +57,10 @@ const data = [
               { name: 'II', value: 1600 },
               { name: 'III', value: 1700 },
               { name: 'IV', value: 1800 },
-              { name: 'V', value: 2000 },
-            ],
-          },
-        ],
+              { name: 'V', value: 2000 }
+            ]
+          }
+        ]
       },
       {
         type: 'Reações Dadas',
@@ -72,8 +72,8 @@ const data = [
               { name: 'II', value: 1600 },
               { name: 'III', value: 1700 },
               { name: 'IV', value: 1800 },
-              { name: 'V', value: 2000 },
-            ],
+              { name: 'V', value: 2000 }
+            ]
           },
           {
             name: 'silver',
@@ -82,8 +82,8 @@ const data = [
               { name: 'II', value: 1600 },
               { name: 'III', value: 1700 },
               { name: 'IV', value: 1800 },
-              { name: 'V', value: 2000 },
-            ],
+              { name: 'V', value: 2000 }
+            ]
           },
           {
             name: 'gold',
@@ -92,8 +92,8 @@ const data = [
               { name: 'II', value: 1600 },
               { name: 'III', value: 1700 },
               { name: 'IV', value: 1800 },
-              { name: 'V', value: 2000 },
-            ],
+              { name: 'V', value: 2000 }
+            ]
           },
           {
             name: 'platinum',
@@ -102,8 +102,8 @@ const data = [
               { name: 'II', value: 1600 },
               { name: 'III', value: 1700 },
               { name: 'IV', value: 1800 },
-              { name: 'V', value: 2000 },
-            ],
+              { name: 'V', value: 2000 }
+            ]
           },
           {
             name: 'diamond',
@@ -112,10 +112,10 @@ const data = [
               { name: 'II', value: 1600 },
               { name: 'III', value: 1700 },
               { name: 'IV', value: 1800 },
-              { name: 'V', value: 2000 },
-            ],
-          },
-        ],
+              { name: 'V', value: 2000 }
+            ]
+          }
+        ]
       },
       {
         type: 'Reações Recebidas',
@@ -127,8 +127,8 @@ const data = [
               { name: 'II', value: 1600 },
               { name: 'III', value: 1700 },
               { name: 'IV', value: 1800 },
-              { name: 'V', value: 2000 },
-            ],
+              { name: 'V', value: 2000 }
+            ]
           },
           {
             name: 'silver',
@@ -137,8 +137,8 @@ const data = [
               { name: 'II', value: 1600 },
               { name: 'III', value: 1700 },
               { name: 'IV', value: 1800 },
-              { name: 'V', value: 2000 },
-            ],
+              { name: 'V', value: 2000 }
+            ]
           },
           {
             name: 'gold',
@@ -147,8 +147,8 @@ const data = [
               { name: 'II', value: 1600 },
               { name: 'III', value: 1700 },
               { name: 'IV', value: 1800 },
-              { name: 'V', value: 2000 },
-            ],
+              { name: 'V', value: 2000 }
+            ]
           },
           {
             name: 'platinum',
@@ -157,8 +157,8 @@ const data = [
               { name: 'II', value: 1600 },
               { name: 'III', value: 1700 },
               { name: 'IV', value: 1800 },
-              { name: 'V', value: 2000 },
-            ],
+              { name: 'V', value: 2000 }
+            ]
           },
           {
             name: 'diamond',
@@ -167,10 +167,10 @@ const data = [
               { name: 'II', value: 1600 },
               { name: 'III', value: 1700 },
               { name: 'IV', value: 1800 },
-              { name: 'V', value: 2000 },
-            ],
-          },
-        ],
+              { name: 'V', value: 2000 }
+            ]
+          }
+        ]
       },
 
       {
@@ -183,8 +183,8 @@ const data = [
               { name: 'II', value: 1600 },
               { name: 'III', value: 1700 },
               { name: 'IV', value: 1800 },
-              { name: 'V', value: 2000 },
-            ],
+              { name: 'V', value: 2000 }
+            ]
           },
           {
             name: 'silver',
@@ -193,8 +193,8 @@ const data = [
               { name: 'II', value: 1600 },
               { name: 'III', value: 1700 },
               { name: 'IV', value: 1800 },
-              { name: 'V', value: 2000 },
-            ],
+              { name: 'V', value: 2000 }
+            ]
           },
           {
             name: 'gold',
@@ -203,8 +203,8 @@ const data = [
               { name: 'II', value: 1600 },
               { name: 'III', value: 1700 },
               { name: 'IV', value: 1800 },
-              { name: 'V', value: 2000 },
-            ],
+              { name: 'V', value: 2000 }
+            ]
           },
           {
             name: 'platinum',
@@ -213,8 +213,8 @@ const data = [
               { name: 'II', value: 1600 },
               { name: 'III', value: 1700 },
               { name: 'IV', value: 1800 },
-              { name: 'V', value: 2000 },
-            ],
+              { name: 'V', value: 2000 }
+            ]
           },
           {
             name: 'diamond',
@@ -223,10 +223,10 @@ const data = [
               { name: 'II', value: 1600 },
               { name: 'III', value: 1700 },
               { name: 'IV', value: 1800 },
-              { name: 'V', value: 2000 },
-            ],
-          },
-        ],
+              { name: 'V', value: 2000 }
+            ]
+          }
+        ]
       },
       {
         type: 'Reactions recebidos',
@@ -238,8 +238,8 @@ const data = [
               { name: 'II', value: 1600 },
               { name: 'III', value: 1700 },
               { name: 'IV', value: 1800 },
-              { name: 'V', value: 2000 },
-            ],
+              { name: 'V', value: 2000 }
+            ]
           },
           {
             name: 'silver',
@@ -248,8 +248,8 @@ const data = [
               { name: 'II', value: 1600 },
               { name: 'III', value: 1700 },
               { name: 'IV', value: 1800 },
-              { name: 'V', value: 2000 },
-            ],
+              { name: 'V', value: 2000 }
+            ]
           },
           {
             name: 'gold',
@@ -258,8 +258,8 @@ const data = [
               { name: 'II', value: 1600 },
               { name: 'III', value: 1700 },
               { name: 'IV', value: 1800 },
-              { name: 'V', value: 2000 },
-            ],
+              { name: 'V', value: 2000 }
+            ]
           },
           {
             name: 'platinum',
@@ -268,8 +268,8 @@ const data = [
               { name: 'II', value: 1600 },
               { name: 'III', value: 1700 },
               { name: 'IV', value: 1800 },
-              { name: 'V', value: 2000 },
-            ],
+              { name: 'V', value: 2000 }
+            ]
           },
           {
             name: 'diamond',
@@ -278,12 +278,12 @@ const data = [
               { name: 'II', value: 1600 },
               { name: 'III', value: 1700 },
               { name: 'IV', value: 1800 },
-              { name: 'V', value: 2000 },
-            ],
-          },
-        ],
-      },
-    ],
+              { name: 'V', value: 2000 }
+            ]
+          }
+        ]
+      }
+    ]
   },
   {
     name: 'Github',
@@ -298,8 +298,8 @@ const data = [
               { name: 'II', value: 1600 },
               { name: 'III', value: 1700 },
               { name: 'IV', value: 1800 },
-              { name: 'V', value: 2000 },
-            ],
+              { name: 'V', value: 2000 }
+            ]
           },
           {
             name: 'silver',
@@ -308,8 +308,8 @@ const data = [
               { name: 'II', value: 1600 },
               { name: 'III', value: 1700 },
               { name: 'IV', value: 1800 },
-              { name: 'V', value: 2000 },
-            ],
+              { name: 'V', value: 2000 }
+            ]
           },
           {
             name: 'gold',
@@ -318,8 +318,8 @@ const data = [
               { name: 'II', value: 1600 },
               { name: 'III', value: 1700 },
               { name: 'IV', value: 1800 },
-              { name: 'V', value: 2000 },
-            ],
+              { name: 'V', value: 2000 }
+            ]
           },
           {
             name: 'platinum',
@@ -328,8 +328,8 @@ const data = [
               { name: 'II', value: 1600 },
               { name: 'III', value: 1700 },
               { name: 'IV', value: 1800 },
-              { name: 'V', value: 2000 },
-            ],
+              { name: 'V', value: 2000 }
+            ]
           },
           {
             name: 'diamond',
@@ -338,10 +338,10 @@ const data = [
               { name: 'II', value: 1600 },
               { name: 'III', value: 1700 },
               { name: 'IV', value: 1800 },
-              { name: 'V', value: 2000 },
-            ],
-          },
-        ],
+              { name: 'V', value: 2000 }
+            ]
+          }
+        ]
       },
       {
         type: 'Review',
@@ -353,8 +353,8 @@ const data = [
               { name: 'II', value: 1600 },
               { name: 'III', value: 1700 },
               { name: 'IV', value: 1800 },
-              { name: 'V', value: 2000 },
-            ],
+              { name: 'V', value: 2000 }
+            ]
           },
           {
             name: 'silver',
@@ -363,8 +363,8 @@ const data = [
               { name: 'II', value: 1600 },
               { name: 'III', value: 1700 },
               { name: 'IV', value: 1800 },
-              { name: 'V', value: 2000 },
-            ],
+              { name: 'V', value: 2000 }
+            ]
           },
           {
             name: 'gold',
@@ -373,8 +373,8 @@ const data = [
               { name: 'II', value: 1600 },
               { name: 'III', value: 1700 },
               { name: 'IV', value: 1800 },
-              { name: 'V', value: 2000 },
-            ],
+              { name: 'V', value: 2000 }
+            ]
           },
           {
             name: 'platinum',
@@ -383,8 +383,8 @@ const data = [
               { name: 'II', value: 1600 },
               { name: 'III', value: 1700 },
               { name: 'IV', value: 1800 },
-              { name: 'V', value: 2000 },
-            ],
+              { name: 'V', value: 2000 }
+            ]
           },
           {
             name: 'diamond',
@@ -393,10 +393,10 @@ const data = [
               { name: 'II', value: 1600 },
               { name: 'III', value: 1700 },
               { name: 'IV', value: 1800 },
-              { name: 'V', value: 2000 },
-            ],
-          },
-        ],
+              { name: 'V', value: 2000 }
+            ]
+          }
+        ]
       },
       {
         type: 'Pull Request aprovada',
@@ -408,8 +408,8 @@ const data = [
               { name: 'II', value: 1600 },
               { name: 'III', value: 1700 },
               { name: 'IV', value: 1800 },
-              { name: 'V', value: 2000 },
-            ],
+              { name: 'V', value: 2000 }
+            ]
           },
           {
             name: 'silver',
@@ -418,8 +418,8 @@ const data = [
               { name: 'II', value: 1600 },
               { name: 'III', value: 1700 },
               { name: 'IV', value: 1800 },
-              { name: 'V', value: 2000 },
-            ],
+              { name: 'V', value: 2000 }
+            ]
           },
           {
             name: 'gold',
@@ -428,8 +428,8 @@ const data = [
               { name: 'II', value: 1600 },
               { name: 'III', value: 1700 },
               { name: 'IV', value: 1800 },
-              { name: 'V', value: 2000 },
-            ],
+              { name: 'V', value: 2000 }
+            ]
           },
           {
             name: 'platinum',
@@ -438,8 +438,8 @@ const data = [
               { name: 'II', value: 1600 },
               { name: 'III', value: 1700 },
               { name: 'IV', value: 1800 },
-              { name: 'V', value: 2000 },
-            ],
+              { name: 'V', value: 2000 }
+            ]
           },
           {
             name: 'diamond',
@@ -448,10 +448,10 @@ const data = [
               { name: 'II', value: 1600 },
               { name: 'III', value: 1700 },
               { name: 'IV', value: 1800 },
-              { name: 'V', value: 2000 },
-            ],
-          },
-        ],
+              { name: 'V', value: 2000 }
+            ]
+          }
+        ]
       },
 
       {
@@ -464,8 +464,8 @@ const data = [
               { name: 'II', value: 1600 },
               { name: 'III', value: 1700 },
               { name: 'IV', value: 1800 },
-              { name: 'V', value: 2000 },
-            ],
+              { name: 'V', value: 2000 }
+            ]
           },
           {
             name: 'silver',
@@ -474,8 +474,8 @@ const data = [
               { name: 'II', value: 1600 },
               { name: 'III', value: 1700 },
               { name: 'IV', value: 1800 },
-              { name: 'V', value: 2000 },
-            ],
+              { name: 'V', value: 2000 }
+            ]
           },
           {
             name: 'gold',
@@ -484,8 +484,8 @@ const data = [
               { name: 'II', value: 1600 },
               { name: 'III', value: 1700 },
               { name: 'IV', value: 1800 },
-              { name: 'V', value: 2000 },
-            ],
+              { name: 'V', value: 2000 }
+            ]
           },
           {
             name: 'platinum',
@@ -494,8 +494,8 @@ const data = [
               { name: 'II', value: 1600 },
               { name: 'III', value: 1700 },
               { name: 'IV', value: 1800 },
-              { name: 'V', value: 2000 },
-            ],
+              { name: 'V', value: 2000 }
+            ]
           },
           {
             name: 'diamond',
@@ -504,13 +504,13 @@ const data = [
               { name: 'II', value: 1600 },
               { name: 'III', value: 1700 },
               { name: 'IV', value: 1800 },
-              { name: 'V', value: 2000 },
-            ],
-          },
-        ],
-      },
-    ],
-  },
+              { name: 'V', value: 2000 }
+            ]
+          }
+        ]
+      }
+    ]
+  }
 ]
 const data2 = [
   {
@@ -526,8 +526,8 @@ const data2 = [
               { name: 'II', value: 1600 },
               { name: 'III', value: 1700 },
               { name: 'IV', value: 1800 },
-              { name: 'V', value: 2000 },
-            ],
+              { name: 'V', value: 2000 }
+            ]
           },
           {
             name: 'silver',
@@ -536,8 +536,8 @@ const data2 = [
               { name: 'II', value: 1600 },
               { name: 'III', value: 1700 },
               { name: 'IV', value: 1800 },
-              { name: 'V', value: 2000 },
-            ],
+              { name: 'V', value: 2000 }
+            ]
           },
           {
             name: 'gold',
@@ -546,8 +546,8 @@ const data2 = [
               { name: 'II', value: 1600 },
               { name: 'III', value: 1700 },
               { name: 'IV', value: 1800 },
-              { name: 'V', value: 2000 },
-            ],
+              { name: 'V', value: 2000 }
+            ]
           },
           {
             name: 'platinum',
@@ -556,8 +556,8 @@ const data2 = [
               { name: 'II', value: 1600 },
               { name: 'III', value: 1700 },
               { name: 'IV', value: 1800 },
-              { name: 'V', value: 2000 },
-            ],
+              { name: 'V', value: 2000 }
+            ]
           },
           {
             name: 'diamond',
@@ -566,10 +566,10 @@ const data2 = [
               { name: 'II', value: 1600 },
               { name: 'III', value: 1700 },
               { name: 'IV', value: 1800 },
-              { name: 'V', value: 2000 },
-            ],
-          },
-        ],
+              { name: 'V', value: 2000 }
+            ]
+          }
+        ]
       },
       {
         type: 'Reações Dadas',
@@ -581,8 +581,8 @@ const data2 = [
               { name: 'II', value: 1600 },
               { name: 'III', value: 1700 },
               { name: 'IV', value: 1800 },
-              { name: 'V', value: 2000 },
-            ],
+              { name: 'V', value: 2000 }
+            ]
           },
           {
             name: 'silver',
@@ -591,8 +591,8 @@ const data2 = [
               { name: 'II', value: 1600 },
               { name: 'III', value: 1700 },
               { name: 'IV', value: 1800 },
-              { name: 'V', value: 2000 },
-            ],
+              { name: 'V', value: 2000 }
+            ]
           },
           {
             name: 'gold',
@@ -601,8 +601,8 @@ const data2 = [
               { name: 'II', value: 1600 },
               { name: 'III', value: 1700 },
               { name: 'IV', value: 1800 },
-              { name: 'V', value: 2000 },
-            ],
+              { name: 'V', value: 2000 }
+            ]
           },
           {
             name: 'platinum',
@@ -611,8 +611,8 @@ const data2 = [
               { name: 'II', value: 1600 },
               { name: 'III', value: 1700 },
               { name: 'IV', value: 1800 },
-              { name: 'V', value: 2000 },
-            ],
+              { name: 'V', value: 2000 }
+            ]
           },
           {
             name: 'diamond',
@@ -621,10 +621,10 @@ const data2 = [
               { name: 'II', value: 1600 },
               { name: 'III', value: 1700 },
               { name: 'IV', value: 1800 },
-              { name: 'V', value: 2000 },
-            ],
-          },
-        ],
+              { name: 'V', value: 2000 }
+            ]
+          }
+        ]
       },
       {
         type: 'Reações Recebidas',
@@ -636,8 +636,8 @@ const data2 = [
               { name: 'II', value: 1600 },
               { name: 'III', value: 1700 },
               { name: 'IV', value: 1800 },
-              { name: 'V', value: 2000 },
-            ],
+              { name: 'V', value: 2000 }
+            ]
           },
           {
             name: 'silver',
@@ -646,8 +646,8 @@ const data2 = [
               { name: 'II', value: 1600 },
               { name: 'III', value: 1700 },
               { name: 'IV', value: 1800 },
-              { name: 'V', value: 2000 },
-            ],
+              { name: 'V', value: 2000 }
+            ]
           },
           {
             name: 'gold',
@@ -656,8 +656,8 @@ const data2 = [
               { name: 'II', value: 1600 },
               { name: 'III', value: 1700 },
               { name: 'IV', value: 1800 },
-              { name: 'V', value: 2000 },
-            ],
+              { name: 'V', value: 2000 }
+            ]
           },
           {
             name: 'platinum',
@@ -666,8 +666,8 @@ const data2 = [
               { name: 'II', value: 1600 },
               { name: 'III', value: 1700 },
               { name: 'IV', value: 1800 },
-              { name: 'V', value: 2000 },
-            ],
+              { name: 'V', value: 2000 }
+            ]
           },
           {
             name: 'diamond',
@@ -676,10 +676,10 @@ const data2 = [
               { name: 'II', value: 1600 },
               { name: 'III', value: 1700 },
               { name: 'IV', value: 1800 },
-              { name: 'V', value: 2000 },
-            ],
-          },
-        ],
+              { name: 'V', value: 2000 }
+            ]
+          }
+        ]
       },
 
       {
@@ -692,8 +692,8 @@ const data2 = [
               { name: 'II', value: 1600 },
               { name: 'III', value: 1700 },
               { name: 'IV', value: 1800 },
-              { name: 'V', value: 2000 },
-            ],
+              { name: 'V', value: 2000 }
+            ]
           },
           {
             name: 'silver',
@@ -702,8 +702,8 @@ const data2 = [
               { name: 'II', value: 1600 },
               { name: 'III', value: 1700 },
               { name: 'IV', value: 1800 },
-              { name: 'V', value: 2000 },
-            ],
+              { name: 'V', value: 2000 }
+            ]
           },
           {
             name: 'gold',
@@ -712,8 +712,8 @@ const data2 = [
               { name: 'II', value: 1600 },
               { name: 'III', value: 1700 },
               { name: 'IV', value: 1800 },
-              { name: 'V', value: 2000 },
-            ],
+              { name: 'V', value: 2000 }
+            ]
           },
           {
             name: 'platinum',
@@ -722,8 +722,8 @@ const data2 = [
               { name: 'II', value: 1600 },
               { name: 'III', value: 1700 },
               { name: 'IV', value: 1800 },
-              { name: 'V', value: 2000 },
-            ],
+              { name: 'V', value: 2000 }
+            ]
           },
           {
             name: 'diamond',
@@ -732,10 +732,10 @@ const data2 = [
               { name: 'II', value: 1600 },
               { name: 'III', value: 1700 },
               { name: 'IV', value: 1800 },
-              { name: 'V', value: 2000 },
-            ],
-          },
-        ],
+              { name: 'V', value: 2000 }
+            ]
+          }
+        ]
       },
       {
         type: 'Reactions recebidos',
@@ -747,8 +747,8 @@ const data2 = [
               { name: 'II', value: 1600 },
               { name: 'III', value: 1700 },
               { name: 'IV', value: 1800 },
-              { name: 'V', value: 2000 },
-            ],
+              { name: 'V', value: 2000 }
+            ]
           },
           {
             name: 'silver',
@@ -757,8 +757,8 @@ const data2 = [
               { name: 'II', value: 1600 },
               { name: 'III', value: 1700 },
               { name: 'IV', value: 1800 },
-              { name: 'V', value: 2000 },
-            ],
+              { name: 'V', value: 2000 }
+            ]
           },
           {
             name: 'gold',
@@ -767,8 +767,8 @@ const data2 = [
               { name: 'II', value: 1600 },
               { name: 'III', value: 1700 },
               { name: 'IV', value: 1800 },
-              { name: 'V', value: 2000 },
-            ],
+              { name: 'V', value: 2000 }
+            ]
           },
           {
             name: 'platinum',
@@ -777,8 +777,8 @@ const data2 = [
               { name: 'II', value: 1600 },
               { name: 'III', value: 1700 },
               { name: 'IV', value: 1800 },
-              { name: 'V', value: 2000 },
-            ],
+              { name: 'V', value: 2000 }
+            ]
           },
           {
             name: 'diamond',
@@ -787,12 +787,12 @@ const data2 = [
               { name: 'II', value: 1600 },
               { name: 'III', value: 1700 },
               { name: 'IV', value: 1800 },
-              { name: 'V', value: 2000 },
-            ],
-          },
-        ],
-      },
-    ],
+              { name: 'V', value: 2000 }
+            ]
+          }
+        ]
+      }
+    ]
   },
   {
     name: 'Github',
@@ -807,8 +807,8 @@ const data2 = [
               { name: 'II', value: 1600 },
               { name: 'III', value: 1700 },
               { name: 'IV', value: 1800 },
-              { name: 'V', value: 2000 },
-            ],
+              { name: 'V', value: 2000 }
+            ]
           },
           {
             name: 'silver',
@@ -817,8 +817,8 @@ const data2 = [
               { name: 'II', value: 1600 },
               { name: 'III', value: 1700 },
               { name: 'IV', value: 1800 },
-              { name: 'V', value: 2000 },
-            ],
+              { name: 'V', value: 2000 }
+            ]
           },
           {
             name: 'gold',
@@ -827,8 +827,8 @@ const data2 = [
               { name: 'II', value: 1600 },
               { name: 'III', value: 1700 },
               { name: 'IV', value: 1800 },
-              { name: 'V', value: 2000 },
-            ],
+              { name: 'V', value: 2000 }
+            ]
           },
           {
             name: 'platinum',
@@ -837,8 +837,8 @@ const data2 = [
               { name: 'II', value: 1600 },
               { name: 'III', value: 1700 },
               { name: 'IV', value: 1800 },
-              { name: 'V', value: 2000 },
-            ],
+              { name: 'V', value: 2000 }
+            ]
           },
           {
             name: 'diamond',
@@ -847,10 +847,10 @@ const data2 = [
               { name: 'II', value: 1600 },
               { name: 'III', value: 1700 },
               { name: 'IV', value: 1800 },
-              { name: 'V', value: 2000 },
-            ],
-          },
-        ],
+              { name: 'V', value: 2000 }
+            ]
+          }
+        ]
       },
       {
         type: 'Review',
@@ -862,8 +862,8 @@ const data2 = [
               { name: 'II', value: 1600 },
               { name: 'III', value: 1700 },
               { name: 'IV', value: 1800 },
-              { name: 'V', value: 2000 },
-            ],
+              { name: 'V', value: 2000 }
+            ]
           },
           {
             name: 'silver',
@@ -872,8 +872,8 @@ const data2 = [
               { name: 'II', value: 1600 },
               { name: 'III', value: 1700 },
               { name: 'IV', value: 1800 },
-              { name: 'V', value: 2000 },
-            ],
+              { name: 'V', value: 2000 }
+            ]
           },
           {
             name: 'gold',
@@ -882,8 +882,8 @@ const data2 = [
               { name: 'II', value: 1600 },
               { name: 'III', value: 1700 },
               { name: 'IV', value: 1800 },
-              { name: 'V', value: 2000 },
-            ],
+              { name: 'V', value: 2000 }
+            ]
           },
           {
             name: 'platinum',
@@ -892,8 +892,8 @@ const data2 = [
               { name: 'II', value: 1600 },
               { name: 'III', value: 1700 },
               { name: 'IV', value: 1800 },
-              { name: 'V', value: 2000 },
-            ],
+              { name: 'V', value: 2000 }
+            ]
           },
           {
             name: 'diamond',
@@ -902,10 +902,10 @@ const data2 = [
               { name: 'II', value: 1600 },
               { name: 'III', value: 1700 },
               { name: 'IV', value: 1800 },
-              { name: 'V', value: 2000 },
-            ],
-          },
-        ],
+              { name: 'V', value: 2000 }
+            ]
+          }
+        ]
       },
       {
         type: 'Pull Request aprovada',
@@ -917,8 +917,8 @@ const data2 = [
               { name: 'II', value: 1600 },
               { name: 'III', value: 1700 },
               { name: 'IV', value: 1800 },
-              { name: 'V', value: 2000 },
-            ],
+              { name: 'V', value: 2000 }
+            ]
           },
           {
             name: 'silver',
@@ -927,8 +927,8 @@ const data2 = [
               { name: 'II', value: 1600 },
               { name: 'III', value: 1700 },
               { name: 'IV', value: 1800 },
-              { name: 'V', value: 2000 },
-            ],
+              { name: 'V', value: 2000 }
+            ]
           },
           {
             name: 'gold',
@@ -937,8 +937,8 @@ const data2 = [
               { name: 'II', value: 1600 },
               { name: 'III', value: 1700 },
               { name: 'IV', value: 1800 },
-              { name: 'V', value: 2000 },
-            ],
+              { name: 'V', value: 2000 }
+            ]
           },
           {
             name: 'platinum',
@@ -947,8 +947,8 @@ const data2 = [
               { name: 'II', value: 1600 },
               { name: 'III', value: 1700 },
               { name: 'IV', value: 1800 },
-              { name: 'V', value: 2000 },
-            ],
+              { name: 'V', value: 2000 }
+            ]
           },
           {
             name: 'diamond',
@@ -957,10 +957,10 @@ const data2 = [
               { name: 'II', value: 1600 },
               { name: 'III', value: 1700 },
               { name: 'IV', value: 1800 },
-              { name: 'V', value: 2000 },
-            ],
-          },
-        ],
+              { name: 'V', value: 2000 }
+            ]
+          }
+        ]
       },
 
       {
@@ -973,8 +973,8 @@ const data2 = [
               { name: 'II', value: 1600 },
               { name: 'III', value: 1700 },
               { name: 'IV', value: 1800 },
-              { name: 'V', value: 2000 },
-            ],
+              { name: 'V', value: 2000 }
+            ]
           },
           {
             name: 'silver',
@@ -983,8 +983,8 @@ const data2 = [
               { name: 'II', value: 1600 },
               { name: 'III', value: 1700 },
               { name: 'IV', value: 1800 },
-              { name: 'V', value: 2000 },
-            ],
+              { name: 'V', value: 2000 }
+            ]
           },
           {
             name: 'gold',
@@ -993,8 +993,8 @@ const data2 = [
               { name: 'II', value: 1600 },
               { name: 'III', value: 1700 },
               { name: 'IV', value: 1800 },
-              { name: 'V', value: 2000 },
-            ],
+              { name: 'V', value: 2000 }
+            ]
           },
           {
             name: 'platinum',
@@ -1003,8 +1003,8 @@ const data2 = [
               { name: 'II', value: 1600 },
               { name: 'III', value: 1700 },
               { name: 'IV', value: 1800 },
-              { name: 'V', value: 2000 },
-            ],
+              { name: 'V', value: 2000 }
+            ]
           },
           {
             name: 'diamond',
@@ -1013,13 +1013,13 @@ const data2 = [
               { name: 'II', value: 1600 },
               { name: 'III', value: 1700 },
               { name: 'IV', value: 1800 },
-              { name: 'V', value: 2000 },
-            ],
-          },
-        ],
-      },
-    ],
-  },
+              { name: 'V', value: 2000 }
+            ]
+          }
+        ]
+      }
+    ]
+  }
 ]
 
 export function* getAchievements(action) {

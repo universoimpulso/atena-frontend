@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Flex } from '@rebass/grid'
-import avatarSvg from '~/assets/avatar.svg'
+import avatarSvg from '../../assets/avatar.svg'
 import { StyledUserCard, Container, Position, Info, Point } from './style'
 
 const UserCard = ({ position, name, avatar, xp, level, first }) => (
@@ -45,7 +45,7 @@ UserCard.propTypes = {
   avatar: PropTypes.string.isRequired,
   level: PropTypes.number.isRequired,
   xp: PropTypes.number.isRequired,
-  first: PropTypes.bool,
+  first: PropTypes.bool
 }
 
 export default UserCard

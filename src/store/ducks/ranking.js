@@ -6,18 +6,18 @@ const INITIAL_STATE = {
     error: '',
     firstUsers: [],
     lastUsers: [],
-    monthName: '',
+    monthName: ''
   },
   users: {
     loading: false,
     error: null,
-    data: null,
+    data: null
   },
   userInfo: {
     loading: false,
     error: null,
-    data: null,
-  },
+    data: null
+  }
 }
 
 export const { Types, Creators } = createActions({
@@ -26,7 +26,7 @@ export const { Types, Creators } = createActions({
   getRankingUsers: ['data'],
   getRankingUsersResponse: ['data'],
   getUserInfo: ['data'],
-  getUserInfoResponse: ['data'],
+  getUserInfoResponse: ['data']
 })
 
 const getRanking = (state = INITIAL_STATE) => ({
@@ -36,13 +36,13 @@ const getRanking = (state = INITIAL_STATE) => ({
     error: '',
     firstUsers: [],
     lastUsers: [],
-    monthName: '',
-  },
+    monthName: ''
+  }
 })
 
 const getRankingResponse = (state = INITIAL_STATE, action) => ({
   ...state,
-  ranking: action.data,
+  ranking: action.data
 })
 
 const getRankingUsers = (state = INITIAL_STATE, action) => ({
@@ -51,31 +51,31 @@ const getRankingUsers = (state = INITIAL_STATE, action) => ({
   userInfo: {
     data: null,
     loading: false,
-    error: null,
-  },
+    error: null
+  }
 })
 
 const getRankingUsersResponse = (state = INITIAL_STATE, action) => ({
   ...state,
-  users: action.data,
+  users: action.data
 })
 
 const getUserInfo = (state = INITIAL_STATE, action) => ({
   ...state,
   users: {
     ...state.users,
-    data: null,
+    data: null
   },
   userInfo: {
     data: null,
     loading: true,
-    error: null,
-  },
+    error: null
+  }
 })
 
 const getUserInfoResponse = (state = INITIAL_STATE, action) => ({
   ...state,
-  userInfo: action.data,
+  userInfo: action.data
 })
 
 export default createReducer(INITIAL_STATE, {
@@ -84,5 +84,5 @@ export default createReducer(INITIAL_STATE, {
   [Types.GET_RANKING_USERS]: getRankingUsers,
   [Types.GET_RANKING_USERS_RESPONSE]: getRankingUsersResponse,
   [Types.GET_USER_INFO]: getUserInfo,
-  [Types.GET_USER_INFO_RESPONSE]: getUserInfoResponse,
+  [Types.GET_USER_INFO_RESPONSE]: getUserInfoResponse
 })

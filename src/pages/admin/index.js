@@ -19,8 +19,8 @@ class Admin extends Component {
       { key: 'generalReports', name: 'Relatórios Gerais' },
       { key: 'ranking', name: 'Rankings' },
       { key: 'editExperience', name: 'Experiência' },
-      { key: 'achievements', name: 'Conquistas' },
-    ],
+      { key: 'achievements', name: 'Conquistas' }
+    ]
   }
 
   handleClick = active => {

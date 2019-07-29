@@ -1,24 +1,24 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import { bindActionCreators } from 'redux';
-import { Flex, Box } from '@rebass/grid';
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
+import { bindActionCreators } from 'redux'
+import { Flex, Box } from '@rebass/grid'
 
-import { Creators as RankingActions } from '~/store/ducks/ranking';
+import { Creators as RankingActions } from '../../store/ducks/ranking'
 
-import RankingRow from './RankingRow';
-import Title from '~/components/Title';
-import FullPage from '~/components/FullPage';
-import Podium from '~/components/Podium';
-import { PageError, PageLoading } from '~/components/utils';
+import RankingRow from './RankingRow'
+import Title from '../../components/Title'
+import FullPage from '../../components/FullPage'
+import Podium from '../../components/Podium'
+import { PageError, PageLoading } from '../../components/utils'
 
-import BgRanking from '~/assets/bg_ranking.png';
+import BgRanking from '../../assets/bg_ranking.png'
 import {
   StyledScreenRanking,
   StyledRectangleGroup,
   StyledRectangle,
-  RankingHeader,
-} from './styles';
+  RankingHeader
+} from './styles'
 
 class ScreenRanking extends Component {
   static propTypes = {
@@ -28,32 +28,32 @@ class ScreenRanking extends Component {
       monthName: PropTypes.string,
       error: PropTypes.string,
       firstUsers: PropTypes.array,
-      lastUsers: PropTypes.array,
-    }).isRequired,
-  };
+      lastUsers: PropTypes.array
+    }).isRequired
+  }
 
   state = {
-    selected: 'general',
-  };
+    selected: 'general'
+  }
 
   componentDidMount() {
-    this.props.getRanking(this.state.selected);
+    this.props.getRanking(this.state.selected)
   }
 
   toggleRanking = selected => {
-    this.setState({ selected });
-    this.props.getRanking(selected);
-  };
+    this.setState({ selected })
+    this.props.getRanking(selected)
+  }
 
   render() {
-    const { selected } = this.state;
+    const { selected } = this.state
     const {
       error,
       loading,
       monthName,
       firstUsers,
-      lastUsers,
-    } = this.props.ranking;
+      lastUsers
+    } = this.props.ranking
 
     if (!!error)
       return (
@@ -80,7 +80,7 @@ class ScreenRanking extends Component {
             </div>
           </main>
         </StyledScreenRanking>
-      );
+      )
 
     return (
       <StyledScreenRanking>
@@ -173,17 +173,17 @@ class ScreenRanking extends Component {
           }
         </main>
       </StyledScreenRanking>
-    );
+    )
   }
 }
 const mapStateToProps = state => ({
-  ranking: state.ranking.ranking,
-});
+  ranking: state.ranking.ranking
+})
 
 const mapDispatchToProps = dispatch =>
-  bindActionCreators(RankingActions, dispatch);
+  bindActionCreators(RankingActions, dispatch)
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(ScreenRanking);
+)(ScreenRanking)

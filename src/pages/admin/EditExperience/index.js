@@ -5,8 +5,8 @@ import PropTypes from 'prop-types'
 
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { PageError, PageLoading, SmallLoading } from '~/components/utils'
-import { Creators as ExperienceCardsActions } from '~/store/ducks/experienceCard'
+import { PageError, PageLoading, SmallLoading } from '../../../components/utils'
+import { Creators as ExperienceCardsActions } from '../../../store/ducks/experienceCard'
 
 import { Container, Title, Card, StyledInput } from './styles'
 
@@ -14,7 +14,7 @@ class EditExperience extends Component {
   static propTypes = {
     getExperience: PropTypes.func.isRequired,
     putExperience: PropTypes.func.isRequired,
-    experienceCard: PropTypes.array.isRequired,
+    experienceCard: PropTypes.array.isRequired
   }
 
   componentDidMount() {
@@ -35,7 +35,7 @@ class EditExperience extends Component {
     if (type === 'negativeNumber') {
       if (toast.isActive('negativeNumber')) return
       toast.error('Não é possível submeter valores negativos', {
-        toastId: 'negativeNumber',
+        toastId: 'negativeNumber'
       })
     }
   }

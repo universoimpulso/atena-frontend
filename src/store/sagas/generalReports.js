@@ -16,11 +16,11 @@ export function* getUsers(action) {
         { name: 'Nível 7', value: 354 },
         { name: 'Nível 8', value: 854 },
         { name: 'Nível 9', value: 154 },
-        { name: 'Nível 10', value: 554 },
+        { name: 'Nível 10', value: 554 }
       ],
       totalUsers: 12043,
       loading: false,
-      error: null,
+      error: null
     }
 
     // throw new Error("Não foi possível buscar os dados");
@@ -31,7 +31,7 @@ export function* getUsers(action) {
         users: null,
         totalUsers: null,
         loading: false,
-        error: error.message,
+        error: error.message
       })
     )
   }
@@ -46,7 +46,7 @@ export function* getUsersAchievements(action) {
       byMonthPercentage: 13.8,
       byYear: 3587,
       byYearPercentage: -13.8,
-      total: 12987,
+      total: 12987
     }
     // throw new Error("Não foi possível buscar os dados");
     yield put(
@@ -54,7 +54,7 @@ export function* getUsersAchievements(action) {
         type: 'achievements',
         loading: false,
         error: null,
-        data,
+        data
       })
     )
   } catch (error) {
@@ -63,7 +63,7 @@ export function* getUsersAchievements(action) {
         type: 'achievements',
         loading: false,
         error: error.message,
-        data: null,
+        data: null
       })
     )
   }
@@ -78,7 +78,7 @@ export function* getMissions(action) {
       byMonthPercentage: -14.8,
       byYear: 2587,
       byYearPercentage: 11.8,
-      total: 22987,
+      total: 22987
     }
     if (action.data) throw new Error('Você nao tem acesso')
     // throw new Error("Não foi possível buscar os dados");
@@ -87,7 +87,7 @@ export function* getMissions(action) {
         type: 'missions',
         loading: false,
         error: null,
-        data,
+        data
       })
     )
   } catch (error) {
@@ -97,14 +97,14 @@ export function* getMissions(action) {
       byMonthPercentage: -14.8,
       byYear: 2587,
       byYearPercentage: 11.8,
-      total: 22987,
+      total: 22987
     }
     yield put(
       GeneralReportsActions.getMissionsResponse({
         type: 'missions',
         loading: false,
         data,
-        error: error.message,
+        error: error.message
       })
     )
   }
@@ -118,7 +118,7 @@ export function* getXp(action) {
       byMonthPercentage: -6.8,
       byYear: 587,
       byYearPercentage: 16.8,
-      total: 2987,
+      total: 2987
     }
     // throw new Error("Não foi possível buscar os dados");
     yield put(
@@ -126,7 +126,7 @@ export function* getXp(action) {
         type: 'xp',
         loading: false,
         error: null,
-        data,
+        data
       })
     )
   } catch (error) {
@@ -135,7 +135,7 @@ export function* getXp(action) {
         type: 'xp',
         loading: false,
         error: error.message,
-        data: null,
+        data: null
       })
     )
   }
@@ -150,119 +150,119 @@ export function* getTeams() {
         total: 1837,
         message: {
           send: 1452,
-          receive: 7489,
+          receive: 7489
         },
         reactions: {
           send: 759,
-          receive: 785,
+          receive: 785
         },
         response: {
           send: 784,
-          receive: 695,
+          receive: 695
         },
         blog: {
           posts: 452,
-          comments: 745,
+          comments: 745
         },
         github: {
           issues: 548,
           reviews: 475,
           pullRequests: {
             created: 125,
-            approved: 98,
-          },
+            approved: 98
+          }
         },
         meetups: {
           participants: 236,
           mediators: 65,
-          facilitators: 74,
+          facilitators: 74
         },
         referral: {
           allocated: 74,
-          indications: 745,
-        },
+          indications: 745
+        }
       },
       {
         name: 'atari',
         total: 54837,
         message: {
           send: 1452,
-          receive: 7489,
+          receive: 7489
         },
         reactions: {
           send: 759,
-          receive: 785,
+          receive: 785
         },
         response: {
           send: 784,
-          receive: 695,
+          receive: 695
         },
         blog: {
           posts: 452,
-          comments: 745,
+          comments: 745
         },
         github: {
           issues: 548,
           reviews: 475,
           pullRequests: {
             created: 125,
-            approved: 98,
-          },
+            approved: 98
+          }
         },
         meetups: {
           participants: 236,
           mediators: 65,
-          facilitators: 74,
+          facilitators: 74
         },
         referral: {
           allocated: 74,
-          indications: 745,
-        },
+          indications: 745
+        }
       },
       {
         name: 'corinthians',
         total: 26837,
         message: {
           send: 1452,
-          receive: 7489,
+          receive: 7489
         },
         reactions: {
           send: 759,
-          receive: 785,
+          receive: 785
         },
         response: {
           send: 784,
-          receive: 695,
+          receive: 695
         },
         blog: {
           posts: 452,
-          comments: 745,
+          comments: 745
         },
         github: {
           issues: 548,
           reviews: 475,
           pullRequests: {
             created: 125,
-            approved: 98,
-          },
+            approved: 98
+          }
         },
         meetups: {
           participants: 236,
           mediators: 65,
-          facilitators: 74,
+          facilitators: 74
         },
         referral: {
           allocated: 74,
-          indications: 745,
-        },
-      },
+          indications: 745
+        }
+      }
     ]
     // throw new Error("Não foi possível buscar times");
     yield put(
       GeneralReportsActions.getTeamsResponse({
         data,
         loading: false,
-        error: null,
+        error: null
       })
     )
   } catch (error) {
@@ -270,7 +270,7 @@ export function* getTeams() {
       GeneralReportsActions.getTeamsResponse({
         data: null,
         loading: false,
-        error: error.message,
+        error: error.message
       })
     )
   }

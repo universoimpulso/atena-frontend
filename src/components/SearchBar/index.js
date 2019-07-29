@@ -3,22 +3,22 @@ import PropTypes from 'prop-types'
 
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { Creators as RankingActions } from '~/store/ducks/ranking'
+import { Creators as RankingActions } from '../../store/ducks/ranking'
 
 import { Container, SearchBar } from './styles'
 
 class SearchUserBar extends Component {
   static propTypes = {
     getRankingUsers: PropTypes.func.isRequired,
-    ranking: PropTypes.object,
+    ranking: PropTypes.object
   }
 
   state = {
     inputValue: '',
     options: [
       { value: 'level', label: 'Nível' },
-      { value: 'position', label: 'Posição' },
-    ],
+      { value: 'position', label: 'Posição' }
+    ]
   }
 
   handleChange = event => this.setState({ inputValue: event.target.value })
@@ -45,7 +45,7 @@ class SearchUserBar extends Component {
 }
 
 const mapStateToProps = state => ({
-  ranking: state.ranking,
+  ranking: state.ranking
 })
 
 const mapDispatchToProps = dispatch =>

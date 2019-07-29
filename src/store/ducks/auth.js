@@ -6,7 +6,7 @@ const INITIAL_STATE = {
   token: '',
   avatar: '',
   uuid: '',
-  isCoreTeam: false,
+  isCoreTeam: false
 }
 
 export const { Types, Creators } = createActions({
@@ -15,17 +15,17 @@ export const { Types, Creators } = createActions({
   signInSuccess: ['data'],
   signInFailure: ['data'],
   forceSignOut: ['data'],
-  signOut: ['data'],
+  signOut: ['data']
 })
 
 const toggleModal = (state = INITIAL_STATE) => ({
   ...state,
-  activeModal: !state.activeModal,
+  activeModal: !state.activeModal
 })
 
 const signInRequest = (state = INITIAL_STATE) => ({
   ...state,
-  loading: true,
+  loading: true
 })
 
 const signInSuccess = (state = INITIAL_STATE, action) => {
@@ -37,14 +37,14 @@ const signInSuccess = (state = INITIAL_STATE, action) => {
     token,
     uuid,
     avatar,
-    isCoreTeam,
+    isCoreTeam
   }
 }
 
 const signInFailure = (state = INITIAL_STATE) => ({
   ...state,
   loading: false,
-  activeModal: false,
+  activeModal: false
 })
 
 const signOut = (state = INITIAL_STATE) => {
@@ -53,12 +53,12 @@ const signOut = (state = INITIAL_STATE) => {
     token: '',
     uuid: '',
     avatar: '',
-    isCoreTeam: false,
+    isCoreTeam: false
   }
 }
 const forceSignOut = (state = INITIAL_STATE) => {
   return {
-    ...state,
+    ...state
   }
 }
 
@@ -68,5 +68,5 @@ export default createReducer(INITIAL_STATE, {
   [Types.SIGN_IN_SUCCESS]: signInSuccess,
   [Types.SIGN_IN_FAILURE]: signInFailure,
   [Types.FORCE_SIGN_OUT]: forceSignOut,
-  [Types.SIGN_OUT]: signOut,
+  [Types.SIGN_OUT]: signOut
 })

@@ -1,9 +1,9 @@
 import { delay, call, put } from 'redux-saga/effects'
 import { toast } from 'react-toastify'
 
-import api from '~/services/api'
-import history from '~/services/history'
-import { decrypt } from '~/services/crypto'
+import api from '../../services/api'
+import history from '../../services/history'
+import { decrypt } from '../../services/crypto'
 
 import { Creators as AuthActions } from '../ducks/auth'
 
@@ -26,7 +26,7 @@ export function* signIn({ data }) {
         token: response.data.token,
         isCoreTeam,
         avatar: avatar,
-        uuid,
+        uuid
       })
     )
     yield history.push('/userInfo')

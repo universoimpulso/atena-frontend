@@ -12,9 +12,9 @@ const data = {
       values: [
         {
           key: 'limitPerDay',
-          initialValue: 20,
-        },
-      ],
+          initialValue: 20
+        }
+      ]
     },
     {
       key: 'inactivityPeriod',
@@ -23,9 +23,9 @@ const data = {
       values: [
         {
           key: 'inactivityPeriod',
-          initialValue: 8,
-        },
-      ],
+          initialValue: 8
+        }
+      ]
     },
     {
       key: 'inactivityLost',
@@ -34,10 +34,10 @@ const data = {
       values: [
         {
           key: 'inactivityLost',
-          initialValue: 2,
-        },
-      ],
-    },
+          initialValue: 2
+        }
+      ]
+    }
   ],
 
   activity: [
@@ -48,19 +48,19 @@ const data = {
         {
           key: 'message',
           text: 'mensagens',
-          initialValue: 2,
+          initialValue: 2
         },
         {
           key: 'reactions',
           text: 'dar reactions',
-          initialValue: 1,
+          initialValue: 1
         },
         {
           key: 'receiveReaction',
           text: 'receber reactions',
-          initialValue: 2,
-        },
-      ],
+          initialValue: 2
+        }
+      ]
     },
     {
       key: 'meetup',
@@ -69,19 +69,19 @@ const data = {
         {
           key: 'participant',
           text: 'participante',
-          initialValue: 5,
+          initialValue: 5
         },
         {
           key: 'mediator',
           text: 'mediador',
-          initialValue: 3,
+          initialValue: 3
         },
         {
           key: 'facilitator',
           text: 'facilitador',
-          initialValue: 3,
-        },
-      ],
+          initialValue: 3
+        }
+      ]
     },
     {
       key: 'blog',
@@ -91,9 +91,9 @@ const data = {
         {
           key: 'comment',
           text: 'comentário realizado',
-          initialValue: 2,
-        },
-      ],
+          initialValue: 2
+        }
+      ]
     },
     {
       key: 'github',
@@ -103,19 +103,19 @@ const data = {
         {
           key: 'review',
           text: 'dar reactions',
-          initialValue: 2,
+          initialValue: 2
         },
         {
           key: 'pullRequest',
           text: 'pull request',
-          initialValue: 2,
+          initialValue: 2
         },
         {
           key: 'approvedPullRequest',
           text: 'PR aprovada',
-          initialValue: 5,
-        },
-      ],
+          initialValue: 5
+        }
+      ]
     },
     {
       key: 'referral',
@@ -124,14 +124,14 @@ const data = {
         {
           key: 'indication',
           text: 'impulser indicado',
-          initialValue: 3,
+          initialValue: 3
         },
         {
           key: 'allocation',
           text: 'alocado via indicação',
-          initialValue: 2,
-        },
-      ],
+          initialValue: 2
+        }
+      ]
     },
     {
       key: 'research',
@@ -140,14 +140,14 @@ const data = {
         {
           key: 'validation',
           text: 'passar pela validação',
-          initialValue: 2,
+          initialValue: 2
         },
         {
           key: 'skill',
           text: 'skill assessments',
-          initialValue: 2,
-        },
-      ],
+          initialValue: 2
+        }
+      ]
     },
     {
       key: 'allocation',
@@ -156,19 +156,19 @@ const data = {
         {
           key: 'interview',
           text: 'entrevistado',
-          initialValue: 2,
+          initialValue: 2
         },
         {
           key: 'approved',
           text: 'aprovado',
-          initialValue: 3,
+          initialValue: 3
         },
         {
           key: 'allocated',
           text: 'alocado',
-          initialValue: 2,
-        },
-      ],
+          initialValue: 2
+        }
+      ]
     },
     {
       key: 'linkedin',
@@ -177,11 +177,11 @@ const data = {
         {
           key: 'impulser',
           text: 'trabalhando na impulso',
-          initialValue: 2,
-        },
-      ],
-    },
-  ],
+          initialValue: 2
+        }
+      ]
+    }
+  ]
 }
 const data2 = {
   general: [
@@ -192,9 +192,9 @@ const data2 = {
       values: [
         {
           key: 'limitPerDay',
-          initialValue: 23,
-        },
-      ],
+          initialValue: 23
+        }
+      ]
     },
     {
       key: 'inactivityPeriod',
@@ -203,9 +203,9 @@ const data2 = {
       values: [
         {
           key: 'inactivityPeriod',
-          initialValue: 8,
-        },
-      ],
+          initialValue: 8
+        }
+      ]
     },
     {
       key: 'inactivityLost',
@@ -214,10 +214,10 @@ const data2 = {
       values: [
         {
           key: 'inactivityLost',
-          initialValue: 2,
-        },
-      ],
-    },
+          initialValue: 2
+        }
+      ]
+    }
   ],
 
   activity: [
@@ -228,19 +228,19 @@ const data2 = {
         {
           key: 'message',
           text: 'mensagens',
-          initialValue: 2,
+          initialValue: 2
         },
         {
           key: 'reactions',
           text: 'dar reactions',
-          initialValue: 1,
+          initialValue: 1
         },
         {
           key: 'receiveReaction',
           text: 'receber reactions',
-          initialValue: 2,
-        },
-      ],
+          initialValue: 2
+        }
+      ]
     },
     {
       key: 'meetup',
@@ -249,19 +249,19 @@ const data2 = {
         {
           key: 'participant',
           text: 'participante',
-          initialValue: 5,
+          initialValue: 5
         },
         {
           key: 'mediator',
           text: 'mediador',
-          initialValue: 3,
+          initialValue: 3
         },
         {
           key: 'facilitator',
           text: 'facilitador',
-          initialValue: 3,
-        },
-      ],
+          initialValue: 3
+        }
+      ]
     },
     {
       key: 'blog',
@@ -271,9 +271,9 @@ const data2 = {
         {
           key: 'comment',
           text: 'comentário realizado',
-          initialValue: 2,
-        },
-      ],
+          initialValue: 2
+        }
+      ]
     },
     {
       key: 'github',
@@ -283,19 +283,19 @@ const data2 = {
         {
           key: 'review',
           text: 'dar reactions',
-          initialValue: 2,
+          initialValue: 2
         },
         {
           key: 'pullRequest',
           text: 'pull request',
-          initialValue: 2,
+          initialValue: 2
         },
         {
           key: 'approvedPullRequest',
           text: 'PR aprovada',
-          initialValue: 5,
-        },
-      ],
+          initialValue: 5
+        }
+      ]
     },
     {
       key: 'referral',
@@ -304,14 +304,14 @@ const data2 = {
         {
           key: 'indication',
           text: 'impulser indicado',
-          initialValue: 3,
+          initialValue: 3
         },
         {
           key: 'allocation',
           text: 'alocado via indicação',
-          initialValue: 2,
-        },
-      ],
+          initialValue: 2
+        }
+      ]
     },
     {
       key: 'research',
@@ -320,14 +320,14 @@ const data2 = {
         {
           key: 'validation',
           text: 'passar pela validação',
-          initialValue: 2,
+          initialValue: 2
         },
         {
           key: 'skill',
           text: 'skill assessments',
-          initialValue: 2,
-        },
-      ],
+          initialValue: 2
+        }
+      ]
     },
     {
       key: 'allocation',
@@ -336,19 +336,19 @@ const data2 = {
         {
           key: 'interview',
           text: 'entrevistado',
-          initialValue: 2,
+          initialValue: 2
         },
         {
           key: 'approved',
           text: 'aprovado',
-          initialValue: 3,
+          initialValue: 3
         },
         {
           key: 'allocated',
           text: 'alocado',
-          initialValue: 2,
-        },
-      ],
+          initialValue: 2
+        }
+      ]
     },
     {
       key: 'linkedin',
@@ -357,11 +357,11 @@ const data2 = {
         {
           key: 'impulser',
           text: 'trabalhando na impulso',
-          initialValue: 2,
-        },
-      ],
-    },
-  ],
+          initialValue: 2
+        }
+      ]
+    }
+  ]
 }
 export function* getExperience() {
   try {

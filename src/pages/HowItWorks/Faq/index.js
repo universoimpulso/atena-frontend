@@ -1,9 +1,9 @@
 import React from 'react'
 import StyledFaq from './style'
 import { Flex, Box } from '@rebass/grid'
-import Title from '~/components/Title'
-import Accordion from '~/components/Accordion'
-import Button from '~/components/Button'
+import Title from '../../../components/Title'
+import Accordion from '../../../components/Accordion'
+import Button from '../../../components/Button'
 
 const Faq = () => (
   <section className="container faqs">

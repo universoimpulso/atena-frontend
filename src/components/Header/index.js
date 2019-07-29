@@ -2,7 +2,7 @@ import React from 'react'
 import { Flex, Box } from '@rebass/grid'
 
 import Menu from './Menu/'
-import atena from '~/assets/atena.svg'
+import atena from '../../assets/atena.svg'
 import StyledHeader from './styles'
 
 const Header = props => (

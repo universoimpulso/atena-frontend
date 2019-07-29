@@ -3,9 +3,9 @@ import PropTypes from 'prop-types'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
-import { Creators as UserActions } from '~/store/ducks/user'
-import { PageError, PageLoading } from '~/components/utils'
-import avatarSvg from '~/assets/avatarWhite.svg'
+import { Creators as UserActions } from '../../store/ducks/user'
+import { PageError, PageLoading } from '../../components/utils'
+import avatarSvg from '../../assets/avatarWhite.svg'
 import {
   Container,
   Header,
@@ -22,7 +22,7 @@ import {
   Badge,
   Score,
   ScoreBar,
-  Achievement,
+  Achievement
 } from './styles'
 
 class UserInfo extends Component {
@@ -38,7 +38,7 @@ class UserInfo extends Component {
         monthlyPosition: PropTypes.number,
         generalPosition: PropTypes.number,
         score: PropTypes.number,
-        level: PropTypes.number,
+        level: PropTypes.number
       }).isRequired,
       userAchievements: PropTypes.arrayOf(
         PropTypes.shape({
@@ -50,17 +50,17 @@ class UserInfo extends Component {
               medal: PropTypes.number.isRequired,
               tier: PropTypes.number.isRequired,
               maxScore: PropTypes.number.isRequired,
-              score: PropTypes.number.isRequired,
+              score: PropTypes.number.isRequired
             })
-          ).isRequired,
+          ).isRequired
         })
-      ),
-    }),
+      )
+    })
   }
 
   state = {
     selected: null,
-    colors: ['#EF7C1E', '#A3A2A2', '#F7AA22', '#9DC2D6', '#BBE2ED'],
+    colors: ['#EF7C1E', '#A3A2A2', '#F7AA22', '#9DC2D6', '#BBE2ED']
   }
 
   componentDidMount() {
@@ -161,7 +161,7 @@ class UserInfo extends Component {
       monthlyPosition,
       generalPosition,
       score,
-      level,
+      level
     } = userInfo
     return (
       <Container>
@@ -206,7 +206,7 @@ class UserInfo extends Component {
 
 const mapStateToProps = state => ({
   profile: state.user.profile,
-  uuid: state.auth.uuid,
+  uuid: state.auth.uuid
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators(UserActions, dispatch)

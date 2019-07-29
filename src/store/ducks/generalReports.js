@@ -5,31 +5,31 @@ const INITIAL_STATE = {
     users: null,
     totalUsers: null,
     loading: true,
-    error: null,
+    error: null
   },
   achievements: {
     type: 'achievements',
     error: null,
     loading: true,
-    data: null,
+    data: null
   },
   missions: {
     type: 'missions',
     error: null,
     loading: true,
-    data: null,
+    data: null
   },
   xp: {
     type: 'xp',
     error: null,
     loading: true,
-    data: null,
+    data: null
   },
   teams: {
     data: null,
     loading: true,
-    error: null,
-  },
+    error: null
+  }
 }
 
 export const { Types, Creators } = createActions({
@@ -42,7 +42,7 @@ export const { Types, Creators } = createActions({
   getXp: ['data'],
   getXpResponse: ['data'],
   getTeams: ['data'],
-  getTeamsResponse: ['data'],
+  getTeamsResponse: ['data']
 })
 
 const getUsers = (state = INITIAL_STATE, action) => ({
@@ -51,12 +51,12 @@ const getUsers = (state = INITIAL_STATE, action) => ({
     users: null,
     totalUsers: null,
     loading: true,
-    error: null,
-  },
+    error: null
+  }
 })
 const getUsersResponse = (state = INITIAL_STATE, action) => ({
   ...state,
-  users: action.data,
+  users: action.data
 })
 const getUsersAchievements = (state = INITIAL_STATE, action) => ({
   ...state,
@@ -64,12 +64,12 @@ const getUsersAchievements = (state = INITIAL_STATE, action) => ({
     ...state.achievements,
     type: 'achievements',
     error: null,
-    loading: true,
-  },
+    loading: true
+  }
 })
 const getUsersAchievementsResponse = (state = INITIAL_STATE, action) => ({
   ...state,
-  achievements: action.data,
+  achievements: action.data
 })
 
 const getMissions = (state = INITIAL_STATE, action) => ({
@@ -78,12 +78,12 @@ const getMissions = (state = INITIAL_STATE, action) => ({
     ...state.missions,
     type: 'missions',
     error: null,
-    loading: true,
-  },
+    loading: true
+  }
 })
 const getMissionsResponse = (state = INITIAL_STATE, action) => ({
   ...state,
-  missions: action.data,
+  missions: action.data
 })
 
 const getXp = (state = INITIAL_STATE, action) => ({
@@ -92,24 +92,24 @@ const getXp = (state = INITIAL_STATE, action) => ({
     ...state.xp,
     type: 'xp',
     error: null,
-    loading: true,
-  },
+    loading: true
+  }
 })
 const getXpResponse = (state = INITIAL_STATE, action) => ({
   ...state,
-  xp: action.data,
+  xp: action.data
 })
 const getTeams = (state = INITIAL_STATE, action) => ({
   ...state,
   teams: {
     error: null,
     loading: true,
-    data: null,
-  },
+    data: null
+  }
 })
 const getTeamsResponse = (state = INITIAL_STATE, action) => ({
   ...state,
-  teams: action.data,
+  teams: action.data
 })
 
 export default createReducer(INITIAL_STATE, {
@@ -122,5 +122,5 @@ export default createReducer(INITIAL_STATE, {
   [Types.GET_XP]: getXp,
   [Types.GET_XP_RESPONSE]: getXpResponse,
   [Types.GET_TEAMS]: getTeams,
-  [Types.GET_TEAMS_RESPONSE]: getTeamsResponse,
+  [Types.GET_TEAMS_RESPONSE]: getTeamsResponse
 })

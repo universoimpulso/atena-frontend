@@ -15,13 +15,13 @@ import {
   getUsersAchievements,
   getMissions,
   getXp,
-  getTeams,
+  getTeams
 } from './generalReports'
 import { getExperience, putExperience } from './experienceCard'
 import {
   getAchievements,
   editAchievement,
-  createAchievement,
+  createAchievement
 } from './achievements'
 
 export default function* rootSaga() {
@@ -47,6 +47,6 @@ export default function* rootSaga() {
     takeLatest(ExperienceCardTypes.PUT_EXPERIENCE, putExperience),
     takeLatest(AchievementsTypes.GET_ACHIEVEMENTS, getAchievements),
     takeLatest(AchievementsTypes.EDIT_ACHIEVEMENT, editAchievement),
-    takeLatest(AchievementsTypes.CREATE_ACHIEVEMENT, createAchievement),
+    takeLatest(AchievementsTypes.CREATE_ACHIEVEMENT, createAchievement)
   ])
 }

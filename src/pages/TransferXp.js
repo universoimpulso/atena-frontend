@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import api from '~/services/api'
-import UserModal from '~/components/UserModal/index'
+import api from '../services/api'
+import UserModal from '../components/UserModal/index'
 import { StyledTrasferXp, UserList } from './TransferXp.style'
 
 class ScreenTransferXp extends Component {
@@ -12,7 +12,7 @@ class ScreenTransferXp extends Component {
     totalRocketUsers: null,
     selectSlackUser: null,
     selectRocketUser: null,
-    userModal: false,
+    userModal: false
   }
 
   componentDidMount() {
@@ -22,11 +22,11 @@ class ScreenTransferXp extends Component {
   getSlackUsers = async () => {
     try {
       const response = await api.get(`api/v1/slack-users`)
-      console.log(response)
+
       this.setState({
         loading: false,
         slackUsers: response.data,
-        totalSlackUsers: response.data.length,
+        totalSlackUsers: response.data.length
       })
     } catch (error) {
       console.log(error)
@@ -41,7 +41,7 @@ class ScreenTransferXp extends Component {
       this.setState({
         rocketUsers: response.data,
         totalRocketUsers: response.data.length,
-        selectSlackUser: user,
+        selectSlackUser: user
       })
     } catch (error) {
       console.log(error)
@@ -60,7 +60,7 @@ class ScreenTransferXp extends Component {
         selectRocketUser: null,
         rocketUsers: [],
         totalSlackUsers: null,
-        totalRocketUsers: null,
+        totalRocketUsers: null
       })
       this.getSlackUsers()
     }
@@ -77,7 +77,7 @@ class ScreenTransferXp extends Component {
       totalRocketUsers,
       userModal,
       selectRocketUser,
-      selectSlackUser,
+      selectSlackUser
     } = this.state
     return (
       <>

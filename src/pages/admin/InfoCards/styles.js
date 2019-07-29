@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import Select from 'react-select'
-import theme from '~/styles/theme'
+import theme from '../../../styles/theme'
 
 export const Container = styled.div`
   display: flex;

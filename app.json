@@ -9,10 +9,5 @@
     "API_URL": {
       "required": true
     }
-  },
-  "buildpacks": [
-    {
-      "url": "heroku/nodejs"
-    }
-  ]
+  }
 }

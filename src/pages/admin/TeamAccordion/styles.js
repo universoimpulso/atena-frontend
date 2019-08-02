@@ -1,20 +1,20 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
-import theme from "../../../styles/theme";
+import theme from '../../../styles/theme'
 
 export const Container = styled.section`
   margin: 30px 0;
   min-height: 150px;
   position: relative;
   width: 100%;
-`;
+`
 
 export const AccordionWrapper = styled.div`
   width: 100%;
   :not(:last-child) {
     border-bottom: solid 1px ${theme.color.lightGray};
   }
-`;
+`
 
 export const Header = styled.header`
   cursor: pointer;
@@ -33,7 +33,7 @@ export const Header = styled.header`
     margin: 0 0 40px 0;
     position: relative;
   }
-`;
+`
 
 export const Icon = styled.i`
   color: ${theme.color.primaryHover};
@@ -46,7 +46,7 @@ export const Icon = styled.i`
           transform: rotate(180deg);`
       : `transition: 0.2s all ease-in;
           transform: rotate(0);`}
-`;
+`
 
 export const Wrapper = styled.div`
   ${({ selected }) =>
@@ -60,14 +60,14 @@ export const Wrapper = styled.div`
 
   display: flex;
   width: 100%;
-`;
+`
 
 export const Box = styled.div`
   color: ${theme.color.gray};
   font-size: 12px;
   font-weight: bold;
   text-transform: uppercase;
-  width: ${props => props.width || "33%"};
+  width: ${props => props.width || '33%'};
   &:not(:last-child) {
     margin-right: 30px;
   }
@@ -75,7 +75,7 @@ export const Box = styled.div`
     font-size: 14px;
     margin-bottom: 20px;
   }
-`;
+`
 
 export const Card = styled.div`
   background: ${theme.color.white};
@@ -84,7 +84,7 @@ export const Card = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 35px;
-  min-height: ${props => props.height || "144px"};
+  min-height: ${props => props.height || '144px'};
   justify-content: center;
   padding: 0 20px;
   width: 100%;
@@ -127,4 +127,4 @@ export const Card = styled.div`
       color: ${theme.color.primaryHover};
     }
   }
-`;
+`

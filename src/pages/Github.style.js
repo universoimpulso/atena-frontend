@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 const StyledScreenGithub = styled.section`
   background: ${props => props.background};
@@ -71,6 +71,6 @@ const StyledScreenGithub = styled.section`
       margin-top: 30px;
     }
   }
-`;
+`
 
-export default StyledScreenGithub;
+export default StyledScreenGithub

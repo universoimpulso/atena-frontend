@@ -1,81 +1,88 @@
+import { createActions, createReducer } from 'reduxsauce'
+
 const INITIAL_STATE = {
-  loading: true,
-  firstUsers: [],
-  lastUsers: [],
-  monthName: "",
-  userInfo: null,
-  error: ""
-};
-
-export const Types = {
-  GET_RANKING: "ranking/GET_RANKING",
-  GET_RANKING_SUCCESS: "ranking/GET_RANKING_SUCCESS",
-  GET_RANKING_FAILURE: "ranking/GET_RANKING_FAILURE",
-  GET_USER_INFO: "ranking/GET_USER_INFO",
-  GET_USER_INFO_SUCCESS: "ranking/GET_USER_INFO_SUCCESS",
-  GET_USER_INFO_FAILURE: "ranking/GET_USER_INFO_FAILURE"
-};
-
-export default function ranking(state = INITIAL_STATE, action) {
-  switch (action.type) {
-    case Types.GET_RANKING:
-      return { ...state, loading: true };
-    case Types.GET_RANKING_SUCCESS:
-      const { firstUsers, lastUsers, monthName, error } = action.payload.data;
-      return {
-        loading: false,
-        firstUsers,
-        lastUsers,
-        monthName,
-        error
-      };
-    case Types.GET_RANKING_FAILURE:
-      return {
-        ...state,
-        loading: false,
-        error: action.payload.error
-      };
-    case Types.GET_USER_INFO:
-      return { ...state, loading: true };
-    case Types.GET_USER_INFO_SUCCESS:
-      return {
-        loading: false,
-        userInfo: action.payload.data
-      };
-    case Types.GET_USER_INFO_FAILURE:
-      return {
-        ...state,
-        loading: false,
-        error: action.payload.error
-      };
-    default:
-      return state;
+  ranking: {
+    loading: true,
+    error: '',
+    firstUsers: [],
+    lastUsers: [],
+    monthName: ''
+  },
+  users: {
+    loading: false,
+    error: null,
+    data: null
+  },
+  userInfo: {
+    loading: false,
+    error: null,
+    data: null
   }
 }
 
-export const Creators = {
-  getRanking: selected => ({
-    type: Types.GET_RANKING,
-    payload: { selected }
-  }),
-  getRankingSuccess: data => ({
-    type: Types.GET_RANKING_SUCCESS,
-    payload: { data }
-  }),
-  getRankingFailure: error => ({
-    type: Types.GET_RANKING_FAILURE,
-    payload: { error }
-  }),
-  getUserInfo: selected => ({
-    type: Types.GET_USER_INFO,
-    payload: { selected }
-  }),
-  getUserInfoSuccess: data => ({
-    type: Types.GET_USER_INFO_SUCCESS,
-    payload: { data }
-  }),
-  getUserInfoFailure: error => ({
-    type: Types.GET_USER_INFO_FAILURE,
-    payload: { error }
-  })
-};
+export const { Types, Creators } = createActions({
+  getRanking: ['selected'],
+  getRankingResponse: ['data'],
+  getRankingUsers: ['data'],
+  getRankingUsersResponse: ['data'],
+  getUserInfo: ['data'],
+  getUserInfoResponse: ['data']
+})
+
+const getRanking = (state = INITIAL_STATE) => ({
+  ...state,
+  ranking: {
+    loading: false,
+    error: '',
+    firstUsers: [],
+    lastUsers: [],
+    monthName: ''
+  }
+})
+
+const getRankingResponse = (state = INITIAL_STATE, action) => ({
+  ...state,
+  ranking: action.data
+})
+
+const getRankingUsers = (state = INITIAL_STATE, action) => ({
+  ...state,
+  users: { data: null, loading: true, error: null },
+  userInfo: {
+    data: null,
+    loading: false,
+    error: null
+  }
+})
+
+const getRankingUsersResponse = (state = INITIAL_STATE, action) => ({
+  ...state,
+  users: action.data
+})
+
+const getUserInfo = (state = INITIAL_STATE, action) => ({
+  ...state,
+  users: {
+    ...state.users,
+    data: null
+  },
+  userInfo: {
+    data: null,
+    loading: true,
+    error: null
+  }
+})
+
+const getUserInfoResponse = (state = INITIAL_STATE, action) => ({
+  ...state,
+  userInfo: action.data
+})
+
+export default createReducer(INITIAL_STATE, {
+  [Types.GET_RANKING]: getRanking,
+  [Types.GET_RANKING_RESPONSE]: getRankingResponse,
+  [Types.GET_RANKING_USERS]: getRankingUsers,
+  [Types.GET_RANKING_USERS_RESPONSE]: getRankingUsersResponse,
+  [Types.GET_USER_INFO]: getUserInfo,
+  [Types.GET_USER_INFO_RESPONSE]: getUserInfoResponse
+})

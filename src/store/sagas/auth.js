@@ -1,35 +1,50 @@
-import { call, put } from "redux-saga/effects";
-import { push } from "connected-react-router";
-import api from "../../services/api";
+import { delay, call, put } from 'redux-saga/effects'
+import { toast } from 'react-toastify'
 
-import { Creators as AuthActions } from "../ducks/auth";
+import api from '../../services/api'
+import history from '../../services/history'
+import { decrypt } from '../../services/crypto'
 
-export function* signIn(data) {
-  const { rocketId, password } = data.payload;
+import { Creators as AuthActions } from '../ducks/auth'
+
+export function* signIn({ data }) {
   try {
-    // const response = yield call(api.post, "sessions", { rocketId, password });
-    const user = {
-      user: "Julio Goncalves",
-      isCoreTeam: true,
-      token: "123456",
-      avatar:
-        "https://avatars.slack-edge.com/2018-08-01/409144328290_81d8f97e55540e84881c_72.png"
-    };
+    const { rocketId, password, code } = data
+    let response
+    if (code) {
+      response = yield call(api.post, 'auth/linkedin', { code })
+    } else if (rocketId && password) {
+      response = yield call(api.post, 'auth', { user: rocketId, password })
+    }
+    const { uuid, isCoreTeam, avatar } = yield call(
+      decrypt,
+      response.data.token
+    )
 
-    localStorage.setItem("@atena:user", JSON.stringify(user));
-    user.token &&
-      localStorage.setItem("@atena:token", JSON.stringify(user.token));
-
-    yield put(AuthActions.signInSuccess(user));
-    window.location.reload();
+    yield put(
+      AuthActions.signInSuccess({
+        token: response.data.token,
+        isCoreTeam,
+        avatar: avatar,
+        uuid
+      })
+    )
+    yield history.push('/userInfo')
   } catch (err) {
-    yield put(AuthActions.signInFailure(err));
+    toast.error(`Não foi possível completar o login:
+    ${err.message}`)
+    yield put(AuthActions.signInFailure(err))
   }
 }
 
-export function* logout() {
-  localStorage.removeItem("@atena:user");
-  localStorage.removeItem("@atena:token");
+export function logout() {
+  history.push('/')
+}
 
-  yield put(window.location.reload());
+export function* forceLogout() {
+  toast.warn(`Voce será direcionado em 3 segundos`)
+  yield delay(3000)
+  yield put(AuthActions.signOut())
+
+  history.push('/')
 }

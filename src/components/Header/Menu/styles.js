@@ -1,24 +1,23 @@
-import styled from "styled-components";
-import theme from "../../styles/theme";
+import styled from 'styled-components'
+import theme from '../../../styles/theme'
 
 const StyledMenu = styled.ul`
-  margin: 0;
-  padding: 0;
-  list-style: none;
   display: flex;
-  width: fit-content;
+  list-style: none;
   margin: 0 auto;
+  padding: 0;
+  width: fit-content;
 
   li + li::before {
-    content: "";
-    display: inline-block;
-    width: 4px;
-    height: 4px;
-    background: ${props => theme.color.secondary};
+    content: '';
+    background: ${theme.color.secondary};
     border-radius: 3px;
+    display: inline-block;
+    height: 4px;
     margin-bottom: 3px;
-    margin-left: ${props => theme.fontSize.default};
-    margin-right: ${props => theme.fontSize.default};
+    margin-left: ${theme.fontSize.default};
+    margin-right: ${theme.fontSize.default};
+    width: 4px;
   }
 
   li {
@@ -35,29 +34,30 @@ const StyledMenu = styled.ul`
 
     img {
       border-radius: 50%;
-      width: 50px;
       height: 50px;
+      text-indent: -9999px;
+      width: 50px;
     }
   }
 
   button {
-    color: ${theme.color.white};
-    text-transform: uppercase;
     background: transparent;
+    color: ${theme.color.white};
+    cursor: pointer;
     font-weight: 600;
     outline: none;
-    cursor: pointer;
+    text-transform: uppercase;
 
     &::after {
-      content: "";
-      display: block;
-      width: 0px;
-      height: 3px;
       background: ${theme.color.primaryLight};
       border-radius: 3px;
+      content: '';
+      display: block;
+      height: 3px;
       position: absolute;
-      transform: translateY(5px);
       transition: 0.2s all ease-in;
+      transform: translateY(5px);
+      width: 0px;
     }
 
     &.selected::after {
@@ -65,7 +65,7 @@ const StyledMenu = styled.ul`
     }
 
     &:hover {
-      color: ${props => theme.color.primaryLight};
+      color: ${theme.color.primaryLight};
 
       &::after {
         width: 20px;
@@ -74,29 +74,29 @@ const StyledMenu = styled.ul`
   }
 
   @media (max-width: 760px) {
-    position: fixed;
-    z-index: 900;
-    background: ${props => theme.color.primary};
-    top: 0;
+    background: ${theme.color.primary};
     bottom: 0;
-    left: 0;
     flex-direction: column;
+    left: 0;
     padding: 30px;
+    position: fixed;
+    top: 0;
     transform: translateX(-100%);
+    z-index: 900;
 
     li + li::before {
       display: none;
     }
 
     a {
-      padding: ${props => theme.fontSize.default};
       display: block;
+      padding: ${theme.fontSize.default};
 
       &::after {
         display: none;
       }
     }
   }
-`;
+`
 
-export default StyledMenu;
+export default StyledMenu

@@ -1,35 +1,35 @@
-import React, { Component, Fragment } from "react";
-import PropTypes from "prop-types";
+import React, { Component, Fragment } from 'react'
+import PropTypes from 'prop-types'
 
-import { Creators as achievementsActions } from "../../../store/ducks/achievements";
-import { bindActionCreators } from "redux";
-import { connect } from "react-redux";
+import { Creators as achievementsActions } from '../../../store/ducks/achievements'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
 
-import { Container, Header, Icon, Wrapper } from "./styles";
-import Card from "./Card";
+import { Container, Header, Icon, Wrapper } from './styles'
+import Card from './Card'
 
 class EditAchievements extends Component {
   static propTypes = {
     getAchievements: PropTypes.func.isRequired,
     achievements: PropTypes.object.isRequired,
     achievementsValues: PropTypes.array
-  };
+  }
 
   state = {
     active: null
-  };
+  }
 
   componentDidMount() {
-    this.props.getAchievements();
+    this.props.getAchievements()
   }
 
   handleClick = index => {
-    this.setState({ active: index === this.state.active ? null : index });
-  };
+    this.setState({ active: index === this.state.active ? null : index })
+  }
 
   render() {
-    const { active } = this.state;
-    const { achievementsValues } = this.props.achievements;
+    const { active } = this.state
+    const { achievementsValues } = this.props.achievements
     return (
       <Container>
         {achievementsValues &&
@@ -64,16 +64,16 @@ class EditAchievements extends Component {
             </Fragment>
           ))}
       </Container>
-    );
+    )
   }
 }
 
-const mapStateToProps = state => ({ achievements: state.achievements });
+const mapStateToProps = state => ({ achievements: state.achievements })
 
 const mapDispatchToProps = dispatch =>
-  bindActionCreators(achievementsActions, dispatch);
+  bindActionCreators(achievementsActions, dispatch)
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(EditAchievements);
+)(EditAchievements)

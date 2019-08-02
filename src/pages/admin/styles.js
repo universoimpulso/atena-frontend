@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
-import theme from "../../styles/theme";
+import theme from '../../styles/theme'
 
 export const Container = styled.div`
   background: ${theme.color.background};
@@ -10,7 +10,7 @@ export const Container = styled.div`
   margin-top: 100px;
   padding-top: 40px;
   width: 100%;
-`;
+`
 export const Aside = styled.aside`
   margin: 0 30px;
   height: 600px;
@@ -28,7 +28,7 @@ export const Aside = styled.aside`
     margin: 30px 0;
     width: 236px;
   }
-`;
+`
 export const Option = styled.p`
   cursor: pointer;
   line-height: 100%;
@@ -41,9 +41,9 @@ export const Option = styled.p`
       : `color: ${theme.color.gray}`};
 
   &:after {
-    content: "";
+    content: '';
     display: block;
-    width: ${props => (props.active ? "30px" : 0)};
+    width: ${props => (props.active ? '30px' : 0)};
     height: 3px;
     background: ${theme.color.primary};
     border-radius: 3px;
@@ -59,7 +59,7 @@ export const Option = styled.p`
       width: 30px;
     }
   }
-`;
+`
 
 export const Section = styled.section`
   width: 100%;
@@ -70,4 +70,4 @@ export const Section = styled.section`
     color: ${theme.color.primary};
     margin-bottom: 20px;
   }
-`;
+`

@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import theme from "../../styles/theme";
+import styled from 'styled-components'
+import theme from '../../styles/theme'
 
 const StyledSocialLinks = styled.ul`
   margin: 0;
@@ -22,6 +22,6 @@ const StyledSocialLinks = styled.ul`
   a:hover {
     color: ${theme.color.primaryHover};
   }
-`;
+`
 
-export default StyledSocialLinks;
+export default StyledSocialLinks

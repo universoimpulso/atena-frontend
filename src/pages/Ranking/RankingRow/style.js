@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import { RankingHeader } from "../styles";
-import theme from "../../../styles/theme";
+import styled from 'styled-components'
+import { RankingHeader } from '../styles'
+import theme from '../../../styles/theme'
 
 export const StyledRankingRow = styled(RankingHeader)`
   background-color: ${theme.color.white};
@@ -47,4 +47,4 @@ export const StyledRankingRow = styled(RankingHeader)`
     text-align: center;
     align-self: center;
   }
-`;
+`

@@ -1,8 +1,9 @@
-import React from "react";
-import StyledHeader from "./style";
-import atena from "../../assets/atena.svg";
-import { Flex, Box } from "@rebass/grid";
-import Menu from "./Menu";
+import React from 'react'
+import { Flex, Box } from '@rebass/grid'
+
+import Menu from './Menu/'
+import atena from '../../assets/atena.svg'
+import StyledHeader from './styles'
 
 const Header = props => (
   <StyledHeader>
@@ -17,6 +18,6 @@ const Header = props => (
       </Box>
     </Flex>
   </StyledHeader>
-);
+)
 
-export default Header;
+export default Header

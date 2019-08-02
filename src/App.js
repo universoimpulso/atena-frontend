@@ -1,48 +1,32 @@
-import React from "react";
-import { Provider } from "react-redux";
-import { ToastContainer } from "react-toastify";
-import "./config/ReactotronConfig";
-import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
+import React from 'react'
+import { Router } from 'react-router-dom'
+import { Provider } from 'react-redux'
+import { PersistGate } from 'redux-persist/integration/react'
+import { ToastContainer } from 'react-toastify'
+import './config/ReactotronConfig'
 
-import store from "./store";
-import StyledApp from "./styles/global";
+import { store, persistor } from './store'
+import StyledApp from './styles/global'
 
-import TransferXp from "./pages/TransferXp";
-import HowItWorks from "./pages/HowItWorks";
-import Ranking from "./pages/Ranking";
-import Admin from "./pages/admin";
-import UserInfo from "./pages/UserInfo";
-import Github from "./pages/Github";
-
-import Footer from "./components/Footer";
-import Header from "./components/Header";
+import Footer from './components/Footer'
+import Header from './components/Header'
+import Routes from './routes'
+import history from './services/history'
 
 function App() {
   return (
     <Provider store={store}>
-      <BrowserRouter>
-        <StyledApp />
-        <Header />
-        <Switch>
-          <Route exact path="/" component={HowItWorks} />
-          <Route path="/ranking" component={Ranking} />
-          <Route path="/github/:status" component={Github} />
-
-          {store.getState().auth.user ? (
-            <>
-              <Route path="/transfer" component={TransferXp} />
-              <Route path="/admin" component={Admin} />
-              <Route path="/userInfo" component={UserInfo} />
-            </>
-          ) : (
-            <Redirect to="/" />
-          )}
-        </Switch>
-        <Footer />
-        <ToastContainer autoClose={2000} />
-      </BrowserRouter>
+      <PersistGate persistor={persistor}>
+        <Router history={history}>
+          <StyledApp />
+          <Header />
+          <Routes />
+          <Footer />
+          <ToastContainer autoClose={3000} />
+        </Router>
+      </PersistGate>
     </Provider>
-  );
+  )
 }
 
-export default App;
+export default App

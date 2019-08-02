@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import theme from "../../styles/theme";
+import styled from 'styled-components'
+import theme from '../../styles/theme'
 
 const StyledButton = styled.div`
   color: ${theme.color.primary};
@@ -34,6 +34,6 @@ const StyledButton = styled.div`
       color: white;
     }
   }
-`;
+`
 
-export default StyledButton;
+export default StyledButton

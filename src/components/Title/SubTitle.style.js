@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import theme from "../../styles/theme";
+import styled from 'styled-components'
+import theme from '../../styles/theme'
 
 const StyledSubTitle = styled.h2`
   font-size: 28px;
@@ -13,6 +13,6 @@ const StyledSubTitle = styled.h2`
   @media (max-width: 760px) {
     font-size: 16px;
   }
-`;
+`
 
-export default StyledSubTitle;
+export default StyledSubTitle

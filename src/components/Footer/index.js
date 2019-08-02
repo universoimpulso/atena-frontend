@@ -1,7 +1,7 @@
-import React from "react";
-import { StyledFooter, StyledCopyright } from "./style";
-import impulsoIcon from "../../assets/impulso.svg";
-import SocialLinks from "./SocialLinks";
+import React from 'react'
+import { StyledFooter, StyledCopyright } from './style'
+import impulsoIcon from '../../assets/impulso.svg'
+import SocialLinks from './SocialLinks'
 
 const Footer = () => (
   <StyledFooter>
@@ -14,6 +14,6 @@ const Footer = () => (
       </StyledCopyright>
     </section>
   </StyledFooter>
-);
+)
 
-export default Footer;
+export default Footer

@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import api from "../services/api";
-import UserModal from "../components/UserModal/index";
-import { StyledTrasferXp, UserList } from "./TransferXp.style";
+import React, { Component } from 'react'
+import api from '../services/api'
+import UserModal from '../components/UserModal/index'
+import { StyledTrasferXp, UserList } from './TransferXp.style'
 
 class ScreenTransferXp extends Component {
   state = {
@@ -13,47 +13,47 @@ class ScreenTransferXp extends Component {
     selectSlackUser: null,
     selectRocketUser: null,
     userModal: false
-  };
+  }
 
   componentDidMount() {
-    this.getSlackUsers();
+    this.getSlackUsers()
   }
 
   getSlackUsers = async () => {
     try {
-      const response = await api.get(`/slack-users`);
+      const response = await api.get(`api/v1/slack-users`)
 
       this.setState({
         loading: false,
         slackUsers: response.data,
         totalSlackUsers: response.data.length
-      });
+      })
     } catch (error) {
-      console.log(error);
+      console.log(error)
     }
-  };
+  }
 
   searchByName = async user => {
-    const firstName = user.name.split(" ")[0];
+    const firstName = user.name.split(' ')[0]
 
     try {
-      const response = await api.get(`api/v1/find?name=${firstName}`);
+      const response = await api.get(`api/v1/find?name=${firstName}`)
       this.setState({
         rocketUsers: response.data,
         totalRocketUsers: response.data.length,
         selectSlackUser: user
-      });
+      })
     } catch (error) {
-      console.log(error);
+      console.log(error)
     }
-  };
+  }
 
   editPoints = async user => {
-    this.setState({ selectRocketUser: user }, this.toogleModal());
-  };
+    this.setState({ selectRocketUser: user }, this.toogleModal())
+  }
 
   toogleModal = reload => {
-    this.setState({ userModal: !this.state.userModal });
+    this.setState({ userModal: !this.state.userModal })
     if (reload) {
       this.setState({
         selectSlackUser: null,
@@ -61,12 +61,12 @@ class ScreenTransferXp extends Component {
         rocketUsers: [],
         totalSlackUsers: null,
         totalRocketUsers: null
-      });
-      this.getSlackUsers();
+      })
+      this.getSlackUsers()
     }
-  };
+  }
 
-  showInfo = id => {};
+  showInfo = id => {}
 
   render() {
     const {
@@ -78,20 +78,20 @@ class ScreenTransferXp extends Component {
       userModal,
       selectRocketUser,
       selectSlackUser
-    } = this.state;
+    } = this.state
     return (
       <>
         <StyledTrasferXp>
           <section>
             <UserList>
               <h5>
-                {totalSlackUsers ? `Usuarios slack com mais de 5 pontos :` : ""}
+                {totalSlackUsers ? `Usuarios slack com mais de 5 pontos :` : ''}
               </h5>
               <ul>
                 {slackUsers.map(user => (
                   <li onClick={() => this.searchByName(user)} key={user._id}>
                     <img src={user.avatar} alt="" />
-                    {user.name}{" "}
+                    {user.name}{' '}
                     <span>
                       {Math.round(user.score)}
                       <i
@@ -107,7 +107,7 @@ class ScreenTransferXp extends Component {
               <h5>
                 {totalRocketUsers
                   ? `Encotrado ${totalRocketUsers} usuarios parecidos.`
-                  : ""}
+                  : ''}
               </h5>
               <ul>
                 {rocketUsers.map(user => (
@@ -134,8 +134,8 @@ class ScreenTransferXp extends Component {
           />
         )}
       </>
-    );
+    )
   }
 }
 
-export default ScreenTransferXp;
+export default ScreenTransferXp

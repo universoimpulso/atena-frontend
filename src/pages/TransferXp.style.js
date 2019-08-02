@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const StyledTrasferXp = styled.div`
   height: 100vh;
@@ -17,7 +17,7 @@ export const StyledTrasferXp = styled.div`
     display: flex;
     padding: 16px;
   }
-`;
+`
 export const UserList = styled.div`
   width: 50%;
   ul {
@@ -43,4 +43,4 @@ export const UserList = styled.div`
       margin: 0 8px;
     }
   }
-`;
+`

@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import theme from "../../styles/theme";
+import styled from 'styled-components'
+import theme from '../../styles/theme'
 
 const StyledCard = styled.div`
   background-color: ${theme.color.white};
@@ -63,11 +63,11 @@ const StyledCard = styled.div`
       height: 69px;
     }
   }
-`;
+`
 
 export const StyledUserCard = styled.div`
   background-color: ${theme.color.white};
   min-height: 413px;
-`;
+`
 
-export default StyledCard;
+export default StyledCard

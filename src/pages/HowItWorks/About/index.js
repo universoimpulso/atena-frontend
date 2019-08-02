@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react'
 
-import Title from "../Title";
-import { Flex, Box } from "@rebass/grid";
+import Title from '../../../components/Title'
+import { Flex, Box } from '@rebass/grid'
 
-import ilustraAtena from "../../assets/ilustra-atena.svg";
+import ilustraAtena from '../../../assets/ilustra-atena.svg'
 
 const About = () => {
   return (
@@ -23,7 +23,7 @@ const About = () => {
           <br />
           <p className="super ifdesktop">
             Assim que você entra na comunidade, automaticamente se tornará um(a)
-            jogador(a) e poderá pontuar por meio da execução de diversas{" "}
+            jogador(a) e poderá pontuar por meio da execução de diversas{' '}
             <strong>atividades</strong>, alcançar <strong>Níveis</strong> e
             obter <strong>conquistas</strong> como reconhecimento pelos seus
             esforços.
@@ -38,7 +38,7 @@ const About = () => {
         </Box>
       </Flex>
     </section>
-  );
-};
+  )
+}
 
-export default About;
+export default About

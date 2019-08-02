@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const Wrapper = styled.div`
   background: rgba(0, 0, 0, 0.5);
@@ -11,7 +11,7 @@ export const Wrapper = styled.div`
   position: fixed;
   top: 0;
   z-index: 10;
-`;
+`
 
 export const Container = styled.div`
   box-shadow: 0px 0px 9px 2px rgba(0, 0, 0, 0.6);
@@ -24,7 +24,7 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
   background: #fff;
-`;
+`
 
 export const UserWrapper = styled.div`
   width: 100%;
@@ -34,7 +34,7 @@ export const UserWrapper = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-`;
+`
 
 export const UserInfo = styled.div`
   box-shadow: 0px 0px 9px 2px rgba(0, 0, 0, 0.2);
@@ -87,18 +87,18 @@ export const UserInfo = styled.div`
       }
     }
   }
-`;
+`
 export const ButtonWrapper = styled.div`
   display: flex;
   margin: 16px;
-`;
+`
 export const Button = styled.button`
   margin: 0 8px;
   text-transform: uppercase;
   width: 260px;
   height: 50px;
   color: #fff;
-  background: ${props => (props.gray ? "#7f8c8d" : "#1e90ff")};
+  background: ${props => (props.gray ? '#7f8c8d' : '#1e90ff')};
   &:hover {
     cursor: pointer;
     opacity: 0.8;
@@ -109,4 +109,4 @@ export const Button = styled.button`
     color: #fff;
     cursor: not-allowed;
   }
-`;
+`

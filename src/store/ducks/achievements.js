@@ -1,138 +1,82 @@
+import { createActions, createReducer } from 'reduxsauce'
+
 const INITIAL_STATE = {
+  userAchievements: {
+    data: null,
+    loading: true,
+    error: null
+  },
   loading: true,
-  editLoading: "",
-  userAchievements: null,
+  editLoading: '',
   achievementsValues: [],
-  editError: "",
-  createError: ""
-};
-
-export const Types = {
-  GET_ACHIEVEMENTS: "achievements/GET_ACHIEVEMENTS",
-  GET_ACHIEVEMENTS_SUCCESS: "achievements/GET_ACHIEVEMENTS_SUCCESS",
-  GET_ACHIEVEMENTS_FAILURE: "achievements/GET_ACHIEVEMENTS_FAILURE",
-  GET_USER_ACHIEVEMENTS: "achievements/GET_USER_ACHIEVEMENTS",
-  GET_USER_ACHIEVEMENTS_SUCCESS: "achievements/GET_USER_ACHIEVEMENTS_SUCCESS",
-  GET_USER_ACHIEVEMENTS_FAILURE: "achievements/GET_USER_ACHIEVEMENTS_FAILURE",
-  EDIT_ACHIEVEMENT: "achievements/EDIT_ACHIEVEMENT",
-  EDIT_ACHIEVEMENT_SUCCESS: "achievements/EDIT_ACHIEVEMENT_SUCCESS",
-  EDIT_ACHIEVEMENT_FAILURE: "achievements/EDIT_ACHIEVEMENT_FAILURE",
-  CREATE_ACHIEVEMENT: "achievements/CREATE_ACHIEVEMENT",
-  CREATE_ACHIEVEMENT_SUCCESS: "achievements/CREATE_ACHIEVEMENT_SUCCESS",
-  CREATE_ACHIEVEMENT_FAILURE: "achievements/CREATE_ACHIEVEMENT_FAILURE"
-};
-
-export default function ranking(state = INITIAL_STATE, action) {
-  switch (action.type) {
-    case Types.GET_ACHIEVEMENTS:
-      return { ...state, loading: true };
-    case Types.GET_ACHIEVEMENTS_SUCCESS:
-      return {
-        ...state,
-        loading: false,
-        achievementsValues: action.payload.data
-      };
-    case Types.GET_ACHIEVEMENTS_FAILURE:
-      return {
-        ...state,
-        loading: false,
-        getError: action.payload.error
-      };
-    case Types.GET_USER_ACHIEVEMENTS:
-      return { ...state, loading: true };
-    case Types.GET_USER_ACHIEVEMENTS_SUCCESS:
-      return {
-        ...state,
-        loading: false,
-        userAchievements: action.payload.data
-      };
-    case Types.GET_USER_ACHIEVEMENTS_FAILURE:
-      return {
-        ...state,
-        loading: false,
-        getError: action.payload.error
-      };
-    case Types.EDIT_ACHIEVEMENT:
-      const { type, values } = action.payload.data;
-      const editLoading = type.concat(values.name);
-      return { ...state, editLoading };
-    case Types.EDIT_ACHIEVEMENT_SUCCESS:
-      return {
-        ...state,
-        editLoading: "",
-        achievementsValues: action.payload.data
-      };
-    case Types.EDIT_ACHIEVEMENT_FAILURE:
-      return {
-        ...state,
-        editLoading: ""
-      };
-    case Types.CREATE_ACHIEVEMENT:
-      return { ...state, loading: true };
-    case Types.CREATE_ACHIEVEMENT_SUCCESS:
-      return {
-        ...state,
-        loading: false
-        // achievementsValues: { ...action.payload.data }
-      };
-    case Types.CREATE_ACHIEVEMENT_FAILURE:
-      return {
-        ...state,
-        loading: false,
-        createError: action.payload.error
-      };
-    default:
-      return state;
-  }
+  editError: '',
+  createError: ''
 }
 
-export const Creators = {
-  getAchievements: () => ({
-    type: Types.GET_ACHIEVEMENTS,
-    payload: {}
-  }),
-  getAchievementsSuccess: data => ({
-    type: Types.GET_ACHIEVEMENTS_SUCCESS,
-    payload: { data }
-  }),
-  getAchievementsFailure: error => ({
-    type: Types.GET_ACHIEVEMENTS_FAILURE,
-    payload: { error }
-  }),
-  getUserAchievements: () => ({
-    type: Types.GET_USER_ACHIEVEMENTS,
-    payload: {}
-  }),
-  getUserAchievementsSuccess: data => ({
-    type: Types.GET_USER_ACHIEVEMENTS_SUCCESS,
-    payload: { data }
-  }),
-  getUserAchievementsFailure: error => ({
-    type: Types.GET_USER_ACHIEVEMENTS_FAILURE,
-    payload: { error }
-  }),
-  editAchievement: data => ({
-    type: Types.EDIT_ACHIEVEMENT,
-    payload: { data }
-  }),
-  editAchievementSuccess: data => ({
-    type: Types.EDIT_ACHIEVEMENT_SUCCESS,
-    payload: { data }
-  }),
-  editAchievementFailure: () => ({
-    type: Types.EDIT_ACHIEVEMENT_FAILURE,
-    payload: {}
-  }),
-  createAchievement: data => ({
-    type: Types.CREATE_ACHIEVEMENT,
-    payload: { data }
-  }),
-  createAchievementSuccess: data => ({
-    type: Types.CREATE_ACHIEVEMENT_SUCCESS,
-    payload: { data }
-  }),
-  createAchievementFailure: error => ({
-    type: Types.CREATE_ACHIEVEMENT_FAILURE,
-    payload: { error }
-  })
-};
+export const { Types, Creators } = createActions({
+  getAchievements: ['data'],
+  getAchievementsSuccess: ['data'],
+  getAchievementsFailure: ['data'],
+  editAchievement: ['data'],
+  editAchievementSuccess: ['data'],
+  editAchievementFailure: ['data'],
+  createAchievement: ['data'],
+  createAchievementSuccess: ['data'],
+  createAchievementFailure: ['data']
+})
+
+const getAchievements = (state = INITIAL_STATE, action) => ({
+  ...state,
+  loading: true
+})
+const getAchievementsSuccess = (state = INITIAL_STATE, action) => ({
+  ...state,
+  loading: false,
+  achievementsValues: action.data
+})
+const getAchievementsFailure = (state = INITIAL_STATE, action) => ({
+  ...state,
+  loading: false,
+  getError: action.data
+})
+
+const editAchievement = (state = INITIAL_STATE, action) => {
+  const { type, values } = action.data
+  const editLoading = type.concat(values.name)
+
+  return { ...state, editLoading }
+}
+const editAchievementSuccess = (state = INITIAL_STATE, action) => ({
+  ...state,
+  editLoading: '',
+  achievementsValues: action.data
+})
+const editAchievementFailure = (state = INITIAL_STATE, action) => ({
+  ...state,
+  editLoading: ''
+})
+const createAchievement = (state = INITIAL_STATE, action) => ({
+  ...state,
+  loading: true
+})
+const createAchievementSuccess = (state = INITIAL_STATE, action) => ({
+  ...state,
+  loading: false
+})
+const createAchievementFailure = (state = INITIAL_STATE, action) => ({
+  ...state,
+  loading: false,
+  createError: action.error
+})
+
+export default createReducer(INITIAL_STATE, {
+  [Types.GET_ACHIEVEMENTS]: getAchievements,
+  [Types.GET_ACHIEVEMENTS_SUCCESS]: getAchievementsSuccess,
+  [Types.GET_ACHIEVEMENTS_FAILURE]: getAchievementsFailure,
+  [Types.EDIT_ACHIEVEMENT]: editAchievement,
+  [Types.EDIT_ACHIEVEMENT_SUCCESS]: editAchievementSuccess,
+  [Types.EDIT_ACHIEVEMENT_FAILURE]: editAchievementFailure,
+  [Types.CREATE_ACHIEVEMENT]: createAchievement,
+  [Types.CREATE_ACHIEVEMENT_SUCCESS]: createAchievementSuccess,
+  [Types.CREATE_ACHIEVEMENT_FAILURE]: createAchievementFailure
+})

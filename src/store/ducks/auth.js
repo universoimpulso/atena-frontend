@@ -1,61 +1,72 @@
+import { createActions, createReducer } from 'reduxsauce'
+
 const INITIAL_STATE = {
+  activeModal: false,
   loading: false,
-  error: null,
-  user: JSON.parse(localStorage.getItem("@atena:user")) || null,
-  token: JSON.parse(localStorage.getItem("@atena:token")) || null
-};
+  token: '',
+  avatar: '',
+  uuid: '',
+  isCoreTeam: false
+}
 
-export const Types = {
-  SIGN_IN_REQUEST: "auth/REQUEST",
-  SIGN_IN_SUCCESS: "auth/SUCCESS",
-  SIGN_IN_FAILURE: "auth/FAILURE",
-  SIGN_OUT: "auth/SIGN_OUT"
-};
+export const { Types, Creators } = createActions({
+  toggleModal: ['data'],
+  signInRequest: ['data'],
+  signInSuccess: ['data'],
+  signInFailure: ['data'],
+  forceSignOut: ['data'],
+  signOut: ['data']
+})
 
-export default function auth(state = INITIAL_STATE, action) {
-  switch (action.type) {
-    case Types.SIGN_IN_REQUEST:
-      return { ...state, loading: true };
-    case Types.SIGN_IN_SUCCESS:
-      const { user } = action.payload;
-      return {
-        ...state,
-        loading: false,
-        user,
-        token: user.token
-      };
-    case Types.SIGN_IN_FAILURE:
-      return {
-        ...state,
-        loading: false,
-        error: action.payload
-      };
-    case Types.SIGN_OUT:
-      return {
-        ...state,
-        user: null,
-        token: null
-      };
-    default:
-      return state;
+const toggleModal = (state = INITIAL_STATE) => ({
+  ...state,
+  activeModal: !state.activeModal
+})
+
+const signInRequest = (state = INITIAL_STATE) => ({
+  ...state,
+  loading: true
+})
+
+const signInSuccess = (state = INITIAL_STATE, action) => {
+  const { token, uuid, isCoreTeam, avatar } = action.data
+  return {
+    ...state,
+    activeModal: false,
+    loading: false,
+    token,
+    uuid,
+    avatar,
+    isCoreTeam
   }
 }
 
-export const Creators = {
-  signInRequest: ({ rocketId, password }) => ({
-    type: Types.SIGN_IN_REQUEST,
-    payload: { rocketId, password }
-  }),
-  signInSuccess: user => ({
-    type: Types.SIGN_IN_SUCCESS,
-    payload: { user }
-  }),
-  signInFailure: ({ type, message }) => ({
-    type: Types.SIGN_IN_FAILURE,
-    payload: { type, message }
-  }),
-  signOut: () => ({
-    type: Types.SIGN_OUT,
-    payload: {}
-  })
-};
+const signInFailure = (state = INITIAL_STATE) => ({
+  ...state,
+  loading: false,
+  activeModal: false
+})
+
+const signOut = (state = INITIAL_STATE) => {
+  return {
+    ...state,
+    token: '',
+    uuid: '',
+    avatar: '',
+    isCoreTeam: false
+  }
+}
+const forceSignOut = (state = INITIAL_STATE) => {
+  return {
+    ...state
+  }
+}
+
+export default createReducer(INITIAL_STATE, {
+  [Types.TOGGLE_MODAL]: toggleModal,
+  [Types.SIGN_IN_REQUEST]: signInRequest,
+  [Types.SIGN_IN_SUCCESS]: signInSuccess,
+  [Types.SIGN_IN_FAILURE]: signInFailure,
+  [Types.FORCE_SIGN_OUT]: forceSignOut,
+  [Types.SIGN_OUT]: signOut
+})

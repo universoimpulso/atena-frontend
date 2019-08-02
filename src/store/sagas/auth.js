@@ -14,7 +14,7 @@ export function* signIn({ data }) {
     if (code) {
       response = yield call(api.post, 'auth/linkedin', { code })
     } else if (rocketId && password) {
-      response = yield call(api.post, 'auth', { rocketId, password })
+      response = yield call(api.post, 'auth', { user: rocketId, password })
     }
     const { uuid, isCoreTeam, avatar } = yield call(
       decrypt,

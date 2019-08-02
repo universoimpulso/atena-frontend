@@ -8,6 +8,7 @@
     "crypto-js": "^3.1.9-1",
     "echarts": "^4.2.1",
     "echarts-for-react": "^2.0.15-beta.0",
+    "final-form": "^4.16.2",
     "formik": "^1.5.8",
     "history": "^4.9.0",
     "moment": "^2.24.0",

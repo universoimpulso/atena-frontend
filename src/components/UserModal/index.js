@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 import api from '../../services/api'
 import {
@@ -11,6 +12,13 @@ import {
 } from './style'
 
 class UserModal extends Component {
+  static propTypes = {
+    users: PropTypes.object,
+    selectRocketUser: PropTypes.string,
+    selectSlackUser: PropTypes.string,
+    closeModal: PropTypes.bool
+  }
+
   state = {
     loading: true,
     sucess: false,

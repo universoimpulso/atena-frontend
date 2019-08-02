@@ -1,4 +1,6 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+
 import StyledFullPage from './style'
 
 const FullPage = ({ background, children, height = '100' }) => (
@@ -7,4 +9,9 @@ const FullPage = ({ background, children, height = '100' }) => (
   </StyledFullPage>
 )
 
+FullPage.propTypes = {
+  children: PropTypes.element.isRequired,
+  height: PropTypes.string,
+  background: PropTypes.string
+}
 export default FullPage

@@ -18,22 +18,10 @@ import {
 class TeamAccordion extends Component {
   static propTypes = {
     getTeams: PropTypes.func.isRequired,
-
-    generalReports: PropTypes.shape({
-      getTeamsLoading: PropTypes.bool.isRequired,
-      errors: PropTypes.object,
-      teams: PropTypes.arrayOf(
-        PropTypes.shape({
-          name: PropTypes.string,
-          total: PropTypes.number,
-          reactions: PropTypes.object,
-          response: PropTypes.object,
-          blog: PropTypes.object,
-          github: PropTypes.object,
-          meetups: PropTypes.object,
-          referral: PropTypes.object
-        })
-      )
+    teams: PropTypes.shape({
+      data: PropTypes.object,
+      error: PropTypes.string,
+      loading: PropTypes.bool
     }).isRequired
   }
 

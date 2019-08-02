@@ -29,6 +29,8 @@
     "styled-normalize": "^8.0.6"
   },
   "scripts": {
+    "format": "prettier --write 'src/**/*.js'",
+    "start:dev": " npm run format && react-scripts start",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

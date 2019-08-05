@@ -32,7 +32,7 @@ export const { Types, Creators } = createActions({
 const getRanking = (state = INITIAL_STATE) => ({
   ...state,
   ranking: {
-    loading: false,
+    loading: true,
     error: '',
     firstUsers: [],
     lastUsers: [],

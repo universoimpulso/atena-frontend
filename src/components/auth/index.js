@@ -8,6 +8,7 @@ import { LinkedIn } from 'react-linkedin-login-oauth2'
 import { Creators as AuthActions } from '../../store/ducks/auth'
 import { SmallLoading } from '../utils'
 
+import linkedinIcon from '../../assets/linkedin.png'
 import { Modal, Form, Button, LinkedinButton } from './styles'
 
 const clientId = process.env.REACT_APP_LINKEDIN_KEY
@@ -87,10 +88,9 @@ class Auth extends Component {
               onFailure={this.handleLinkedinFailure}
               onSuccess={this.handleLinkedinSuccess}
               redirectUri={callbackUrl}
-              scope="r_liteprofile"
-            >
-              Logar com{' '}
-              <img src="/linkedin-icon.png" alt="Linkedin" title="Linkedin" />
+              scope="r_liteprofile">
+              Logar com
+              <img src={linkedinIcon} alt="Linkedin" />
             </LinkedIn>
           </LinkedinButton>
           {this.props.auth.loading && <SmallLoading />}

@@ -90,7 +90,7 @@ class Auth extends Component {
               redirectUri={callbackUrl}
               scope="r_liteprofile">
               Logar com
-              <img src={linkedinIcon} alt="Linkedin" title="Linkedin" />
+              <img src={linkedinIcon} alt="Linkedin" />
             </LinkedIn>
           </LinkedinButton>
           {this.props.auth.loading && <SmallLoading />}

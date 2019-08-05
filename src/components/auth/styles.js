@@ -96,7 +96,7 @@ export const LinkedinButton = styled.div`
     font-size: 14px;
     font-weight: bold;
     justify-content: center;
-    padding: 15px;
+    padding: 12px;
     text-indent: 0;
     text-transform: uppercase;
     transition: all 0.3s ease-in-out;
@@ -105,8 +105,8 @@ export const LinkedinButton = styled.div`
       background-color: ${theme.color.linkedinHover};
     }
     img {
-      margin-left: 5px;
-      max-width: 68px;
+      margin-left: 12px;
+      max-width: 80px;
     }
   }
 `

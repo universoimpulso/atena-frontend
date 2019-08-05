@@ -3,7 +3,7 @@ import { toast } from 'react-toastify'
 
 import api from '../../services/api'
 import history from '../../services/history'
-import { decrypt } from '../../services/crypto'
+import { encrypt, decrypt } from '../../services/crypto'
 
 import { Creators as AuthActions } from '../ducks/auth'
 
@@ -14,7 +14,8 @@ export function* signIn({ data }) {
     if (code) {
       response = yield call(api.post, 'auth/linkedin', { code })
     } else if (rocketId && password) {
-      response = yield call(api.post, 'auth', { user: rocketId, password })
+      const data = yield call(encrypt, { user: rocketId, password })
+      response = yield call(api.post, 'auth', { data })
     }
     const { uuid, isCoreTeam, avatar } = yield call(
       decrypt,

@@ -2,7 +2,7 @@ import React from 'react'
 import { Switch } from 'react-router-dom'
 import Route from '../routes/Route'
 
-import TransferXp from '../pages/TransferXp'
+import TransferXp from '../pages/TransferXP'
 import HowItWorks from '../pages/HowItWorks'
 import Ranking from '../pages/Ranking'
 import Admin from '../pages/admin'

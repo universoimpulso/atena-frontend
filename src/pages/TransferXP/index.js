@@ -1,15 +1,17 @@
 import React, { Component } from 'react'
-import api from '../services/api'
-import UserModal from '../components/UserModal/index'
-import { StyledTrasferXp, UserList } from './TransferXp.style'
+import { toast } from 'react-toastify'
+
+import api from '../../services/api'
+import UserModal from './UserModal'
+import avatarSvg from '../../assets/avatar.svg'
+import { PageLoading } from '../../components/utils'
+import { StyledTrasferXp, UserList } from './styles'
 
 class ScreenTransferXp extends Component {
   state = {
     loading: true,
     slackUsers: [],
     rocketUsers: [],
-    totalSlackUsers: null,
-    totalRocketUsers: null,
     selectSlackUser: null,
     selectRocketUser: null,
     userModal: false
@@ -21,14 +23,14 @@ class ScreenTransferXp extends Component {
 
   getSlackUsers = async () => {
     try {
-      const response = await api.get(`api/v1/slack-users`)
+      const response = await api.get(`/users?slack=true`)
 
       this.setState({
         loading: false,
-        slackUsers: response.data,
-        totalSlackUsers: response.data.length
+        slackUsers: response.data
       })
     } catch (error) {
+      toast.warn('nao foi possivel buscar usuarios Slack')
       console.log(error)
     }
   }
@@ -37,13 +39,13 @@ class ScreenTransferXp extends Component {
     const firstName = user.name.split(' ')[0]
 
     try {
-      const response = await api.get(`api/v1/find?name=${firstName}`)
+      const response = await api.get(`/users?name=${firstName}`)
       this.setState({
         rocketUsers: response.data,
-        totalRocketUsers: response.data.length,
         selectSlackUser: user
       })
     } catch (error) {
+      toast.warn('nao foi possivel buscar usuarios Rocket')
       console.log(error)
     }
   }
@@ -58,69 +60,62 @@ class ScreenTransferXp extends Component {
       this.setState({
         selectSlackUser: null,
         selectRocketUser: null,
-        rocketUsers: [],
-        totalSlackUsers: null,
-        totalRocketUsers: null
+        rocketUsers: []
       })
       this.getSlackUsers()
     }
   }
 
-  showInfo = id => {}
-
   render() {
     const {
       loading,
       slackUsers,
-      totalSlackUsers,
       rocketUsers,
-      totalRocketUsers,
       userModal,
       selectRocketUser,
       selectSlackUser
     } = this.state
+
+    if (loading) return <PageLoading />
+
     return (
       <>
         <StyledTrasferXp>
           <section>
             <UserList>
-              <h5>
-                {totalSlackUsers ? `Usuarios slack com mais de 5 pontos :` : ''}
-              </h5>
+              <h5>Usuarios slack com mais de 5 pontos</h5>
               <ul>
                 {slackUsers.map(user => (
                   <li onClick={() => this.searchByName(user)} key={user._id}>
-                    <img src={user.avatar} alt="" />
-                    {user.name}{' '}
-                    <span>
-                      {Math.round(user.score)}
-                      <i
-                        onClick={this.showInfo}
-                        className="fa fa-info-circle"
-                      />
-                    </span>
+                    <img
+                      src={user.avatar || avatarSvg}
+                      alt={`Foto de ${user.name}`}
+                      onError={e => {
+                        e.target.onerror = null
+                        e.target.src = avatarSvg
+                      }}
+                    />
+                    {user.name}
+                    <span>{Math.round(user.score)}</span>
                   </li>
                 ))}
               </ul>
             </UserList>
             <UserList>
-              <h5>
-                {totalRocketUsers
-                  ? `Encotrado ${totalRocketUsers} usuarios parecidos.`
-                  : ''}
-              </h5>
+              <h5>Usuarios com nome parecido</h5>
               <ul>
                 {rocketUsers.map(user => (
                   <li onClick={() => this.editPoints(user)} key={user._id}>
-                    <img src={user.avatar} alt="" />
+                    <img
+                      src={user.avatar || avatarSvg}
+                      alt={`Foto de ${user.name}`}
+                      onError={e => {
+                        e.target.onerror = null
+                        e.target.src = avatarSvg
+                      }}
+                    />
                     {user.name}
-                    <span>
-                      {Math.round(user.score)}
-                      <i
-                        onClick={this.showInfo}
-                        className="fa fa-info-circle"
-                      />
-                    </span>
+                    <span>{Math.round(user.score)}</span>
                   </li>
                 ))}
               </ul>

@@ -1,36 +1,40 @@
 import styled from 'styled-components'
 
 export const StyledTrasferXp = styled.div`
-  height: 100vh;
-  width: 100vw;
+  align-items: center;
   background: transparent;
   display: flex;
+  height: 100%;
   justify-content: center;
-  align-items: center;
   padding-top: 100px;
+  width: 100vw;
   section {
-    height: 90%;
-    width: 80%;
     background: white;
     border-radius: 10px;
     color: black;
     display: flex;
+    min-height: 90%;
     padding: 16px;
+    width: 80%;
   }
 `
 export const UserList = styled.div`
   width: 50%;
+  h5 {
+    margin-bottom: 12px;
+  }
   ul {
-    padding: 0;
     margin: 0;
     height: 100%;
+    padding: 0;
   }
   li {
-    height: 50px;
-    display: flex;
-    justify-content: space-between;
     align-items: center;
     cursor: pointer;
+    display: flex;
+    height: 50px;
+    justify-content: space-between;
+    padding-right: 12px;
 
     &:nth-child(2n -1) {
       background: #f5f5f5;

@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { toast } from 'react-toastify'
 
-import api from '../../services/api'
+import api from '../../../services/api'
+import avatarSvg from '../../../assets/avatar.svg'
 import {
   Wrapper,
   Container,
@@ -21,7 +23,6 @@ class UserModal extends Component {
 
   state = {
     loading: true,
-    sucess: false,
     rocketUser: null,
     slackUser: null,
     updatedRocketUser: null,
@@ -42,18 +43,20 @@ class UserModal extends Component {
     const { rocketUser, slackUser } = this.state
     let updatedSlackUser, updatedRocketUser
     try {
-      const response = await api.put(`api/v1/edit-score/${rocketUser._id}`, {
+      const response = await api.put(`/users/${rocketUser._id}/score`, {
         type: 'rocket',
         score: slackUser.score
       })
-      if (response.data) {
-        updatedRocketUser = response.data
-        updatedSlackUser = await this.resetSlackScore(slackUser._id)
-      }
+      updatedRocketUser = response.data
     } catch (error) {
+      toast.error(
+        'Não foi possivel transferir a pontuação para o usuario Rocket. Operação abortada '
+      )
       console.log(error)
+      return
     }
 
+    updatedSlackUser = await this.resetSlackScore(slackUser._id)
     this.setState({
       rocketUser: updatedRocketUser,
       slackUser: updatedSlackUser
@@ -62,12 +65,13 @@ class UserModal extends Component {
 
   resetSlackScore = async id => {
     try {
-      const response = await api.put(`api/v1/edit-score/${id}`, {
+      const response = await api.put(`/users/${id}/score`, {
         type: 'slack',
         score: -1
       })
       return response.data
     } catch (error) {
+      toast.error('Não foi possivel resetar pontuação do usuario Slack')
       console.log(error)
     }
   }
@@ -82,44 +86,51 @@ class UserModal extends Component {
             <UserWrapper>
               <UserInfo key={slackUser._id}>
                 <header>
-                  {slackUser.avatar ? (
-                    <img src={slackUser.avatar} alt="" />
-                  ) : (
-                    <i className="fa fa-user" />
-                  )}
+                  <img
+                    src={slackUser.avatar || avatarSvg}
+                    alt={`Foto de ${slackUser.name}`}
+                    onError={e => {
+                      e.target.onerror = null
+                      e.target.src = avatarSvg
+                    }}
+                  />
+
                   <small>{slackUser.name}</small>
                 </header>
 
                 <ul>
                   <li>
-                    Core Team{' '}
+                    <p>Core Team</p>
                     <small>{slackUser.isCoreTeam ? 'sim' : 'nao'}</small>
                   </li>
+
                   <li>
-                    Times{' '}
-                    <small>{slackUser.teams.map(team => team.teams)}</small>
+                    <p>Nivel</p>
+                    <small>{slackUser.level}</small>
                   </li>
                   <li>
-                    Nivel <small>{slackUser.level}</small>
-                  </li>
-                  <li>
-                    Pontos <small>{slackUser.score}</small>
+                    <p>Pontos</p>
+                    <small>{slackUser.score}</small>
                   </li>
                 </ul>
               </UserInfo>
               <UserInfo key={rocketUser._id}>
                 <header>
-                  {rocketUser.avatar ? (
-                    <img src={rocketUser.avatar} alt="" />
-                  ) : (
-                    <i className="fa fa-user" />
-                  )}
+                  <img
+                    src={rocketUser.avatar || avatarSvg}
+                    alt={`Foto de ${rocketUser.name}`}
+                    onError={e => {
+                      e.target.onerror = null
+                      e.target.src = avatarSvg
+                    }}
+                  />
+
                   <small>{rocketUser.name}</small>
                 </header>
 
                 <ul>
                   <li>
-                    Core Team{' '}
+                    Core Team
                     <small>{rocketUser.isCoreTeam ? 'sim' : 'nao'}</small>
                   </li>
                   <li>
@@ -137,8 +148,7 @@ class UserModal extends Component {
             <ButtonWrapper>
               <Button
                 disabled={slackUser.score === -1}
-                onClick={this.transferScore}
-              >
+                onClick={this.transferScore}>
                 {slackUser.score === -1 ? 'sucesso' : 'transferir'}
               </Button>
               <Button onClick={() => closeModal(true)} gray>

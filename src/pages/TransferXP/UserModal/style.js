@@ -1,61 +1,60 @@
 import styled from 'styled-components'
 
 export const Wrapper = styled.div`
+  align-items: center;
   background: rgba(0, 0, 0, 0.5);
   display: flex;
   height: 100vh;
-  width: 100vw;
   justify-content: center;
-  align-items: center;
   left: 0;
   position: fixed;
   top: 0;
+  width: 100vw;
   z-index: 10;
 `
 
 export const Container = styled.div`
-  box-shadow: 0px 0px 9px 2px rgba(0, 0, 0, 0.6);
-  height: 70vh;
-  width: 60vw;
-  display: flex;
-  border-radius: 15px;
-  flex-direction: column;
-  justify-content: space-between;
   align-items: center;
-  justify-content: center;
   background: #fff;
+  border-radius: 15px;
+  box-shadow: 0px 0px 9px 2px rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  height: 70vh;
+  justify-content: space-between;
+  width: 60vw;
 `
 
 export const UserWrapper = styled.div`
-  width: 100%;
+  align-items: center;
   display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   margin: 8px;
   padding: 12px;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
+  width: 100%;
 `
 
 export const UserInfo = styled.div`
-  box-shadow: 0px 0px 9px 2px rgba(0, 0, 0, 0.2);
-  color: black;
-  width: 45%;
   background: #fff;
   border-radius: 3px;
+  box-shadow: 0px 0px 9px 2px rgba(0, 0, 0, 0.2);
+  color: black;
   display: flex;
   flex-direction: column;
-  margin: 20px 10px;
   justify-content: space-between;
+  margin: 20px 10px;
+  width: 45%;
 
   header {
-    padding: 30px;
+    align-items: center;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    padding: 30px;
 
     img {
-      width: 64px;
       height: 64px;
+      width: 64px;
     }
     i {
       font-size: 64px;
@@ -65,23 +64,17 @@ export const UserInfo = styled.div`
       margin-top: 10px;
     }
     small {
-      font-size: 14px;
       color: #666;
+      font-size: 14px;
     }
   }
 
   ul {
     li {
+      display: flex;
       font-weight: bold;
       padding: 12px 20px;
-
-      small {
-        float: right;
-        font-weight: normal;
-        font-size: 12px;
-        color: #999;
-        font-style: italic;
-      }
+      justify-content: space-between;
       &:nth-child(2n - 1) {
         background: #f5f5f5;
       }
@@ -93,12 +86,12 @@ export const ButtonWrapper = styled.div`
   margin: 16px;
 `
 export const Button = styled.button`
+  background: ${props => (props.gray ? '#7f8c8d' : '#1e90ff')};
+  color: #fff;
+  height: 50px;
   margin: 0 8px;
   text-transform: uppercase;
   width: 260px;
-  height: 50px;
-  color: #fff;
-  background: ${props => (props.gray ? '#7f8c8d' : '#1e90ff')};
   &:hover {
     cursor: pointer;
     opacity: 0.8;

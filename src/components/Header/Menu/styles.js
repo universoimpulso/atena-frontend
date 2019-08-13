@@ -2,7 +2,9 @@ import styled from 'styled-components'
 import theme from '../../../styles/theme'
 
 const StyledMenu = styled.ul`
+  align-items: center;
   display: flex;
+  height: 40px;
   list-style: none;
   margin: 0 auto;
   padding: 0;

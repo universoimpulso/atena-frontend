@@ -3,10 +3,9 @@ import api from '../../services/api'
 
 import { Creators as UserActions } from '../ducks/user'
 
-export function* getProfile() {
+export function* getProfile(action) {
   try {
-    const { data } = yield call(api.get, `users/user-profile`)
-
+    const { data } = yield call(api.get, `users/${action.data}/profile`)
     const userAchievementsModel = [
       {
         name: 'Network Rocketchat',
@@ -96,16 +95,29 @@ export function* getProfile() {
         ]
       }
     ]
-
+    const medalModel = {
+      Bronze: 0,
+      Prata: 1,
+      Ouro: 2,
+      Platina: 3,
+      Diamante: 4
+    }
+    const tierModel = {
+      I: 0,
+      II: 1,
+      III: 2,
+      IV: 3,
+      V: 4
+    }
     userAchievementsModel.forEach(modelValues => {
       modelValues.achievements.forEach(modelAchievements => {
         data.userAchievements.forEach(newValues => {
-          newValues.achievements.forEach(newAchievemens => {
-            if (modelAchievements.type === newAchievemens.type) {
-              modelAchievements.medal = newAchievemens.medal
-              modelAchievements.tier = newAchievemens.tier
-              modelAchievements.maxScore = newAchievemens.maxScore
-              modelAchievements.score = newAchievemens.score
+          newValues.achievements.forEach(newAchievements => {
+            if (modelAchievements.type === newAchievements.type) {
+              modelAchievements.medal = medalModel[newAchievements.medal]
+              modelAchievements.tier = tierModel[newAchievements.tier]
+              modelAchievements.maxScore = newAchievements.maxScore
+              modelAchievements.score = newAchievements.score
             }
           })
         })
@@ -116,7 +128,14 @@ export function* getProfile() {
       UserActions.getProfileResponse({
         loading: false,
         error: '',
-        userInfo: data.userInfo,
+        userInfo: {
+          name: data.name,
+          avatar: data.avatar || '',
+          level: data.level,
+          score: data.score,
+          generalPosition: data.generalPosition,
+          monthlyPosition: data.monthlyPosition
+        },
         userAchievements: userAchievementsModel
       })
     )

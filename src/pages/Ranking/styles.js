@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import theme from "../../styles/theme";
+import styled from 'styled-components'
+import theme from '../../styles/theme'
 
 export const StyledScreenRanking = styled.section`
   .layout {
@@ -50,7 +50,7 @@ export const StyledScreenRanking = styled.section`
       margin-top: 30px;
     }
   }
-`;
+`
 
 export const StyledRectangle = styled.div`
   background: ${props =>
@@ -69,9 +69,9 @@ export const StyledRectangle = styled.div`
     font-weight: 600;
   }
   p:after {
-    content: "";
+    content: '';
     display: block;
-    width: ${props => (props.active ? "30px" : 0)};
+    width: ${props => (props.active ? '30px' : 0)};
     height: 3px;
     background: #c9ced2;
     border-radius: 3px;
@@ -88,17 +88,17 @@ export const StyledRectangle = styled.div`
         props.active ? theme.color.white : theme.color.primaryHover};
     }
   }
-`;
+`
 
 export const Loading = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
   padding: 120px 0 400px 0;
-`;
+`
 
 export const StyledRectangleGroup = styled.div`
-  margin: 0 172px;
+  margin: ${({ margin }) => margin || '0 172px'};
   display: flex;
   flex: 1;
 
@@ -109,7 +109,7 @@ export const StyledRectangleGroup = styled.div`
   div:last-child {
     border-radius: 0 100px 100px 0;
   }
-`;
+`
 
 export const RankingHeader = styled.div`
   width: 100%;
@@ -134,4 +134,4 @@ export const RankingHeader = styled.div`
   .userInfo {
     flex: 2;
   }
-`;
+`

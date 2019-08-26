@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import theme from "../../styles/theme";
+import styled from 'styled-components'
+import theme from '../../styles/theme'
 
 export const StyledFooter = styled.footer`
   background-color: ${theme.color.primary};
@@ -19,10 +19,10 @@ export const StyledFooter = styled.footer`
     display: flex;
     margin: 0 auto 40px;
   }
-`;
+`
 
 export const StyledCopyright = styled.p`
   text-align: center;
   color: ${theme.color.primaryLight};
   margin: 0;
-`;
+`

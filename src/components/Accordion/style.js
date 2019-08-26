@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import theme from "../../styles/theme";
+import styled from 'styled-components'
+import theme from '../../styles/theme'
 
 export const AccordionWrapper = styled.div`
   & > section {
@@ -29,7 +29,7 @@ export const AccordionWrapper = styled.div`
       color: ${props => theme.color.primary};
     }
   }
-`;
+`
 
 export const Awnser = styled.div`
   ${({ selected }) =>
@@ -48,7 +48,7 @@ export const Awnser = styled.div`
     margin-bottom: 30px;
     cursor: auto;
   }
-`;
+`
 export const Icon = styled.i`
   ${({ selected }) =>
     selected
@@ -56,4 +56,4 @@ export const Icon = styled.i`
                 transform: rotate(180deg);`
       : `transition: 0.2s all ease-in;
                 transform: rotate(0);`}
-`;
+`

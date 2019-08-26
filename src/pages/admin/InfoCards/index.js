@@ -1,14 +1,20 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import moment from "moment";
-import "moment/locale/pt-br";
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import moment from 'moment'
+import 'moment/locale/pt-br'
 
-import { bindActionCreators } from "redux";
-import { connect } from "react-redux";
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
 
-import { SmallLoading, SmallError } from "../../../components/utils";
-import { Creators as GeneralReportsActions } from "../../../store/ducks/generalReports";
-import { Container, CardsWrapper, Card, Percentage } from "./styles";
+import { SmallLoading, SmallError } from '../../../components/utils'
+import { Creators as GeneralReportsActions } from '../../../store/ducks/generalReports'
+import {
+  Container,
+  CardsWrapper,
+  Card,
+  Percentage,
+  StyledSelect
+} from './styles'
 
 class InfoCards extends Component {
   static propTypes = {
@@ -40,40 +46,48 @@ class InfoCards extends Component {
         total: PropTypes.number
       }).isRequired
     }).isRequired
-  };
-  state = {};
+  }
+  state = {}
 
+  getFormatedMonth = month => {
+    return moment()
+      .locale('pt-BR')
+      .subtract(month, 'month')
+      .format('MMM/YY')
+  }
   getMonth = month => {
     return moment()
-      .locale("pt-BR")
-      .subtract(month, "month")
-      .format("MMM/YY");
-  };
-
-  renderOptions = () => {
-    let options = [];
+      .subtract(month, 'month')
+      .format('MM/YY')
+  }
+  renderOptions = type => {
+    let options = []
     for (let i = 0; i < 7; i++) {
-      options.push(<option key={i}>{this.getMonth(i)}</option>);
+      options.push({
+        value: { type, data: this.getMonth(i) },
+        label: this.getFormatedMonth(i)
+      })
     }
-    return options;
-  };
+    return options
+  }
 
-  handleChange = (event, type) => {
-    const month = event && event.target.value;
-    if (type === "achievements") {
-      this.props.getUsersAchievements(month);
-    } else if (type === "missions") {
-      this.props.getMissions(month);
-    } else if (type === "xp") {
-      this.props.getXp(month);
+  handleChange = value => {
+    const { type, data } = value.value
+
+    if (type === 'achievements') {
+      this.props.getUsersAchievements(data)
+    } else if (type === 'missions') {
+      this.props.getMissions(data)
+    } else if (type === 'xp') {
+      this.props.getXp(data)
     }
-  };
+  }
 
   componentDidMount() {
-    const { achievements, missions, xp } = this.props.generalReports;
-    !achievements.data && this.props.getUsersAchievements();
-    !missions.data && this.props.getMissions();
-    !xp.data && this.props.getXp();
+    const { achievements, missions, xp } = this.props.generalReports
+    !achievements.data && this.props.getUsersAchievements()
+    !missions.data && this.props.getMissions()
+    !xp.data && this.props.getXp()
   }
 
   renderCards = ({ type, loading, error, data }) => {
@@ -82,7 +96,7 @@ class InfoCards extends Component {
         <CardsWrapper>
           <SmallLoading width="100%" height="100%" />
         </CardsWrapper>
-      );
+      )
     if (!data && error)
       return (
         <CardsWrapper>
@@ -93,7 +107,7 @@ class InfoCards extends Component {
             refresh={() => this.handleChange(null, type)}
           />
         </CardsWrapper>
-      );
+      )
     const {
       name,
       byMonth,
@@ -101,7 +115,7 @@ class InfoCards extends Component {
       byYear,
       byYearPercentage,
       total
-    } = data;
+    } = data
 
     return (
       <CardsWrapper>
@@ -116,16 +130,23 @@ class InfoCards extends Component {
               refresh={() => this.handleChange(null, type)}
             />
           )}
-          <p>total {name} mês</p>
-          <select onChange={event => this.handleChange(event, type)}>
-            {this.renderOptions()}
-          </select>
+          <header>
+            <p>total {name} mês</p>
+            <StyledSelect
+              defaultValue={{
+                value: { type, data: this.getMonth(0) },
+                label: this.getFormatedMonth(0)
+              }}
+              options={this.renderOptions(type)}
+              onChange={this.handleChange}
+            />
+          </header>
           <h1>{byMonth}</h1>
 
           <Percentage positive={byMonthPercentage > 0}>
             <i
               className={`fa fa-long-arrow-alt-${
-                byMonthPercentage < 0 ? "down" : "up"
+                byMonthPercentage < 0 ? 'down' : 'up'
               }`}
             />
             {byMonthPercentage} %
@@ -138,7 +159,7 @@ class InfoCards extends Component {
           <Percentage positive={byYearPercentage > 0}>
             <i
               className={`fa fa-long-arrow-alt-${
-                byYearPercentage < 1 ? "down" : "up"
+                byYearPercentage < 1 ? 'down' : 'up'
               }`}
             />
             {byYearPercentage} %
@@ -150,27 +171,27 @@ class InfoCards extends Component {
           <h1>{total}</h1>
         </Card>
       </CardsWrapper>
-    );
-  };
+    )
+  }
 
   render() {
-    const { achievements, missions, xp } = this.props.generalReports;
+    const { achievements, missions, xp } = this.props.generalReports
     return (
       <Container>
         {this.renderCards(achievements)}
         {this.renderCards(missions)}
         {this.renderCards(xp)}
       </Container>
-    );
+    )
   }
 }
 
-const mapStateToProps = state => ({ generalReports: state.generalReports });
+const mapStateToProps = state => ({ generalReports: state.generalReports })
 
 const mapDispatchToProps = dispatch =>
-  bindActionCreators(GeneralReportsActions, dispatch);
+  bindActionCreators(GeneralReportsActions, dispatch)
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(InfoCards);
+)(InfoCards)

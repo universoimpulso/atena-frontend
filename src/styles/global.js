@@ -1,7 +1,7 @@
-import { createGlobalStyle } from "styled-components";
-import styledNormalize from "styled-normalize";
-import "react-toastify/dist/ReactToastify.css";
-import theme from "./theme";
+import { createGlobalStyle } from 'styled-components'
+import styledNormalize from 'styled-normalize'
+import 'react-toastify/dist/ReactToastify.css'
+import theme from './theme'
 
 const StyledApp = createGlobalStyle`
   @font-face{
@@ -56,7 +56,7 @@ const StyledApp = createGlobalStyle`
     &::after {
       width: 20px;
     }
-  } 
+  }
 
   ul {
     list-style: none;
@@ -97,6 +97,6 @@ const StyledApp = createGlobalStyle`
       display: none !important;
     }
   }
-`;
+`
 
-export default StyledApp;
+export default StyledApp

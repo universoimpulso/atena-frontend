@@ -1,24 +1,24 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
-import { bindActionCreators } from "redux";
-import { Flex, Box } from "@rebass/grid";
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
+import { bindActionCreators } from 'redux'
+import { Flex, Box } from '@rebass/grid'
 
-import { Creators as RankingActions } from "../../store/ducks/ranking";
+import { Creators as RankingActions } from '../../store/ducks/ranking'
 
-import RankingRow from "./RankingRow";
-import Title from "../../components/Title";
-import UserCard from "../../components/UserCard";
-import FullPage from "../../components/FullPage";
-import { PageError, PageLoading } from "../../components/utils";
+import RankingRow from './RankingRow'
+import Title from '../../components/Title'
+import FullPage from '../../components/FullPage'
+import Podium from '../../components/Podium'
+import { PageError, PageLoading } from '../../components/utils'
 
-import BgRanking from "../../assets/bg_ranking.png";
+import BgRanking from '../../assets/bg_ranking.png'
 import {
   StyledScreenRanking,
   StyledRectangleGroup,
   StyledRectangle,
   RankingHeader
-} from "./styles";
+} from './styles'
 
 class ScreenRanking extends Component {
   static propTypes = {
@@ -30,24 +30,57 @@ class ScreenRanking extends Component {
       firstUsers: PropTypes.array,
       lastUsers: PropTypes.array
     }).isRequired
-  };
+  }
 
   state = {
-    selected: "general"
-  };
+    selected: 'general'
+  }
 
   componentDidMount() {
-    this.props.getRanking();
+    this.props.getRanking(this.state.selected)
   }
 
   toggleRanking = selected => {
-    this.setState({ selected });
-    this.props.getRanking(selected);
-  };
+    this.setState({ selected })
+    this.props.getRanking(selected)
+  }
 
   render() {
-    const { selected } = this.state;
-    const { ranking } = this.props;
+    const { selected } = this.state
+    const {
+      error,
+      loading,
+      monthName,
+      firstUsers,
+      lastUsers
+    } = this.props.ranking
+
+    if (!!error)
+      return (
+        <StyledScreenRanking>
+          <main className="layout">
+            <FullPage background={`url(${BgRanking})`} height="40" overlay>
+              <Flex alignItems="baseline" justifyContent="center" flex="1">
+                <Box>
+                  <Title large color="white" align="center">
+                    Ranking
+                  </Title>
+                </Box>
+              </Flex>
+            </FullPage>
+            <div className="_inner">
+              <Flex
+                justifyContent="center"
+                alignItems="center"
+                mt={100}
+                mb={100}>
+                <PageError message={error} />
+              </Flex>
+            </div>
+          </main>
+        </StyledScreenRanking>
+      )
+
     return (
       <StyledScreenRanking>
         <main className="layout">
@@ -60,9 +93,7 @@ class ScreenRanking extends Component {
               </Box>
             </Flex>
           </FullPage>
-          {!!ranking.error ? (
-            <PageError message={ranking.error} />
-          ) : (
+          {
             <div className="_inner">
               <p className="super">
                 Confira aqui a sua colocação no ranking da Atena. Vale lembrar
@@ -75,34 +106,31 @@ class ScreenRanking extends Component {
                 justifyContent="center"
                 alignItems="center"
                 mt={100}
-                mb={100}
-              >
+                mb={100}>
                 <StyledRectangleGroup>
                   <StyledRectangle
-                    onClick={() => this.toggleRanking("monthly")}
-                    active={selected === "monthly"}
-                    left
-                  >
+                    onClick={() => this.toggleRanking('monthly')}
+                    active={selected === 'monthly'}
+                    left>
                     <p>Ranking Mensal</p>
                   </StyledRectangle>
                   <StyledRectangle
-                    onClick={() => this.toggleRanking("general")}
-                    active={selected === "general"}
-                    right
-                  >
+                    onClick={() => this.toggleRanking('general')}
+                    active={selected === 'general'}
+                    right>
                     <p>Ranking Geral</p>
                   </StyledRectangle>
                 </StyledRectangleGroup>
               </Flex>
 
-              {ranking.loading ? (
+              {loading || !firstUsers ? (
                 <PageLoading />
               ) : (
                 <>
                   <Flex justifyContent="center">
-                    <Title align={"center"} extraLarge>
+                    <Title align={'center'} extraLarge>
                       RANKING
-                      {selected === "general" ? (
+                      {selected === 'general' ? (
                         <>
                           <br />
                           <span className="month"> GERAL</span>
@@ -111,62 +139,46 @@ class ScreenRanking extends Component {
                         <>
                           <br />
                           DO MÊS DE
-                          <span className="month"> {ranking.monthName}</span>
+                          <span className="month"> {monthName}</span>
                         </>
                       )}
                     </Title>
                   </Flex>
-
-                  <Flex
-                    justifyContent="center"
-                    mt={50}
-                    mb={80}
-                    ml={172}
-                    mr={172}
-                  >
-                    {ranking.firstUsers.map((card, index) => (
-                      <UserCard
-                        key={index}
-                        first={index === 1 && true}
-                        {...card}
-                      />
-                    ))}
-                  </Flex>
+                  {<Podium firstUsers={firstUsers} />}
                   <Flex
                     justifyContent="space-around"
                     mt={50}
                     mb={50}
                     ml={172}
                     mr={172}
-                    flexWrap="wrap"
-                  >
+                    flexWrap="wrap">
                     <RankingHeader>
                       <div className="ranking">RANKING</div>
                       <div className="userInfo" />
                       <div className="level">LEVEL</div>
                       <div className="xp">XP</div>
                     </RankingHeader>
-                    {ranking.lastUsers.map((card, index) => (
+                    {lastUsers.map((card, index) => (
                       <RankingRow key={index} {...card} />
                     ))}
                   </Flex>
                 </>
               )}
             </div>
-          )}
+          }
         </main>
       </StyledScreenRanking>
-    );
+    )
   }
 }
 const mapStateToProps = state => ({
-  ranking: state.ranking
-});
+  ranking: state.ranking.ranking
+})
 
 const mapDispatchToProps = dispatch =>
-  bindActionCreators(RankingActions, dispatch);
+  bindActionCreators(RankingActions, dispatch)
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(ScreenRanking);
+)(ScreenRanking)

@@ -1,7 +1,7 @@
-import styled from "styled-components";
-import Select from "react-select";
-import theme from "../../../styles/theme";
-import { Field } from "formik";
+import styled from 'styled-components'
+import Select from 'react-select'
+import theme from '../../../styles/theme'
+import { Field } from 'formik'
 
 export const StyledForm = styled.form`
   display: flex;
@@ -25,15 +25,15 @@ export const StyledForm = styled.form`
     font-weight: normal;
     padding-top: 4px;
   }
-`;
+`
 export const StyledSelect = styled(Select)`
   border: none;
   box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
   color: ${theme.color.gray};
   max-width: 25%;
-`;
+`
 export const StyledSmallInput = styled(Field)`
-  border: ${({ error }) => (error ? "1px solid red" : "1px solid gray")};
+  border: ${({ error }) => (error ? '1px solid red' : '1px solid gray')};
   border-radius: 6px;
   color: ${theme.color.gray};
   font-size: 14px;
@@ -42,7 +42,7 @@ export const StyledSmallInput = styled(Field)`
   margin-bottom: 20px;
   padding: 0 4px;
   width: 100px;
-`;
+`
 
 export const DateWrapper = styled.section`
   display: flex;
@@ -64,12 +64,12 @@ export const DateWrapper = styled.section`
     padding: 0 16px;
     width: 95%;
   }
-`;
+`
 export const Box = styled.div`
   display: flex;
   flex-direction: column;
   width: 50%;
-`;
+`
 
 export const StyledInput = styled.input`
   border: none;
@@ -79,17 +79,17 @@ export const StyledInput = styled.input`
   font-weight: bold;
   height: 50px;
   padding: 0 16px;
-  width: ${({ width }) => width || "50%"};
-`;
+  width: ${({ width }) => width || '50%'};
+`
 export const Wrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-`;
+`
 
 export const Card = styled.div`
   background: ${theme.color.white};
-  border: ${({ cardError }) => (cardError ? "1px solid red" : "none")};
+  border: ${({ cardError }) => (cardError ? '1px solid red' : 'none')};
   border-radius: 10px;
   box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
   color: ${theme.color.gray};
@@ -126,14 +126,14 @@ export const Card = styled.div`
       }
     }
   }
-`;
+`
 
 export const Title = styled.p`
   border-bottom: 1px solid ${theme.color.lightGray};
   font-size: 12px;
   height: 20px;
   padding-bottom: 20px;
-`;
+`
 
 export const Button = styled.button`
   align-self: flex-end;
@@ -156,4 +156,4 @@ export const Button = styled.button`
   &:active {
     transform: scale(0.95);
   }
-`;
+`

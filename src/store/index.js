@@ -1,26 +1,40 @@
-import { createStore, compose, applyMiddleware } from "redux";
-import createSagaMiddleware from "redux-saga";
+import { persistStore } from 'redux-persist'
+import { createStore, compose, applyMiddleware } from 'redux'
+import createSagaMiddleware from 'redux-saga'
 
-import reducers from "./ducks";
-import sagas from "./sagas";
+import persistReducers from './persistReducers'
+import reducers from './ducks'
+import sagas from './sagas'
 
 const sagaMonitor =
-  process.env.NODE_ENV === "development"
+  process.env.NODE_ENV === 'development'
     ? console.tron.createSagaMonitor()
-    : null;
-const sagaMiddleware = createSagaMiddleware({ sagaMonitor });
-const middlewares = [sagaMiddleware];
+    : null
+const sagaMiddleware = createSagaMiddleware({ sagaMonitor })
+
+const getError = store => next => action => {
+  if (action.data) {
+    if (action.data.errorType && action.data.errorType === 'sessionExpired') {
+      store.dispatch({ type: 'FORCE_SIGN_OUT' })
+    }
+  }
+  next(action)
+}
+
+const middlewares = [sagaMiddleware, getError]
 
 const composer =
-  process.env.NODE_ENV === "development"
+  process.env.NODE_ENV === 'development'
     ? compose(
         applyMiddleware(...middlewares),
         console.tron.createEnhancer()
       )
-    : applyMiddleware(...middlewares);
+    : applyMiddleware(...middlewares)
 
-const store = createStore(reducers, composer);
+const store = createStore(persistReducers(reducers), composer)
 
-sagaMiddleware.run(sagas);
+const persistor = persistStore(store)
 
-export default store;
+sagaMiddleware.run(sagas)
+
+export { store, persistor }

@@ -1,6 +1,6 @@
-import styled from "styled-components";
-
-import theme from "../../../styles/theme";
+import styled from 'styled-components'
+import { Field } from 'formik'
+import theme from '../../../styles/theme'
 
 export const Container = styled.div`
   align-items: flex-start;
@@ -8,7 +8,7 @@ export const Container = styled.div`
   flex-wrap: wrap;
   justify-content: space-evenly;
   width: 100%;
-`;
+`
 export const Title = styled.h3`
   color: ${theme.color.primary};
   font-size: 16px;
@@ -16,7 +16,7 @@ export const Title = styled.h3`
   margin-top: 30px;
   text-transform: uppercase;
   width: 100%;
-`;
+`
 
 export const Card = styled.div`
   background: ${theme.color.white};
@@ -80,10 +80,10 @@ export const Card = styled.div`
       border: 0;
     }
   }
-`;
+`
 
-export const StyledInput = styled.input`
-  border: ${({ error }) => (error ? "1px solid red" : "1px solid gray")};
+export const StyledInput = styled(Field)`
+  border: ${({ error }) => (error ? '1px solid red' : '1px solid gray')};
   border-radius: 6px;
   color: ${theme.color.gray};
   font-size: 16px;
@@ -92,4 +92,4 @@ export const StyledInput = styled.input`
   margin-bottom: 20px;
   padding: 0 6px 0 18px;
   width: 100px;
-`;
+`

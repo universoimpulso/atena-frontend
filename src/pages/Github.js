@@ -1,45 +1,45 @@
-import React from "react";
-import { ThemeProvider } from "styled-components";
-import theme from "../styles/theme";
-import StyledScreenGithub from "./Github.style";
-import hiwlpc from "../assets/hiwlpc.png";
-import Card from "../components/Card";
-import Title from "../components/Title";
-import FullPage from "../components/FullPage";
+import React from 'react'
+import PropTypes from 'prop-types'
+import { ThemeProvider } from 'styled-components'
+import theme from '../styles/theme'
+import StyledScreenGithub from './Github.style'
+import hiwlpc from '../assets/hiwlpc.png'
+import Card from '../components/Card'
+import Title from '../components/Title'
 
 const ScreenGithub = ({ match, location }) => {
-  let type = "retry";
-  const { status } = match.params;
-  const { search } = location;
+  let type = 'retry'
+  const { status } = match.params
+  const { search } = location
 
-  let url = search.replace("?url=", "") || "https://impulso.network/";
+  let url = search.replace('?url=', '') || 'https://impulso.network/'
 
   const getStatus = () => {
-    if (status === "success" || status === "error") type = status;
-  };
+    if (status === 'success' || status === 'error') type = status
+  }
 
-  getStatus();
+  getStatus()
 
   const messages = {
     success: {
-      title: "Olá novamente, nobre Impulser!",
-      subtitle: "Sua dedicação foi posta a prova e você passou com honrarias!",
+      title: 'Olá novamente, nobre Impulser!',
+      subtitle: 'Sua dedicação foi posta a prova e você passou com honrarias!',
       text:
         "Quer entender um pouco mais? Não tem problema, dá uma olhadinha aqui neste papiro: <a href='https://github.com/universoimpulso/atena'>https://github.com/universoimpulso/atena</a>"
     },
     retry: {
-      title: "Olá, nobre Impulser!",
-      subtitle: "Ops! parece que você entrou na caverna errada.",
+      title: 'Olá, nobre Impulser!',
+      subtitle: 'Ops! parece que você entrou na caverna errada.',
       text: `Que falta faz um GPS, não é? :P <br> Para tentar novamente, siga esse caminho e não vai errar: <a href='${url}'>${url}</a>`
     },
     error: {
-      title: "Olá, nobre Impulser!",
+      title: 'Olá, nobre Impulser!',
       subtitle:
-        "Não conseguimos localizar seu e-mail público ou privado na API do GITHUB.",
+        'Não conseguimos localizar seu e-mail público ou privado na API do GITHUB.',
       text:
-        "Esse recurso da sua armadura de cavaleiro não está pronto para ganhar bonificações na contribuição do projeto Atena!"
+        'Esse recurso da sua armadura de cavaleiro não está pronto para ganhar bonificações na contribuição do projeto Atena!'
     }
-  };
+  }
 
   return (
     <ThemeProvider theme={theme}>
@@ -66,7 +66,11 @@ const ScreenGithub = ({ match, location }) => {
         </div>
       </StyledScreenGithub>
     </ThemeProvider>
-  );
-};
+  )
+}
 
-export default ScreenGithub;
+ScreenGithub.propTypes = {
+  location: PropTypes.string,
+  match: PropTypes.string
+}
+export default ScreenGithub

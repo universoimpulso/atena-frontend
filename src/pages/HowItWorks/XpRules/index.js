@@ -1,21 +1,21 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { Component } from "react";
+import React, { Component } from 'react'
 
-import { Flex, Box } from "@rebass/grid";
-import Title from "../Title";
-import Button from "../Button";
+import { Flex, Box } from '@rebass/grid'
+import Title from '../../../components/Title'
+import Button from '../../../components/Button'
 
 class XpRules extends Component {
   state = {
-    selected: "gain"
-  };
+    selected: 'gain'
+  }
 
   changeInfos = selected => {
-    this.setState({ selected });
-  };
+    this.setState({ selected })
+  }
 
   render() {
-    const { selected } = this.state;
+    const { selected } = this.state
     return (
       <section className="container xprules">
         <Flex justifyContent="center">
@@ -25,7 +25,7 @@ class XpRules extends Component {
               ganhar <span className="red">xp</span>?
             </Title>
             <p className="super">
-              Sua pontuação será medida em{" "}
+              Sua pontuação será medida em{' '}
               <strong>Pontos de Experiência (XP)</strong>. Esse recurso é muito
               utilizado nos jogos como uma representação numérica do esforço e
               aprendizado obtido por um(a) personagem. Aqui na Impulso, a
@@ -34,12 +34,12 @@ class XpRules extends Component {
             </p>
           </Box>
         </Flex>
-        <Flex css={{ margin: "0 -25px" }} className="rules ifdesktop">
+        <Flex css={{ margin: '0 -25px' }} className="rules ifdesktop">
           <Box width={1 / 3} px={0}>
             <button
-              onClick={() => this.changeInfos("gain")}
+              onClick={() => this.changeInfos('gain')}
               className={`${
-                selected === "gain" ? "selected" : ""
+                selected === 'gain' ? 'selected' : ''
               } a--rules--button`}
             >
               <span>01. Obtendo XP</span>
@@ -47,9 +47,9 @@ class XpRules extends Component {
           </Box>
           <Box width={1 / 3} px={0}>
             <button
-              onClick={() => this.changeInfos("losing")}
+              onClick={() => this.changeInfos('losing')}
               className={`${
-                selected === "losing" ? "selected" : ""
+                selected === 'losing' ? 'selected' : ''
               } a--rules--button`}
             >
               <span>02. Perdendo XP</span>
@@ -57,20 +57,20 @@ class XpRules extends Component {
           </Box>
           <Box width={1 / 3} px={0}>
             <button
-              onClick={() => this.changeInfos("exeptions")}
+              onClick={() => this.changeInfos('exeptions')}
               className={`${
-                selected === "exeptions" ? "selected" : ""
+                selected === 'exeptions' ? 'selected' : ''
               } a--rules--button`}
             >
               <span>03. Exceções</span>
             </button>
           </Box>
         </Flex>
-        {selected === "gain" ? (
+        {selected === 'gain' ? (
           <Flex
-            css={{ margin: "0 -30px" }}
+            css={{ margin: '0 -30px' }}
             className={`rules__inner rules__inner-1 ${
-              selected === "gain" ? "selected" : ""
+              selected === 'gain' ? 'selected' : ''
             } `}
             flexWrap="wrap"
           >
@@ -81,7 +81,7 @@ class XpRules extends Component {
                 OBTENDO XP
               </Title>
               <p>
-                A obtenção de pontos é feita através da{" "}
+                A obtenção de pontos é feita através da{' '}
                 <strong>realização de atividades</strong> dentro da Impulso. Por
                 exemplo: participar de um curso da Impulso Academy, reagir à uma
                 mensagem no Rocket.chat e até criar uma postagem no nosso Blog.
@@ -115,11 +115,11 @@ class XpRules extends Component {
               </Button>
             </Box>
           </Flex>
-        ) : selected === "losing" ? (
+        ) : selected === 'losing' ? (
           <Flex
-            css={{ margin: "0 -30px" }}
+            css={{ margin: '0 -30px' }}
             className={`rules__inner rules__inner-2 ${
-              selected === "losing" ? "selected" : ""
+              selected === 'losing' ? 'selected' : ''
             } `}
             flexWrap="wrap"
           >
@@ -131,7 +131,7 @@ class XpRules extends Component {
               </Title>
               <p>
                 Em oposição às atividades que promovem a obtenção de XP, a única
-                forma de perder pontos de experiência é através da{" "}
+                forma de perder pontos de experiência é através da{' '}
                 <strong>Inatividade Completa</strong> na comunidade Impulso. A
                 inatividade começa a contar no dia seguinte à sua última
                 participação e a perda de pontos a partir da quantidade de dias
@@ -139,11 +139,11 @@ class XpRules extends Component {
               </p>
             </Box>
           </Flex>
-        ) : selected === "exeptions" ? (
+        ) : selected === 'exeptions' ? (
           <Flex
-            css={{ margin: "0 -30px" }}
+            css={{ margin: '0 -30px' }}
             className={`rules__inner rules__inner-3 ${
-              selected === "exeptions" ? "selected" : ""
+              selected === 'exeptions' ? 'selected' : ''
             } `}
             flexWrap="wrap"
           >
@@ -164,8 +164,8 @@ class XpRules extends Component {
           </Flex>
         ) : null}
       </section>
-    );
+    )
   }
 }
 
-export default XpRules;
+export default XpRules

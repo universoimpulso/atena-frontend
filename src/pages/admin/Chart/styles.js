@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import theme from "../../../styles/theme";
+import styled from 'styled-components'
+import theme from '../../../styles/theme'
 
 export const Container = styled.section`
   width: 100%;
@@ -9,13 +9,13 @@ export const Container = styled.section`
     margin-bottom: 30px;
     text-transform: uppercase;
   }
-`;
+`
 
 export const Wrapper = styled.div`
   display: flex;
   flex: 1;
   height: 85%;
-`;
+`
 
 export const Info = styled.div`
   color: ${theme.color.gray};
@@ -28,7 +28,7 @@ export const Info = styled.div`
   height: 100%;
   margin-left: 50px;
   text-transform: uppercase;
-`;
+`
 
 export const Card = styled.div`
   background: ${theme.color.white};
@@ -42,7 +42,7 @@ export const Card = styled.div`
     font-size: 14px;
     margin-bottom: 20px;
   }
-`;
+`
 
 export const Level = styled.ul`
   display: flex;
@@ -69,7 +69,7 @@ export const Level = styled.ul`
       width: 1em;
     }
   }
-`;
+`
 
 export const Total = styled.div`
   align-items: baseline;
@@ -92,4 +92,4 @@ export const Total = styled.div`
     flex: 1;
     margin: 0 6px;
   }
-`;
+`

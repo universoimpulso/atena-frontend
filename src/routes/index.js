@@ -14,10 +14,10 @@ import { LinkedInPopUp } from 'react-linkedin-login-oauth2'
 export default function Routes() {
   return (
     <Switch>
-      <Route path="/" component={HowItWorks} />
+      <Route exact path="/" component={HowItWorks} />
       <Route path="/ranking" component={Ranking} />
       <Route path="/github/:status" component={Github} />
-      <Route exact path="/linkedin" component={LinkedInPopUp} />
+      <Route path="/linkedin" component={LinkedInPopUp} />
       <Route path="/transfer" component={TransferXp} isPrivate coreTeam />
       <Route path="/admin" component={Admin} isPrivate coreTeam />
       <Route path="/userInfo" component={UserInfo} isPrivate />

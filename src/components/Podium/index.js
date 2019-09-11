@@ -6,7 +6,7 @@ import UserCard from '../UserCard'
 
 const Podium = ({ firstUsers }) => {
   return (
-    <Flex justifyContent="center" mt={50} mb={80} ml={172} mr={172}>
+    <Flex justifyContent="center" mt={50} mb={80} flexWrap="wrap">
       {firstUsers.map((card, index) => (
         <UserCard key={index} first={index === 0} {...card} />
       ))}

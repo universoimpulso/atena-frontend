@@ -18,9 +18,9 @@ class XpRules extends Component {
     const { selected } = this.state
     return (
       <section className="container xprules">
-        <Flex justifyContent="center">
+        <Flex justifyContent className="align-content">
           <Box width={4 / 5}>
-            <Title large align="center">
+            <Title large className="align-title">
               O que é e como <br />
               ganhar <span className="red">xp</span>?
             </Title>
@@ -34,7 +34,7 @@ class XpRules extends Component {
             </p>
           </Box>
         </Flex>
-        <Flex css={{ margin: '0 -25px' }} className="rules ifdesktop">
+        <Flex className="rules">
           <Box width={1 / 3} px={0}>
             <button
               onClick={() => this.changeInfos('gain')}

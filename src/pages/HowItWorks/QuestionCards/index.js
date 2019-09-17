@@ -12,10 +12,10 @@ const QuestionCards = () => {
   return (
     <section className="container cards">
       <Flex css={{ margin: '0 -25px' }} flexWrap="wrap">
-        <Box width={[1, 1 / 2]} px={25}>
+        <Box width={[1, 1 / 2]} px={25} className="cards-box">
           <Card>
             <img alt="estrelas" src={stars} />
-            <Title>
+            <Title className="question-title">
               O QUE SÃO E<br /> COMO GANHAR <br />
               <span className="red">NÍVEIS</span>?
             </Title>
@@ -46,7 +46,7 @@ const QuestionCards = () => {
         >
           <Card>
             <img alt="badge" src={badge} />
-            <Title>
+            <Title className="question-title">
               O QUE SÃO E <br /> COMO GANHAR <br />{' '}
               <span className="red">CONQUISTAS</span>?
             </Title>

@@ -177,7 +177,9 @@ class UserInfo extends Component {
                 alt={`Foto de ${name}`}
               />
             </div>
-            <small>{`${monthlyPosition}º`}</small>
+            <small>
+              {monthlyPosition === 'coreTeam' ? '-' : `${monthlyPosition}º`}
+            </small>
           </ImageWrapper>
           <UserName>{name}</UserName>
 
@@ -192,7 +194,9 @@ class UserInfo extends Component {
             </div>
             <div>
               <p>ranking geral</p>
-              <span>{generalPosition}º</span>
+              <span>
+                {generalPosition === 'coreTeam' ? '-' : `${generalPosition}º`}
+              </span>
             </div>
           </Info>
         </Header>

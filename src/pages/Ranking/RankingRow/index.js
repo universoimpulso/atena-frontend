@@ -3,9 +3,9 @@ import PropTypes from 'prop-types'
 import { StyledRankingRow } from './style'
 import avatarSvg from '../../../assets/avatar.svg'
 
-const RankingRow = ({ position, name, avatar, level, xp, getUserInfo }) => {
+const RankingRow = ({ position, name, avatar, level, score }) => {
   return (
-    <StyledRankingRow onClick={() => getUserInfo(name)}>
+    <StyledRankingRow>
       <div className="ranking">{position}º</div>
       <div className="userInfo">
         {avatar ? (
@@ -23,18 +23,17 @@ const RankingRow = ({ position, name, avatar, level, xp, getUserInfo }) => {
         <p>{name}</p>
       </div>
       <div className="level">{level}</div>
-      <div className="xp">{xp}</div>
+      <div className="xp">{score}</div>
     </StyledRankingRow>
   )
 }
 
 RankingRow.propTypes = {
-  getUserInfo: PropTypes.func,
   position: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   avatar: PropTypes.string.isRequired,
   level: PropTypes.number.isRequired,
-  xp: PropTypes.number.isRequired
+  score: PropTypes.number.isRequired
 }
 
 export default RankingRow

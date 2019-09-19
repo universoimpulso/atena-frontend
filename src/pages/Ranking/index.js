@@ -17,6 +17,7 @@ import {
   StyledScreenRanking,
   StyledRectangleGroup,
   StyledRectangle,
+  UsersRanking,
   RankingHeader
 } from './styles'
 
@@ -104,9 +105,7 @@ class ScreenRanking extends Component {
               </p>
               <Flex
                 justifyContent="center"
-                alignItems="center"
-                mt={100}
-                mb={100}>
+                alignItems="center">
                 <StyledRectangleGroup>
                   <StyledRectangle
                     onClick={() => this.toggleRanking('monthly')}
@@ -145,13 +144,7 @@ class ScreenRanking extends Component {
                     </Title>
                   </Flex>
                   {<Podium firstUsers={firstUsers} />}
-                  <Flex
-                    justifyContent="space-around"
-                    mt={50}
-                    mb={50}
-                    ml={172}
-                    mr={172}
-                    flexWrap="wrap">
+                  <UsersRanking>
                     <RankingHeader>
                       <div className="ranking">RANKING</div>
                       <div className="userInfo" />
@@ -161,7 +154,7 @@ class ScreenRanking extends Component {
                     {lastUsers.map((card, index) => (
                       <RankingRow key={index} {...card} />
                     ))}
-                  </Flex>
+                  </UsersRanking>
                 </>
               )}
             </div>

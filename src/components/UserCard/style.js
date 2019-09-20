@@ -80,6 +80,7 @@ export const Position = styled.div`
 export const Info = styled.div`
   margin-top: 30px;
   padding-bottom: 14px;
+  width: 100%;
   h1 {
     text-align: center;
     text-transform: uppercase;

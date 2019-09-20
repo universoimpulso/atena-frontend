@@ -8,6 +8,7 @@ export const StyledScreenRanking = styled.section`
     color: #666c71;
     padding-bottom: 80px;
   }
+
   main {
     padding-top: 240px;
     padding-bottom: 100px;
@@ -46,6 +47,10 @@ export const StyledScreenRanking = styled.section`
       padding-bottom: 60px;
     }
 
+    .super {
+      padding: 0 20px;
+    }
+
     ._inner > p {
       margin-top: 30px;
     }
@@ -62,12 +67,14 @@ export const StyledRectangle = styled.div`
   padding: 40px 0;
   cursor: pointer;
   flex: 1;
+
   p {
     line-height: 100%;
     display: inline-block;
     color: ${props => (props.active ? theme.color.white : theme.color.gray)};
     font-weight: 600;
   }
+
   p:after {
     content: '';
     display: block;
@@ -79,6 +86,7 @@ export const StyledRectangle = styled.div`
     transform: translateY(6px);
     transition: 0.2s all ease-in;
   }
+
   p:hover {
     color: ${props =>
       props.active ? theme.color.white : theme.color.primaryHover};
@@ -98,9 +106,9 @@ export const Loading = styled.div`
 `
 
 export const StyledRectangleGroup = styled.div`
-  margin: ${({ margin }) => margin || '0 172px'};
   display: flex;
   flex: 1;
+  margin: 100px 172px;
 
   div:first-child {
     border-radius: 100px 0 0 100px;
@@ -109,28 +117,52 @@ export const StyledRectangleGroup = styled.div`
   div:last-child {
     border-radius: 0 100px 100px 0;
   }
+
+  @media only screen and (max-width: 768px) {
+    margin: 60px 20px 30px;
+  }
+`
+
+export const UsersRanking = styled.div`
+  margin: 50px 172px;
+
+  @media only screen and (max-width: 900px) {
+    margin: 50px 20px;
+  }
 `
 
 export const RankingHeader = styled.div`
-  width: 100%;
-  display: flex;
   color: #595b98;
+  display: flex;
   font-size: 20px;
   font-weight: bold;
+  width: 100%;
+
   .ranking {
     flex: 1;
     max-width: 88px;
   }
+
   .level {
     flex: 2;
     max-width: 83px;
     text-align: center;
+
+    @media only screen and (max-width: 768px) {
+      max-width: 40px;
+    }
   }
+
   .xp {
     flex: 1;
     max-width: 120px;
     text-align: center;
+
+    @media only screen and (max-width: 768px) {
+      text-align: right;
+    }
   }
+
   .userInfo {
     flex: 2;
   }

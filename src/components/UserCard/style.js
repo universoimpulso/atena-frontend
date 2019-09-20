@@ -13,6 +13,21 @@ export const StyledUserCard = styled.div`
   order: ${({ order }) => order};
   border-radius: 10px;
   position: relative;
+
+  @media (max-width: 998px) {
+    margin-top: 70px;
+
+    &:first-child {
+      order: 2;
+    }
+  }
+
+  @media (max-width: 649px) {
+    margin-right: 0;
+    &:first-child {
+      margin-top: 0;
+    }
+  }
 `
 
 export const Container = styled.div`

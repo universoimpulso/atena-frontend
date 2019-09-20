@@ -51,6 +51,15 @@ const StyledScreenHowItWorks = styled.section`
     position: relative;
     z-index: 10;
 
+    .align-content {
+      align-items: center;
+      justify-content: center;
+
+      align-title {
+       text-align: center;
+      }
+    }
+
     &::before {
       content: url("${Imgbg}");
       display: block;
@@ -245,8 +254,35 @@ const StyledScreenHowItWorks = styled.section`
       padding: 60px 15px;
     }
 
+    .about {
+      padding: 0 15px;
+    }
+
+    .xprules {
+      width: 100%;
+      padding: 0;
+      text-align: left;
+
+      .align-content {
+        padding-bottom: 30px;
+
+        p {
+          text-align: left;
+        }
+      }
+
+      .rules {
+        font-size: 16px;
+        margin: 20px;
+        width: 90%;
+        button.selected span::after {
+          margin-left: 5px;
+        }
+      }
+    }
+
     .roles__navigation {
-      margin-top: 50px;
+      margin-top: 20px;
 
       a {
         font-size: 16px;
@@ -258,9 +294,19 @@ const StyledScreenHowItWorks = styled.section`
     }
 
     .cards {
+      padding: 0;
+
       &::before {
         zoom: 0.5;
       }
+
+      .cards-box {
+        margin-bottom: 50px;
+      }
+    }
+
+    .question-title {
+      font-size: 18px;
     }
   }
 `

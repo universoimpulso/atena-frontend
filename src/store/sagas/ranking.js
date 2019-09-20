@@ -4,14 +4,11 @@ import { Creators as RankingActions } from '../ducks/ranking'
 
 export function* getRanking(action) {
   try {
-    const { data } = yield call(api.get, `/ranking/${action.selected}`)
-
+    const { data } = yield call(api.get, `/ranking/${action.selected}?limit=20`)
     const rankingData = {
-      firstUsers: data.first_users,
-      lastUsers: data.last_users,
-      monthName: data.monthName,
+      data,
       loading: false,
-      error: ''
+      error: data.message || ''
     }
 
     yield put(RankingActions.getRankingResponse(rankingData))
@@ -20,9 +17,7 @@ export function* getRanking(action) {
       RankingActions.getRankingResponse({
         loading: false,
         error: error.message,
-        firstUsers: [],
-        lastUsers: [],
-        monthName: ''
+        data: []
       })
     )
   }

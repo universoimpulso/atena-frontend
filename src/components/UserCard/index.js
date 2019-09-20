@@ -4,7 +4,7 @@ import { Flex } from '@rebass/grid'
 import avatarSvg from '../../assets/avatar.svg'
 import { StyledUserCard, Container, Position, Info, Point } from './style'
 
-const UserCard = ({ position, name, avatar, xp, level, first }) => (
+const UserCard = ({ position, name, avatar, score, level, first }) => (
   <StyledUserCard first={first} order={first ? 6 : position * 2}>
     <Container>
       <figure>
@@ -31,7 +31,7 @@ const UserCard = ({ position, name, avatar, xp, level, first }) => (
           </Point>
           <Point>
             XP
-            <p>{xp}</p>
+            <p>{score}</p>
           </Point>
         </Flex>
       </Info>
@@ -44,7 +44,7 @@ UserCard.propTypes = {
   name: PropTypes.string.isRequired,
   avatar: PropTypes.string.isRequired,
   level: PropTypes.number.isRequired,
-  xp: PropTypes.number.isRequired,
+  score: PropTypes.number.isRequired,
   first: PropTypes.bool
 }
 

@@ -4,9 +4,7 @@ const INITIAL_STATE = {
   ranking: {
     loading: true,
     error: '',
-    firstUsers: [],
-    lastUsers: [],
-    monthName: ''
+    data: []
   },
   users: {
     loading: false,
@@ -34,9 +32,7 @@ const getRanking = (state = INITIAL_STATE) => ({
   ranking: {
     loading: true,
     error: '',
-    firstUsers: [],
-    lastUsers: [],
-    monthName: ''
+    data: []
   }
 })
 

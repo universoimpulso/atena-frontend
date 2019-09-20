@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { bindActionCreators } from 'redux'
 import { Flex, Box } from '@rebass/grid'
+import moment from 'moment'
+import 'moment/locale/pt-br'
 
 import { Creators as RankingActions } from '../../store/ducks/ranking'
 
@@ -26,10 +28,8 @@ class ScreenRanking extends Component {
     getRanking: PropTypes.func.isRequired,
     ranking: PropTypes.shape({
       loading: PropTypes.bool,
-      monthName: PropTypes.string,
       error: PropTypes.string,
-      firstUsers: PropTypes.array,
-      lastUsers: PropTypes.array
+      data: PropTypes.array
     }).isRequired
   }
 
@@ -46,16 +46,21 @@ class ScreenRanking extends Component {
     this.props.getRanking(selected)
   }
 
+  currentMouth = () => {
+    moment().locale('pt-br')
+    return moment().format('MMMM')
+  }
+
+  generatePosition = data => {
+    data.forEach((user, index) => (user.position = index + 1))
+    const podium = data.splice(0, 3)
+    return { podium, users: data }
+  }
+
   render() {
     const { selected } = this.state
-    const {
-      error,
-      loading,
-      monthName,
-      firstUsers,
-      lastUsers
-    } = this.props.ranking
-
+    const { error, loading, data } = this.props.ranking
+    const { podium, users } = this.generatePosition(data)
     if (!!error)
       return (
         <StyledScreenRanking>
@@ -103,9 +108,7 @@ class ScreenRanking extends Component {
                 <b> durante um mês</b>. Já o <b>Ranking Geral</b> exibe o saldo
                 de XP de toda sua jornada na Impulso!
               </p>
-              <Flex
-                justifyContent="center"
-                alignItems="center">
+              <Flex justifyContent="center" alignItems="center">
                 <StyledRectangleGroup>
                   <StyledRectangle
                     onClick={() => this.toggleRanking('monthly')}
@@ -121,8 +124,7 @@ class ScreenRanking extends Component {
                   </StyledRectangle>
                 </StyledRectangleGroup>
               </Flex>
-
-              {loading || !firstUsers ? (
+              {loading || !users ? (
                 <PageLoading />
               ) : (
                 <>
@@ -138,12 +140,12 @@ class ScreenRanking extends Component {
                         <>
                           <br />
                           DO MÊS DE
-                          <span className="month"> {monthName}</span>
+                          <span className="month"> {this.currentMouth()}</span>
                         </>
                       )}
                     </Title>
                   </Flex>
-                  {<Podium firstUsers={firstUsers} />}
+                  {<Podium firstUsers={podium} />}
                   <UsersRanking>
                     <RankingHeader>
                       <div className="ranking">RANKING</div>
@@ -151,7 +153,7 @@ class ScreenRanking extends Component {
                       <div className="level">LEVEL</div>
                       <div className="xp">XP</div>
                     </RankingHeader>
-                    {lastUsers.map((card, index) => (
+                    {users.map((card, index) => (
                       <RankingRow key={index} {...card} />
                     ))}
                   </UsersRanking>

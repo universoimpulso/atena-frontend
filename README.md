@@ -1,4 +1,4 @@
-<img src="https://impulso.network/assets/images/impulsonetwork-logo.svg" style="width: 350px">
+<img src="https://s3-sa-east-1.amazonaws.com/assets.impulso.network/images/impulsonetwork-logo.svg" style="width: 350px">
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/a837b0567bef4a1ca60fe9d9921b65f1)](https://www.codacy.com/app/impulsonetwork/atena-frontend?utm_source=github.com&utm_medium=referral&utm_content=universoimpulso/atena-frontend&utm_campaign=Badge_Grade)
 [![Build Status](https://dev.azure.com/universoimpulso/Atena/_apis/build/status/universoimpulso.atena-frontend?branchName=master)](https://dev.azure.com/universoimpulso/Atena/_build/latest?definitionId=5&branchName=master)

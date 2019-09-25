@@ -103,10 +103,10 @@ class ScreenRanking extends Component {
             <div className="_inner">
               <p className="super">
                 Confira aqui a sua colocação no ranking da Atena. Vale lembrar
-                que o<b> Ranking Mensal</b> exibe o <b>saldo</b> de XP que você
-                obteve
+                que o<b> Ranking Mensal</b> exibe o <b>saldo</b> de Reputação
+                que você obteve
                 <b> durante um mês</b>. Já o <b>Ranking Geral</b> exibe o saldo
-                de XP de toda sua jornada na Impulso!
+                de Reputação de toda sua jornada na Impulso!
               </p>
               <Flex justifyContent="center" alignItems="center">
                 <StyledRectangleGroup>
@@ -151,7 +151,7 @@ class ScreenRanking extends Component {
                       <div className="ranking">RANKING</div>
                       <div className="userInfo" />
                       <div className="level">LEVEL</div>
-                      <div className="xp">XP</div>
+                      <div className="xp">REPUTAÇÃO</div>
                     </RankingHeader>
                     {users.map((card, index) => (
                       <RankingRow key={index} {...card} />

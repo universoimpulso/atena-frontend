@@ -22,15 +22,14 @@ const QuestionCards = () => {
             <p className="super">
               Os <strong>Níveis</strong> são representações simplificadas do seu
               avanço na Atena e são atingidos mediante uma determinada
-              quantidade de <strong>XP</strong>. Além disso, eles conferem o
-              acesso à novas missões, cargos e recompensas.
+              quantidade de <strong>reputação</strong> ganha. Além disso, eles
+              conferem o acesso à novas missões, cargos e recompensas.
             </p>
             <Button>
               <a
                 target="_blank"
                 rel="noopener noreferrer"
-                href="https://www.notion.so/impulso/N-veis-Como-ganhar-6d67592b078f49b3879ce4db91081be4"
-              >
+                href="https://www.notion.so/impulso/N-veis-Como-ganhar-6d67592b078f49b3879ce4db91081be4">
                 mais detalhes
               </a>
             </Button>
@@ -42,8 +41,7 @@ const QuestionCards = () => {
           css={{
             display: 'flex',
             flexDirection: 'column'
-          }}
-        >
+          }}>
           <Card>
             <img alt="badge" src={badge} />
             <Title className="question-title">
@@ -60,8 +58,7 @@ const QuestionCards = () => {
               <a
                 target="_blank"
                 rel="noopener noreferrer"
-                href="https://www.notion.so/impulso/Conquistas-Como-ganhar-f8cded2569e7411ebabb78c8e99a2f94"
-              >
+                href="https://www.notion.so/impulso/Conquistas-Como-ganhar-f8cded2569e7411ebabb78c8e99a2f94">
                 mais detalhes
               </a>
             </Button>

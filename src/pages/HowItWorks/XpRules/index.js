@@ -22,47 +22,34 @@ class XpRules extends Component {
           <Box width={4 / 5}>
             <Title large className="align-title">
               O que é e como <br />
-              ganhar <span className="red">xp</span>?
+              ganhar <span className="red">reputação</span>?
             </Title>
             <p className="super">
-              Sua pontuação será medida em{' '}
-              <strong>Pontos de Experiência (XP)</strong>. Esse recurso é muito
-              utilizado nos jogos como uma representação numérica do esforço e
-              aprendizado obtido por um(a) personagem. Aqui na Impulso, a
-              quantidade de XP será baseada nas atividades que você realizar na
-              nossa comunidade.
+              Sua pontuação será medida em <strong>Pontos de Reputação</strong>.
+              Esse recurso é muito utilizado nos jogos como uma representação
+              numérica do esforço e aprendizado obtido por um(a) personagem.
+              Aqui na Impulso, a quantidade de reputação será baseada nas
+              atividades que você realizar na nossa comunidade.
             </p>
           </Box>
         </Flex>
         <Flex className="rules">
-          <Box width={1 / 3} px={0}>
+          <Box width={1 / 2} px={0}>
             <button
               onClick={() => this.changeInfos('gain')}
               className={`${
                 selected === 'gain' ? 'selected' : ''
-              } a--rules--button`}
-            >
-              <span>01. Obtendo XP</span>
+              } a--rules--button`}>
+              <span>01. Obtendo Reputação</span>
             </button>
           </Box>
-          <Box width={1 / 3} px={0}>
+          <Box width={1 / 2} px={0}>
             <button
               onClick={() => this.changeInfos('losing')}
               className={`${
                 selected === 'losing' ? 'selected' : ''
-              } a--rules--button`}
-            >
-              <span>02. Perdendo XP</span>
-            </button>
-          </Box>
-          <Box width={1 / 3} px={0}>
-            <button
-              onClick={() => this.changeInfos('exeptions')}
-              className={`${
-                selected === 'exeptions' ? 'selected' : ''
-              } a--rules--button`}
-            >
-              <span>03. Exceções</span>
+              } a--rules--button`}>
+              <span>02. Perdendo Reputação</span>
             </button>
           </Box>
         </Flex>
@@ -72,13 +59,12 @@ class XpRules extends Component {
             className={`rules__inner rules__inner-1 ${
               selected === 'gain' ? 'selected' : ''
             } `}
-            flexWrap="wrap"
-          >
+            flexWrap="wrap">
             <Box width={[1, 1 / 2]} px={30}>
               <Title>
                 <span className="red">01.</span>
                 <br />
-                OBTENDO XP
+                OBTENDO REPUTAÇÃO
               </Title>
               <p>
                 A obtenção de pontos é feita através da{' '}
@@ -90,26 +76,23 @@ class XpRules extends Component {
             <Box width={[1, 1 / 2]} px={30}>
               <div className="roles__navigation">
                 <a className="selected">Rocket.Chat</a>
-                {/* <a href="javascript:;">Blog</a>
-                <a href="javascript:;">Open-Source</a> */}
               </div>
               <div className="rules__table">
                 <p>
-                  Mensagem postada <span className="value">+1 xp</span>
+                  Mensagem postada <span className="value">+3</span>
                 </p>
                 <p>
-                  Reaction dado <span className="value">+1 xp</span>
+                  Reaction dado <span className="value">+2</span>
                 </p>
                 <p>
-                  Reply recebido <span className="value">+2 xp</span>
+                  Reaction recebido <span className="value">+3</span>
                 </p>
               </div>
               <Button>
                 <a
                   href="https://www.notion.so/XP-Como-ganhar-372bc91f3e404b418b50267ddcadce6f"
                   target="_blank"
-                  rel="noopener noreferrer"
-                >
+                  rel="noopener noreferrer">
                   mais detalhes
                 </a>
               </Button>
@@ -121,44 +104,21 @@ class XpRules extends Component {
             className={`rules__inner rules__inner-2 ${
               selected === 'losing' ? 'selected' : ''
             } `}
-            flexWrap="wrap"
-          >
-            <Box width={[1, 1 / 2]} px={30}>
+            flexWrap="wrap">
+            <Box width={1} px={30}>
               <Title>
                 <span className="red">02.</span>
                 <br />
-                PERDENDO XP
+                PERDENDO REPUTAÇÃO
               </Title>
               <p>
-                Em oposição às atividades que promovem a obtenção de XP, a única
-                forma de perder pontos de experiência é através da{' '}
+                Em oposição às atividades que promovem a obtenção de Reputação,
+                a única forma de perder pontos é através da{' '}
                 <strong>Inatividade Completa</strong> na comunidade Impulso. A
-                inatividade começa a contar no dia seguinte à sua última
-                participação e a perda de pontos a partir da quantidade de dias
-                pré-definida, que varia de acordo com cada canal.
-              </p>
-            </Box>
-          </Flex>
-        ) : selected === 'exeptions' ? (
-          <Flex
-            css={{ margin: '0 -30px' }}
-            className={`rules__inner rules__inner-3 ${
-              selected === 'exeptions' ? 'selected' : ''
-            } `}
-            flexWrap="wrap"
-          >
-            <Box width={[1, 1 / 2]} px={30}>
-              <Title>
-                <span className="red">03.</span>
-                <br />
-                EXCEÇÕES
-              </Title>
-              <p>
-                Caso a <strong>quantidade de XP</strong> que você obteve através
-                de <strong>reactions negativos recebidos</strong> em uma
-                publicação <strong>seja superior</strong> à obtida por reactions
-                positivos o XP não é negativado, a pontuação através das
-                reactions daquela mensagem ficará zerada (0).
+                inatividade começa a contar a partir de <strong>14 dias</strong>{' '}
+                após à sua última participação. Apos este período, você perde{' '}
+                <strong>dois pontos por dia</strong>, até voltar a participar na
+                comunidade novamente.
               </p>
             </Box>
           </Flex>

@@ -145,7 +145,7 @@ export const RankingHeader = styled.div`
 
   .level {
     flex: 2;
-    max-width: 83px;
+    max-width: 100px;
     text-align: center;
 
     @media only screen and (max-width: 768px) {
@@ -155,7 +155,7 @@ export const RankingHeader = styled.div`
 
   .xp {
     flex: 1;
-    max-width: 120px;
+    max-width: 150px;
     text-align: center;
 
     @media only screen and (max-width: 768px) {

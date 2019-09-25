@@ -30,7 +30,7 @@ const UserCard = ({ position, name, avatar, score, level, first }) => (
             <p>{level}</p>
           </Point>
           <Point>
-            XP
+            REPUTAÇÃO
             <p>{score}</p>
           </Point>
         </Flex>

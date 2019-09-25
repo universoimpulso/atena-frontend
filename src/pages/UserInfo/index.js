@@ -189,7 +189,7 @@ class UserInfo extends Component {
               <span>{level}</span>
             </div>
             <div>
-              <p>xp</p>
+              <p>reputação</p>
               <span>{score}</span>
             </div>
             <div>

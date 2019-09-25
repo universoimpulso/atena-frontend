@@ -73,7 +73,7 @@ export const Info = styled.div`
   font-size: 16px;
   font-weight: bold;
   height: 54px;
-  width: 450px;
+  width: 500px;
   div {
     display: flex;
     flex: 1;
@@ -83,7 +83,7 @@ export const Info = styled.div`
     text-align: center;
     :not(:last-child) {
       border-right: 1px solid ${theme.color.primaryLight};
-      max-width: 120px;
+      max-width: 150px;
     }
     p {
       color: ${theme.color.primaryLight};

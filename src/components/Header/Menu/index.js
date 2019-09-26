@@ -48,18 +48,11 @@ class Menu extends Component {
           {uuid ? (
             <>
               {isCoreTeam && (
-                <>
-                  <li key="transfer">
-                    <Link to="/transfer">
-                      <button>Transferir</button>
-                    </Link>
-                  </li>
-                  <li key="admin">
-                    <Link to="/admin">
-                      <button>Admin</button>
-                    </Link>
-                  </li>
-                </>
+                <li key="admin">
+                  <Link to="/admin">
+                    <button>Admin</button>
+                  </Link>
+                </li>
               )}
 
               <li key="logout">

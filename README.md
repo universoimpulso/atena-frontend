@@ -67,6 +67,6 @@ O desenvolvimento da Atena acontece a céu aberto no GitHub, e somos gratos à c
 
 ## Comunidade
 
-Todos os comentários e sugestões são bem-vindas e podem ser feitas via Issues no Github ou lá no RochetChat!
+Todos os comentários e sugestões são bem-vindas e podem ser feitas via Issues no Github ou lá no RocketChat!
 
 💬 Junte-se a comunidade em [Impulso Network](https://impulso.network)

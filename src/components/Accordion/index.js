@@ -8,7 +8,7 @@ class Accordion extends Component {
       {
         content: 'Como me comunico com a Atena?',
         awnser:
-          'Para centralizar as informações a respeito da sua Experiência, Níveis e Conquistas criamos a bot ATENA. Através de comandos é possível pedir à Atena para exibir seu XP (!meuspontos), Ranking Mensal (!ranking), Ranking Geral de XP (!rankinggeral) e Conquistas (!minhasconquistas).'
+          'Para centralizar as informações a respeito da sua Reputação, Níveis e Conquistas criamos a bot ATENA. Através de comandos é possível pedir à Atena para exibir sua reputação (!meuspontos), Ranking Mensal (!ranking), Ranking Geral (!rankinggeral) e Conquistas (!minhasconquistas).'
       },
       {
         content: 'Existirão atualizações?',
@@ -18,12 +18,12 @@ class Accordion extends Component {
       {
         content: 'Existe alguma premiação?',
         awnser:
-          'Claro! Além da Reputação obtida através da sua participação na comunidade (representada por XP e Níveis), Atena poderá te premiar com acesso a atividades especiais da comunidade, cupons de desconto para serviços, além de produtos e brindes exclusivos.'
+          'Claro! Além da Reputação obtida através da sua participação na comunidade (representada por Reputação e Níveis), Atena poderá te premiar com acesso a atividades especiais da comunidade, cupons de desconto para serviços, além de produtos e brindes exclusivos.'
       },
       {
         content: 'Qual a diferença entre ranking mensal e geral?',
         awnser:
-          'Enquanto o Ranking Geral valoriza o esforço durante todo o seu percurso com a Atena e mostra o acumulado de XP e seu Nível, o Ranking Mensal foca no que foi realizado e recompensa o primeiro colocado naquele mês.'
+          'Enquanto o Ranking Geral valoriza o esforço durante todo o seu percurso com a Atena e mostra o acumulado de Reputação e seu Nível, o Ranking Mensal foca no que foi realizado e recompensa o primeiro colocado naquele mês.'
       },
       {
         content: 'Como faço para participar do projeto?',
@@ -32,7 +32,7 @@ class Accordion extends Component {
           <a
             target="_blank"
             rel="noopener noreferrer"
-            href="http://github.com/impulsonetwork/atena"
+            href="https://github.com/universoimpulso/atena"
           >
             Github
           </a> .

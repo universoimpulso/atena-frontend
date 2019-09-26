@@ -11,8 +11,7 @@ const Faq = () => (
       <Flex
         justifyContent="space-between"
         css={{ margin: '0 -25px' }}
-        flexWrap="wrap"
-      >
+        flexWrap="wrap">
         <Box width={[1, 2 / 5]} px={25}>
           <Title extralarge>
             Dúvi
@@ -33,8 +32,7 @@ const Faq = () => (
             <a
               target="_blank"
               rel="noopener noreferrer"
-              href="https://www.notion.so/impulso/Atena-Um-projeto-de-gamifica-o-open-source-da-Impulso-cac95f0898e648f6a31f5911a3c46d41"
-            >
+              href="https://www.notion.so/impulso/Atena-Um-projeto-de-gamifica-o-open-source-da-Impulso-cac95f0898e648f6a31f5911a3c46d41">
               Mais dúvidas
             </a>
           </Button>

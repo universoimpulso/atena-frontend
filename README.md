@@ -9,7 +9,7 @@
 
 ## Front - Atena v.0.2
 
-A Atena é uma iniciativa da Impulso Network em colaboração com vários Impulsers, com o objetivo de promover o engajamento e recompensar as atividades e esforços de cada pessoa na Impulso. Nele você poderá adquirir Pontos de Experiência (XP) através da execução de diversas atividades e com base nesses dois fatores os Impulsers receberão níveis e conquistas, reconhecendo o esforço despendido nas atividades.
+A Atena é uma iniciativa da Impulso Network em colaboração com vários Impulsers, com o objetivo de promover o engajamento e recompensar as atividades e esforços de cada pessoa na Impulso. Nele você poderá adquirir Pontos de Reputação através da execução de diversas atividades e com base nesses dois fatores os Impulsers receberão níveis e conquistas, reconhecendo o esforço despendido nas atividades.
 
 ## Configuração
 
@@ -67,6 +67,6 @@ O desenvolvimento da Atena acontece a céu aberto no GitHub, e somos gratos à c
 
 ## Comunidade
 
-Todos os comentários e sugestões são bem-vindas e podem ser feitas via Issues no Github ou lá no Slack!
+Todos os comentários e sugestões são bem-vindas e podem ser feitas via Issues no Github ou lá no RochetChat!
 
 💬 Junte-se a comunidade em [Impulso Network](https://impulso.network)

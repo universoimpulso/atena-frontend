@@ -3,7 +3,6 @@ import theme from '../../styles/theme'
 
 export const Container = styled.div`
   background: ${theme.color.background};
-  padding-bottom: 50px;
 `
 
 export const Header = styled.header`
@@ -12,7 +11,6 @@ export const Header = styled.header`
   display: flex;
   flex-direction: column;
   height: 660px;
-  margin-bottom: 120px;
   text-transform: uppercase;
   width: 100%;
 `

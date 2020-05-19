@@ -200,9 +200,9 @@ class UserInfo extends Component {
             </div>
           </Info>
         </Header>
-        <Title>suas conquistas</Title>
+        {/* <Title>suas conquistas</Title> */}
 
-        {this.renderAccordion(userAchievements)}
+        {/* {this.renderAccordion(userAchievements)} */}
       </Container>
     )
   }

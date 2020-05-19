@@ -141,9 +141,9 @@ class UserInfo extends Component {
           <img src={badges[medal]} alt="badge" />
         </Badge>
         <Score color={colors[medal]}>
-          {score} / {maxScore}
+          {`${score} ${maxScore ? `/ ${maxScore}`: ''}`}
         </Score>
-        <ScoreBar status={(score / maxScore) * 100} color={colors[medal]} />
+        <ScoreBar status={(score / maxScore || score) * 100} color={colors[medal]} />
         <Achievement>{name.split('|')[1]}</Achievement>
       </BadgeWrapper>
     )
@@ -200,9 +200,9 @@ class UserInfo extends Component {
             </div>
           </Info>
         </Header>
-        <Title>suas conquistas</Title>
+        {/* <Title>suas conquistas</Title> */}
 
-        {this.renderAccordion(userAchievements)}
+        {/* {this.renderAccordion(userAchievements)} */}
       </Container>
     )
   }

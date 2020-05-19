@@ -109,20 +109,20 @@ export function* getProfile(action) {
       IV: 3,
       V: 4
     }
-    userAchievementsModel.forEach(modelValues => {
-      modelValues.achievements.forEach(modelAchievements => {
-        data.userAchievements.forEach(newValues => {
-          newValues.achievements.forEach(newAchievements => {
-            if (modelAchievements.type === newAchievements.type) {
-              modelAchievements.medal = medalModel[newAchievements.medal]
-              modelAchievements.tier = tierModel[newAchievements.tier]
-              modelAchievements.maxScore = newAchievements.maxScore
-              modelAchievements.score = newAchievements.score
-            }
-          })
-        })
-      })
-    })
+    // userAchievementsModel.forEach(modelValues => {
+    //   modelValues.achievements.forEach(modelAchievements => {
+    //     data.userAchievements.forEach(newValues => {
+    //       newValues.achievements.forEach(newAchievements => {
+    //         if (modelAchievements.type === newAchievements.type) {
+    //           modelAchievements.medal = medalModel[newAchievements.medal]
+    //           modelAchievements.tier = tierModel[newAchievements.tier]
+    //           modelAchievements.maxScore = newAchievements.maxScore
+    //           modelAchievements.score = newAchievements.score
+    //         }
+    //       })
+    //     })
+    //   })
+    // })
 
     yield put(
       UserActions.getProfileResponse({
@@ -136,7 +136,7 @@ export function* getProfile(action) {
           generalPosition: data.generalPosition,
           monthlyPosition: data.monthlyPosition
         },
-        userAchievements: userAchievementsModel
+        userAchievements: []
       })
     )
   } catch (error) {

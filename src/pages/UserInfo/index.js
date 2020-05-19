@@ -141,9 +141,9 @@ class UserInfo extends Component {
           <img src={badges[medal]} alt="badge" />
         </Badge>
         <Score color={colors[medal]}>
-          {`${score} ${maxScore ? `/ ${maxScore}`: ''}`}
+        {score} / {maxScore}
         </Score>
-        <ScoreBar status={(score / maxScore || score) * 100} color={colors[medal]} />
+        <ScoreBar status={(score / maxScore) * 100} color={colors[medal]} />
         <Achievement>{name.split('|')[1]}</Achievement>
       </BadgeWrapper>
     )
